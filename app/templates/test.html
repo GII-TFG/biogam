@@ -44,14 +44,15 @@
    
         <ion-list >
 
-            <button class="button button-block  button-stable" ng-repeat="option in listaOpcionesTest" ng-click="validate(option)">
+            <button class="button button-block  button-stable" ng-init="val=false" ng-repeat="option in listaOpcionesTest" ng-click="val = validate(option)" ng-class= "val ? 'pinto_verde' : 'pinto_rojo'">
                     {{option.nombreOp}}
             </button>
+               <!--  1) hago click
+2) valido la opcion, y ahora se si es true o false
+3) ng-class= pinto_verde ? validate : pinto rojo .-->
                      
         </ion-list>
 
-      
-    getitem(id)...
     </ion-content>
 
     </ion-view>

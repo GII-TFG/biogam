@@ -1,4 +1,4 @@
-﻿#exerciseHeading{
+#exerciseHeading{
     width: 350px;
     height:150px;
     padding:15px;
@@ -39,4 +39,13 @@ input[type="checkbox"]:checked + label span {
 .roundedOne1, .roundedOne2, .roundedOne{
     padding-top:30px;
     padding-left:100px;
+}
+.pinto_verde{
+    
+    background-color:aqua;
+}
+
+.pinto_rojo{
+    
+    background-color:crimson;
 }
