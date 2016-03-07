@@ -220,3 +220,13 @@ p#result{
 div.col.col-25.Function, div.col.col-25.Result{
     text-align: center;
 }
+
+.pinto_verde{
+    
+    background-color:aqua !important;
+}
+
+.pinto_rojo{
+    
+    background-color:crimson !important;
+}

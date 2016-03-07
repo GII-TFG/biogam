@@ -427,16 +427,17 @@ angular.module('starter.controllers', [])
     $scope.listaPreguntas = Test.getPreguntasTest($rootScope.temaId);
     $scope.listaOpcionesTest = Test.getOpcionesTest($rootScope.temaId);
 
+   
     $scope.validate = function(obj){
         
         if(obj.esCorrecto == 1){
 
             console.log("bien");
-            return true;
+            return "pinto_verde";
         }else{
 
              console.log("mal");
-             return false;
+             return "pinto_rojo";
         }
     }
    
