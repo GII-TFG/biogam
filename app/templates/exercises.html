@@ -1,0 +1,46 @@
+﻿   <!-- ng-click="pasarNivelId(nivel.nivel)"-->
+
+   <ion-view title="{{title}}">
+    <ion-content>
+        <ul class="list">
+            <button ng-repeat="nivel in listaNiveles" class="button button-outline button-block button-large button-dark" id="showLevel_{{nivel.nivel}}" ng-click="getNivelId(nivel.nivel)" ui-sref='home.categories.2.level' >
+                
+                <p> Nivel {{nivel.nivel}}</p>  
+                
+                <div class="row" id="row">
+                    <div class="col">
+                        <img src="app/assests/img/ptoMorado.png">
+                    </div>
+                    <div class="col">
+                        <img src="app/assests/img/ptoMorado.png">
+                    </div>
+                    <div class="col">
+                        <img src="app/assests/img/ptoMorado.png">
+                    </div>
+                    <div class="col">
+                        <img src="app/assests/img/plain16.png">
+                    </div>
+                    <div class="col">
+                        <img src="app/assests/img/plain16.png">
+                    </div>
+                    <div class="col">
+                        <img src="app/assests/img/plain16.png">
+                    </div>
+                    <div class="col">
+                        <img src="app/assests/img/plain16.png">
+                    </div>
+                    <div class="col">
+                        <img src="app/assests/img/plain16.png">
+                    </div>
+                    <div class="col">
+                        <img src="app/assests/img/plain16.png">
+                    </div>
+                    <div class="col">
+                        <img src="app/assests/img/plain16.png">
+                    </div>
+                </div>
+            </button>
+        </ul>   
+    </ion-content>
+
+</ion-view title>

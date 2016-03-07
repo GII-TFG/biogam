@@ -1,0 +1,12 @@
+<ion-view title="{{title}}">
+
+    <ion-content class="padding">
+        <ion-list >
+            <button class="item" ng-repeat="ejercicio in listaEjer" item="item" ui-sref='home.categories.2.Exerlist.level' ng-click="getEjer(ejercicio)">
+                Problema {{ejercicio.ejerId}}
+
+            </button>
+            
+        </ion-list>
+    </ion-content>
+</ion-view>  

@@ -1,0 +1,24 @@
+﻿body{
+    background:#886aea;
+}
+
+.button.button-outline, .button{
+    height:50px;
+    width:220px;
+    margin-left:70px;
+    margin-right:120px;
+    margin-top:40px;
+}
+#register.button{
+    margin-top:8px;
+}
+#user.item.item-input{
+    margin-top:250px;
+    margin-left:70px;
+    width:220px;
+}
+#pass.item.item-input{
+    margin-top:10px;
+    margin-left:70px;
+    width:220px;
+}

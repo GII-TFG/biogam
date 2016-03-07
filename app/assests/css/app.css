@@ -1,0 +1,222 @@
+body{
+    width: 100%;
+}
+.spinner {
+    display: none;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 300;
+}
+
+.spinnerBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: #000000;
+    opacity: 0.3;
+}
+
+.spinnerSpinner {
+    position: absolute;
+    left: 50%;
+    margin-left: -40px;
+    margin-top: -40px;
+    top: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.spinnerSpinner svg {
+    width: 80px;
+    height: 80px;
+    stroke: #b59751;
+}
+.button.button-energized.button-outline{
+    margin-top:70px;
+    /*height:135px;*/
+}
+/*.button.button-outline{
+    height:120px;
+    width:335px;
+    margin-left:12px;
+    margin-right:12px;
+    margin-bottom:23px;
+}*/
+.button.button-outline.button-block.button-large.button-dark{
+    height:120px;
+    width:80%;
+    margin-left:12px;
+    margin-right:12px;
+    margin-bottom:23px;
+}
+
+#Theory.button.button-outline.button-block.button-large.button-energized{
+    margin-top:90px;
+}
+.item{
+    margin-top:15px;
+    width:335px;
+    margin-left:12px;
+}
+#showLevel p{
+    padding-top:20px; 
+    padding-bottom:0px; 
+    margin-bottom:0px;
+    font-size:28px;
+    height:65px;  
+}
+
+/*--------------------------------------------------------------*/
+.col{
+    display:inline;
+}
+div.row.circles{
+    padding-top:30px;
+    width: 80%;
+    margin: auto;
+}
+p.exerciseHeading{
+    width: 80%;
+    height:150px;
+    padding:15px;
+    padding-bottom:0px;
+    margin-bottom:0px;
+    margin: auto;
+    padding-top:10px;
+}
+h3.questionNum{
+    text-align:center;
+    margin-top:10px;
+}
+div.buttonRow{
+    padding-top:14px;
+    width: 80%;
+    margin: auto;
+}
+
+div.col-50.button.button-small.button-outline.button-royal.ebutonOption{
+    padding-top: 10px;
+    font-size:18px;   
+}
+
+/*div#ebutonOption2.col-50.button.button-small.button-outline.button-royal{
+    padding-top: 10px;
+    font-size:18px;
+}
+
+div#ebutonOption3.col-50.button.button-small.button-outline.button-royal{
+   padding-top: 10px;
+    font-size:18px;
+}
+div#ebutonOption4.col-50.button.button-small.button-outline.button-royal{
+    padding-top: 10px;
+    font-size:18px;
+}
+div#ebutonOption5.col-50.button.button-small.button-outline.button-royal{
+    padding-top: 10px;
+    font-size:18px;
+}
+div#ebutonOption6.col-50.button.button-small.button-outline.button-royal{
+    padding-top: 10px;
+    font-size:18px;
+}*/
+
+#types, #typesTotal{
+   margin:0px;
+   text-align:center;
+}
+
+div.item.item-body.boxOperations{
+    border-color:darkgray;
+    padding: 0px;
+    margin: auto;
+    margin-top: 10px;
+    height:180px;
+    width: 98%;
+}
+div.row.rowTextbox2{
+    padding-top:5px;
+    margin: auto;
+    width:180px;
+}
+div.row.rowTextbox3{
+    padding-top:5px;
+    margin: auto;
+    width:263px;
+}
+div.row.rowTextbox4{
+    padding-top:5px;
+    margin: auto;
+    width:350px;
+}
+
+div.row.rowCC{
+    padding-top: 10px;
+    margin: auto;
+    width: 250px;
+}
+input.col.col-90.item.item-input.AaClass{
+    margin:auto;
+    border:1px solid #886aea;
+    width:85px;   
+}
+button.col-50.button.button-small.button-royal{
+    margin-right: 3px;
+    font-size: 17px;
+}
+input.col.col-90.item.item-input.ThreeinputClass{
+    margin:auto;
+    border:1px solid #886aea;
+    width:85px;   
+}
+input.col.col-90.item.item-input.FourinputClass{
+    margin:auto;
+    border:1px solid #886aea;
+    width:85px;   
+}
+div.icon.ion-checkmark-circled.tickIcon{
+    font-size: 34px;
+    color: limegreen;
+}
+
+#valueTotal,#typesTotal{
+    margin-top: 5px;
+    text-align: center;
+}
+div.row.DataRow{
+    margin:auto;
+    width: 96%;
+    height: 36%
+}
+.col.col-75.chiiResult{
+    width: 148px;
+    display: inline;
+}
+div.col.col-90.total{
+    display: block;
+}
+p.resultadoCHI{
+    width: 80px;
+}
+p.agreeText{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+div.col.col-25.agree{
+    display: block;
+    text-align: center;
+}
+p.Chii{
+    margin-top: 20px;
+}
+p#result{
+    margin-top: 20px;
+}
+div.col.col-25.Function, div.col.col-25.Result{
+    text-align: center;
+}

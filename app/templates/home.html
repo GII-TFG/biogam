@@ -1,0 +1,13 @@
+<ion-view title="{{title}}">
+ <ion-content class="padding">    
+    
+ <ion-list>
+   
+    <button class="button button-outline button-block button-large button-dark" ng-repeat="tema in temas"  ng-animate="'animate'"  ng-click="getTemaId(tema.id)"  ui-sref='home.categories'>
+        {{tema.name}} 
+        
+    </button>    
+           
+     </ion-list>    
+ </ion-content>
+</ion-view>

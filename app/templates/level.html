@@ -1,0 +1,325 @@
+    <ion-view title="{{title}}">
+        <ion-content >
+            <div class="row circles">
+                <div class="col">
+                    <img src="app/assests/img/ptoMorado.png"></>
+                </div>
+                <div class="col">
+                    <img src="app/assests/img/ptoMorado.png"></>
+                </div>
+                <div class="col">
+                    <img src="app/assests/img/ptoMorado.png"></>
+                </div>
+                <div class="col">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+            </div>
+            <h3 class="questionNum">
+                Pregunta {{index + 1}} 
+            </h3>
+            <p class="exerciseHeading">
+                {{listaEjerPerTemaNivel[index].enunciado}} 
+            </p>
+            <div >
+                <div class="row">
+                    <div  class="col-50 button button-small button-outline button-royal ebutonOption" ng-click="showBoxAaxaa()">
+                        Aa x aa
+                    </div>
+                    <div class="col-50 button button-small button-outline button-royal ebutonOption " ng-click="showBoxAaxAa()">
+                        Aa x Aa
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-50 button button-small button-outline button-royal ebutonOption" ng-click="showBoxA1A2xA1A2()">
+                        A1A2 x A1A2
+                    </div>
+                    <div class="col-50 button button-small button-outline button-royal ebutonOption" ng-click="showBoxA1A2xA1A3()">
+                        A1A2 x A1A3
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-50 button button-small button-outline button-royal ebutonOption" ng-click="showBoxA1A2xA3A4()">
+                        A1A2 x A3A4
+                    </div>
+                    <div class="col-50 button button-small button-outline button-royal ebutonOption" ng-click="showBoxLethalGenes()">
+                        Lethal genes
+                    </div>
+                </div>
+                <!-- BOX Aaxaa -->
+                <div class="item item-body boxOperations" ng-show="boxShowAaxaa">
+                    <!-- textbox Row -->
+                    <div class="row rowTextbox2">
+                        <div>
+                            <p id="types">A</p>
+                            <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value" min="0" max="5000">
+                        </div>
+
+                        <div>
+                            <p id="types">a</p>
+                            <input class="col col-90 item item-input AaClass" type="number"  ng-model="aaValue.value" min="0" max="5000">
+                        </div>
+                    </div>
+                    <!-- Buttons Row -->
+                    <div class = "row rowCC">
+                        <button class = "col-50 button button-small button-royal" ng-click="calculateTestCross()" >Calculate</button>
+                        <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
+                    </div>
+                     <div class="row DataRow">
+                        <div class="col col-25 total">
+                            <p id="typesTotal">Total</p>
+                            <p id="valueTotal"> {{total}} </p>
+                        </div>
+                        <div class="col col-25 Function">                         
+                            <p class="Chii"><i>X</i><sup><i>2</i></sup><i>(df = 2) = </i></p>
+                            
+                        </div>
+                        <div class="col col-25 Result">
+                            <p id="result">{{chiA}}</p>
+                        </div>
+                         <div class="col col-25 agree">
+                                <p class="agreeText">Agree?</p>
+                                {{agree}}
+                                <!--<div class="icon ion-checkmark-circled tickIcon"></div> -->   
+                            </div>
+                    </div>
+                </div>
+                <!--  BOX AaxAa -->
+                <div class="item item-body boxOperations" ng-show="boxShowAaxAa">
+                    <!-- textbox Row -->
+                    <div class="row rowTextbox2">
+                        <div>
+                            <p id="types">A</p>
+                            <input class="col col-90 item item-input AaClass " type="number" ng-model="AaValue.value" min="0" max="5000">
+                        </div>
+
+                        <div>
+                            <p id="types">a</p>
+                            <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value" min="0" max="5000">
+                        </div>
+                    </div>
+                     <!-- Buttons Row -->
+                    <div class = "row rowCC">
+                        <button class = "col-50 button button-small button-royal" ng-click="calculateF2Dominance()">Calculate</button>
+                        <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
+                    </div>
+                     <div class="row DataRow">
+                        <div class="col col-25 total">
+                            <p id="typesTotal">Total</p>
+                            <p id="valueTotal">{{total}}</p>
+                        </div>
+                        <div class="col col-25 Function">                         
+                            <p class="Chii"><i>X</i><sup><i>2</i></sup><i>(df = 2) = </i></p>
+                            
+                        </div>
+                        <div class="col col-25 Result">
+                            <p id="result">{{chiA}}</p>
+                        </div>
+                         <div class="col col-25 agree">
+                                <p class="agreeText">Agree?</p>
+                                {{agree}}
+                                <!--<div class="icon ion-checkmark-circled tickIcon"></div>-->    
+                            </div>
+                    </div>
+                </div>
+                 <!-- BOX Lethal Genes -->
+                <div class=" col-90 item item-body boxOperations" ng-show="boxShowLethalGenes">
+                     <!-- Textbox Row -->
+                    <div class="row rowTextbox2">
+                        <div>
+                            <p id="types">A</p>
+                            <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value" min="0" max="5000">
+                        </div>
+
+                        <div>
+                            <p id="types">a</p>
+                            <input class="col col-90 item item-input AaClass" type="number" ng-model="aaValue.value" min="0" max="5000">
+                        </div>
+                    </div>
+                     <!-- Buttons Row -->
+                    <div class = "row rowCC">
+                        <button class = "col-50 button button-small button-royal" ng-click="calculateLethalGenes()">Calculate</button>
+                        <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
+                    </div>
+                     <div class="row DataRow">
+                        <div class="col col-25 total">
+                            <p id="typesTotal">Total</p>
+                            <p id="valueTotal"> {{total}}</p>
+                        </div>
+                        <div class="col col-25 Function">                         
+                            <p class="Chii"><i>X</i><sup><i>2</i></sup><i>(df = 2) = </i></p>
+                            
+                        </div>
+                        <div class="col col-25 Result">
+                            <p id="result">{{chiA}}</p>
+                        </div>
+                         <div class="col col-25 agree">
+                                <p class="agreeText">Agree?</p>
+                                {{agree}}
+                                <!--<div class="icon ion-checkmark-circled tickIcon"></div>-->    
+                            </div>
+                    </div>
+                </div>
+                 <!-- BOX A1A2xA1A2 -->
+                <div class="item item-body boxOperations" ng-show="boxShowA1A2xA1A2">
+                     <!-- Textbox Row -->
+                    <div class="row rowTextbox3">
+                        <div>
+                            <p id="types">A1A1</p>
+                            <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="AAValue.value" min="0" max="5000">
+                        </div>
+
+                        <div>
+                            <p id="types">A1A2</p>
+                            <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="AaValue.value" min="0" max="5000">
+                        </div>
+                        <div>
+                            <p id="types">A2A2</p>
+                            <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="aaValue.value" min="0" max="5000">
+                        </div>
+                    </div>
+                     <!-- Buttons Row -->
+                    <div class = "row rowCC">
+                        <button class = "col-50 button button-small button-royal" ng-click="calculateF2Codominance()">Calculate</button>
+                        <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
+                    </div>
+                     <div class="row DataRow">
+                        <div class="col col-25 total">
+                            <p id="typesTotal">Total</p>
+                            <p id="valueTotal">{{total}}</p>
+                        </div>
+                        <div class="col col-25 Function">                         
+                            <p class="Chii"><i>X</i><sup><i>2</i></sup><i>(df = 2) = </i></p>
+                            
+                        </div>
+                        <div class="col col-25 Result">
+                            <p id="result">{{chiA}}</p>
+                        </div>
+                         <div class="col col-25 agree">
+                                <p class="agreeText">Agree?</p>
+                                {{agree}}
+                                <!--<div class="icon ion-checkmark-circled tickIcon"></div>-->    
+                            </div>
+                    </div>
+                </div>
+                <!-- BOX A1A2xA1A3 -->
+                <div class="item item-body boxOperations" ng-show="boxShowA1A2xA1A3">
+                    <!-- textbox Row -->
+                    <div class="row rowTextbox4">
+                        <div>
+                            <p id="types">A1 A1</p>
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A1Value.value" min="0" max="5000">
+                        </div>
+
+                        <div>
+                            <p id="types">A1 A3</p>
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A3Value.value" min="0" max="5000">
+                        </div>
+                        <div>
+                            <p id="types">A1 A2</p>
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A2Value.value" min="0" max="5000">
+                        </div>
+                        <div>
+                            <p id="types">A2 A3</p>
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A2A3Value.value" min="0" max="5000">
+                        </div>
+                    </div>
+                    <!-- Buttons Row -->
+                    <div class = "row rowCC">
+                        <button class = "col-50 button button-small button-royal" ng-click="calculateCodominance3Alleles()">Calculate</button>
+                        <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
+                    </div>
+                    <div class="row DataRow">
+                        <div class="col col-25 total">
+                            <p id="typesTotal">Total</p>
+                            <p id="valueTotal"> {{total}}</p>
+                        </div>
+                        <div class="col col-25 Function">                         
+                            <p class="Chii"><i>X</i><sup><i>2</i></sup><i>(df = 2) = </i></p>
+                            
+                        </div>
+                        <div class="col col-25 Result">
+                            <p id="result">{{chiA}}</p>
+                        </div>
+                         <div class="col col-25 agree">
+                                <p class="agreeText">Agree?</p>
+                                {{agree}}
+                                <!--<div class="icon ion-checkmark-circled tickIcon"></div>-->   
+                            </div>
+                    </div>
+                </div>
+                <!-- BOX A1A2xA3A4 -->
+                <div class="item item-body boxOperations" ng-show="boxShowA1A2xA3A4">
+                    <!-- textbox Row -->
+                    <div class="row" id="rowTextbox">
+                        <div>
+                            <p id="types">A1 A1</p>
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A1Value.value" min="0" max="5000">
+                        </div>
+
+                        <div>
+                            <p id="types">A1 A3</p>
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A3Value.value" min="0" max="5000">
+                        </div>
+                        <div>
+                            <p id="types">A1 A2</p>
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A2Value.value" min="0" max="5000">
+                        </div>
+                        <div>
+                            <p id="types">A2 A4</p>
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A2A4Value.value" min="0" max="5000">
+                        </div>
+                    </div>
+                     <!-- Buttons Row -->
+                    <div class = "row rowCC">
+                        <button class = "col-50 button button-small button-royal" ng-click="calculateCodominance4Alleles()">Calculate</button>
+                        <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
+                    </div>
+                     <div class="row DataRow">
+                        <div class="col col-25 total">
+                            <p id="typesTotal">Total</p>
+                            <p id="valueTotal"> {{total}} </p>
+                        </div>
+                        <div class="col col-25 Function">                         
+                            <p class="Chii"><i>X</i><sup><i>2</i></sup><i>(df = 2) = </i></p>
+                            
+                        </div>
+                        <div class="col col-25 Result">
+                            <p id="result">{{chiA}}</p>
+                        </div>
+                         <div class="col col-25 agree">
+                                <p class="agreeText">Agree?</p>
+                                {{agree}}
+                                <!--<div class="icon ion-checkmark-circled tickIcon"></div>-->    
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+          <!-- no tocar si no se entiende, preguntar a Gian -->
+      <button type="button" class="btn btn-pre"   ng-show="showPrev= index > 0 ? showPrev = true : showPrev = false" ng-click="prev()">Previous</button>
+
+      <button type="button" class="btn btn-next" ng-show="showNext= index < listaEjerPerTemaNivel.length-1 ? showNext = true : showNext = false" ng-click="next()">Next</button>
+
+
+
+        </ion-content>
+
+    </ion-view>
