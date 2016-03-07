@@ -1,41 +1,35 @@
-
-<body ng-controller="exerciseController">
-    <ion-header-bar class="bar bar-header bar-royal">
-        <button class="button icon ion-chevron-left"></button>
-        <h1 class="title">Exercises</h1> <!--este título tiene que ser dinámico-->
-        <button class="button icon ion-navicon"></button>
-    </ion-header-bar>
+<ion-view title="{{title}}">
     <ion-content>
         <div class="row">
             <div class="col" id="levelCol">
-                <img src="../../images/filled13.png">
+                <img src="app/assests/img/filled13.png">
             </div>
             <div class="col">
-                <img src="../../images/filledRed.png">
+                <img src="app/assests/img/filledRed.png">
             </div>
             <div class="col">
-                <img src="../../images/filled13.png">
+                <img src="app/assests/img/filled13.png">
             </div>
             <div class="col">
-                <img src="../../images/plain16.png">
+                <img src="app/assests/img/plain16.png">
             </div>
             <div class="col">
-                <img src="../../images/plain16.png">
+                <img src="app/assests/img/plain16.png">
             </div>
             <div class="col">
-                <img src="../../images/plain16.png">
+                <img src="app/assests/img/plain16.png">
             </div>
             <div class="col">
-                <img src="../../images/plain16.png">
+                <img src="app/assests/img/plain16.png">
             </div>
             <div class="col">
-                <img src="../../images/plain16.png">
+                <img src="app/assests/img/plain16.png">
             </div>
             <div class="col">
-                <img src="../../images/plain16.png">
+                <img src="app/assests/img/plain16.png">
             </div>
             <div class="col">
-                <img src="../../images/plain16.png">
+                <img src="app/assests/img/plain16.png">
             </div>
         </div>
         <h3 id="questionNum">
@@ -47,20 +41,17 @@
         </p>
        
        <!-- <section title=".roundedOne">-->
-        <div class="roundedOne">
-            <input type="checkbox" id="ownCheck" />
-            <label for="ownCheck"><span></span>{{listaOpcionesTest[index].nombreOp}}</label>
-        </div> 
-        <div class="roundedOne1">
-            <input type="checkbox" id="ownCheck2" />
-            <label for="ownCheck2"><span></span>{{listaOpcionesTest[index].nombreOp}}</label>
-        </div>
-        <div class="roundedOne2">
-                <input type="checkbox" id="ownCheck3" />
-                <label for="ownCheck3"><span></span>{{listaOpcionesTest[index].nombreOp}}</label>
-        </div>
-                <!-- end .roundedOne -->
-                <!-- </section>-->
+   
+        <ion-list >
 
-</ion-content>
+            <button class="button button-block  button-stable" ng-repeat="option in listaOpcionesTest" ng-click="validate(option)">
+                    {{option.nombreOp}}
+            </button>
+                     
+        </ion-list>
 
+      
+    getitem(id)...
+    </ion-content>
+
+    </ion-view>

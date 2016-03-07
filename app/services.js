@@ -1,31 +1,33 @@
 
-angular.module('starter.services', [])
+var db = null;
+
+angular.module('starter.services', ['starter.initDB'])
+
+.factory('DB', function($cordovaSQLite, InitDB) {
+
+  return{
+
+    init: function(){
+     db=null;
+
+     db = $cordovaSQLite.openDB("biogam2db");
+
+     db =   InitDB.allTransactions(db);
+
+     return db;
+     }/*,
 
 
-
-/*.factory('DB', function($ionicPlatform, $cordovaSQLite){
-  
-
-  console.log("services");
-    return {
-
-      
-      init: function(){
-
-        window.plugins.sqlDB.copy("biogamdb",0, function(){
+    open: function(){
+     db=null;
+     db = $cordovaSQLite.openDB("biogam2db");
     
-           db = $cordovaSQLite.openDB("biogamdb");
+     return db;
+     }*/
+  };
+})
 
-        }, function(error){
-          
-            db = $cordovaSQLite.openDB("biogamdb");
-     
-         });
-          return db;
-      }
-    }
-})*/
-.factory('Temas', function($cordovaSQLite,$rootScope) {
+.factory('Temas', function($cordovaSQLite ) {
 
 
   return {
@@ -36,7 +38,7 @@ angular.module('starter.services', [])
     
     var query ="SELECT name, id FROM tema";
 
-    $cordovaSQLite.execute($rootScope.db, query).then(function(res){
+    $cordovaSQLite.execute(db, query).then(function(res){
 
         if(res.rows.length > 0){
 
@@ -63,7 +65,7 @@ angular.module('starter.services', [])
 
          var query ="SELECT name FROM tema where id = ?";
 
-          $cordovaSQLite.execute($rootScope.db, query, [idTema]).then(function(res){
+          $cordovaSQLite.execute(db, query, [idTema]).then(function(res){
 
         if(res.rows.length > 0){
 
@@ -86,7 +88,7 @@ angular.module('starter.services', [])
   };
 })
 
-.factory('TeoriaPorTema', function($cordovaSQLite,$rootScope) {
+.factory('TeoriaPorTema', function($cordovaSQLite ) {
   
       var capsTeoria = [];
 
@@ -95,7 +97,7 @@ angular.module('starter.services', [])
     
     var query ="SELECT titulo, texto, id FROM teoria WHERE idTema=?";
 
-    $cordovaSQLite.execute($rootScope.db, query, [idTema]).then(function(res){
+    $cordovaSQLite.execute(db, query, [idTema]).then(function(res){
 
         if(res.rows.length > 0){
 
@@ -118,7 +120,7 @@ angular.module('starter.services', [])
 })
 
 
-.factory('Categorias', function($cordovaSQLite,$rootScope) {
+.factory('Categorias', function($cordovaSQLite ) {
  
   
 
@@ -132,7 +134,7 @@ angular.module('starter.services', [])
         var query ="SELECT name, id FROM categoria where temaId = ?";
 
      
-    $cordovaSQLite.execute($rootScope.db, query, [idTema]).then(function(res){
+    $cordovaSQLite.execute(db, query, [idTema]).then(function(res){
 
         if(res.rows.length > 0){
 
@@ -151,7 +153,7 @@ angular.module('starter.services', [])
   };
 })
 
- .factory('NivelEjercicio', function($cordovaSQLite,$rootScope) {
+ .factory('NivelEjercicio', function($cordovaSQLite ) {
   
 
 
@@ -160,7 +162,7 @@ angular.module('starter.services', [])
     var niveles = [];
     var query ="SELECT DISTINCT nivel FROM ejercicio WHERE idTema = ?";
  
-    $cordovaSQLite.execute($rootScope.db, query, [temaId]).then(function(res){
+    $cordovaSQLite.execute(db, query, [temaId]).then(function(res){
 
         if(res.rows.length > 0){
 
@@ -186,7 +188,7 @@ angular.module('starter.services', [])
 
       var query ="SELECT id, enunciado FROM ejercicio WHERE idTema = ? and nivel = ?";
 
-        $cordovaSQLite.execute($rootScope.db, query, [temaId, nivelId]).then(function(res){
+        $cordovaSQLite.execute(db, query, [temaId, nivelId]).then(function(res){
         console.log(res.rows.length );
         if(res.rows.length > 0){
 
@@ -209,7 +211,7 @@ angular.module('starter.services', [])
   };
 })
 
-.factory('Test', function($cordovaSQLite,$rootScope) {
+.factory('Test', function($cordovaSQLite ) {
  
   
 
@@ -224,10 +226,9 @@ angular.module('starter.services', [])
 
        
         
-        $cordovaSQLite.execute($rootScope.db, query, [idTema]).then(function(res){
+        $cordovaSQLite.execute(db, query, [idTema]).then(function(res){
             
-             console.log(res.rows.length);
-
+        
         if(res.rows.length > 0){
 
           for(var i = 0; i<res.rows.length ; i++){
@@ -250,8 +251,9 @@ angular.module('starter.services', [])
         var query ="SELECT esCorrecto, nombreOp, opcionestest.id FROM test, tieneopciones, opcionestest WHERE test.id = tieneopciones.idTest AND opcionestest.id = tieneopciones.idOpcionesTest AND test.id = ?";
 
      
-        $cordovaSQLite.execute($rootScope.db, query, [idTest]).then(function(res){
+        $cordovaSQLite.execute(db, query, [idTest]).then(function(res){
 
+       
         if(res.rows.length > 0){
 
           for(var i = 0; i<res.rows.length ; i++){

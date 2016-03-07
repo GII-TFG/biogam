@@ -39,7 +39,7 @@ angular.module('starter.controllers', [])
 	console.log("soy uno ");
 })
 
-.controller('CompleteTheoryCtrl', function($scope, $rootScope, TeoriaPorTema){
+.controller('CompleteTheoryCtrl', function($scope, $rootScope){
 
 	$scope.title = "Detail";
 	console.log("the focus is here in CompleteTheoryCtrl");
@@ -422,13 +422,24 @@ angular.module('starter.controllers', [])
 })
 
 .controller('TestCtrl', function($scope, $rootScope, Test){
-    
-    $scope.title = "Test";
     $scope.index = 0;
+    $scope.title = "Test";
     $scope.listaPreguntas = Test.getPreguntasTest($rootScope.temaId);
-    $scope.listaOpcionesTest = Test.getOpcionesTest();
-    
-    
+    $scope.listaOpcionesTest = Test.getOpcionesTest($rootScope.temaId);
+
+    $scope.validate = function(obj){
+        
+        if(obj.esCorrecto == 1){
+
+            console.log("bien");
+            return true;
+        }else{
+
+             console.log("mal");
+             return false;
+        }
+    }
+   
 	/*
 	//index no sera 0, si no el nivel por donde vayas
 	$scope.index = 0;

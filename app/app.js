@@ -3,29 +3,16 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic','starter.controllers','starter.services', 'ngCordova' ])
+angular.module('starter', ['ionic','starter.controllers','starter.services' , 'ngCordova' ])
 
-.run(function($ionicPlatform, $state, $rootScope, $cordovaSQLite) {
+.run(function($ionicPlatform, $state, $rootScope, $cordovaSQLite, DB) {
   $ionicPlatform.ready(function() {
 
-   
-
     if(window.cordova && window.cordova.plugins.Keyboard) {
-      
 
-     // DB.init();
+     document.addEventListener("deviceready", onDeviceReady, false);
 
-
-        window.plugins.sqlDB.copy("biogamdb",0, function(){
     
-           $rootScope.db = $cordovaSQLite.openDB("biogamdb");
-
-        }, function(error){
-          
-           $rootScope.db = $cordovaSQLite.openDB("biogamdb");
-     
-         });
-
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -41,8 +28,12 @@ angular.module('starter', ['ionic','starter.controllers','starter.services', 'ng
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-
+    
+    function onDeviceReady(){
+   
+     DB.init();
     $state.go('home');
+  }
 
   });
 
@@ -56,6 +47,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services', 'ng
 
 /////////////////////////////////////// ESTADO INICIAL /////////////////////////////////////////////////
 
+    
     .state('scaffold', {
     abstract: true,
     templateUrl: "app/templates/scaffold.html"
@@ -150,7 +142,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services', 'ng
         }
       }
     })
-        //$urlRouterProvider.otherwise('');
+       // $urlRouterProvider.otherwise('');
 
 //////////////////////////////////////// ESTADOS TEORIA /////////////////////////////////////////////////////////
 
