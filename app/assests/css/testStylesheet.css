@@ -40,12 +40,3 @@ input[type="checkbox"]:checked + label span {
     padding-top:30px;
     padding-left:100px;
 }
-.pinto_verde{
-    
-    background-color:aqua;
-}
-
-.pinto_rojo{
-    
-    background-color:crimson;
-}

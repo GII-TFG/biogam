@@ -426,18 +426,27 @@ angular.module('starter.controllers', [])
     $scope.title = "Test";
     $scope.listaPreguntas = Test.getPreguntasTest($rootScope.temaId);
     $scope.listaOpcionesTest = Test.getOpcionesTest($rootScope.temaId);
-
+    $scope.isDisabled = false;
    
+    var lista = $scope.listaOpcionesTest;
+    for(var i = 0; i<$scope.listaOpcionesTest.length ; i++){
+        if($scope.listaOpcionesTest[i].esCorrecto){
+            console.log(i + " es correcto");
+        }
+        else{
+            console.log(i + " NO es correcto");
+        }
+    }
     $scope.validate = function(obj){
-        
+        $scope.isDisabled = true;
         if(obj.esCorrecto == 1){
-
+            //alert("Bien!"); 
             console.log("bien");
             return "pinto_verde";
         }else{
-
-             console.log("mal");
-             return "pinto_rojo";
+            //alert("Mal!");
+            console.log("mal");
+            return "pinto_rojo";
         }
     }
    

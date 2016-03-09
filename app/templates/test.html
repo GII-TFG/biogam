@@ -43,8 +43,15 @@
        <!-- <section title=".roundedOne">-->
    
         <ion-list >
+                
+            <!-- 1.- soy el boton1
 
-            <button ng-init="val = ''"class="button button-block  button-stable"  ng-repeat="option in listaOpcionesTest" ng-click="val=validate(option)" ng-class= "val">
+                 2.-soy el boton2 (correcto)
+
+                 3.-soy el boton3
+            -->
+            
+            <button ng-init="val = ''"class="button button-block button-stable"  ng-repeat="option in listaOpcionesTest" ng-click="val=validate(option)" ng-class= "val" ng-disabled="isDisabled" ng-model="isDisabled">
                     {{option.nombreOp}}
             </button>
                <!--  1) hago click
