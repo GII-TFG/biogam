@@ -426,29 +426,46 @@ angular.module('starter.controllers', [])
     $scope.title = "Test";
     $scope.listaPreguntas = Test.getPreguntasTest($rootScope.temaId);
     $scope.listaOpcionesTest = Test.getOpcionesTest($rootScope.temaId);
-    $scope.isDisabled = false;
+    $scope.used = false;
+    $scope.checked=false;
    
-    var lista = $scope.listaOpcionesTest;
-    for(var i = 0; i<$scope.listaOpcionesTest.length ; i++){
-        if($scope.listaOpcionesTest[i].esCorrecto){
-            console.log(i + " es correcto");
-        }
-        else{
-            console.log(i + " NO es correcto");
-        }
-    }
-    $scope.validate = function(obj){
-        $scope.isDisabled = true;
-        if(obj.esCorrecto == 1){
-            //alert("Bien!"); 
-            console.log("bien");
-            return "pinto_verde";
+
+    $scope.plot = function(state){
+    
+        if(!$scope.used){
+
+
+            return true;
+        
         }else{
-            //alert("Mal!");
-            console.log("mal");
-            return "pinto_rojo";
+
+            return !state;
         }
+
     }
+
+      $scope.checked = function(state){
+    
+        if(!$scope.used){
+
+
+            return false;
+        
+        }else{
+            
+            return !state;
+        }
+
+    }
+   
+    $scope.resolve = function(){
+    
+
+       $scope.used = !$scope.used;   
+
+    }
+
+
    
 	/*
 	//index no sera 0, si no el nivel por donde vayas

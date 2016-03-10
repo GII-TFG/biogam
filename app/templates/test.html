@@ -44,19 +44,23 @@
    
         <ion-list >
                 
-            <!-- 1.- soy el boton1
+    
+           <div ng-repeat="option in listaOpcionesTest" ng-init="state = option.esCorrecto == 1? true: false">
 
-                 2.-soy el boton2 (correcto)
-
-                 3.-soy el boton3
-            -->
-            
-            <button ng-init="val = ''"class="button button-block button-stable"  ng-repeat="option in listaOpcionesTest" ng-click="val=validate(option)" ng-class= "val" ng-disabled="isDisabled" ng-model="isDisabled">
-                    {{option.nombreOp}}
+             <button class="button button-block button-stable"  ng-show="plot(state)" ng-click = "resolve(); state = false? true: true"  ng-disabled="checked(state)">
+                  
+              {{option.nombreOp}}
+                 
             </button>
-               <!--  1) hago click
-2) valido la opcion, y ahora se si es true o false
-3) ng-class= pinto_verde ? validate : pinto rojo .-->
+
+            <button class="button button-block button-stable"  ng-class="{1: 'pinto_verde', 0: 'pinto_rojo'}[option.esCorrecto]" ng-show="!plot(state)">
+                  
+              {{option.nombreOp}}
+                 
+            </button>
+
+            </div>
+            
                      
         </ion-list>
 

@@ -10,7 +10,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
     if(window.cordova && window.cordova.plugins.Keyboard) {
 
-     document.addEventListener("deviceready", onDeviceReady, false);
+       document.addEventListener("deviceready", onDeviceReady, false);
 
     
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
