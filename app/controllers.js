@@ -421,14 +421,29 @@ angular.module('starter.controllers', [])
         }
 })
 
-.controller('TestCtrl', function($scope, $rootScope, Test){
-    $scope.index = 0;
+.controller('TestCtrl', function($scope, $rootScope,listaPreguntas, Test){
+    $scope.index = 0; //lo que me devuelva el estado
     $scope.title = "Test";
-    $scope.listaPreguntas = Test.getPreguntasTest($rootScope.temaId);
-    $scope.listaOpcionesTest = Test.getOpcionesTest($rootScope.temaId);
-    $scope.used = false;
-    $scope.checked=false;
+
+    $scope.listaPreguntas = listaPreguntas;
+    console.log(listaPreguntas);
+    $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
+
    
+
+    $scope.used=false;
+  
+   
+    $scope.next = function($state){
+        $scope.used=false;
+        if($scope.index<listaPreguntas.length-1){
+            $scope.index = $scope.index + 1;
+            $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
+        }else{
+
+             $state.go('home.categories');
+        }
+    }
 
     $scope.plot = function(state){
     
@@ -451,9 +466,9 @@ angular.module('starter.controllers', [])
 
             return false;
         
-        }else{
-            
-            return !state;
+            }else{
+                
+                return !state;
         }
 
     }
@@ -464,29 +479,5 @@ angular.module('starter.controllers', [])
        $scope.used = !$scope.used;   
 
     }
-
-
-   
-	/*
-	//index no sera 0, si no el nivel por donde vayas
-	$scope.index = 0;
-	$scope.listaEjerPerTemaNivel = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);	
-	$scope.title = "Level " + $rootScope.nivelId;
-
-	//	$scope.showNext = true;
-	//	$scope.showPrev = false;
-	
-	$scope.prev = function(){
-		
-		$scope.index = $scope.index -1;
-	//	$scope.showNext = true;
-	}
-
-	$scope.next = function(){
-		
-		$scope.index = $scope.index +1;
-	//	$scope.showPrev = true;
-	}*/
-    
 
 })

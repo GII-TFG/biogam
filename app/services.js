@@ -222,18 +222,22 @@ angular.module('starter.services', ['starter.initDB'])
 
       var pregTest = [];
 
-        var query ="SELECT enunciado, id, numero FROM test WHERE idTema = ? ORDER BY numero";
+        var query1 ="SELECT enunciado, id, numero FROM test WHERE idTema = ? ORDER BY numero";
 
-       
-        
-        $cordovaSQLite.execute(db, query, [idTema]).then(function(res){
+               
+        $cordovaSQLite.execute(db, query1, [idTema]).then(function(res){
             
         
         if(res.rows.length > 0){
 
-          for(var i = 0; i<res.rows.length ; i++){
+           for(var i = 0; i<res.rows.length ; i++){
+
             pregTest.push({enunciado: res.rows.item(i).enunciado, id: res.rows.item(i).id, numero: res.rows.item(i).numero});
-          }
+         
+          
+         }
+
+          
 
         }else{
 
@@ -241,9 +245,29 @@ angular.module('starter.services', ['starter.initDB'])
         }
 
     })
+
+     /* var getOpsTest = [];
+
+        var query ="SELECT esCorrecto, nombreOp, opcionestest.id FROM test, tieneopciones, opcionestest WHERE test.id = tieneopciones.idTest AND opcionestest.id = tieneopciones.idOpcionesTest AND test.id = ?";
+        console.log( pregTest[0].id);
+     
+        $cordovaSQLite.execute(db, query, ["1"]).then(function(res){
+
+          for(var i = 0; i<res.rows.length ; i++){
+        
+            getOpsTest.push({esCorrecto: res.rows.item(i).esCorrecto, nombreOp: res.rows.item(i).nombreOp, id: res.rows.item(i).id});
+          }
+
+       })*/
+
+      
       return pregTest;
     }, 
       
+
+
+
+
      getOpcionesTest: function(idTest) {
 
       var getOpsTest = [];
@@ -267,6 +291,7 @@ angular.module('starter.services', ['starter.initDB'])
 
     })
       return getOpsTest;
+
     } 
       
   };

@@ -114,7 +114,22 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
       views: {
         'home-tab@tabs': {
           templateUrl: 'app/templates/test.html',
-          controller: 'TestCtrl'
+          controller: 'TestCtrl',
+          resolve:{
+            /*no tocar si no se entiende, preguntar a Gian */
+            listaPreguntas: function(Test, $rootScope, $q, $timeout){
+
+              var deferred = $q.defer();
+              var proceso = function(){
+              var list = Test.getPreguntasTest($rootScope.temaId);
+              $timeout(function(){
+              deferred.resolve(list); }, 10);
+              }
+              proceso();
+              return deferred.promise;
+
+            }
+          }
         }
       }
     })
