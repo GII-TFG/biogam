@@ -129,25 +129,54 @@ angular.module('starter.services', ['starter.initDB'])
       
     getCategoriasTema: function(idTema) {
 
-      var categorias = [];
+        var categorias = [];
 
-        var query ="SELECT name, id FROM categoria where temaId = ?";
-
+        var queryTeoria ="SELECT * FROM teoria where idTema = ?";
+        var queryEjer ="SELECT * FROM ejercicio where idTema = ?";
+        var queryTest ="SELECT * FROM test where idTema = ?";
      
-    $cordovaSQLite.execute(db, query, [idTema]).then(function(res){
+        $cordovaSQLite.execute(db, queryTeoria, [idTema]).then(function(res){
 
-        if(res.rows.length > 0){
+            if(res.rows.length > 0){
 
-          for(var i = 0; i<res.rows.length ; i++){
-            categorias.push({titulo: res.rows.item(i).name, id: res.rows.item(i).id });
-          }
+                categorias.push({id: 1, titulo: "Teoria"});
+              
 
-        }else{ni
+            }else{
 
-           console.log("Not found results");
-        }
+               console.log("Not found results");
+            }
 
-    })
+        })
+        
+        $cordovaSQLite.execute(db, queryEjer, [idTema]).then(function(res){
+
+            if(res.rows.length > 0){
+
+                categorias.push({id: 2, titulo: "Ejercicio"});
+              
+
+            }else{
+
+               console.log("Not found results");
+            }
+
+        })
+        
+        $cordovaSQLite.execute(db, queryTeoria, [idTema]).then(function(res){
+
+            if(res.rows.length > 0){
+
+                categorias.push({id: 3, titulo: "Test"});
+              
+
+            }else{
+
+               console.log("Not found results");
+            }
+
+        })
+        
       return categorias;
     }
   };
