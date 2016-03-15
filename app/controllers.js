@@ -75,26 +75,24 @@ angular.module('starter.controllers', [])
 
 .controller('LevelCtrl', function($scope, $rootScope, NivelEjercicio, $window, $ionicPopup){
 	
-	//index no sera 0, sino el nivel por donde vayas
     
 	$scope.index = 0;
 	$scope.listaEjerPerTemaNivel = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);	
 	$scope.title = "Level " + $rootScope.nivelId;
-    $scope.estadoDeJuego = {numIntentos: 0 ,numFallos: 0};
+    $scope.estadoDeJuego = {idEjer: $rootScope.getEjer.ejerId, numIntentos: 0 ,numFallos: 0};
 
-	/*	$scope.showNext = true;
-		$scope.showPrev = false;
-	*/
 	$scope.prev = function(){
 		
 		$scope.index = $scope.index -1;
-	//	$scope.showNext = true;
+
 	}
 
 	$scope.next = function(){
-		
+	
+        NivelEjercicio.storeEjercicio($scope.estadoDeJuego);	
 		$scope.index = $scope.index +1;
-	//	$scope.showPrev = true;
+        $scope.estadoDeJuego = {idEjer: $scope.listaEjerPerTemaNivel[$scope.index].id, numIntentos: 0 ,numFallos: 0};
+	
 	}
 
 	$scope.boxShowAaxaa = false;

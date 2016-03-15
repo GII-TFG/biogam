@@ -236,7 +236,22 @@ angular.module('starter.services', ['starter.initDB'])
 
           return lista;
 
+    },
+
+      storeEjercicio: function(estado){
+
+      
+
+      var query ="INSERT INTO 'hace-ejer' VALUES('pepito', ?, ?, ?)";
+
+        $cordovaSQLite.execute(db, query, [estado.idEjer, estado.numIntentos, estado.numFallos]).then(function(res){
+       
+    })
+
+          return true;
+
     }
+
   };
 })
 
