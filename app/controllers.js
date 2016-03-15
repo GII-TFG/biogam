@@ -73,12 +73,14 @@ angular.module('starter.controllers', [])
 	}
 })
 
-.controller('LevelCtrl', function($scope, $rootScope, NivelEjercicio, $window){
+.controller('LevelCtrl', function($scope, $rootScope, NivelEjercicio, $window, $ionicPopup){
 	
 	//index no sera 0, sino el nivel por donde vayas
+    
 	$scope.index = 0;
 	$scope.listaEjerPerTemaNivel = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);	
 	$scope.title = "Level " + $rootScope.nivelId;
+    $scope.estadoDeJuego = {numIntentos: 0 ,numFallos: 0};
 
 	/*	$scope.showNext = true;
 		$scope.showPrev = false;
@@ -103,6 +105,7 @@ angular.module('starter.controllers', [])
     $scope.boxShowA1A2xA3A4 = false;
 
     $scope.showBoxAaxaa = function () {
+        $scope.agree = " ";
         $scope.boxShowAaxaa = !$scope.boxShowAaxaa;
         $scope.boxShowAaxAa = false;
         $scope.boxShowLethalgenes = false;
@@ -112,6 +115,7 @@ angular.module('starter.controllers', [])
 
     }
     $scope.showBoxAaxAa = function () {
+        $scope.agree = " ";
         $scope.boxShowAaxAa = !$scope.boxShowAaxAa;
         $scope.boxShowAaxaa = false;
         $scope.boxShowLethalgenes = false;
@@ -120,6 +124,7 @@ angular.module('starter.controllers', [])
         $scope.boxShowA1A2xA3A4 = false;
     }
     $scope.showBoxLethalgenes = function () {
+        $scope.agree = " ";
         $scope.boxShowLethalgenes = !$scope.boxShowLethalgenes;
         $scope.boxShowAaxaa = false;
         $scope.boxShowAaxAa = false;
@@ -128,6 +133,7 @@ angular.module('starter.controllers', [])
         $scope.boxShowA1A2xA3A4 = false;
     }
     $scope.showBoxA1A2xA1A2 = function () {
+        $scope.agree = " ";
         $scope.boxShowA1A2xA1A2 = !$scope.boxShowA1A2xA1A2;
         $scope.boxShowAaxaa = false;
         $scope.boxShowAaxAa = false;
@@ -136,6 +142,7 @@ angular.module('starter.controllers', [])
         $scope.boxShowA1A2xA3A4 = false;
     }
     $scope.showBoxA1A2xA1A3 = function () {
+        $scope.agree = " ";
         $scope.boxShowA1A2xA1A3 = !$scope.boxShowA1A2xA1A3;
         $scope.boxShowAaxaa = false;
         $scope.boxShowAaxAa = false;
@@ -144,6 +151,7 @@ angular.module('starter.controllers', [])
         $scope.boxShowA1A2xA3A4 = false;
     }
     $scope.showBoxA1A2xA3A4 = function () {
+        $scope.agree = " ";
         $scope.boxShowA1A2xA3A4 = !$scope.boxShowA1A2xA3A4;
         $scope.boxShowAaxaa = false;
         $scope.boxShowAaxAa = false;
@@ -165,13 +173,23 @@ angular.module('starter.controllers', [])
         $scope.A2A3Value = {value:0};
         $scope.A2A4Value = {value:0};
 
+  
+
+
         /* Aa x aa */
     $scope.calculateTestCross = function($window){
-       
-       $scope.Math = Math;
-        //P.D. esta comprobacion ya no hace falta, QUITAR!!!!!!!!
 
-        if($scope.AaValue > 5000 || $scope.aaValue > 5000){
+       $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
+       $scope.Math = Math;
+
+        if($scope.AaValue.value > 5000 || $scope.aaValue.value > 5000){
+           $scope.alertPopup = $ionicPopup.alert({
+                title: '¡Cuidado!',
+                template: 'Los valores tienen que ser menores de 5000.'
+            });
+            alertPopup.then(function(res) {
+                console.log('Thank you for not eating my delicious ice cream cone');
+             });
             //mensaje de error, el valor tiene que ser menor de 5000
         }else{
             $scope.total = $scope.AaValue.value + $scope.aaValue.value;
@@ -192,6 +210,7 @@ angular.module('starter.controllers', [])
                 $scope.chiA = $scope.opExpA + $scope.opExpa;
             }
             if($scope.chiA >= 3.841){
+                $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
                 $scope.agree = "NO";
                 $scope.result = "This locus is not segregating correctly";                  
             }else{
@@ -203,10 +222,17 @@ angular.module('starter.controllers', [])
 
     /* Aa x Aa */
     $scope.calculateF2Dominance = function(){
+        $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
         $scope.Math = Math;
         
-        if($scope.AaValue > 5000 || $scope.aaValue > 5000){
-            //mensaje de error, el valor tiene que ser menor de 5000
+        if(AaValue.value > 5000 || aaValue.value > 5000){
+            $scope.alertPopup = $ionicPopup.alert({
+                title: '¡Cuidado!',
+                template: 'Los valores tienen que ser menores de 5000.'
+            });
+            alertPopup.then(function(res) {
+                console.log('Thank you for not eating my delicious ice cream cone');
+             });
         }else{
             $scope.total = $scope.AaValue.value + $scope.aaValue.value;
             $scope.exp_A = ($scope.total * 3) / 4;
@@ -226,6 +252,7 @@ angular.module('starter.controllers', [])
                 $scope.chiA = $scope.opExpA + $scope.opExpa;
             }
             if($scope.chiA >= 3.841){
+                $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
                 $scope.agree = "NO";
                 $scope.result = "This locus is not segregating correctly";                  
             }else{
@@ -237,10 +264,17 @@ angular.module('starter.controllers', [])
 
         /* A1A2 x A1A2 */
     $scope.calculateF2Codominance = function(){
+        $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
         $scope.Math = Math;
 
         if(AAValue.value > 5000 || AaValue.value > 5000 || aaValue.value > 5000){
-                //mensaje de error, el valor tiene que ser menor de 5000
+               $scope.alertPopup = $ionicPopup.alert({
+                title: '¡Cuidado!',
+                template: 'Los valores tienen que ser menores de 5000.'
+            });
+            alertPopup.then(function(res) {
+                console.log('Thank you for not eating my delicious ice cream cone');
+             });
         }else{
             $scope.total = AAValue.value + AaValue.value + aaValue.value;
             $scope.exp_AA = $scope.total / 4;
@@ -267,6 +301,7 @@ angular.module('starter.controllers', [])
                 $scope.chiA = $scope.opExpAA + $scope.opExpAa + $scope.opExpaa;
             }
             if($scope.chiA >= 5.991){
+                $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
                 $scope.agree = "NO";
                 $scope.result = "This locus is not segregating correctly";                  
             }else{
@@ -278,9 +313,16 @@ angular.module('starter.controllers', [])
 
         /* A1A2 x A1A3 */
     $scope.calculateCodominance3Alleles = function(){
+        $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
 
         if(A1A1Value.value > 5000 || A1A3Value.value > 5000 || A1A2Value.value > 5000 || A2A3Value.value > 5000){
-            //mensaje de error, el valor tiene que ser menor de 5000
+              $scope.alertPopup = $ionicPopup.alert({
+                title: '¡Cuidado!',
+                template: 'Los valores tienen que ser menores de 5000.'
+            });
+            alertPopup.then(function(res) {
+                console.log('Thank you for not eating my delicious ice cream cone');
+             });
         }else{
             $scope.total = A1A1Value.value + A1A3Value.value3 + A1A2Value.value + A2A3Value.value;
             $scope.exp_A1A1 = $scope.total / 4;
@@ -313,6 +355,7 @@ angular.module('starter.controllers', [])
                 $scope.chiA = $scope.opExpA1A1 + $scope.opExpA1A3 + $scope.opExpA1A2 + $scope.opExpA2A3;
             }
             if($scope.chiA >= 7.815){
+                $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
                 $scope.agree = "NO";
                 $scope.result = "This locus is not segregating correctly";                  
             }else{
@@ -324,10 +367,17 @@ angular.module('starter.controllers', [])
 
         /* A1A2 x A3A4 */
         $scope.calculateCodominance4Alleles = function(){
+            $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
             $scope.Math = Math;
 
             if(A1A3Value.value > 5000 || A1A4Value.value > 5000 || A2A3Value.value > 5000 || A2A4Value.value > 5000){
-                //mensaje de error, el valor tiene que ser menor de 5000
+                  $scope.alertPopup = $ionicPopup.alert({
+                title: '¡Cuidado!',
+                template: 'Los valores tienen que ser menores de 5000.'
+            });
+            alertPopup.then(function(res) {
+                console.log('Thank you for not eating my delicious ice cream cone');
+             });
             }else{
                 $scope.total = A1A3Value.value + A1A4Value.value + A2A3Value.value + A2A4Value.value;
                 $scope.exp_A1A3 = $scope.total / 4;
@@ -357,6 +407,7 @@ angular.module('starter.controllers', [])
 
                 }
                 if($scope.chiA >= 7.815){
+                    $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
                     $scope.agree = "NO";
                     $scope.result = "This locus is not segregating correctly";                  
                 }else{
@@ -370,10 +421,17 @@ angular.module('starter.controllers', [])
 
         /* Lethal Genes */
         $scope.calculateLethalGenes = function(){
+            $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
             $scope.Math = Math;
 
             if(AAValue.value > 5000 || AaValue.value > 5000){
-                //mensaje de error, el valor tiene que ser menor de 5000
+                $scope.alertPopup = $ionicPopup.alert({
+                title: '¡Cuidado!',
+                template: 'Los valores tienen que ser menores de 5000.'
+            });
+            alertPopup.then(function(res) {
+                console.log('Thank you for not eating my delicious ice cream cone');
+             });
             }else{
                 $scope.total = AAValue.value + AaValue.value;
                 $scope.exp_AA = $scope.total / 3;
@@ -394,6 +452,7 @@ angular.module('starter.controllers', [])
                     $scope.chiA = $scope.opExpAA + $scope.opExpAa;
                 }
                 if($scope.chiA >= 3.841){
+                    $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
                     $scope.agree = "NO";
                     $scope.result = "This locus is not segregating correctly";                  
                 }else{

@@ -69,12 +69,12 @@
                     <div class="row rowTextbox2">
                         <div>
                             <p id="types">A</p>
-                            <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value" min="0" max="5000">
+                            <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value">
                         </div>
 
                         <div>
                             <p id="types">a</p>
-                            <input class="col col-90 item item-input AaClass" type="number"  ng-model="aaValue.value" min="0" max="5000">
+                            <input class="col col-90 item item-input AaClass" type="number"  ng-model="aaValue.value">
                         </div>
                     </div>
                     <!-- Buttons Row -->
@@ -96,8 +96,11 @@
                         </div>
                          <div class="col col-25 agree">
                                 <p class="agreeText">Agree?</p>
-                                {{agree}}
-                                <!--<div class="icon ion-checkmark-circled tickIcon"></div> -->   
+                                <img ng-show="agree=='YES'" src="app/assests/img/check.png"/>
+                                <img ng-show="agree=='NO'" src="app/assests/img/cross.png"/>
+                                <img ng-show="agree==' '" src=""/>
+                                <!--<img ng-src="{{agree == 'YES' ? 'app/assests/img/check.png' : 'app/assests/img/cross.png': ' ' }}" />
+                                <div class="icon ion-checkmark-circled tickIcon"></div> -->   
                             </div>
                     </div>
                 </div>
@@ -107,12 +110,12 @@
                     <div class="row rowTextbox2">
                         <div>
                             <p id="types">A</p>
-                            <input class="col col-90 item item-input AaClass " type="number" ng-model="AaValue.value" min="0" max="5000">
+                            <input class="col col-90 item item-input AaClass " type="number" ng-model="AaValue.value">
                         </div>
 
                         <div>
                             <p id="types">a</p>
-                            <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value" min="0" max="5000">
+                            <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value">
                         </div>
                     </div>
                      <!-- Buttons Row -->
@@ -135,7 +138,7 @@
                          <div class="col col-25 agree">
                                 <p class="agreeText">Agree?</p>
                                 {{agree}}
-                                <!--<div class="icon ion-checkmark-circled tickIcon"></div>-->    
+                                   
                             </div>
                     </div>
                 </div>
@@ -145,12 +148,12 @@
                     <div class="row rowTextbox2">
                         <div>
                             <p id="types">A</p>
-                            <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value" min="0" max="5000">
+                            <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value">
                         </div>
 
                         <div>
                             <p id="types">a</p>
-                            <input class="col col-90 item item-input AaClass" type="number" ng-model="aaValue.value" min="0" max="5000">
+                            <input class="col col-90 item item-input AaClass" type="number" ng-model="aaValue.value">
                         </div>
                     </div>
                      <!-- Buttons Row -->
@@ -172,8 +175,10 @@
                         </div>
                          <div class="col col-25 agree">
                                 <p class="agreeText">Agree?</p>
-                                {{agree}}
-                                <!--<div class="icon ion-checkmark-circled tickIcon"></div>-->    
+                                <img ng-show="agree=='YES'" src="app/assests/img/check.png"/>
+                                <img ng-show="agree=='NO'" src="app/assests/img/cross.png"/>
+                                <img ng-show="agree==' '" src=""/>
+                                   
                             </div>
                     </div>
                 </div>
@@ -183,16 +188,16 @@
                     <div class="row rowTextbox3">
                         <div>
                             <p id="types">A1A1</p>
-                            <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="AAValue.value" min="0" max="5000">
+                            <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="AAValue.value">
                         </div>
 
                         <div>
                             <p id="types">A1A2</p>
-                            <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="AaValue.value" min="0" max="5000">
+                            <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="AaValue.value">
                         </div>
                         <div>
                             <p id="types">A2A2</p>
-                            <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="aaValue.value" min="0" max="5000">
+                            <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="aaValue.value">
                         </div>
                     </div>
                      <!-- Buttons Row -->
@@ -214,8 +219,10 @@
                         </div>
                          <div class="col col-25 agree">
                                 <p class="agreeText">Agree?</p>
-                                {{agree}}
-                                <!--<div class="icon ion-checkmark-circled tickIcon"></div>-->    
+                                <img ng-show="agree=='YES'" src="app/assests/img/check.png"/>
+                                <img ng-show="agree=='NO'" src="app/assests/img/cross.png"/>
+                                <img ng-show="agree==' '" src=""/>
+                                   
                             </div>
                     </div>
                 </div>
@@ -225,20 +232,20 @@
                     <div class="row rowTextbox4">
                         <div>
                             <p id="types">A1 A1</p>
-                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A1Value.value" min="0" max="5000">
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A1Value.value">
                         </div>
 
                         <div>
                             <p id="types">A1 A3</p>
-                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A3Value.value" min="0" max="5000">
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A3Value.value">
                         </div>
                         <div>
                             <p id="types">A1 A2</p>
-                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A2Value.value" min="0" max="5000">
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A2Value.value">
                         </div>
                         <div>
                             <p id="types">A2 A3</p>
-                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A2A3Value.value" min="0" max="5000">
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A2A3Value.value">
                         </div>
                     </div>
                     <!-- Buttons Row -->
@@ -260,8 +267,10 @@
                         </div>
                          <div class="col col-25 agree">
                                 <p class="agreeText">Agree?</p>
-                                {{agree}}
-                                <!--<div class="icon ion-checkmark-circled tickIcon"></div>-->   
+                                <img ng-show="agree=='YES'" src="app/assests/img/check.png"/>
+                                <img ng-show="agree=='NO'" src="app/assests/img/cross.png"/>
+                                <img ng-show="agree==' '" src=""/>
+                                  
                             </div>
                     </div>
                 </div>
@@ -271,20 +280,20 @@
                     <div class="row" id="rowTextbox">
                         <div>
                             <p id="types">A1 A1</p>
-                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A1Value.value" min="0" max="5000">
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A1Value.value">
                         </div>
 
                         <div>
                             <p id="types">A1 A3</p>
-                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A3Value.value" min="0" max="5000">
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A3Value.value">
                         </div>
                         <div>
                             <p id="types">A1 A2</p>
-                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A2Value.value" min="0" max="5000">
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A2Value.value">
                         </div>
                         <div>
                             <p id="types">A2 A4</p>
-                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A2A4Value.value" min="0" max="5000">
+                            <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A2A4Value.value">
                         </div>
                     </div>
                      <!-- Buttons Row -->
@@ -306,18 +315,21 @@
                         </div>
                          <div class="col col-25 agree">
                                 <p class="agreeText">Agree?</p>
-                                {{agree}}
-                                <!--<div class="icon ion-checkmark-circled tickIcon"></div>-->    
+                                <img ng-show="agree=='YES'" src="app/assests/img/check.png"/>
+                                <img ng-show="agree=='NO'" src="app/assests/img/cross.png"/>
+                                <img ng-show="agree==' '" src=""/>
+                                   
                             </div>
                     </div>
                 </div>
             </div>
 
           <!-- no tocar si no se entiende, preguntar a Gian -->
-      <button type="button" class="btn btn-pre"   ng-show="showPrev= index > 0 ? showPrev = true : showPrev = false" ng-click="prev()">Previous</button>
+            <div class="row previous-next">
+              <button class="col-50 button-small button-royal prevNextButton"   ng-show="showPrev= index > 0 ? showPrev = true : showPrev = false" ng-click="prev()">Previous</button>
 
-      <button type="button" class="btn btn-next" ng-show="showNext= index < listaEjerPerTemaNivel.length-1 ? showNext = true : showNext = false" ng-click="next()">Next</button>
-
+              <button class="col-50 button-small button-royal prevNextButton" ng-show="showNext= index < listaEjerPerTemaNivel.length-1 ? showNext = true : showNext = false" ng-click="next()">Next</button>
+            </div>
 
 
         </ion-content>

@@ -179,10 +179,6 @@ input.col.col-90.item.item-input.FourinputClass{
     border:1px solid #886aea;
     width:85px;   
 }
-div.icon.ion-checkmark-circled.tickIcon{
-    font-size: 34px;
-    color: limegreen;
-}
 
 #valueTotal,#typesTotal{
     margin-top: 5px;
@@ -229,4 +225,9 @@ div.col.col-25.Function, div.col.col-25.Result{
 .pinto_rojo{
     
     background-color:crimson !important;
+}
+div.row.previous-next{
+    padding-top: 10%;
+    margin: auto;
+    width: 50%;
 }
