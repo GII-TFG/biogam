@@ -14,7 +14,7 @@
         
                <div ng-repeat="option in listaOpcionesPregunta" ng-init="state = option.esCorrecto == 1? true: false">
 
-                 <button class="button button-block button-stable"  ng-show="plot(state)" ng-click = "resolve(); state = false? true: true"  ng-disabled="checked(state)">
+                 <button class="button button-block button-stable"  ng-show="plot(state)" ng-click = "resolve(option.esCorrecto); state = false? true: true"  ng-disabled="checked(state)">
                       
                   {{option.nombreOp}}
                      

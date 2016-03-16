@@ -238,7 +238,7 @@ angular.module('starter.services', ['starter.initDB'])
 
     },
 
-      storeEjercicio: function(estado){
+    storeEjercicio: function(estado){
 
       
 
@@ -246,7 +246,7 @@ angular.module('starter.services', ['starter.initDB'])
 
         $cordovaSQLite.execute(db, query, [estado.idEjer, estado.numIntentos, estado.numFallos]).then(function(res){
        
-    })
+        })
 
           return true;
 
@@ -336,7 +336,21 @@ angular.module('starter.services', ['starter.initDB'])
     })
       return getOpsTest;
 
-    } 
+    },
+    
+     storePregTest: function(estado){
+
+      
+
+      var query ="INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES('pepito', ?, ?)";
+
+        $cordovaSQLite.execute(db, query, [estado.idTest, estado.esCorrecto]).then(function(res){
+            lists.push({nickUsuario: "pepito", idTest: estado.idTest, esAcierto: estado.esCorrecto});
+        })
+
+          return true;
+
+    }
       
   };
  })
