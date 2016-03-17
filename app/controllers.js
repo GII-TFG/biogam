@@ -492,13 +492,24 @@ angular.module('starter.controllers', [])
   
    
     $scope.next = function($state){
+        
+        /*var opcion = $rootScope.opEsCorrecto;
+        console.log('var opcion ' + opcion);*/
+        	
+		//$scope.index = $scope.index +1;
+        $scope.estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto};
+        Test.storePregTest($scope.estadoDeTest);
+        
+       
+        //console.log('opcion seleccionada ' + EsCorrecto);
+        
         $scope.used=false;
         if($scope.index<listaPreguntas.length-1){
             $scope.index = $scope.index + 1;
             $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
         }else{
-
-             $state.go('home.categories');
+            console.log('Fin test')
+             //$state.go('home.categories'); //no funciona
         }
     }
 
@@ -530,10 +541,10 @@ angular.module('starter.controllers', [])
 
     }
    
-    $scope.resolve = function(){
-    
-
-       $scope.used = !$scope.used;   
+    $scope.resolve = function(optionEsCorrecto){
+        $rootScope.opEsCorrecto = optionEsCorrecto;
+        
+        $scope.used = !$scope.used;   
 
     }
 

@@ -45,7 +45,7 @@ angular.module('starter.initDB',[])
 	    $cordovaSQLite.execute(db, "INSERT INTO `tema` VALUES (1,'One Locus');");
 	    $cordovaSQLite.execute(db, "INSERT INTO `tema` VALUES (2,'Two Loci');");
 	   // $cordovaSQLite.execute(db, "INSERT INTO `tema` VALUES (3,'Mitosis');");
-	    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`resuleve` (`nickUsuario` INTEGER NOT NULL,`idTest`  INTEGER NOT NULL,`puntuacion`  INTEGER NOT NULL, PRIMARY KEY(nickUsuario,idTest),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick), FOREIGN KEY(`idTest`) REFERENCES test(id));");
+	    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`resuelve-test` (`nickUsuario` INTEGER NOT NULL,`idTest`  INTEGER NOT NULL,`esAcierto` INTEGER NOT NULL, PRIMARY KEY(nickUsuario,idTest),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick), FOREIGN KEY(`idTest`) REFERENCES test(id));");
 	    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`opcionestest` (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`nombreOp`  TEXT NOT NULL);");
 	    $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (1,'1Op1');");
 	    $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (2,'1Op2 - Correcta');");
