@@ -1,5 +1,9 @@
 body{
     width: 100%;
+    min-width: 240px;
+    max-width: 2560px;
+    min-height: 320px;
+    max-height: 2560px;
 }
 .spinner {
     display: none;
@@ -74,61 +78,79 @@ body{
 /*--------------------------------------------------------------*/
 .col{
     display:inline;
+
 }
-div.row.circles{
-    padding-top:30px;
-    width: 80%;
+[class*="col-"] {
+    width: 100%;
+}
+@media only screen and (min-width: 480px) {
+    /* For tablets: */
+    .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
+}
+@media only screen and (min-width: 800px) {
+    /* For tablets: */
+    .col-med-1 {width: 8.33%;}
+    .col-med-2 {width: 16.66%;}
+    .col-med-3 {width: 25%;}
+    .col-med-4 {width: 33.33%;}
+    .col-med-5 {width: 41.66%;}
+    .col-med-6 {width: 50%;}
+    .col-med-7 {width: 58.33%;}
+    .col-med-8 {width: 66.66%;}
+    .col-med-9 {width: 75%;}
+    .col-med-10 {width: 83.33%;}
+    .col-med-11 {width: 91.66%;}
+    .col-med-12 {width: 100%;}
+}
+div.row.circles.col-m-12{
     margin: auto;
+    padding padding-left: 5%;
 }
 p.exerciseHeading{
     width: 80%;
-    height:150px;
-    padding:15px;
-    padding-bottom:0px;
-    margin-bottom:0px;
+    height:1.5%;/*150px*/
+    padding:0.15%;/*15px*/
+    padding-bottom:0%;/*0px*/
+    margin-bottom:0%;/*0px*/
     margin: auto;
-    padding-top:10px;
+    padding-top:0.1%;/*10px*/
 }
 h3.questionNum{
     text-align:center;
-    margin-top:10px;
+    margin-top:10px;/*10px*/
+}
+div.calculateExercise{
+    margin-top:50%;
 }
 div.buttonRow{
-    padding-top:14px;
+    padding-top:0.03%;/*14px*/
     width: 80%;
     margin: auto;
 }
 
-div.col-50.button.button-small.button-outline.button-royal.ebutonOption{
+/*button.col-m-6.col-med-6.button.button-small.button-outline.button-royal.ebutonOption{
     padding-top: 10px;
     font-size:18px;   
-}
-
-/*div#ebutonOption2.col-50.button.button-small.button-outline.button-royal{
-    padding-top: 10px;
-    font-size:18px;
-}
-
-div#ebutonOption3.col-50.button.button-small.button-outline.button-royal{
-   padding-top: 10px;
-    font-size:18px;
-}
-div#ebutonOption4.col-50.button.button-small.button-outline.button-royal{
-    padding-top: 10px;
-    font-size:18px;
-}
-div#ebutonOption5.col-50.button.button-small.button-outline.button-royal{
-    padding-top: 10px;
-    font-size:18px;
-}
-div#ebutonOption6.col-50.button.button-small.button-outline.button-royal{
-    padding-top: 10px;
-    font-size:18px;
 }*/
 
 #types, #typesTotal{
    margin:0px;
    text-align:center;
+}
+div.calcularEjercicio{
+    padding-top: 45%;
+    margin:auto;
 }
 
 div.item.item-body.boxOperations{
@@ -136,8 +158,8 @@ div.item.item-body.boxOperations{
     padding: 0px;
     margin: auto;
     margin-top: 10px;
-    height:180px;
-    width: 98%;
+    height:65%;
+    width: 100%;
 }
 div.row.rowTextbox2{
     padding-top:5px;
@@ -155,12 +177,7 @@ div.row.rowTextbox4{
     width:350px;
 }
 
-div.row.rowCC{
-    padding-top: 10px;
-    margin: auto;
-    width: 250px;
-}
-input.col.col-90.item.item-input.AaClass{
+input.col.col-m-3.col-med-3.item.item-input.AaClass{
     margin:auto;
     border:1px solid #886aea;
     width:85px;   
@@ -187,13 +204,13 @@ input.col.col-90.item.item-input.FourinputClass{
 div.row.DataRow{
     margin:auto;
     width: 96%;
-    height: 36%
+    height: 40%
 }
 .col.col-75.chiiResult{
     width: 148px;
     display: inline;
 }
-div.col.col-90.total{
+div.col.col-m-3.col-med-3.total{
     display: block;
 }
 p.resultadoCHI{
@@ -203,17 +220,17 @@ p.agreeText{
     margin-top: 3px;
     margin-bottom: 3px;
 }
-div.col.col-25.agree{
+div.col.col-m-3.col-med-3.agree{
     display: block;
     text-align: center;
 }
 p.Chii{
-    margin-top: 20px;
+    margin-top: 5%;
 }
 p#result{
-    margin-top: 20px;
+    margin-top: 5%;
 }
-div.col.col-25.Function, div.col.col-25.Result{
+div.col.col-m-3.col-med-3.Function, div.colcol-m-3.col-med-3.Result{
     text-align: center;
 }
 
@@ -230,4 +247,26 @@ div.row.previous-next{
     padding-top: 10%;
     margin: auto;
     width: 50%;
+}
+
+/*-----------------------------------------------------------------------------------*/
+*{
+    box-sizing: border-box;
+}
+.row.content{
+    display:block;
+}
+.question.col-m-10{
+    margin: auto;
+}
+
+h3{
+    text-align: center;
+}
+div.button-bar.cleanCalculate{
+    width: 80% !important;
+    margin: auto !important;
+}
+#buttonCalculate{
+    margin-right: 2%;
 }

@@ -1,5 +1,5 @@
-    <ion-view title="{{title}}">
-        <ion-content >
+    <!--<ion-view title="{{title}}">
+        <ion-content>
             <div class="row circles">
                 <div class="col">
                     <img src="app/assests/img/ptoMorado.png"></>
@@ -32,41 +32,41 @@
                     <img src="app/assests/img/plain16.png"></>
                 </div>
             </div>
-            <h3 class="questionNum">
+            <h3 class="col-90 questionNum">
                 Pregunta {{index + 1}} 
             </h3>
-            <p class="exerciseHeading">
+            <p class="col-90 exerciseHeading">
                 {{listaEjerPerTemaNivel[index].enunciado}} 
             </p>
-            <div >
+            <div class="calcularEjercicio col-m-12">
                 <div class="row">
-                    <div  class="col-50 button button-small button-outline button-royal ebutonOption" ng-click="showBoxAaxaa()">
+                    <div  class="col-m-6 button button-small button-outline button-royal ebutonOption" ng-click="showBoxAaxaa()">
                         Aa x aa
                     </div>
-                    <div class="col-50 button button-small button-outline button-royal ebutonOption " ng-click="showBoxAaxAa()">
+                    <div class="col-m-6 button button-small button-outline button-royal ebutonOption " ng-click="showBoxAaxAa()">
                         Aa x Aa
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-50 button button-small button-outline button-royal ebutonOption" ng-click="showBoxA1A2xA1A2()">
+                    <div class="col-m-6 button button-small button-outline button-royal ebutonOption" ng-click="showBoxA1A2xA1A2()">
                         A1A2 x A1A2
                     </div>
-                    <div class="col-50 button button-small button-outline button-royal ebutonOption" ng-click="showBoxA1A2xA1A3()">
+                    <div class="col-m-6 button button-small button-outline button-royal ebutonOption" ng-click="showBoxA1A2xA1A3()">
                         A1A2 x A1A3
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-50 button button-small button-outline button-royal ebutonOption" ng-click="showBoxA1A2xA3A4()">
+                    <div class="col-m-6 button button-small button-outline button-royal ebutonOption" ng-click="showBoxA1A2xA3A4()">
                         A1A2 x A3A4
                     </div>
-                    <div class="col-50 button button-small button-outline button-royal ebutonOption" ng-click="showBoxLethalGenes()">
+                    <div class="col-m-6 button button-small button-outline button-royal ebutonOption" ng-click="showBoxLethalGenes()">
                         Lethal genes
                     </div>
                 </div>
                 <!-- BOX Aaxaa -->
-                <div class="item item-body boxOperations" ng-show="boxShowAaxaa">
+                <!--<div class="item item-body boxOperations col" ng-show="boxShowAaxaa">
                     <!-- textbox Row -->
-                    <div class="row rowTextbox2">
+                   <!-- <div class="row rowTextbox2">
                         <div>
                             <p id="types">A</p>
                             <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value">
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <!-- Buttons Row -->
-                    <div class = "row rowCC">
+                  <!--  <div class = "row rowCC">
                         <button class = "col-50 button button-small button-royal" ng-click="calculateTestCross()" >Calculate</button>
                         <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
                     </div>
@@ -101,13 +101,13 @@
                                 <img ng-show="agree==' '" src=""/>
                                 <!--<img ng-src="{{agree == 'YES' ? 'app/assests/img/check.png' : 'app/assests/img/cross.png': ' ' }}" />
                                 <div class="icon ion-checkmark-circled tickIcon"></div> -->   
-                            </div>
+               <!--             </div>
                     </div>
                 </div>
                 <!--  BOX AaxAa -->
-                <div class="item item-body boxOperations" ng-show="boxShowAaxAa">
+               <!--<div class="item item-body boxOperations" ng-show="boxShowAaxAa">
                     <!-- textbox Row -->
-                    <div class="row rowTextbox2">
+                <!--    <div class="row rowTextbox2">
                         <div>
                             <p id="types">A</p>
                             <input class="col col-90 item item-input AaClass " type="number" ng-model="AaValue.value">
@@ -119,7 +119,7 @@
                         </div>
                     </div>
                      <!-- Buttons Row -->
-                    <div class = "row rowCC">
+               <!--     <div class = "row rowCC">
                         <button class = "col-50 button button-small button-royal" ng-click="calculateF2Dominance()">Calculate</button>
                         <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
                     </div>
@@ -143,9 +143,9 @@
                     </div>
                 </div>
                  <!-- BOX Lethal Genes -->
-                <div class=" col-90 item item-body boxOperations" ng-show="boxShowLethalGenes">
+           <!--     <div class=" col-90 item item-body boxOperations" ng-show="boxShowLethalGenes">
                      <!-- Textbox Row -->
-                    <div class="row rowTextbox2">
+             <!--       <div class="row rowTextbox2">
                         <div>
                             <p id="types">A</p>
                             <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value">
@@ -157,7 +157,7 @@
                         </div>
                     </div>
                      <!-- Buttons Row -->
-                    <div class = "row rowCC">
+           <!--         <div class = "row rowCC">
                         <button class = "col-50 button button-small button-royal" ng-click="calculateLethalGenes()">Calculate</button>
                         <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
                     </div>
@@ -183,9 +183,9 @@
                     </div>
                 </div>
                  <!-- BOX A1A2xA1A2 -->
-                <div class="item item-body boxOperations" ng-show="boxShowA1A2xA1A2">
+           <!--     <div class="item item-body boxOperations" ng-show="boxShowA1A2xA1A2">
                      <!-- Textbox Row -->
-                    <div class="row rowTextbox3">
+             <!--       <div class="row rowTextbox3">
                         <div>
                             <p id="types">A1A1</p>
                             <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="AAValue.value">
@@ -201,7 +201,7 @@
                         </div>
                     </div>
                      <!-- Buttons Row -->
-                    <div class = "row rowCC">
+             <!--       <div class = "row rowCC">
                         <button class = "col-50 button button-small button-royal" ng-click="calculateF2Codominance()">Calculate</button>
                         <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
                     </div>
@@ -227,9 +227,9 @@
                     </div>
                 </div>
                 <!-- BOX A1A2xA1A3 -->
-                <div class="item item-body boxOperations" ng-show="boxShowA1A2xA1A3">
+              <!--  <div class="item item-body boxOperations" ng-show="boxShowA1A2xA1A3">
                     <!-- textbox Row -->
-                    <div class="row rowTextbox4">
+               <!--     <div class="row rowTextbox4">
                         <div>
                             <p id="types">A1 A1</p>
                             <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A1Value.value">
@@ -249,8 +249,8 @@
                         </div>
                     </div>
                     <!-- Buttons Row -->
-                    <div class = "row rowCC">
-                        <button class = "col-50 button button-small button-royal" ng-click="calculateCodominance3Alleles()">Calculate</button>
+            <!--        <div class = "row rowCC">
+            <!--            <button class = "col-50 button button-small button-royal" ng-click="calculateCodominance3Alleles()">Calculate</button>
                         <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
                     </div>
                     <div class="row DataRow">
@@ -275,9 +275,9 @@
                     </div>
                 </div>
                 <!-- BOX A1A2xA3A4 -->
-                <div class="item item-body boxOperations" ng-show="boxShowA1A2xA3A4">
+               <!-- <div class="item item-body boxOperations" ng-show="boxShowA1A2xA3A4">
                     <!-- textbox Row -->
-                    <div class="row" id="rowTextbox">
+             <!--      <div class="row" id="rowTextbox">
                         <div>
                             <p id="types">A1 A1</p>
                             <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A1Value.value">
@@ -297,7 +297,7 @@
                         </div>
                     </div>
                      <!-- Buttons Row -->
-                    <div class = "row rowCC">
+         <!--          <div class = "row rowCC">
                         <button class = "col-50 button button-small button-royal" ng-click="calculateCodominance4Alleles()">Calculate</button>
                         <button class = "col-50 button button-small button-royal" ng-click="clean()">Clean</button>
                     </div>
@@ -325,7 +325,7 @@
             </div>
 
           <!-- no tocar si no se entiende, preguntar a Gian -->
-            <div class="row previous-next">
+ <!--           <div class="row previous-next">
               <button class="col-50 button-small button-royal prevNextButton"   ng-show="showPrev= index > 0 ? showPrev = true : showPrev = false" ng-click="prev()">Previous</button>
 
               <button class="col-50 button-small button-royal prevNextButton" ng-show="showNext= index < listaEjerPerTemaNivel.length-1 ? showNext = true : showNext = false" ng-click="next()">Next</button>
@@ -334,4 +334,97 @@
 
         </ion-content>
 
+    </ion-view>
+    -->
+    <ion-view>
+        <ion-content class="row content col-m-12 col-med-12" overflow-scroll="true" padding="true">
+            <div class="row circles col-m-12 col-med-12">
+                <div class="col col-m-1 col-med-1">
+                    <img src="app/assests/img/ptoMorado.png"></>
+                </div>
+                <div class="col col-m-1 col-med-1">
+                    <img src="app/assests/img/ptoMorado.png"></>
+                </div>
+                <div class="col col-m-1 col-med-1">
+                    <img src="app/assests/img/ptoMorado.png"></>
+                </div>
+                <div class="col col-m-1 col-med-1">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col col-m-1 col-med-1">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col col-m-1 col-med-1">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col col-m-1 col-med-1">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col col-m-1 col-med-1">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col col-m-1 col-med-1">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+                <div class="col col-m-1 col-med-1">
+                    <img src="app/assests/img/plain16.png"></>
+                </div>
+            </div>
+            <div class="question col-m-10 col-med-10">
+                <h3>Pregunta {{index + 1}}</h3>
+                <p>{{listaEjerPerTemaNivel[index].enunciado}}</p>
+            </div>
+            <div class="calculoEjercicio col-m-10 col-med-10">
+                <div class="button-bar">
+                    <button id="ejercicio-button13" class="button button-royal  button-block button-outline" ng-click="showBoxAaxaa()">Aa x aa</button>
+                    <button id="ejercicio-button14" class="button button-royal  button-block button-outline" ng-click="showBoxAaxAa()"v>Aa x Aa</button>
+                </div>
+                <div class="button-bar">
+                    <button id="ejercicio-button19" class="button button-royal  button-block button-outline" ng-click="showBoxA1A2xA1A2()">A1A2 x A1A2</button>
+                    <button id="ejercicio-button20" class="button button-royal  button-block button-outline" ng-click="showBoxA1A2xA1A3()">A1A2 x A1A3</button>
+                </div>
+                <div class="button-bar">
+                    <button id="ejercicio-button22" class="button button-royal  button-block button-outline" ng-click="showBoxA1A2xA3A4()">A1A2 x A3A4</button>
+                    <button id="ejercicio-button23" class="button button-royal  button-block button-outline" ng-click="showBoxLethalGenes()">Lethal genes</button>
+                </div>
+                <!-- BOX Aaxaa -->
+                <div class="item item-body boxOperations" ng-show="boxShowAaxaa">
+                    <!-- textbox Row -->
+                    <div class="row rowTextbox2">
+                        <div>
+                            <p id="types">A</p>
+                            <input class="col col-m-3 col-med-3 item item-input AaClass" type="number" ng-model="AaValue.value">
+                        </div>
+
+                        <div>
+                            <p id="types">a</p>
+                            <input class="col col-m-3 col-med-3 item item-input AaClass" type="number"  ng-model="aaValue.value">
+                        </div>
+                    </div>
+                    <!-- Buttons Row -->
+                    <div class = "button-bar cleanCalculate">
+                        <button id="buttonCalculate" class = "button button-small button-royal" ng-click="calculateTestCross()" >Calculate</button>
+                        <button class = "button button-small button-royal" ng-click="clean()">Clean</button>
+                    </div>
+                     <div class="row DataRow">
+                        <div class="col col-m-3 col-med-3 total">
+                            <p id="typesTotal">Total</p>
+                            <p id="valueTotal"> {{total}} </p>
+                        </div>
+                        <div class="col col-m-3 col-med-3 Function">                         
+                            <p class="Chii"><i>X</i><sup><i>2</i></sup><i>(df = 2) = </i></p>
+                        </div>
+                       <div class="col col-m-3 col-med-3 Result">
+                            <p id="result">{{chiA}}</p>
+                        </div>
+                         <div class="col col-m-3 col-med-3 agree">
+                                <p class="agreeText">Agree?</p>
+                                <img ng-show="agree=='YES'" src="app/assests/img/check.png"/>
+                                <img ng-show="agree=='NO'" src="app/assests/img/cross.png"/>
+                                <img ng-show="agree==' '" src=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
     </ion-view>
