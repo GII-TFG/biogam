@@ -1,4 +1,84 @@
-body{
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: Roboto;
+  font-size: 12px;
+  color: #424242;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0; 
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.main_container{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header{
+    width: 100%;
+    background-color: #9b59b6 !important;
+    color:white !important;
+}
+.tabs_Const{
+    border-color: #8e44ad !important;
+    background-color: #9b59b6 !important;
+    background-image: linear-gradient(0deg, #6b46e5, #6b46e5 50%, transparent 50%);
+    color: white; 
+}
+
+
+/*
+ ********************************
+ *            HOME              *
+ ********************************
+ */
+
+.buttonSubject{
+    width: 70% !important;
+    /*border:2px solid #d9fb51 !important; /*#99ff66*/
+    margin: auto;
+    margin-top: 15% !important;
+    background-color: #9b59b6 !important;
+    font-size: 2.5em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    color:white !important;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1.5px 5px 0 rgba(0,0,0,0.19);
+
+}
+
+/*
+ ********************************
+ *            TET              *
+ ********************************
+ */
+
+ .buttonTET{
+    width: 70% !important;
+    /*border:2px solid #d9fb51 !important; /*#99ff66*/
+    margin: auto;
+    margin-top: 15% !important;
+    background-color: #9b59b6 !important;
+    font-size: 2.5em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;/*#9b59b6**/
+    color:white !important;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1.5px 5px 0 rgba(0,0,0,0.19);
+
+ }
+
+/*body{
     width: 100%;
     min-width: 240px;
     max-width: 2560px;
@@ -42,15 +122,15 @@ body{
 }
 .button.button-energized.button-outline{
     margin-top:70px;
-    /*height:135px;*/
+    ---height:135px;---
 }
-/*.button.button-outline{
+---.button.button-outline{
     height:120px;
     width:335px;
     margin-left:12px;
     margin-right:12px;
     margin-bottom:23px;
-}*/
+}----
 .button.button-outline.button-block.button-large.button-dark{
     height:120px;
     width:80%;
@@ -75,7 +155,7 @@ body{
     height:65px;  
 }
 
-/*--------------------------------------------------------------*/
+--------------------------------------------------------------
 .col{
     display:inline;
 
@@ -84,7 +164,7 @@ body{
     width: 100%;
 }
 @media only screen and (min-width: 480px) {
-    /* For tablets: */
+
     .col-m-1 {width: 8.33%;}
     .col-m-2 {width: 16.66%;}
     .col-m-3 {width: 25%;}
@@ -99,7 +179,7 @@ body{
     .col-m-12 {width: 100%;}
 }
 @media only screen and (min-width: 800px) {
-    /* For tablets: */
+
     .col-med-1 {width: 8.33%;}
     .col-med-2 {width: 16.66%;}
     .col-med-3 {width: 25%;}
@@ -119,30 +199,30 @@ div.row.circles.col-m-12{
 }
 p.exerciseHeading{
     width: 80%;
-    height:1.5%;/*150px*/
-    padding:0.15%;/*15px*/
-    padding-bottom:0%;/*0px*/
-    margin-bottom:0%;/*0px*/
-    margin: auto;
-    padding-top:0.1%;/*10px*/
+    height:1.5%;150px
+    padding:0.15%;15px
+    padding-bottom:0%;0px
+    margin-bottom:0%;0px
+        margin: auto;
+    padding-top:0.1%;10px
 }
 h3.questionNum{
     text-align:center;
-    margin-top:10px;/*10px*/
+    margin-top:10px;10px
 }
 div.calculateExercise{
     margin-top:50%;
 }
 div.buttonRow{
-    padding-top:0.03%;/*14px*/
+    padding-top:0.03%;14px
     width: 80%;
     margin: auto;
 }
 
-/*button.col-m-6.col-med-6.button.button-small.button-outline.button-royal.ebutonOption{
+button.col-m-6.col-med-6.button.button-small.button-outline.button-royal.ebutonOption{
     padding-top: 10px;
     font-size:18px;   
-}*/
+}
 
 #types, #typesTotal{
    margin:0px;
@@ -249,7 +329,7 @@ div.row.previous-next{
     width: 50%;
 }
 
-/*-----------------------------------------------------------------------------------*/
+---------------------------------------------------------------------------------
 *{
     box-sizing: border-box;
 }
@@ -270,3 +350,4 @@ div.button-bar.cleanCalculate{
 #buttonCalculate{
     margin-right: 2%;
 }
+*/
