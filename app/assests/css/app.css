@@ -25,18 +25,79 @@ div {
     margin-right: auto;
 }
 
-.header{
-    width: 100%;
-    background-color: #9b59b6 !important;
-    color:white !important;
+/*
+ *******************************
+ *         HEADER BAR          *
+ *******************************
+ */
+.bar.bar-custom {
+    border-color: #8e44ad;
+    background-color: #9b59b6;
+    background-image: linear-gradient(0deg, #0c60ee, #0c60ee 50%, transparent 50%);
+    color: #fff; 
 }
-.tabs_Const{
-    border-color: #8e44ad !important;
-    background-color: #9b59b6 !important;
-    background-image: linear-gradient(0deg, #6b46e5, #6b46e5 50%, transparent 50%);
-    color: white; 
+.bar.bar-custom .title {
+    color: #fff;
+}
+.bar.bar-custom.bar-footer {
+    background-image: linear-gradient(180deg, #0c60ee, #0c60ee 50%, transparent 50%); 
 }
 
+.bar-custom .button {
+  border-color: transparent;
+  background-color: #9b59b6;
+  color: #fff; }
+  .bar-custom .button:hover {
+    color: #fff;
+    text-decoration: none; }
+  .bar-custom .button.active, .bar-positive .button.activated {
+    background-color: #0c60ee; }
+  .bar-custom .button.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #fff;
+    font-size: 17px; }
+  .bar-custom .button.button-icon {
+    border-color: transparent;
+    background: none; }
+
+/*
+ ********************************
+ *            TABS              *
+ ********************************
+ */
+
+.tabs-custom > .tabs,
+.tabs.tabs-custom {
+  border-color: #8e44ad;
+  background-color: #9b59b6;
+  background-image: linear-gradient(0deg, #0c60ee, #0c60ee 50%, transparent 50%);
+  color: #fff; }
+  .tabs-custom > .tabs .tab-item .badge,
+  .tabs.tabs-custom .tab-item .badge {
+    background-color: #9b59b6;
+    color: #fff; }
+
+.tabs-striped.tabs-custom .tabs {
+  background-color: #9b59b6; }
+
+.tabs-striped.tabs-custom .tab-item {
+  color: #fff;
+  opacity: 1; }
+  .tabs-striped.tabs-custom .tab-item .badge {
+    opacity: 0.4; }
+  .tabs-striped.tabs-custom .tab-item.tab-item-active, .tabs-striped.tabs-custom .tab-item.active, .tabs-striped.tabs-positive .tab-item.activated {
+    margin-top: -2px;
+    color: #fff;
+    border-style: solid;
+    border-width: 2px 0 0 0;
+    border-color: #9b59b6; }
+
+
+.button-borders{
+    border-radius: 15px 50px;
+}
 
 /*
  ********************************
@@ -46,14 +107,14 @@ div {
 
 .buttonSubject{
     width: 70% !important;
-    /*border:2px solid #d9fb51 !important; /*#99ff66*/
+    border:1px solid #6e1193 !important; /*#99ff66*/
     margin: auto;
-    margin-top: 15% !important;
-    background-color: #9b59b6 !important;
+    margin-top: 10% !important;
+    background-color: #e8d5ef !important;
     font-size: 2.5em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
-    color:white !important;
+    color:#6e1193 !important;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1.5px 5px 0 rgba(0,0,0,0.19);
 
 }
@@ -66,18 +127,106 @@ div {
 
  .buttonTET{
     width: 70% !important;
-    /*border:2px solid #d9fb51 !important; /*#99ff66*/
+    border:0.5px solid #cbd328 !important; /*#99ff66*/
     margin: auto;
     margin-top: 15% !important;
-    background-color: #9b59b6 !important;
+    background-color: #fff !important;
     font-size: 2.5em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;/*#9b59b6**/
-    color:white !important;
+    color:#9b59b6 !important;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1.5px 5px 0 rgba(0,0,0,0.19);
 
  }
 
+/*
+ ********************************
+ *            Niveles           *
+ ********************************
+ */
+
+ .button-levels{
+    width: 70% !important;
+    border:2px solid #9b59b6 !important; /*#99ff66*/
+    margin: auto;
+    margin-top: 10% !important;
+    font-size: 2.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;/*#9b59b6**/
+    color:#9b59b6 !important;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1.5px 5px 0 rgba(0,0,0,0.19);
+
+ }
+
+ /*
+ *****************************************
+ *            Lista Ejercicios           *
+ *****************************************
+ */
+
+
+.list-custom {
+    width: 80% !important;
+    counter-reset: li; 
+    list-style: none; 
+    *list-style: decimal; 
+    font: 15px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    margin: 0 0 0 2em;
+}
+
+.list-item{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;   
+}
+
+.list-item:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+
+/*
+ **********************************
+ *            Exercise            *
+ **********************************
+ */
+.exercise-question{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.exercise-calculate{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
 /*body{
     width: 100%;
     min-width: 240px;
