@@ -36,7 +36,6 @@ angular.module('starter.controllers', [])
 		$rootScope.chosenTheory = obj;
 	}
 	
-	console.log("soy uno ");
 })
 
 .controller('CompleteTheoryCtrl', function($scope, $rootScope){

@@ -2,8 +2,10 @@
 
     <ion-content class="padding">
         <ion-list >
-             <button class="item" ng-repeat="teoria in listaTeoria" ui-sref='home.categories.1.detail' ng-click="getTheory(teoria)">
-                {{teoria.id}} {{teoria.titulo}}
+             <button class="animated bounceInLeft button button-block button-levels button-borders" item-icon-right ng-repeat="teoria in listaTeoria" ui-sref='home.categories.1.detail' ng-click="getTheory(teoria)">
+               <!-- {{teoria.id}}--> 
+
+               <p class ="text_button_theory">{{teoria.titulo}}</p>
 
             </button>
             
