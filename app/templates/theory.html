@@ -1,14 +1,15 @@
 ﻿<ion-view title="{{title}}">
 
-    <ion-content class="padding">
-        <ion-list >
-             <button class="animated bounceInLeft button button-block button-levels button-borders" item-icon-right ng-repeat="teoria in listaTeoria" ui-sref='home.categories.1.detail' ng-click="getTheory(teoria)">
+    <ion-content class="main_container">
+        <ol class="list-custom">
+             <li class="animated bounceInLeft list-item" item-icon-right ng-repeat="teoria in listaTeoria" ui-sref='home.categories.1.detail' ng-click="getTheory(teoria)">
                <!-- {{teoria.id}}--> 
-
-               <p class ="text_button_theory">{{teoria.titulo}}</p>
+               <!--
+               <p class ="text_button_theory">{{teoria.titulo}}</p>-->
+               {{teoria.titulo}}
 
             </button>
             
-        </ion-list>
+        </ol>
     </ion-content>
 </ion-view>  
