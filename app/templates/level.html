@@ -371,12 +371,12 @@
                 </div>
             </div>
             <div class="exercise-question">
-                <h3>Pregunta {{index + 1}}</h3>
-                <p>{{listaEjerPerTemaNivel[index].enunciado}}</p>
+                <h3> Question {{estadoDeJuego.idEjer}}</h3> <!--Pregunta {{index + 1}}-->
+                <p>{{listaEjerPerTemaNivel[estadoDeJuego.idEjer].enunciado}}</p>
             </div>
             <div class="exercise-calculate">
                 <div class="button-bar">
-                    <button id="ejercicio-button13" class="button button-royal  button-block button-outline" ng-click="showBoxAaxaa()">Aa x aa</button>
+                    <button id="ejercicio-button13" class="button button-royal  button-block {{buttonStyle}}" ng-click="showBoxAaxaa()">Aa x aa</button>
                     <button id="ejercicio-button14" class="button button-royal  button-block button-outline" ng-click="showBoxAaxAa()"v>Aa x Aa</button>
                 </div>
                 <div class="button-bar">

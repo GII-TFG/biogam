@@ -99,6 +99,11 @@ div {
     border-radius: 15px 50px;
 }
 
+.button-pressed{
+    background-color: #9b59b6 !important;
+}
+
+
 /*
  ********************************
  *            HOME              *
@@ -130,12 +135,12 @@ div {
     border:0.5px solid #cbd328 !important; /*#99ff66*/
     margin: auto;
     margin-top: 15% !important;
-    background-color: #fff !important;
+    background-color: #FAFEB2 !important;
     font-size: 2.5em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;/*#9b59b6**/
-    color:#9b59b6 !important;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1.5px 5px 0 rgba(0,0,0,0.19);
+    color:black !important;
+    box-shadow: 0 2px 4px 0 #CBD328, 0 1.5px 5px 0 #CBD328;
 
  }
 
@@ -165,49 +170,52 @@ div {
  *****************************************
  */
 
-
 .list-custom {
     width: 80% !important;
-    counter-reset: li; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    counter-reset: li;
     list-style: none; 
     *list-style: decimal; 
     font: 15px 'trebuchet MS', 'lucida sans';
     padding: 0;
     margin-bottom: 4em;
-    text-shadow: 0 1px 0 rgba(255,255,255,.5);
-    margin: 0 0 0 2em;
 }
 
-.list-item{
+li.list-item{
     position: relative;
     display: block;
-    padding: .4em .4em .4em 2em;
+    padding: 1em 1em 1em 2.6em;
     *padding: .4em;
     margin: .5em 0;
-    background: #ddd;
+    margin-top: 5%;
+    background: #EADCEF;
     color: #444;
+    text-align: center;
     text-decoration: none;
-    border-radius: .3em;
-    transition: all .3s ease-out;   
+    border-radius: .3em;  
 }
 
-.list-item:before{
+li.list-item:before{
     content: counter(li);
     counter-increment: li;
     position: absolute; 
-    left: -1.3em;
-    top: 50%;
-    margin-top: -1.3em;
-    background: #87ceeb;
-    height: 2em;
-    width: 2em;
-    line-height: 2em;
-    border: .3em solid #fff;
+    left: -1em;
+    top: 40%;
+    margin-top: -1.5em;
+    background: #9b59b6 !important;
+    height: 3.6em;
+    width: 3.6em;
+    line-height: 1em;
+    border: .5em solid #fff;
+    border-radius: 2em;
     text-align: center;
     font-weight: bold;
-    border-radius: 2em;
-    transition: all .3s ease-out;
+    color:#9b59b6;
 }
+
+
 
 /*
  **********************************
@@ -506,3 +514,14 @@ div.button-bar.cleanCalculate{
     margin-right: 2%;
 }
 */
+
+/*
+ **********************************
+ *           Teoria           *
+ **********************************
+ */
+.text_button_theory {
+ 
+  font: 20px 'trebuchet MS', 'lucida sans' !important;
+
+ }

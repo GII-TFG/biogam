@@ -1,12 +1,12 @@
 <ion-view title="{{title}}">
 
     <ion-content class="main_container">
-        <ion-list class="list-custom" >
-            <button class="list-item" ng-repeat="ejercicio in listaEjer" item="item" ui-sref='home.categories.2.Exerlist.level' ng-click="getEjer(ejercicio)">
-                Problema {{ejercicio.ejerId}}
+        <ol class="list-custom">
+            <li class="list-item" ng-repeat="ejercicio in listaEjer" item="item" ui-sref='home.categories.2.Exerlist.level' ng-click="getEjer(ejercicio)">
+                Question {{ejercicio.ejerId}}
 
-            </button>
+            </li>
             
-        </ion-list>
+        </ol>
     </ion-content>
 </ion-view>  
