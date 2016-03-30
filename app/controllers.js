@@ -31,8 +31,7 @@ angular.module('starter.controllers', [])
     $scope.title = "Theory";
 	$scope.listaTeoria = TeoriaPorTema.getTeoriaDeTema($rootScope.temaId);
 
-	
-	$scope.getTheory = function(obj){
+	$scope.getTheory = function(obj){      
 		$rootScope.chosenTheory = obj;
 	}
 	
@@ -66,6 +65,7 @@ angular.module('starter.controllers', [])
 
     $scope.title = "Level " + $rootScope.nivelId;
 	$scope.listaEjer = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);
+    $rootScope.getEjer = [];
     $scope.getEjer = function(obj){
 		$rootScope.getEjer = obj;
 		
@@ -101,7 +101,10 @@ angular.module('starter.controllers', [])
     $scope.boxShowA1A2xA1A3 = false;
     $scope.boxShowA1A2xA3A4 = false;
 
+    $scope.buttonStyle = "button-outline";
+
     $scope.showBoxAaxaa = function () {
+        $scope.buttonStyle = "button-pressed";
         $scope.agree = " ";
         $scope.boxShowAaxaa = !$scope.boxShowAaxaa;
         $scope.boxShowAaxAa = false;

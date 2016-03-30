@@ -340,7 +340,7 @@ angular.module('starter.services', ['starter.initDB'])
     
      storePregTest: function(estado){
 
-      
+      var lists = [];
 
       var query ="INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES('pepito', ?, ?)";
 
