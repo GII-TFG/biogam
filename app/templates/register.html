@@ -1,0 +1,19 @@
+<ion-view title="{{title}}">
+
+    <ion-content class="campos">
+        <div>
+        <label class="item item-input" id="name">
+            <input type="text" placeholder="Name & Surname" ng-model="name.value">
+        </label>
+        <label class="item item-input" id="nick">
+            <input type="text" placeholder="nick" ng-model="nick.value">
+        </label>
+        <label class="item item-input" id="pass">
+            <input type="text" placeholder="Password" ng-model="pass.value">
+        </label>
+        </div>
+        <button class="item" ui-sref='register' ng-click="getUserFields(name.value, nick.value, pass.value)">
+                Sign me up!
+        </button>
+    </ion-content>
+</ion-view>

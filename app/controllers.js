@@ -478,20 +478,20 @@ angular.module('starter.controllers', [])
         }
 })
 
-.controller('TestCtrl', function($scope, $rootScope,listaPreguntas, Test){
+.controller('TestCtrl', function($scope, $rootScope, $state, $location,listaPreguntas, Test){
     $scope.index = 0; //lo que me devuelva el estado
     $scope.title = "Test";
 
     $scope.listaPreguntas = listaPreguntas;
-    console.log(listaPreguntas);
+   // console.log(listaPreguntas);
     $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
 
-   
+    
 
     $scope.used=false;
   
    
-    $scope.next = function($state){
+    $scope.next = function($state, $location){
         
         /*var opcion = $rootScope.opEsCorrecto;
         console.log('var opcion ' + opcion);*/
@@ -504,12 +504,15 @@ angular.module('starter.controllers', [])
         //console.log('opcion seleccionada ' + EsCorrecto);
         
         $scope.used=false;
+        
         if($scope.index<listaPreguntas.length-1){
             $scope.index = $scope.index + 1;
             $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
         }else{
-            console.log('Fin test')
-             //$state.go('home.categories'); //no funciona
+            //console.log('Fin test')
+            //$state.go('home');
+            $location.path('/home');
+             
         }
     }
 
@@ -547,5 +550,25 @@ angular.module('starter.controllers', [])
         $scope.used = !$scope.used;   
 
     }
+    
+    
 
+})
+
+.controller("RegisterCtrl", function($rootScope,$scope, Register) {
+
+    $scope.title = "Sign up";
+    //var nick = element(by.binding('nick.text'));
+    var user = [];
+    
+    $scope.getUserFields = function(nameU, nickU, passU){
+        /*user.push({nick: nickU, name: nameU, pass: passU});
+        $scope.user = user;
+        console.log("scopeNick " + $scope.user.nick);
+        console.log("varNick " + user.nick);*/
+        
+        Register.signUpUser(nameU, nickU, passU);
+    }
+    
+    //$scope.temas = Temas.all();
 })

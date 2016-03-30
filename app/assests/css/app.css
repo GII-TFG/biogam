@@ -462,7 +462,13 @@ p#result{
 div.col.col-m-3.col-med-3.Function, div.colcol-m-3.col-med-3.Result{
     text-align: center;
 }
+*/
 
+/*
+ **********************************
+ *            Exercise            *
+ **********************************
+ */
 .pinto_verde{
     
     background-color:aquamarine !important;
@@ -476,7 +482,7 @@ div.row.previous-next{
     padding-top: 10%;
     margin: auto;
     width: 50%;
-}
+}/*
 
 ---------------------------------------------------------------------------------
 *{
