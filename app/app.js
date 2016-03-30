@@ -31,7 +31,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
     
     function onDeviceReady(){
         DB.init();
-        $state.go('register'); //cambiar a home
+        $state.go('home'); //cambiar a home
     }
 
   });

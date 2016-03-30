@@ -477,7 +477,7 @@ angular.module('starter.controllers', [])
         }
 })
 
-.controller('TestCtrl', function($scope, $rootScope, $state, $location,listaPreguntas, Test){
+.controller('TestCtrl', function($scope, $rootScope, $state,listaPreguntas, Test){
     $scope.index = 0; //lo que me devuelva el estado
     $scope.title = "Test";
 
@@ -490,17 +490,11 @@ angular.module('starter.controllers', [])
     $scope.used=false;
   
    
-    $scope.next = function($state, $location){
+    $scope.next = function(){
         
-        /*var opcion = $rootScope.opEsCorrecto;
-        console.log('var opcion ' + opcion);*/
-        	
-		//$scope.index = $scope.index +1;
-        $scope.estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto};
+         	
+	    $scope.estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto};
         Test.storePregTest($scope.estadoDeTest);
-        
-       
-        //console.log('opcion seleccionada ' + EsCorrecto);
         
         $scope.used=false;
         
@@ -508,9 +502,9 @@ angular.module('starter.controllers', [])
             $scope.index = $scope.index + 1;
             $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
         }else{
-            //console.log('Fin test')
-            //$state.go('home');
-            $location.path('/home');
+            console.log('Fin test')
+            $state.go('home');
+            //$location.path('/home');
              
         }
     }
