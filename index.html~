@@ -45,7 +45,10 @@
         <div class="spinnerBackground"></div>
     </div>-->
 	
-	
+	 <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
 
      <ion-nav-view></ion-nav-view>
 

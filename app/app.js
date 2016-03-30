@@ -30,7 +30,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
     }
     
     function onDeviceReady(){
-        DB.init();
+        DB.create();
         $state.go('home'); //cambiar a home
     }
 
@@ -46,11 +46,15 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
 /////////////////////////////////////// ESTADO INICIAL /////////////////////////////////////////////////
 
-    
-    .state('scaffold', {
+   .state('config', {
+    url: '/config',
+    controller: 'ConfigCtrl'
+   })
+   .state('scaffold', {
     abstract: true,
     templateUrl: "app/templates/scaffold.html"
     })
+
     .state('tabs', {
       url: '/tab',
       parent: 'scaffold',
