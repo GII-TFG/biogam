@@ -30,10 +30,9 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
     }
     
     function onDeviceReady(){
-   
-     DB.init();
-    $state.go('home');
-  }
+        DB.init();
+        $state.go('home'); //cambiar a home
+    }
 
   });
 
@@ -170,8 +169,18 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
         }
       }
     })
+   
+   //////////////////////////////////////// REGISTRO ///////////////////////////////////////////////////////// 
+   
+ .state('register', {
+      url: '/register',
+      parent: "tabs",
+      views: {
+        'home-tab':{
+        templateUrl: 'app/templates/register.html',
+        controller: 'RegisterCtrl'
+       }
+      }
+   })  
 
-  });
-
-  
-
+});

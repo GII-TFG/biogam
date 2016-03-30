@@ -322,35 +322,96 @@ angular.module('starter.services', ['starter.initDB'])
         $cordovaSQLite.execute(db, query, [idTest]).then(function(res){
 
        
-        if(res.rows.length > 0){
+            if(res.rows.length > 0){
 
-          for(var i = 0; i<res.rows.length ; i++){
-            getOpsTest.push({esCorrecto: res.rows.item(i).esCorrecto, nombreOp: res.rows.item(i).nombreOp, id: res.rows.item(i).id});
-          }
+                for(var i = 0; i<res.rows.length ; i++){
+                    getOpsTest.push({esCorrecto: res.rows.item(i).esCorrecto, nombreOp: res.rows.item(i).nombreOp, id: res.rows.item(i).id});
+                }
 
-        }else{
+            }else{
 
-           console.log("Not found results");
-        }
+                console.log("Not found results");
+            }
 
-    })
-      return getOpsTest;
+        })
+        return getOpsTest;
 
     },
     
      storePregTest: function(estado){
 
+<<<<<<< HEAD
       var lists = [];
+=======
+         var lists = [];
+         var checking = [];
+         
+         var query2 = "SELECT * FROM 'resuelve-test' WHERE nickUsuario = ? AND idTest = ?"
+         var query = "INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES('pepito', ?, ?)";
+         $cordovaSQLite.execute(db, query2, ["pepito", estado.idTest]).then(function(res){ //cambiar lo del usuario pepito
+            console.log("pepito" + " " + estado.idTest);
+            if(res.rows.length > 0){
+>>>>>>> origin
 
-      var query ="INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES('pepito', ?, ?)";
+                console.log("Este test ya ha sido realizado por el alumno");
 
-        $cordovaSQLite.execute(db, query, [estado.idTest, estado.esCorrecto]).then(function(res){
-            lists.push({nickUsuario: "pepito", idTest: estado.idTest, esAcierto: estado.esCorrecto});
+            }else{
+                console.log("No hecho");
+               
+                $cordovaSQLite.execute(db, query, [estado.idTest, estado.esCorrecto]).then(function(res){
+                    lists.push({nickUsuario: "pepito", idTest: estado.idTest, esAcierto: estado.esCorrecto});
+                })
+         
+                return true;
+            }
+
         })
+         
+         
+        /* 
+         var query ="INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES('pepito', ?, ?)";
 
-          return true;
+         $cordovaSQLite.execute(db, query, [estado.idTest, estado.esCorrecto]).then(function(res){
+            lists.push({nickUsuario: "pepito", idTest: estado.idTest, esAcierto: estado.esCorrecto});
+         })
+         
+         return true;
+         */
 
-    }
+     }
       
   };
  })
+
+
+.factory('Register', function($cordovaSQLite){
+
+
+  return {
+    signUpUser: function(name, nick, pass) { 
+       
+        var lists = [];
+        var checking = [];
+
+        var query2 = "SELECT * FROM usuario WHERE nick = ?"
+        var query = "INSERT INTO usuario(nick, nombre, pass) VALUES(?, ?, ?)";
+        $cordovaSQLite.execute(db, query2, [nick]).then(function(res){ 
+            if(res.rows.length > 0){
+
+                console.log("El usuario ya existe");
+
+            }else{
+                console.log("Registrado!");
+
+                $cordovaSQLite.execute(db, query, [nick, name, pass]).then(function(res){
+                    lists.push({nick: nick, nombre: name, pass: pass});
+                })
+
+                return true;
+            }
+
+        })
+
+    }
+  };
+})

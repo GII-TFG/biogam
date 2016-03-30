@@ -8,7 +8,8 @@ angular.module('starter.initDB',[])
      allTransactions: function(db) {
 
 		//$cordovaSQLite.execute(db,'DROP TABLE IF EXISTS tieneopciones');
-	    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS `usuario` (`nick`  TEXT NOT NULL,`nombre`  TEXT NOT NULL,`pass`  TEXT NOT NULL, `foto`  BLOB,`roll`  INTEGER NOT NULL,PRIMARY KEY(nick));");
+        //quito "`roll`  INTEGER NOT NULL," de la tabla usuario, xq en principio todos son usuario 'estudiante. El usuario profesor accederá a través de la interfaz de administrador
+	    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS `usuario` (`nick`  TEXT NOT NULL,`nombre`  TEXT NOT NULL,`pass`  TEXT NOT NULL, `foto`  BLOB, PRIMARY KEY(nick));");
 	    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS `tieneopciones` (`idTest`  INTEGER NOT NULL, `idOpcionesTest`  INTEGER NOT NULL, `esCorrecto`  INTEGER NOT NULL, PRIMARY KEY(idTest,idOpcionesTest), FOREIGN KEY(`idTest`) REFERENCES test(id), FOREIGN KEY(`idOpcionesTest`) REFERENCES opcionesest(id));");
 	    $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (1,3,0);");
 	    $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (1,2,1);");
