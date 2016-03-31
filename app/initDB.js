@@ -1,11 +1,11 @@
 
-angular.module('starter.initDB',[])
+angular.module('starter.DataBase',[])
 
-.factory('InitDB',  function($cordovaSQLite){
+.factory('DataBase',  function($cordovaSQLite){
 
     return {
 
-     allTransactions: function(db) {
+     create: function(db) {
 
 		//$cordovaSQLite.execute(db,'DROP TABLE IF EXISTS tieneopciones');
         //quito "`roll`  INTEGER NOT NULL," de la tabla usuario, xq en principio todos son usuario 'estudiante. El usuario profesor accederá a través de la interfaz de administrador
@@ -75,20 +75,7 @@ angular.module('starter.initDB',[])
 	    $cordovaSQLite.execute(db, "INSERT INTO `ejercicio` VALUES (9,'In an animal species the blood group RSV is controlled by a locus with three codominant alleles (R, S and V). An animal RS was crossed by another animal RV and 23 RR, 26 RV, 21 SR and 25 SV animals were obtained. Are the alleles R, S and V segregating correctly in this cross?',3,1);");
 	    $cordovaSQLite.execute(db, "INSERT INTO `ejercicio` VALUES (10,'A plant heterozygote for the alleles C1 and C2 was crossed with another plant heterozygote for the alleles C2 and C3. In this cross 36 C1C2, 11C1C3, 44 C2C2 and 15 C2C3 plants were obtained. Is the segregation observed in this croos in agreement with the expected segregation?',3,1);");
 	    $cordovaSQLite.execute(db, "INSERT INTO `ejercicio` VALUES (11,'On a ranch in Cazorla, a mutation that gave a platinum coat color was observed in a rabbit. Every time two platinums were crossed, some normal rabbits appeared in the progeny. The repeat matings of the same pair of platinums produced 104 platinum and 48 normal progeny. Sate a hypothesis that accounts from these results',3,1);");
-	    /*$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'categoria' (`id`  INTEGER,`temaId`  INTEGER,`name`  TEXT,PRIMARY KEY(id,temaId),FOREIGN KEY(`temaId`) REFERENCES tema ( 'id' ));");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (1,1,'Theory');");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (1,2,'Theory');");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (1,3,'Theory');");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (1,4,'Theory');");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (2,1,'Exercises');");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (2,2,'Exercises');");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (2,3,'Exercises');");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (2,4,'Exercises');");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (3,1,'Test');");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (3,2,'Test');");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (3,3,'Test');");
-	    $cordovaSQLite.execute(db, "INSERT INTO `categoria` VALUES (3,4,'Test');");*/
-
+	
     	return db;
 	}
 };
