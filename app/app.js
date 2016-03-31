@@ -5,7 +5,10 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic','starter.controllers','starter.services' , 'ngCordova' ])
 
-.run(function($ionicPlatform, $state, $rootScope, $cordovaSQLite, DB) {
+.run(function($ionicPlatform, $state, $cordovaStatusbar) {
+
+   $cordovaStatusbar.overlaysWebView(true);
+
   $ionicPlatform.ready(function() {
 
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -26,12 +29,12 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
     }
     if(window.StatusBar) {
-      StatusBar.styleDefault();
+    // StatusBar.styleDefault();
+      StatusBar.show();
     }
     
     function onDeviceReady(){
-        DB.create();
-        $state.go('home'); //cambiar a home
+        //$state.go('config'); 
     }
 
   });
@@ -48,6 +51,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
    .state('config', {
     url: '/config',
+   // templateUrl: 'app/templates/progress_bar.html',
     controller: 'ConfigCtrl'
    })
    .state('scaffold', {
@@ -160,7 +164,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
         }
       }
     })
-       // $urlRouterProvider.otherwise('');
+       // 
 
 //////////////////////////////////////// ESTADOS TEORIA /////////////////////////////////////////////////////////
 
@@ -188,3 +192,5 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
    })  
 
 });
+
+
