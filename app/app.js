@@ -174,7 +174,21 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
       }
     })
    
-   //////////////////////////////////////// REGISTRO ///////////////////////////////////////////////////////// 
+   
+//////////////////////////////////////// ESTADOS TEST /////////////////////////////////////////////////////////
+   
+   .state('home.categories.3.score', {
+      url: '/test-score',
+      views: {
+        'home-tab@tabs': {
+          templateUrl: 'app/templates/score-test.html',
+          controller: 'ScoreTestCtrl'
+        }
+      }
+    })
+   
+
+//////////////////////////////////////// REGISTRO ///////////////////////////////////////////////////////// 
    
  .state('register', {
       url: '/register',

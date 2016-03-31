@@ -480,6 +480,8 @@ angular.module('starter.controllers', [])
         }
 })
 
+//////////////////////// TEST ///////////////////////////////////////////
+
 .controller('TestCtrl', function($scope, $rootScope, $state,listaPreguntas, Test){
     $scope.index = 0; //lo que me devuelva el estado
     $scope.title = "Test";
@@ -506,7 +508,7 @@ angular.module('starter.controllers', [])
             $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
         }else{
             console.log('Fin test')
-            $state.go('home');
+            $state.go('home.categories.3.score');
             //$location.path('/home');
              
         }
@@ -551,20 +553,33 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller("ScoreTestCtrl", function($rootScope,$scope, Test) {
+
+    $scope.title = "Score";
+    $scope.score = Test.getScore($rootScope.temaId);
+    
+    
+    angular.forEach($scope.score, function(item) {
+    item.amountChecker; // declare a new property for each item in $scope.items
+        $scope.aciertos = item.aciertos;
+        $scope.fallos = item.fallos;
+        $scope.total = item.total;
+        console.log($scope.aciertos);
+        console.log($scope.fallos);
+        console.log($scope.total);
+  });
+    
+    
+})
+
+//////////////////////// REGISTER ///////////////////////////////////////////
+
 .controller("RegisterCtrl", function($rootScope,$scope, Register) {
 
     $scope.title = "Sign up";
-    //var nick = element(by.binding('nick.text'));
     var user = [];
     
-    $scope.getUserFields = function(nameU, nickU, passU){
-        /*user.push({nick: nickU, name: nameU, pass: passU});
-        $scope.user = user;
-        console.log("scopeNick " + $scope.user.nick);
-        console.log("varNick " + user.nick);*/
-        
+    $scope.getUserFields = function(nameU, nickU, passU){        
         Register.signUpUser(nameU, nickU, passU);
     }
-    
-    //$scope.temas = Temas.all();
 })

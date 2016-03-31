@@ -374,23 +374,18 @@ angular.module('starter.services',[])
     
      storePregTest: function(estado){
 
-<<<<<<< HEAD
-      var lists = [];
-=======
+
          var lists = [];
          var checking = [];
          
          var query2 = "SELECT * FROM 'resuelve-test' WHERE nickUsuario = ? AND idTest = ?"
          var query = "INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES('pepito', ?, ?)";
          $cordovaSQLite.execute(db, query2, ["pepito", estado.idTest]).then(function(res){ //cambiar lo del usuario pepito
-            console.log("pepito" + " " + estado.idTest);
             if(res.rows.length > 0){
->>>>>>> origin
 
                 console.log("Este test ya ha sido realizado por el alumno");
 
             }else{
-                console.log("No hecho");
                
                 $cordovaSQLite.execute(db, query, [estado.idTest, estado.esCorrecto]).then(function(res){
                     lists.push({nickUsuario: "pepito", idTest: estado.idTest, esAcierto: estado.esCorrecto});
@@ -412,7 +407,70 @@ angular.module('starter.services',[])
          return true;
          */
 
-     }
+     },
+     
+      getScore: function(idTema) {
+
+        var score = [];
+
+        var queryAciertos ="SELECT count (idTest) As aciertos FROM test, 'resuelve-test'  WHERE idTest = id AND esAcierto = 1 AND idTema = ?";
+        var queryFallos ="SELECT count (idTest) As fallos FROM test, 'resuelve-test'  WHERE idTest = id AND esAcierto = 0 AND idTema = ?";
+        var queryNumPreg ="SELECT count (idTest) As total FROM test, 'resuelve-test'  WHERE idTest = id AND idTema = ?";
+     
+        $cordovaSQLite.execute(db, queryAciertos, [idTema]).then(function(res){
+
+       
+            if(res.rows.length > 0){
+
+                for(var i = 0; i<res.rows.length ; i++){
+                  //  console.log(res.rows.item(i).aciertos);
+                    score.push({aciertos: res.rows.item(i).aciertos});
+                }
+
+            }else{
+                score.push({aciertos: 0});
+                //console.log("Not found results");
+            }
+
+        })
+        
+        $cordovaSQLite.execute(db, queryFallos, [idTema]).then(function(res){
+
+       
+            if(res.rows.length > 0){
+
+                for(var i = 0; i<res.rows.length ; i++){
+                   // console.log(res.rows.item(i).fallos);
+                    score.push({fallos: res.rows.item(i).fallos});
+                }
+
+            }else{
+                score.push({fallos: 0});
+                //console.log("Not found results");
+            }
+
+        })
+        
+        $cordovaSQLite.execute(db, queryNumPreg, [idTema]).then(function(res){
+
+       
+            if(res.rows.length > 0){
+
+                for(var i = 0; i<res.rows.length ; i++){
+                   // console.log(res.rows.item(i).total);
+                    score.push({total: res.rows.item(i).total});
+                }
+
+            }else{
+                console.log("Not found results total");
+            }
+
+        })
+        
+        
+        return score;
+
+    }      
       
   };
  })
