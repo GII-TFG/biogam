@@ -3,16 +3,18 @@ angular.module('starter.controllers', [])
  
 
 
-.controller("ConfigCtrl", function($scope, $q, $state, DB, $state, $timeout, $cordovaProgress) {
+.controller("ConfigCtrl", function($scope, $q, $state, DB, $state, $timeout, $cordovaStatusbar) {
 
-   // $cordovaProgress.showSimpleWithLabel(true, "Loading")
-    
+    $cordovaStatusbar.styleHex('#ff8000');
+
+
+
     var createBD = function(){
          var deferred = $q.defer();
 
          console.log("creamos la bd");
          DB.create();
-         deferred.resolve();
+         deferred.resolve("pasamos a meter valores");
 
          return deferred.promise;
     }
@@ -22,18 +24,21 @@ angular.module('starter.controllers', [])
 
          console.log(texto);
          DB.insert_default_values();
-         deferred.resolve();
+         deferred.resolve("pasamos a cambiar de estado");
 
          return deferred.promise;
     }
 
-     createBD().then(insertValues).then(function(){
-         $state.go('home');
-            /*$timeout(function(){$cordovaProgress.hide(); $state.go('home'); }, 3000);*/
+     createBD().then(insertValues).then(function(msg){
+
+        console.log(msg);
+        //$state.go('home');
+        $timeout(function(){$state.go('home'); }, 15000);
     })
 
 
 })
+
 
 .controller("HomeCtrl", function($rootScope,$scope, Temas ) {
 
@@ -63,7 +68,8 @@ angular.module('starter.controllers', [])
     $scope.title = "Theory";
 	$scope.listaTeoria = TeoriaPorTema.getTeoriaDeTema($rootScope.temaId);
 
-	$scope.getTheory = function(obj){      
+	
+	$scope.getTheory = function(obj){
 		$rootScope.chosenTheory = obj;
 	}
 	
@@ -97,7 +103,6 @@ angular.module('starter.controllers', [])
 
     $scope.title = "Level " + $rootScope.nivelId;
 	$scope.listaEjer = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);
-    $rootScope.getEjer = [];
     $scope.getEjer = function(obj){
 		$rootScope.getEjer = obj;
 		
@@ -133,10 +138,7 @@ angular.module('starter.controllers', [])
     $scope.boxShowA1A2xA1A3 = false;
     $scope.boxShowA1A2xA3A4 = false;
 
-    $scope.buttonStyle = "button-outline";
-
     $scope.showBoxAaxaa = function () {
-        $scope.buttonStyle = "button-pressed";
         $scope.agree = " ";
         $scope.boxShowAaxaa = !$scope.boxShowAaxaa;
         $scope.boxShowAaxAa = false;
@@ -512,8 +514,6 @@ angular.module('starter.controllers', [])
         }
 })
 
-//////////////////////// TEST ///////////////////////////////////////////
-
 .controller('TestCtrl', function($scope, $rootScope, $state,listaPreguntas, Test){
     $scope.index = 0; //lo que me devuelva el estado
     $scope.title = "Test";
@@ -539,10 +539,9 @@ angular.module('starter.controllers', [])
             $scope.index = $scope.index + 1;
             $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
         }else{
-
-            console.log('Fin test');
-            $state.go('home.categories.3.test-results');
-
+            console.log('Fin test')
+            $state.go('home');
+            //$location.path('/home');
              
         }
     }
@@ -586,28 +585,20 @@ angular.module('starter.controllers', [])
 
 })
 
-
-.controller("ScoreTestCtrl", function($rootScope, $scope, $state, Test) {
-    $scope.index = 0;
-    $scope.title = "Score";
-    $scope.aciertos = Test.getAciertos($rootScope.temaId);
-    $scope.fallos = Test.getFallos($rootScope.temaId);
-    
-    $scope.endTest = function (){
-        console.log('Fin test results');
-        $state.go('home');
-    }
-})
-
-//////////////////////// REGISTER ///////////////////////////////////////////
-
 .controller("RegisterCtrl", function($rootScope,$scope, Register) {
 
     $scope.title = "Sign up";
+    //var nick = element(by.binding('nick.text'));
     var user = [];
     
-    $scope.getUserFields = function(nameU, nickU, passU){        
+    $scope.getUserFields = function(nameU, nickU, passU){
+        /*user.push({nick: nickU, name: nameU, pass: passU});
+        $scope.user = user;
+        console.log("scopeNick " + $scope.user.nick);
+        console.log("varNick " + user.nick);*/
+        
         Register.signUpUser(nameU, nickU, passU);
     }
-
+    
+    //$scope.temas = Temas.all();
 })
