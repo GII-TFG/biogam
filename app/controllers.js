@@ -3,18 +3,16 @@ angular.module('starter.controllers', [])
  
 
 
-.controller("ConfigCtrl", function($scope, $q, $state, DB, $state, $timeout, $cordovaStatusbar) {
+.controller("ConfigCtrl", function($scope, $q, $state, DB, $state, $timeout, $cordovaProgress) {
 
-    $cordovaStatusbar.styleHex('#ff8000');
-
-
-
+    $cordovaProgress.showSimpleWithLabel(true, "Loading")
+    
     var createBD = function(){
          var deferred = $q.defer();
 
          console.log("creamos la bd");
          DB.create();
-         deferred.resolve("pasamos a meter valores");
+         deferred.resolve();
 
          return deferred.promise;
     }
@@ -24,16 +22,14 @@ angular.module('starter.controllers', [])
 
          console.log(texto);
          DB.insert_default_values();
-         deferred.resolve("pasamos a cambiar de estado");
+         deferred.resolve();
 
          return deferred.promise;
     }
 
-     createBD().then(insertValues).then(function(msg){
+     createBD().then(insertValues).then(function(){
 
-        console.log(msg);
-        //$state.go('home');
-        $timeout(function(){$state.go('home'); }, 15000);
+            $timeout(function(){$cordovaProgress.hide(); $state.go('home'); }, 3000);
     })
 
 
