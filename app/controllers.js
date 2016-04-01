@@ -507,8 +507,8 @@ angular.module('starter.controllers', [])
             $scope.index = $scope.index + 1;
             $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
         }else{
-            console.log('Fin test')
-            $state.go('home.categories.3.score');
+            console.log('Fin test');
+            $state.go('home.categories.3.test-results');
             //$location.path('/home');
              
         }
@@ -553,22 +553,16 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("ScoreTestCtrl", function($rootScope,$scope, Test) {
-
+.controller("ScoreTestCtrl", function($rootScope, $scope, $state, Test) {
+    $scope.index = 0;
     $scope.title = "Score";
-    $scope.score = Test.getScore($rootScope.temaId);
+    $scope.aciertos = Test.getAciertos($rootScope.temaId);
+    $scope.fallos = Test.getFallos($rootScope.temaId);
     
-    
-    angular.forEach($scope.score, function(item) {
-    item.amountChecker; // declare a new property for each item in $scope.items
-        $scope.aciertos = item.aciertos;
-        $scope.fallos = item.fallos;
-        $scope.total = item.total;
-        console.log($scope.aciertos);
-        console.log($scope.fallos);
-        console.log($scope.total);
-  });
-    
+    $scope.endTest = function (){
+        console.log('Fin test results');
+        $state.go('home');
+    }
     
 })
 

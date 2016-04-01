@@ -323,22 +323,7 @@ angular.module('starter.services',[])
         }
 
     })
-
-     /* var getOpsTest = [];
-
-        var query ="SELECT esCorrecto, nombreOp, opcionestest.id FROM test, tieneopciones, opcionestest WHERE test.id = tieneopciones.idTest AND opcionestest.id = tieneopciones.idOpcionesTest AND test.id = ?";
-        console.log( pregTest[0].id);
-     
-        $cordovaSQLite.execute(db, query, ["1"]).then(function(res){
-
-          for(var i = 0; i<res.rows.length ; i++){
-        
-            getOpsTest.push({esCorrecto: res.rows.item(i).esCorrecto, nombreOp: res.rows.item(i).nombreOp, id: res.rows.item(i).id});
-          }
-
-       })*/
-
-      
+ 
       return pregTest;
     }, 
       
@@ -409,13 +394,11 @@ angular.module('starter.services',[])
 
      },
      
-      getScore: function(idTema) {
+      getAciertos: function(idTema) {
 
         var score = [];
 
         var queryAciertos ="SELECT count (idTest) As aciertos FROM test, 'resuelve-test'  WHERE idTest = id AND esAcierto = 1 AND idTema = ?";
-        var queryFallos ="SELECT count (idTest) As fallos FROM test, 'resuelve-test'  WHERE idTest = id AND esAcierto = 0 AND idTema = ?";
-        var queryNumPreg ="SELECT count (idTest) As total FROM test, 'resuelve-test'  WHERE idTest = id AND idTema = ?";
      
         $cordovaSQLite.execute(db, queryAciertos, [idTema]).then(function(res){
 
@@ -423,54 +406,44 @@ angular.module('starter.services',[])
             if(res.rows.length > 0){
 
                 for(var i = 0; i<res.rows.length ; i++){
-                  //  console.log(res.rows.item(i).aciertos);
-                    score.push({aciertos: res.rows.item(i).aciertos});
+                    score.push({ac: res.rows.item(i).aciertos});
                 }
 
             }else{
-                score.push({aciertos: 0});
+                scor.push({ac:0});
                 //console.log("Not found results");
             }
 
         })
-        
-        $cordovaSQLite.execute(db, queryFallos, [idTema]).then(function(res){
-
-       
-            if(res.rows.length > 0){
-
-                for(var i = 0; i<res.rows.length ; i++){
-                   // console.log(res.rows.item(i).fallos);
-                    score.push({fallos: res.rows.item(i).fallos});
-                }
-
-            }else{
-                score.push({fallos: 0});
-                //console.log("Not found results");
-            }
-
-        })
-        
-        $cordovaSQLite.execute(db, queryNumPreg, [idTema]).then(function(res){
-
-       
-            if(res.rows.length > 0){
-
-                for(var i = 0; i<res.rows.length ; i++){
-                   // console.log(res.rows.item(i).total);
-                    score.push({total: res.rows.item(i).total});
-                }
-
-            }else{
-                console.log("Not found results total");
-            }
-
-        })
-        
-        
+        console.log("aciertos: " + score);
         return score;
 
-    }      
+    },
+      
+    getFallos: function(idTema) {
+
+        var score = [];
+        var queryFallos ="SELECT count (idTest) As fallos FROM test, 'resuelve-test'  WHERE idTest = id AND esAcierto = 0 AND idTema = ?";
+     
+        $cordovaSQLite.execute(db, queryFallos, [idTema]).then(function(res){
+       
+            if(res.rows.length > 0){
+
+                for(var i = 0; i<res.rows.length ; i++){
+                    score.push({fa: res.rows.item(i).fallos});
+                    
+                }
+
+            }else{
+                score = 0;
+                //console.log("Not found results");
+            }
+
+        })        
+        console.log("fallos: " + score);
+        return score;
+
+    } 
       
   };
  })

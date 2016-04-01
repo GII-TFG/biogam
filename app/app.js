@@ -177,11 +177,11 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
    
 //////////////////////////////////////// ESTADOS TEST /////////////////////////////////////////////////////////
    
-   .state('home.categories.3.score', {
-      url: '/test-score',
+   .state('home.categories.3.test-results', {
+      url: '/test-results',
       views: {
         'home-tab@tabs': {
-          templateUrl: 'app/templates/score-test.html',
+          templateUrl: 'app/templates/test-results.html',
           controller: 'ScoreTestCtrl'
         }
       }
