@@ -1,0 +1,29 @@
+<ion-view title="{{title}}">
+
+    <ion-content class="score">
+        <div>
+            <!--ul class="list-custom">
+                <li class="animated bounceInLeft list-item" item-icon-right ng-repeat="score in scores" ui-sref='home.categories.3.test-results'-->
+                    <label class="item item-input" id="questions">
+                        Questions: {{aciertos[index].ac + fallos[index].fa}}
+                    </label>
+
+                    <label class="item item-input" id="correctAnswers">
+                        Correct Answers: {{aciertos[index].ac}}
+                    </label>
+
+                    <label class="item item-input" id="incorrectAnswers">
+                        Wrong Answers: {{fallos[index].fa}}
+                    </label>
+
+                    <label class="item item-input" id="total">
+                        Mark: {{(aciertos[index].ac * 10)/(aciertos[index].ac + fallos[index].fa)}}
+                    </label>    
+                <!--/li>
+            </ul-->
+        </div>
+        <button class="item" ui-sref='home.categories.3.test-results' ng-click="endTest()">
+                Ok
+        </button>
+    </ion-content>
+</ion-view>

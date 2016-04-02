@@ -5,7 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic','starter.controllers','starter.services' , 'ngCordova' ])
 
-.run(function($ionicPlatform, $state, $rootScope, $cordovaSQLite, DB) {
+.run(function($ionicPlatform, $state) {
+
+
   $ionicPlatform.ready(function() {
 
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -25,14 +27,11 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
 
     }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
+ 
     
     function onDeviceReady(){
-        DB.create();
-        $state.go('home'); //cambiar a home
-    }
+        $state.go('config'); 
+      }
 
   });
 
@@ -47,7 +46,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 /////////////////////////////////////// ESTADO INICIAL /////////////////////////////////////////////////
 
    .state('config', {
-    url: '/config',
+     // templateUrl: 'app/templates/progress_bar.html',
     controller: 'ConfigCtrl'
    })
    .state('scaffold', {
@@ -160,7 +159,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
         }
       }
     })
-       // $urlRouterProvider.otherwise('');
+       
 
 //////////////////////////////////////// ESTADOS TEORIA /////////////////////////////////////////////////////////
 
@@ -174,7 +173,21 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
       }
     })
    
-   //////////////////////////////////////// REGISTRO ///////////////////////////////////////////////////////// 
+   
+//////////////////////////////////////// ESTADOS TEST /////////////////////////////////////////////////////////
+   
+   .state('home.categories.3.test-results', {
+      url: '/test-results',
+      views: {
+        'home-tab@tabs': {
+          templateUrl: 'app/templates/test-results.html',
+          controller: 'ScoreTestCtrl'
+        }
+      }
+    })
+   
+
+//////////////////////////////////////// REGISTRO ///////////////////////////////////////////////////////// 
    
  .state('register', {
       url: '/register',
@@ -185,6 +198,9 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
         controller: 'RegisterCtrl'
        }
       }
-   })  
-
+   });  
+  $urlRouterProvider.otherwise('home');
 });
+
+
+
