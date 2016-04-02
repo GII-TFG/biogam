@@ -374,9 +374,6 @@ angular.module('starter.services',[])
     
      storePregTest: function(estado){
 
-<<<<<<< HEAD
-      var lists = [];
-=======
          var lists = [];
          var checking = [];
          
@@ -385,8 +382,6 @@ angular.module('starter.services',[])
          $cordovaSQLite.execute(db, query2, ["pepito", estado.idTest]).then(function(res){ //cambiar lo del usuario pepito
             console.log("pepito" + " " + estado.idTest);
             if(res.rows.length > 0){
->>>>>>> origin
-
                 console.log("Este test ya ha sido realizado por el alumno");
 
             }else{

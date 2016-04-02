@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
 
 	$scope.title = "Detail";
 	console.log("the focus is here in CompleteTheoryCtrl");
-    $scope.tit = $rootScope.chosenTheory.title;
+    $scope.tit = $rootScope.chosenTheory.titulo;
     $scope.texto = $rootScope.chosenTheory.texto;
 })
 
