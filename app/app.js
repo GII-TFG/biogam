@@ -119,18 +119,38 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
           controller: 'TestCtrl',
           resolve:{
             /*no tocar si no se entiende, preguntar a Gian */
-            listaPreguntas: function(Test, $rootScope, $q, $timeout){
+            PreguntasTest: function(Test, $rootScope, $q, $timeout)
+            {
 
               var deferred = $q.defer();
               var proceso = function(){
-              var list = Test.getPreguntasTest($rootScope.temaId);
+              var lista = Test.getPreguntasTest($rootScope.temaId);
+
               $timeout(function(){
-              deferred.resolve(list); }, 10);
+                deferred.resolve(lista)}, 10);
+              }
+              proceso();
+              return deferred.promise;
+
+            },
+
+            LoadIndex: function(Test, $rootScope, $q, $timeout){
+
+              var deferred = $q.defer();
+              var i=0;;
+              var proceso = function()
+              {
+                console.log("soy load");
+                i = Test.loadIndex($rootScope.temaId)
+                $timeout(function(){console.log(i);deferred.resolve(0)}, 1000);
+
               }
               proceso();
               return deferred.promise;
 
             }
+
+
           }
         }
       }

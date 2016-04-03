@@ -3,24 +3,22 @@ angular.module('starter.controllers', [])
  
 
 
-.controller("ConfigCtrl", function($scope, $q, $state, DB, $state, $timeout, $cordovaProgress) {
+.controller("ConfigCtrl", function($scope, $q, $state, DB, $state, $timeout, $cordovaProgress, $rootScope, Test) {
 
    // $cordovaProgress.showSimpleWithLabel(true, "Loading")
     
     var createBD = function(){
          var deferred = $q.defer();
 
-         console.log("creamos la bd");
          DB.create();
          deferred.resolve();
 
          return deferred.promise;
     }
 
-       var insertValues = function(texto){
+       var insertValues = function(){
          var deferred = $q.defer();
 
-         console.log(texto);
          DB.insert_default_values();
          deferred.resolve();
 
@@ -514,38 +512,55 @@ angular.module('starter.controllers', [])
 
 //////////////////////// TEST ///////////////////////////////////////////
 
-.controller('TestCtrl', function($scope, $rootScope, $state,listaPreguntas, Test){
-    $scope.index = 0; //lo que me devuelva el estado
-    $scope.title = "Test";
+.controller('TestCtrl', function($scope, $q,$rootScope,$state,PreguntasTest,LoadIndex, Test, $ionicSlideBoxDelegate)
+{   
 
-    $scope.listaPreguntas = listaPreguntas;
-   // console.log(listaPreguntas);
-    $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
+     var carga = function()
+     {
+         var deferred = $q.defer();
+         $scope.listaPreguntas = PreguntasTest;
+         $scope.index =LoadIndex;
+       
+         deferred.resolve();
 
-    
+         return deferred.promise;
+    }
 
-    $scope.used=false;
-  
-   
-    $scope.next = function(){
+    carga().then(function(index){
+
+         $scope.title = "Test";
+         $scope.used=false; 
+         $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
+         $scope.estadoDeTest = [];
+
+          $scope.lockSlide = function () 
+    {
+        $ionicSlideBoxDelegate.enableSlide( false );
+    }
+
+
+
+    $scope.nextSlide = function()
+    {
+
+        $scope.estadoDeTest.push({idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto});
         
-         	
-	    $scope.estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto};
-        Test.storePregTest($scope.estadoDeTest);
         
         $scope.used=false;
         
-        if($scope.index<listaPreguntas.length-1){
-            $scope.index = $scope.index + 1;
-            $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
+        if($scope.index<$scope.listaPreguntas.length-1)
+        {
+            $scope.index = $scope.index+ 1;
+            $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
         }else{
 
             console.log('Fin test');
             $state.go('home.categories.3.test-results');
-
              
         }
-    }
+    $ionicSlideBoxDelegate.next();
+
+  }
 
     $scope.plot = function(state){
     
@@ -583,6 +598,9 @@ angular.module('starter.controllers', [])
     }
     
     
+    });
+
+   
 
 })
 
@@ -594,7 +612,6 @@ angular.module('starter.controllers', [])
     $scope.fallos = Test.getFallos($rootScope.temaId);
     
     $scope.endTest = function (){
-        console.log('Fin test results');
         $state.go('home');
     }
 })
