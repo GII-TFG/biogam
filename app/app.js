@@ -142,7 +142,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
               {
                 console.log("soy load");
                 i = Test.loadIndex($rootScope.temaId)
-                $timeout(function(){console.log(i);deferred.resolve(0)}, 1000);
+                $timeout(function(){console.log(i);deferred.resolve(0)}, 10);
 
               }
               proceso();
