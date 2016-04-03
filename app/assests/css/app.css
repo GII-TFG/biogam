@@ -117,6 +117,19 @@ div {
     .button-borders{
         border-radius: 10px 25px;
     }
+
+    .buttonSubjectLevels{
+        width: 70% !important;
+        /*border:1px solid #6e1193 !important; /*#99ff66*/
+        margin: auto;
+        margin-top: 10% !important;
+        background-color: #EADCEF !important;/*e8d5ef  351840*/
+        font-size: 1em;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        color:#671189 !important;
+        box-shadow: 0 1.5px 2.5px 0 #671189, 0 1.25px 3px 0 #671189;
+    }
 }
 
 @media screen and (min-width: 481px){
@@ -125,7 +138,6 @@ div {
      *            Botones           *
      ********************************
      */
-/
     .buttonSubject{
         width: 70% !important;
         /*border:1px solid #6e1193 !important; /*#99ff66*/
@@ -140,6 +152,18 @@ div {
     }
     .button-borders{
         border-radius: 15px 50px;
+    }
+    .buttonSubjectLevels{
+        width: 70% !important;
+        /*border:1px solid #6e1193 !important; /*#99ff66*/
+        margin: auto;
+        margin-top: 10% !important;
+        background-color: #EADCEF !important;/*e8d5ef  351840*/
+        font-size: 1em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        color:#671189 !important;
+        box-shadow: 0 1.5px 2.5px 0 #671189, 0 1.25px 3px 0 #671189;
     }
 }
 
@@ -234,6 +258,30 @@ li.list-item:before{
     margin-right: auto;
 
 }
+
+/*
+ **********************************
+ *            TheoryDetail        *
+ **********************************
+ */
+ .tituloTeoria{
+    text-align: center; 
+ }
+ .textoTeoria{
+    padding-top: 1.5em;
+    text-align: justify;
+ }
+
+ div.detalleTeoria{
+    width:80%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%;
+ }
+ hr{
+    background-color: #9b59b6;
+    width: 100%;
+ }
 /*body{
     width: 100%;
     min-width: 240px;

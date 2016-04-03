@@ -35,12 +35,12 @@ angular.module('starter.controllers', [])
 
 .controller("HomeCtrl", function($rootScope,$scope, Temas ) {
 
-	 $scope.title = "Home";
+     $scope.title = "Home";
      $scope.temas = Temas.all();
 
      $scope.getTemaId = function(obj){
-		$rootScope.temaId = obj;
-	}
+        $rootScope.temaId = obj;
+    }
 })
 
 
@@ -50,8 +50,8 @@ angular.module('starter.controllers', [])
     $scope.nombreTema = Temas.get($rootScope.temaId);
     $scope.categorias = Categorias.getCategoriasTema($rootScope.temaId); 
     $scope.getCategoriaId = function(obj){
-		$rootScope.categoriaId = obj;
-	}
+        $rootScope.categoriaId = obj;
+    }
 
   
 })
@@ -59,18 +59,18 @@ angular.module('starter.controllers', [])
 .controller('TheoryCtrl', function($scope, $rootScope, TeoriaPorTema){
 
     $scope.title = "Theory";
-	$scope.listaTeoria = TeoriaPorTema.getTeoriaDeTema($rootScope.temaId);
+    $scope.listaTeoria = TeoriaPorTema.getTeoriaDeTema($rootScope.temaId);
 
-	$scope.getTheory = function(obj){      
-		$rootScope.chosenTheory = obj;
-	}
-	
+    $scope.getTheory = function(obj){      
+        $rootScope.chosenTheory = obj;
+    }
+    
 })
 
 .controller('CompleteTheoryCtrl', function($scope, $rootScope){
 
-	$scope.title = "Detail";
-	console.log("the focus is here in CompleteTheoryCtrl");
+    $scope.title = "Detail";
+    console.log("the focus is here in CompleteTheoryCtrl");
     $scope.tit = $rootScope.chosenTheory.title;
     $scope.texto = $rootScope.chosenTheory.texto;
 })
@@ -78,53 +78,53 @@ angular.module('starter.controllers', [])
 //////////////////////// EXERCISES ///////////////////////////////////////////
 
 .controller('ExerCtrl', function($scope, $rootScope, NivelEjercicio){
-	
-	 $scope.title = "Exercises";
+    
+     $scope.title = "Exercises";
 
-	//me da todos los ejercicios de un tema sin tener en cuenta el nivel,
-	$scope.listaNiveles = NivelEjercicio.getTodosLosNiveles($rootScope.temaId);
-	
-	//obtenemos el id del nivel
-	$scope.getNivelId = function(obj){
-		$rootScope.nivelId = obj;
-		
-	}
+    //me da todos los ejercicios de un tema sin tener en cuenta el nivel,
+    $scope.listaNiveles = NivelEjercicio.getTodosLosNiveles($rootScope.temaId);
+    
+    //obtenemos el id del nivel
+    $scope.getNivelId = function(obj){
+        $rootScope.nivelId = obj;
+        
+    }
 })
 
 .controller('ExerListCtrl', function($scope, $rootScope, NivelEjercicio){
 
     $scope.title = "Level " + $rootScope.nivelId;
-	$scope.listaEjer = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);
+    $scope.listaEjer = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);
     $rootScope.getEjer = [];
     $scope.getEjer = function(obj){
-		$rootScope.getEjer = obj;
-		
-	}
+        $rootScope.getEjer = obj;
+        
+    }
 })
 
 .controller('LevelCtrl', function($scope, $rootScope, NivelEjercicio, $window, $ionicPopup){
-	
     
-	$scope.index = 0;
-	$scope.listaEjerPerTemaNivel = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);	
-	$scope.title = "Level " + $rootScope.nivelId;
+    
+    $scope.index = 0;
+    $scope.listaEjerPerTemaNivel = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);    
+    $scope.title = "Level " + $rootScope.nivelId;
     $scope.estadoDeJuego = {idEjer: $rootScope.getEjer.ejerId, numIntentos: 0 ,numFallos: 0};
 
-	$scope.prev = function(){
-		
-		$scope.index = $scope.index -1;
+    $scope.prev = function(){
+        
+        $scope.index = $scope.index -1;
 
-	}
+    }
 
-	$scope.next = function(){
-	
-        NivelEjercicio.storeEjercicio($scope.estadoDeJuego);	
-		$scope.index = $scope.index +1;
+    $scope.next = function(){
+    
+        NivelEjercicio.storeEjercicio($scope.estadoDeJuego);    
+        $scope.index = $scope.index +1;
         $scope.estadoDeJuego = {idEjer: $scope.listaEjerPerTemaNivel[$scope.index].id, numIntentos: 0 ,numFallos: 0};
-	
-	}
+    
+    }
 
-	$scope.boxShowAaxaa = false;
+    $scope.boxShowAaxaa = false;
     $scope.boxShowAaxAa = false;
     $scope.boxShowLethalgenes = false;
     $scope.boxShowA1A2xA1A2 = false;
