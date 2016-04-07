@@ -380,39 +380,36 @@ angular.module('starter.services',[])
 
     },
     
-     storePregTest: function(estado){
+      storePregTest: function(estado){
 
-
-         var lists = [];
-         var checking = [];
-         
-         var query2 = "SELECT * FROM 'resuelve-test' WHERE nickUsuario = ? AND idTest = ?"
+        console.log(estado.idTest + " " + estado.esCorrecto);
+          
+         //var query2 = "SELECT * FROM 'resuelve-test' WHERE nickUsuario = ? AND idTest = ?"
          var query = "INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES('pepito', ?, ?)";
-         $cordovaSQLite.execute(db, query2, ["pepito", estado.idTest]).then(function(res){ //cambiar lo del usuario pepito
-                         
-                $cordovaSQLite.execute(db, query, [estado.idTest, estado.esCorrecto]).then(function(res){
-                    lists.push({nickUsuario: "pepito", idTest: estado.idTest, esAcierto: estado.esCorrecto});
-                })
-         
-                return true;
-        })
-    },
+         $cordovaSQLite.execute(db, query, [estado.idTest, estado.esCorrecto]);
+
+          return true;
+        
+     },
      
      loadIndex: function(idTema){
 
-         var i = 2;
-         
+               
          var query = "SELECT max(numero) as maxi FROM test, 'resuelve-test' WHERE idTest = id AND test.idTema = ?"
          $cordovaSQLite.execute(db, query, [idTema]).then(function(res){ //cambiar lo del usuario pepito
-        
-         console.log("hola que tal");
+           
+           var i; 
+           i= res.rows.item(0).maxi;
+
+           if(i == null)
+           {
+
+              i = 0;
+           }
+
+         console.log(i);
          return i;
-
-            
-
-        })
-         
-         
+        })         
     },
 
       getAciertos: function(idTema) {

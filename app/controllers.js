@@ -512,44 +512,42 @@ angular.module('starter.controllers', [])
 
 //////////////////////// TEST ///////////////////////////////////////////
 
-.controller('TestCtrl', function($scope, $q,$rootScope,$state,PreguntasTest,LoadIndex, Test, $ionicSlideBoxDelegate)
+.controller('TestCtrl', function($scope, $q,$rootScope,$state,PreguntasTest, Test, $ionicSlideBoxDelegate)
 {   
+
+    $scope.lockSlide = function () 
+    {
+        $ionicSlideBoxDelegate.enableSlide( false );
+    }
 
      var carga = function()
      {
          var deferred = $q.defer();
+         $scope.index = 0; 
          $scope.listaPreguntas = PreguntasTest;
-         $scope.index =LoadIndex;
-       
          deferred.resolve();
 
          return deferred.promise;
     }
 
-    carga().then(function(index){
-
+    carga().then(function(){
          $scope.title = "Test";
          $scope.used=false; 
          $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
-         $scope.estadoDeTest = [];
+      
 
-          $scope.lockSlide = function () 
-    {
-        $ionicSlideBoxDelegate.enableSlide( false );
-    }
-
-
-
+  
     $scope.nextSlide = function()
     {
-
-        $scope.estadoDeTest.push({idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto});
-        
+        var estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto};
+        console.log(estadoDeTest.idTest);
+        Test.storePregTest(estadoDeTest);    
         
         $scope.used=false;
         
         if($scope.index<$scope.listaPreguntas.length-1)
         {
+
             $scope.index = $scope.index+ 1;
             $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
         }else{
@@ -562,7 +560,8 @@ angular.module('starter.controllers', [])
 
   }
 
-    $scope.plot = function(state){
+    $scope.plot = function(state)
+    {
     
         if(!$scope.used){
 
