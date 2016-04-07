@@ -337,8 +337,8 @@
     </ion-view>
     -->
     <ion-view>
-        <ion-content class="main-container" overflow-scroll="true" padding="true">
-            <div class="row circles">
+        <ion-content class="main_container80">
+            <div class="row" id="fila">
                 <div class="col">
                     <img src="app/assests/img/ptoMorado.png"></>
                 </div>
@@ -371,8 +371,8 @@
                 </div>
             </div>
             <div class="exercise-question">
-                <h3> Question {{estadoDeJuego.idEjer}}</h3> <!--Pregunta {{index + 1}}-->
-                <p>{{listaEjerPerTemaNivel[estadoDeJuego.idEjer].enunciado}}</p>
+                <h3 id="tituloEjercicio"> Question {{estadoDeJuego.idEjer}}</h3> <!--Pregunta {{index + 1}}-->
+                <p id="textoEjercicio">{{listaEjerPerTemaNivel[estadoDeJuego.idEjer].enunciado}}</p>
             </div>
             <div class="exercise-calculate">
                 <div class="button-bar">

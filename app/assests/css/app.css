@@ -24,6 +24,11 @@ div {
     margin-left: auto;
     margin-right: auto;
 }
+.main_container80{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /*
  *******************************
@@ -104,11 +109,11 @@ div {
 @media screen and (max-width: 480px){
     .buttonSubject{
         width: 70% !important;
-        /*border:1px solid #6e1193 !important; /*#99ff66*/
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 10% !important;
-        background-color: #EADCEF !important;/*e8d5ef  351840*/
-        font-size: 1em;
+        background-color: #EADCEF !important;
+        font-size: 1.5em;
         padding-top: .5em;
         padding-bottom: .5em;
         color:#671189 !important;
@@ -120,16 +125,74 @@ div {
 
     .buttonSubjectLevels{
         width: 70% !important;
-        /*border:1px solid #6e1193 !important; /*#99ff66*/
         margin: auto;
         margin-top: 10% !important;
-        background-color: #EADCEF !important;/*e8d5ef  351840*/
-        font-size: 1em;
-        padding-top: .5em;
-        padding-bottom: .5em;
+        background-color: #EADCEF !important;
+        font-size: 1.5em;
         color:#671189 !important;
         box-shadow: 0 1.5px 2.5px 0 #671189, 0 1.25px 3px 0 #671189;
     }
+    button.button-block.buttonSubject.button-borders{
+        padding-top: 0em;
+        padding-bottom: 0em;
+    }
+    p.buttonNameLevel{
+        margin-top: auto;
+        margin-bottom: 0;  
+    }
+    .row.smallCircles{
+        padding-top: 0em;
+    }
+
+    /*********   EXERCISE   *********/
+   
+    .exerciseButton.button.button-royal{
+        width: 50% !important;
+    }
+
+    div#fila.row{
+        margin-top: 1.5em !important;
+    }
+
+    .circleImg{
+        flex:1;
+        display:block;
+        padding:5px;
+        width:50%;
+    }
+
+    #textoEjercicio{
+        margin-top: 2em;
+        padding-top: 1.5em;
+        text-align: justify;
+    }
+    .exercise-question{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2em;
+        text-align: center;
+    }
+
+    #tituloEjercicio{
+        text-align: center;
+    }
+    #ejercicio-button13{
+        margin-right: .5em;
+
+    }
+
+    /*********   TEST   *********/
+    .button.button-block.button-stable.testButton{
+        background-color: #E8D5EF;
+        box-shadow: 0 3px 5px 0 #A4A4A4, 0 2.5px 6px 0 #A4A4A4;
+        border-radius: 4px 4px 4px 4px !important;
+    }
+    h3.questionNum{
+        text-align:center;
+        margin-top:10px;
+    }
+
 }
 
 @media screen and (min-width: 481px){
@@ -160,8 +223,8 @@ div {
         margin-top: 10% !important;
         background-color: #EADCEF !important;/*e8d5ef  351840*/
         font-size: 1em;
-        padding-top: 1em;
-        padding-bottom: 1em;
+       /* padding-top: 1em;
+        padding-bottom: 1em;*/
         color:#671189 !important;
         box-shadow: 0 1.5px 2.5px 0 #671189, 0 1.25px 3px 0 #671189;
     }
@@ -236,27 +299,6 @@ li.list-item:before{
     text-align: center;
     font-weight: bold;
     color:#9b59b6;
-}
-
-
-
-/*
- **********************************
- *            Exercise            *
- **********************************
- */
-.exercise-question{
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.exercise-calculate{
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-
 }
 
 /*
@@ -526,7 +568,7 @@ div.col.col-m-3.col-med-3.Function, div.colcol-m-3.col-med-3.Result{
  */
 .pinto_verde{
     
-    background-color:aquamarine !important;
+    background-color: #E7EF47 !important;
 }
 
 .pinto_rojo{
@@ -534,10 +576,18 @@ div.col.col-m-3.col-med-3.Function, div.colcol-m-3.col-med-3.Result{
     background-color:crimson !important;
 }
 div.row.previous-next{
+    
     padding-top: 10%;
     margin: auto;
     width: 50%;
-}/*
+}
+.button.icon-right.ion-chevron-right.button-dark{
+    background-color: #9C59B6 !important;
+    margin-top: 30px !important;
+    margin-left:50% !important;
+    width:50% !important;
+}
+/*
 
 ---------------------------------------------------------------------------------
 *{
