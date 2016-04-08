@@ -17,7 +17,7 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS 'test' (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`enunciado` TEXT NOT NULL,`numero`  INTEGER NOT NULL,`idTema`  INTEGER NOT NULL, FOREIGN KEY(`idTema`) REFERENCES `tema`(`id`));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'teoria' (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`titulo`  TEXT NOT NULL,`texto` TEXT NOT NULL,`idTema`  INTEGER NOT NULL, FOREIGN KEY(`idTema`) REFERENCES tema(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'tema' (`id`  INTEGER NOT NULL,`name`  TEXT,  PRIMARY KEY(id));");
-      $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`resuelve-test` (`nickUsuario` INTEGER NOT NULL,`idTest`  INTEGER NOT NULL,`esAcierto` INTEGER NOT NULL, PRIMARY KEY(nickUsuario,idTest),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick), FOREIGN KEY(`idTest`) REFERENCES test(id));");
+      $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`resuelve-test` (`nickUsuario` INTEGER NOT NULL,`idTest`, INTEGER NOT NULL,`esAcierto` INTEGER NOT NULL, PRIMARY KEY(nickUsuario,idTest),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick), FOREIGN KEY(`idTest`) REFERENCES test(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`opcionestest` (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`nombreOp`  TEXT NOT NULL);");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`nivel` (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`nNivel`  INTEGER NOT NULL);");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`img-test` (`idImg` INTEGER NOT NULL,`idTest`  INTEGER,PRIMARY KEY(idImg),FOREIGN KEY(`idImg`) REFERENCES imagen(id),FOREIGN KEY(`idTest`) REFERENCES test(id));");
@@ -380,41 +380,37 @@ angular.module('starter.services',[])
 
     },
     
-     storePregTest: function(estado){
+      storePregTest: function(estado){
 
-         var lists = [];
-         var checking = [];
-         
-         var query2 = "SELECT * FROM 'resuelve-test' WHERE nickUsuario = ? AND idTest = ?"
+        console.log(estado.idTest + " " + estado.esCorrecto);
+          
+         //var query2 = "SELECT * FROM 'resuelve-test' WHERE nickUsuario = ? AND idTest = ?"
          var query = "INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES('pepito', ?, ?)";
-         $cordovaSQLite.execute(db, query2, ["pepito", estado.idTest]).then(function(res){ //cambiar lo del usuario pepito
-            if(res.rows.length > 0){
-                console.log("Este test ya ha sido realizado por el alumno");
+         $cordovaSQLite.execute(db, query, [estado.idTest, estado.esCorrecto]);
 
-            }else{
-               
-                $cordovaSQLite.execute(db, query, [estado.idTest, estado.esCorrecto]).then(function(res){
-                    lists.push({nickUsuario: "pepito", idTest: estado.idTest, esAcierto: estado.esCorrecto});
-                })
-         
-                return true;
-            }
-
-        })
-         
-         
-        /* 
-         var query ="INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES('pepito', ?, ?)";
-
-         $cordovaSQLite.execute(db, query, [estado.idTest, estado.esCorrecto]).then(function(res){
-            lists.push({nickUsuario: "pepito", idTest: estado.idTest, esAcierto: estado.esCorrecto});
-         })
-         
-         return true;
-         */
-
+          return true;
+        
      },
      
+     loadIndex: function(idTema){
+
+               
+         var query = "SELECT max(numero) as maxi FROM test, 'resuelve-test' WHERE idTest = id AND test.idTema = ?"
+         $cordovaSQLite.execute(db, query, [idTema]).then(function(res){ //cambiar lo del usuario pepito
+           
+           var i; 
+           i= res.rows.item(0).maxi;
+
+           if(i == null)
+           {
+
+              i = 0;
+           }
+
+         console.log(i);
+         return i;
+        })         
+    },
 
       getAciertos: function(idTema) {
 

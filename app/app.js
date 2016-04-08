@@ -1,4 +1,4 @@
-	// Ionic Starter App
+  // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
@@ -119,18 +119,41 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
           controller: 'TestCtrl',
           resolve:{
             /*no tocar si no se entiende, preguntar a Gian */
-            listaPreguntas: function(Test, $rootScope, $q, $timeout){
+            PreguntasTest: function(Test, $rootScope, $q, $timeout)
+            {
 
               var deferred = $q.defer();
               var proceso = function(){
-              var list = Test.getPreguntasTest($rootScope.temaId);
+              var lista = Test.getPreguntasTest($rootScope.temaId);
+
               $timeout(function(){
-              deferred.resolve(list); }, 10);
+                deferred.resolve(lista)}, 10);
               }
               proceso();
               return deferred.promise;
 
             }
+
+            /*LoadIndex: function(Test, $rootScope, $q, $timeout){
+
+              var deferred = $q.defer();
+              
+              var proceso = function()
+              {
+                
+                var i = Test.loadIndex($rootScope.temaId);
+                $timeout(function(){
+                  console.log(i);
+                  deferred.resolve(0);
+                }, 10);
+
+              }
+              proceso();
+              return deferred.promise;
+
+            }*/
+
+
           }
         }
       }
@@ -201,6 +224,5 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
    });  
   $urlRouterProvider.otherwise('home');
 });
-
 
 

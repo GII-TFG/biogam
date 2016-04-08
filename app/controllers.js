@@ -3,24 +3,22 @@ angular.module('starter.controllers', [])
  
 
 
-.controller("ConfigCtrl", function($scope, $q, $state, DB, $state, $timeout, $cordovaProgress) {
+.controller("ConfigCtrl", function($scope, $q, $state, DB, $state, $timeout, $cordovaProgress, $rootScope, Test) {
 
    // $cordovaProgress.showSimpleWithLabel(true, "Loading")
     
     var createBD = function(){
          var deferred = $q.defer();
 
-         console.log("creamos la bd");
          DB.create();
          deferred.resolve();
 
          return deferred.promise;
     }
 
-       var insertValues = function(texto){
+       var insertValues = function(){
          var deferred = $q.defer();
 
-         console.log(texto);
          DB.insert_default_values();
          deferred.resolve();
 
@@ -37,12 +35,12 @@ angular.module('starter.controllers', [])
 
 .controller("HomeCtrl", function($rootScope,$scope, Temas ) {
 
-	 $scope.title = "Home";
+     $scope.title = "Home";
      $scope.temas = Temas.all();
 
      $scope.getTemaId = function(obj){
-		$rootScope.temaId = obj;
-	}
+        $rootScope.temaId = obj;
+    }
 })
 
 
@@ -52,8 +50,8 @@ angular.module('starter.controllers', [])
     $scope.nombreTema = Temas.get($rootScope.temaId);
     $scope.categorias = Categorias.getCategoriasTema($rootScope.temaId); 
     $scope.getCategoriaId = function(obj){
-		$rootScope.categoriaId = obj;
-	}
+        $rootScope.categoriaId = obj;
+    }
 
   
 })
@@ -61,72 +59,72 @@ angular.module('starter.controllers', [])
 .controller('TheoryCtrl', function($scope, $rootScope, TeoriaPorTema){
 
     $scope.title = "Theory";
-	$scope.listaTeoria = TeoriaPorTema.getTeoriaDeTema($rootScope.temaId);
+    $scope.listaTeoria = TeoriaPorTema.getTeoriaDeTema($rootScope.temaId);
 
-	$scope.getTheory = function(obj){      
-		$rootScope.chosenTheory = obj;
-	}
-	
+    $scope.getTheory = function(obj){      
+        $rootScope.chosenTheory = obj;
+    }
+    
 })
 
 .controller('CompleteTheoryCtrl', function($scope, $rootScope){
 
-	$scope.title = "Detail";
-	console.log("the focus is here in CompleteTheoryCtrl");
-    $scope.tit = $rootScope.chosenTheory.titulo;
+    $scope.title = "Detail";
+    console.log("the focus is here in CompleteTheoryCtrl");
+    $scope.tit = $rootScope.chosenTheory.title;
     $scope.texto = $rootScope.chosenTheory.texto;
 })
 
 //////////////////////// EXERCISES ///////////////////////////////////////////
 
 .controller('ExerCtrl', function($scope, $rootScope, NivelEjercicio){
-	
-	 $scope.title = "Exercises";
+    
+     $scope.title = "Exercises";
 
-	//me da todos los ejercicios de un tema sin tener en cuenta el nivel,
-	$scope.listaNiveles = NivelEjercicio.getTodosLosNiveles($rootScope.temaId);
-	
-	//obtenemos el id del nivel
-	$scope.getNivelId = function(obj){
-		$rootScope.nivelId = obj;
-		
-	}
+    //me da todos los ejercicios de un tema sin tener en cuenta el nivel,
+    $scope.listaNiveles = NivelEjercicio.getTodosLosNiveles($rootScope.temaId);
+    
+    //obtenemos el id del nivel
+    $scope.getNivelId = function(obj){
+        $rootScope.nivelId = obj;
+        
+    }
 })
 
 .controller('ExerListCtrl', function($scope, $rootScope, NivelEjercicio){
 
     $scope.title = "Level " + $rootScope.nivelId;
-	$scope.listaEjer = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);
+    $scope.listaEjer = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);
     $rootScope.getEjer = [];
     $scope.getEjer = function(obj){
-		$rootScope.getEjer = obj;
-		
-	}
+        $rootScope.getEjer = obj;
+        
+    }
 })
 
 .controller('LevelCtrl', function($scope, $rootScope, NivelEjercicio, $window, $ionicPopup){
-	
     
-	$scope.index = 0;
-	$scope.listaEjerPerTemaNivel = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);	
-	$scope.title = "Level " + $rootScope.nivelId;
+    
+    $scope.index = 0;
+    $scope.listaEjerPerTemaNivel = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);    
+    $scope.title = "Level " + $rootScope.nivelId;
     $scope.estadoDeJuego = {idEjer: $rootScope.getEjer.ejerId, numIntentos: 0 ,numFallos: 0};
 
-	$scope.prev = function(){
-		
-		$scope.index = $scope.index -1;
+    $scope.prev = function(){
+        
+        $scope.index = $scope.index -1;
 
-	}
+    }
 
-	$scope.next = function(){
-	
-        NivelEjercicio.storeEjercicio($scope.estadoDeJuego);	
-		$scope.index = $scope.index +1;
+    $scope.next = function(){
+    
+        NivelEjercicio.storeEjercicio($scope.estadoDeJuego);    
+        $scope.index = $scope.index +1;
         $scope.estadoDeJuego = {idEjer: $scope.listaEjerPerTemaNivel[$scope.index].id, numIntentos: 0 ,numFallos: 0};
-	
-	}
+    
+    }
 
-	$scope.boxShowAaxaa = false;
+    $scope.boxShowAaxaa = false;
     $scope.boxShowAaxAa = false;
     $scope.boxShowLethalgenes = false;
     $scope.boxShowA1A2xA1A2 = false;
@@ -514,40 +512,56 @@ angular.module('starter.controllers', [])
 
 //////////////////////// TEST ///////////////////////////////////////////
 
-.controller('TestCtrl', function($scope, $rootScope, $state,listaPreguntas, Test){
-    $scope.index = 0; //lo que me devuelva el estado
-    $scope.title = "Test";
+.controller('TestCtrl', function($scope, $q,$rootScope,$state,PreguntasTest, Test, $ionicSlideBoxDelegate)
+{   
 
-    $scope.listaPreguntas = listaPreguntas;
-   // console.log(listaPreguntas);
-    $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
+    $scope.lockSlide = function () 
+    {
+        $ionicSlideBoxDelegate.enableSlide( false );
+    }
 
-    
+     var carga = function()
+     {
+         var deferred = $q.defer();
+         $scope.index = 0; 
+         $scope.listaPreguntas = PreguntasTest;
+         deferred.resolve();
 
-    $scope.used=false;
+         return deferred.promise;
+    }
+
+    carga().then(function(){
+         $scope.title = "Test";
+         $scope.used=false; 
+         $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
+      
+
   
-   
-    $scope.next = function(){
-        
-         	
-	    $scope.estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto};
-        Test.storePregTest($scope.estadoDeTest);
+    $scope.nextSlide = function()
+    {
+        var estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto};
+        console.log(estadoDeTest.idTest);
+        Test.storePregTest(estadoDeTest);    
         
         $scope.used=false;
         
-        if($scope.index<listaPreguntas.length-1){
-            $scope.index = $scope.index + 1;
-            $scope.listaOpcionesPregunta = Test.getOpcionesTest(listaPreguntas[$scope.index].id);
+        if($scope.index<$scope.listaPreguntas.length-1)
+        {
+
+            $scope.index = $scope.index+ 1;
+            $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
         }else{
 
             console.log('Fin test');
             $state.go('home.categories.3.test-results');
-
              
         }
-    }
+    $ionicSlideBoxDelegate.next();
 
-    $scope.plot = function(state){
+  }
+
+    $scope.plot = function(state)
+    {
     
         if(!$scope.used){
 
@@ -583,6 +597,9 @@ angular.module('starter.controllers', [])
     }
     
     
+    });
+
+   
 
 })
 
@@ -594,7 +611,6 @@ angular.module('starter.controllers', [])
     $scope.fallos = Test.getFallos($rootScope.temaId);
     
     $scope.endTest = function (){
-        console.log('Fin test results');
         $state.go('home');
     }
 })
