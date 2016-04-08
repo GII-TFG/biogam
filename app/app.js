@@ -46,9 +46,10 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 /////////////////////////////////////// ESTADO INICIAL /////////////////////////////////////////////////
 
    .state('config', {
-     // templateUrl: 'app/templates/progress_bar.html',
+    templateUrl: 'app/templates/loading.html',
     controller: 'ConfigCtrl'
-   })
+   
+      })
    .state('scaffold', {
     abstract: true,
     templateUrl: "app/templates/scaffold.html"
@@ -117,6 +118,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
         'home-tab@tabs': {
           templateUrl: 'app/templates/test.html',
           controller: 'TestCtrl',
+          cache: false,
           resolve:{
             /*no tocar si no se entiende, preguntar a Gian */
             PreguntasTest: function(Test, $rootScope, $q, $timeout)

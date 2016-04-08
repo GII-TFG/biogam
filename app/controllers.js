@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
  
 
 
-.controller("ConfigCtrl", function($scope, $q, $state, DB, $state, $timeout, $cordovaProgress, $rootScope, Test) {
+.controller("ConfigCtrl", function($scope, $q, $state, DB,$timeout, $cordovaProgress, $rootScope, Test) {
 
    // $cordovaProgress.showSimpleWithLabel(true, "Loading")
     
@@ -26,8 +26,8 @@ angular.module('starter.controllers', [])
     }
 
      createBD().then(insertValues).then(function(){
-         $state.go('home');
-            /*$timeout(function(){$cordovaProgress.hide(); $state.go('home'); }, 3000);*/
+        
+        $timeout(function(){ $state.go('register'); }, 1000);
     })
 
 
@@ -515,6 +515,8 @@ angular.module('starter.controllers', [])
 .controller('TestCtrl', function($scope, $q,$rootScope,$state,PreguntasTest, Test, $ionicSlideBoxDelegate)
 {   
 
+    $scope.index = 0; 
+    
     $scope.lockSlide = function () 
     {
         $ionicSlideBoxDelegate.enableSlide( false );
@@ -523,8 +525,7 @@ angular.module('starter.controllers', [])
      var carga = function()
      {
          var deferred = $q.defer();
-         $scope.index = 0; 
-         $scope.listaPreguntas = PreguntasTest;
+        $scope.listaPreguntas = PreguntasTest;
          deferred.resolve();
 
          return deferred.promise;
@@ -540,7 +541,6 @@ angular.module('starter.controllers', [])
     $scope.nextSlide = function()
     {
         var estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto};
-        console.log(estadoDeTest.idTest);
         Test.storePregTest(estadoDeTest);    
         
         $scope.used=false;
@@ -552,7 +552,6 @@ angular.module('starter.controllers', [])
             $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
         }else{
 
-            console.log('Fin test');
             $state.go('home.categories.3.test-results');
              
         }
@@ -594,25 +593,15 @@ angular.module('starter.controllers', [])
         
         $scope.used = !$scope.used;   
 
-    }
-    
-    
+    } 
     });
-
-   
-
 })
-
-
 .controller("ScoreTestCtrl", function($rootScope, $scope, $state, Test) {
     $scope.index = 0;
     $scope.title = "Score";
     $scope.aciertos = Test.getAciertos($rootScope.temaId);
     $scope.fallos = Test.getFallos($rootScope.temaId);
     
-    $scope.endTest = function (){
-        $state.go('home');
-    }
 })
 
 //////////////////////// REGISTER ///////////////////////////////////////////
@@ -623,6 +612,7 @@ angular.module('starter.controllers', [])
     var user = [];
     
     $scope.getUserFields = function(nameU, nickU, passU){        
+        $rootScope.user = nickU;
         Register.signUpUser(nameU, nickU, passU);
     }
 
