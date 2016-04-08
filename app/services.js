@@ -17,7 +17,8 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS 'test' (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`enunciado` TEXT NOT NULL,`numero`  INTEGER NOT NULL,`idTema`  INTEGER NOT NULL, FOREIGN KEY(`idTema`) REFERENCES `tema`(`id`));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'teoria' (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`titulo`  TEXT NOT NULL,`texto` TEXT NOT NULL,`idTema`  INTEGER NOT NULL, FOREIGN KEY(`idTema`) REFERENCES tema(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'tema' (`id`  INTEGER NOT NULL,`name`  TEXT,  PRIMARY KEY(id));");
-      $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`resuelve-test` (`nickUsuario` INTEGER NOT NULL,`idTest`, INTEGER NOT NULL,`esAcierto` INTEGER NOT NULL, PRIMARY KEY(nickUsuario,idTest),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick), FOREIGN KEY(`idTest`) REFERENCES test(id));");
+      //$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`resuelve-test` (`nickUsuario` TEXT NOT NULL, `idTest`, INTEGER NOT NULL,`esAcierto` INTEGER NOT NULL, PRIMARY KEY(nickUsuario,idTest),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick), FOREIGN KEY(`idTest`) REFERENCES test(id));");
+       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`resuelve-test` (`nickUsuario` INTEGER NOT NULL,`idTest`  TEXT  NOT NULL,`esAcierto` INTEGER NOT NULL, PRIMARY KEY(nickUsuario,idTest),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick), FOREIGN KEY(`idTest`) REFERENCES test(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`opcionestest` (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`nombreOp`  TEXT NOT NULL);");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`nivel` (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`nNivel`  INTEGER NOT NULL);");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`img-test` (`idImg` INTEGER NOT NULL,`idTest`  INTEGER,PRIMARY KEY(idImg),FOREIGN KEY(`idImg`) REFERENCES imagen(id),FOREIGN KEY(`idTest`) REFERENCES test(id));");
@@ -239,7 +240,7 @@ angular.module('starter.services',[])
   };
 })
 
- .factory('NivelEjercicio', function($cordovaSQLite ) {
+ .factory('NivelEjercicio', function($cordovaSQLite, $rootScope ) {
   
 
 
@@ -299,9 +300,9 @@ angular.module('starter.services',[])
 
       
 
-      var query ="INSERT INTO 'hace-ejer' VALUES('pepito', ?, ?, ?)";
+      var query ="INSERT INTO 'hace-ejer' VALUES(?, ?, ?, ?)";
 
-        $cordovaSQLite.execute(db, query, [estado.idEjer, estado.numIntentos, estado.numFallos]).then(function(res){
+        $cordovaSQLite.execute(db, query, [$rootScope.user, estado.idEjer, estado.numIntentos, estado.numFallos]).then(function(res){
        
         })
 
@@ -312,7 +313,7 @@ angular.module('starter.services',[])
   };
 })
 
-.factory('Test', function($cordovaSQLite ) {
+.factory('Test', function($cordovaSQLite, $rootScope ) {
  
   
 
@@ -385,8 +386,8 @@ angular.module('starter.services',[])
         console.log(estado.idTest + " " + estado.esCorrecto);
           
          //var query2 = "SELECT * FROM 'resuelve-test' WHERE nickUsuario = ? AND idTest = ?"
-         var query = "INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES('pepito', ?, ?)";
-         $cordovaSQLite.execute(db, query, [estado.idTest, estado.esCorrecto]);
+         var query = "INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES(?, ?, ?)";
+         $cordovaSQLite.execute(db, query, [$rootScope.user, estado.idTest, estado.esCorrecto]);
 
           return true;
         

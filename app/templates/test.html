@@ -1,31 +1,21 @@
-<ion-view title="{{title}}">
-<<<<<<< HEAD
+
+<ion-view cache-view="false" title="{{title}}">
+
     <ion-content class="main_container80">
-       
-=======
-    <ion-content class="padding">
      
        <ion-slide-box ng-init="lockSlide()">
           
        	<ion-slide ng-repeat="pregunta in listaPreguntas">
                     
           <div class="slide-animate" ng-include="'app/templates/_body_test.html'"></div>
->>>>>>> 53f87ba1685766365e0b74d87e2b667482aa6f20
 
           <div><button ng-click="nextSlide()" ng-disabled="!used">Next</button></div>
 
-<<<<<<< HEAD
-        </div>
-       
-        <a class="button icon-right ion-chevron-right button-dark"  ng-show="used" ng-click="next()">Next</a>
-             
-=======
         </slide>
 		  
 
 		</ion-slide-box>
      
->>>>>>> 53f87ba1685766365e0b74d87e2b667482aa6f20
     </ion-content>
 
 </ion-view>
