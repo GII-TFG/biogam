@@ -1,35 +1,27 @@
 
 angular.module('starter.controllers', [])
  
+.controller("ConfigCtrl", function($scope, $q, $state, DB,$timeout, $rootScope, Test) {
 
+     
 
-.controller("ConfigCtrl", function($scope, $q, $state, DB,$timeout, $cordovaProgress, $rootScope, Test) {
-
-   // $cordovaProgress.showSimpleWithLabel(true, "Loading")
-    
-    var createBD = function(){
+    var createBD = function(ok){
          var deferred = $q.defer();
-
          DB.create();
          deferred.resolve();
-
          return deferred.promise;
-    }
+    };
 
-       var insertValues = function(){
-         var deferred = $q.defer();
-
-         DB.insert_default_values();
-         deferred.resolve();
-
-         return deferred.promise;
-    }
-
-     createBD().then(insertValues).then(function(){
+    createBD().then(function(){
         
+         var deferred = $q.defer();
+ 
         $timeout(function(){ $state.go('register'); }, 1000);
-    })
+       
+        deferred.resolve();
 
+         return deferred.promise;
+    })
 
 })
 
@@ -61,19 +53,22 @@ angular.module('starter.controllers', [])
     $scope.title = "Theory";
     $scope.listaTeoria = TeoriaPorTema.getTeoriaDeTema($rootScope.temaId);
 
-    $scope.getTheory = function(obj){      
-        $rootScope.chosenTheory = obj;
-    }
-    
+    $scope.getTheory = function(index){      
+        $rootScope.chosenTheory = index;
+        $rootScope.listaTeoria = $scope.listaTeoria
+    }    
 })
 
-.controller('CompleteTheoryCtrl', function($scope, $rootScope){
+.controller('CompleteTheoryCtrl', function($scope, $rootScope,  $ionicSlideBoxDelegate){
 
     $scope.title = "Detail";
-    console.log("the focus is here in CompleteTheoryCtrl");
-    $scope.tit = $rootScope.chosenTheory.title;
-    $scope.texto = $rootScope.chosenTheory.texto;
-})
+    var index = $rootScope.chosenTheory;
+    $scope.indexSlide = function(){
+         $ionicSlideBoxDelegate.slide(index)
+    }
+    $scope.listaTeoria = $rootScope.listaTeoria;
+    
+    })
 
 //////////////////////// EXERCISES ///////////////////////////////////////////
 

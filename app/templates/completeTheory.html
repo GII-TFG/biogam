@@ -2,10 +2,17 @@
 
     <ion-content class="main_container">
         <!--Cambiado-->
+
+       <ion-slide-box ng-init="indexSlide()">
+       	<ion-slide ng-repeat="teoria in listaTeoria">
         <div class="detalleTeoria">
-        	<h1 class="tituloTeoria"> {{tit}} </h1>
+        	<h1 class="tituloTeoria"> {{teoria.titulo}} </h1>
         	<hr>
-        	<p class = "textoTeoria"> {{texto}} </p>
-        </div>         
+        	<p class = "textoTeoria"> {{teoria.texto}} </p>
+        </div>
+        </slide>    
+       </ion-slide-box>     
     </ion-content>
 </ion-view>  
+
+

@@ -5,6 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic','starter.controllers','starter.services' , 'ngCordova' ])
 
+.constant('INFO_DB',{ //nombre y version de la bd que estamos usando
+  NAME: "biogamdb",
+  VERSION: "1",
+})
+
 .run(function($ionicPlatform, $state) {
 
 

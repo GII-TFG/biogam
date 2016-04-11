@@ -2,10 +2,8 @@
 
     <ion-content class="main_container">
         <ol class="list-custom">
-             <li class="animated bounceInLeft list-item" item-icon-right ng-repeat="teoria in listaTeoria" ui-sref='home.categories.1.detail' ng-click="getTheory(teoria)">
-               <!-- {{teoria.id}}--> 
-               <!--
-               <p class ="text_button_theory">{{teoria.titulo}}</p>-->
+             <li class="animated bounceInLeft list-item" item-icon-right ng-repeat="teoria in listaTeoria" ui-sref='home.categories.1.detail' ng-click="getTheory($index)">
+
                {{teoria.titulo}}
 
             </button>
