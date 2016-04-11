@@ -1,22 +1,33 @@
 
 angular.module('starter.controllers', [])
  
-.controller("ConfigCtrl", function($scope, $q, $state, DB,$timeout, $rootScope, Test) {
+.controller("ConfigCtrl", function($scope, $q, $state, DB,$timeout, User, $rootScope, Test) {
 
-     
-
-    var createBD = function(ok){
+    var createBD = function(){
          var deferred = $q.defer();
          DB.create();
          deferred.resolve();
          return deferred.promise;
     };
 
-    createBD().then(function(){
-        
+    var loadUser = function(){
          var deferred = $q.defer();
- 
-        $timeout(function(){ $state.go('register'); }, 1000);
+         User.load();
+         deferred.resolve();
+         return deferred.promise;
+    }
+
+    createBD().then(loadUser).then(function(){
+        
+        var deferred = $q.defer();
+
+        $timeout(function(){ if(angular.isUndefined($rootScope.user)){
+            console.log("indefinido");
+            $timeout(function(){ $state.go('register'); }, 1000);
+        }else{
+            console.log("definido");
+            $timeout(function(){ $state.go('home'); }, 1000);
+        }; }, 1000);
        
         deferred.resolve();
 
@@ -47,7 +58,7 @@ angular.module('starter.controllers', [])
 
   
 })
-////////////////////////// TEORIA //////////////////////////////////////////////////
+/***************************************TEORIA************************************************/
 .controller('TheoryCtrl', function($scope, $rootScope, TeoriaPorTema){
 
     $scope.title = "Theory";
@@ -70,7 +81,7 @@ angular.module('starter.controllers', [])
     
     })
 
-//////////////////////// EXERCISES ///////////////////////////////////////////
+/***************************************EXERCISES************************************************/
 
 .controller('ExerCtrl', function($scope, $rootScope, NivelEjercicio){
     
@@ -505,7 +516,7 @@ angular.module('starter.controllers', [])
         }
 })
 
-//////////////////////// TEST ///////////////////////////////////////////
+/***************************************TEST************************************************/
 
 .controller('TestCtrl', function($scope, $q,$rootScope,$state,PreguntasTest, Test, $ionicSlideBoxDelegate)
 {   
@@ -599,7 +610,7 @@ angular.module('starter.controllers', [])
     
 })
 
-//////////////////////// REGISTER ///////////////////////////////////////////
+/***************************************REGISTER************************************************/
 
 .controller("RegisterCtrl", function($rootScope,$scope, Register) {
 

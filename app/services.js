@@ -111,18 +111,19 @@ angular.module('starter.services',[])
 
   };
 })
-.factory('Usuario', function($cordovaSQLite, $rootScope) {
+.factory('User', function($cordovaSQLite, $rootScope) {
 
    return {
-
+    /*Precondicion: en cada dispostivo hay un solo usuario*/
     load: function(){
 
-    },
-
-    store: function(){
-      
-    }
-
+    $cordovaSQLite.execute(db, "SELECT nick FROM 'usuario'", []).then(function(res){
+    if(res.rows.length > 0)
+    {
+      $rootScope.user=res.rows.item(0).nick  
+      console.log($rootScope.user); 
+    }});
+   }
    };
 })
 
