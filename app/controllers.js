@@ -1,7 +1,7 @@
 
 angular.module('starter.controllers', [])
  
-.controller("ConfigCtrl", function($scope, $q, $state, DB,$timeout, User, $rootScope, Test) {
+.controller("ConfigCtrl", function($scope, $q, $state, DB,$timeout, User, $rootScope) {
 
     var createBD = function(){
          var deferred = $q.defer();
@@ -16,6 +16,7 @@ angular.module('starter.controllers', [])
          deferred.resolve();
          return deferred.promise;
     }
+
 
     createBD().then(loadUser).then(function(){
         
@@ -36,33 +37,61 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("HomeCtrl", function($rootScope,$scope, Temas ) {
+.controller("HomeCtrl", function($rootScope,$scope, Temas, Test, TeoriaPorTema, NivelEjercicio ) {
 
      $scope.title = "Home";
      $scope.temas = Temas.all();
 
+
      $scope.getTemaId = function(obj){
+      
+      if($rootScope.temaId != obj){
         $rootScope.temaId = obj;
+        $rootScope.test = Test.getPreguntasTest(obj);
+        $rootScope.theory = TeoriaPorTema.getTeoriaDeTema(obj);
+        $rootScope.excercises = NivelEjercicio.getTodosLosNiveles($rootScope.temaId)
+     }
+        Test.loadIndex(obj);
     }
 })
 
 
-.controller('CategoriesCtrl', function($rootScope, $scope,  Categorias, Temas){
-    
+.controller('CategoriesCtrl', function($rootScope, $scope,$state,  Categorias, Temas, Test, TeoriaPorTema){
+    /*
+      1.-Theory
+      2.-Exercises
+      3.-Test
+    */
     $scope.title = "Categories";
     $scope.nombreTema = Temas.get($rootScope.temaId);
     $scope.categorias = Categorias.getCategoriasTema($rootScope.temaId); 
     $scope.getCategoriaId = function(obj){
+        
+        if(obj == 3){
+                
+            if($rootScope.index == $rootScope.test.length){
+                 $state.go('home.categories.3.test-results');
+            }else{            
+                $state.go('home.categories.3');
+            }
+        }else if(obj == 2){
+             $state.go('home.categories.2');
+
+        }else if(obj == 1){
+             $state.go('home.categories.1');
+
+        }
+
         $rootScope.categoriaId = obj;
     }
 
   
 })
 /***************************************TEORIA************************************************/
-.controller('TheoryCtrl', function($scope, $rootScope, TeoriaPorTema){
+.controller('TheoryCtrl', function($scope, $rootScope){
 
     $scope.title = "Theory";
-    $scope.listaTeoria = TeoriaPorTema.getTeoriaDeTema($rootScope.temaId);
+    $scope.listaTeoria = $rootScope.theory;
 
     $scope.getTheory = function(index){      
         $rootScope.chosenTheory = index;
@@ -83,12 +112,12 @@ angular.module('starter.controllers', [])
 
 /***************************************EXERCISES************************************************/
 
-.controller('ExerCtrl', function($scope, $rootScope, NivelEjercicio){
+.controller('ExerCtrl', function($scope, $rootScope){
     
      $scope.title = "Exercises";
 
     //me da todos los ejercicios de un tema sin tener en cuenta el nivel,
-    $scope.listaNiveles = NivelEjercicio.getTodosLosNiveles($rootScope.temaId);
+    $scope.listaNiveles = $rootScope.excercises;
     
     //obtenemos el id del nivel
     $scope.getNivelId = function(obj){
@@ -518,11 +547,13 @@ angular.module('starter.controllers', [])
 
 /***************************************TEST************************************************/
 
-.controller('TestCtrl', function($scope, $q,$rootScope,$state,PreguntasTest, Test, $ionicSlideBoxDelegate)
+.controller('TestCtrl', function($scope, $state, $q,$rootScope,$state, Test, $ionicSlideBoxDelegate)
 {   
 
-    $scope.index = 0; 
+    $scope.index = $rootScope.index; 
+    console.log($scope.index);
     
+
     $scope.lockSlide = function () 
     {
         $ionicSlideBoxDelegate.enableSlide( false );
@@ -531,29 +562,28 @@ angular.module('starter.controllers', [])
      var carga = function()
      {
          var deferred = $q.defer();
-        $scope.listaPreguntas = PreguntasTest;
+         $scope.listaPreguntas = $rootScope.test;
          deferred.resolve();
 
          return deferred.promise;
     }
 
     carga().then(function(){
+          if($scope.index==$scope.listaPreguntas.length){
+          $state.go('home.categories.3.test-results');
+    }
          $scope.title = "Test";
          $scope.used=false; 
          $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
-      
-
   
     $scope.nextSlide = function()
     {
-        var estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto};
-        Test.storePregTest(estadoDeTest);    
-        
+        var estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto}; 
+        Test.storePregTest(estadoDeTest);  
         $scope.used=false;
         
         if($scope.index<$scope.listaPreguntas.length-1)
         {
-
             $scope.index = $scope.index+ 1;
             $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
         }else{
@@ -603,7 +633,7 @@ angular.module('starter.controllers', [])
     });
 })
 .controller("ScoreTestCtrl", function($rootScope, $scope, $state, Test) {
-    $scope.index = 0;
+    $scope.index = $rootScope.index;
     $scope.title = "Score";
     $scope.aciertos = Test.getAciertos($rootScope.temaId);
     $scope.fallos = Test.getFallos($rootScope.temaId);

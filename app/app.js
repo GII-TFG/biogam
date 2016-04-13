@@ -85,7 +85,27 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
     views: {
         'home-tab@tabs': { //remember @ choose the state to go
           templateUrl: 'app/templates/page2TET.html',
-          controller: 'CategoriesCtrl'   
+          controller: 'CategoriesCtrl'/*,
+          resolve:{
+           
+            LoadIndex: function(Test, $rootScope, $q, $timeout)
+            {
+
+              var deferred = $q.defer();
+              var proceso = function(){
+
+                console.log("ejecutamos load index");
+              Test.loadIndex($rootScope.temaId);
+
+              $timeout(function(){
+                deferred.resolve()}, 25);
+              }
+              proceso();
+              return deferred.promise;
+
+            }
+
+          } */
         }
       }
     })
@@ -123,9 +143,9 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
         'home-tab@tabs': {
           templateUrl: 'app/templates/test.html',
           controller: 'TestCtrl',
-          cache: false,
-          resolve:{
-            /*no tocar si no se entiende, preguntar a Gian */
+          cache: false
+          /*resolve:{
+           
             PreguntasTest: function(Test, $rootScope, $q, $timeout)
             {
 
@@ -141,27 +161,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
             }
 
-            /*LoadIndex: function(Test, $rootScope, $q, $timeout){
-
-              var deferred = $q.defer();
-              
-              var proceso = function()
-              {
-                
-                var i = Test.loadIndex($rootScope.temaId);
-                $timeout(function(){
-                  console.log(i);
-                  deferred.resolve(0);
-                }, 10);
-
-              }
-              proceso();
-              return deferred.promise;
-
-            }*/
-
-
-          }
+          }*/
         }
       }
     })

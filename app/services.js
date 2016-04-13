@@ -370,9 +370,6 @@ angular.module('starter.services',[])
     }, 
       
 
-
-
-
      getOpcionesTest: function(idTest) {
 
       var getOpsTest = [];
@@ -401,9 +398,6 @@ angular.module('starter.services',[])
     
       storePregTest: function(estado){
 
-        console.log(estado.idTest + " " + estado.esCorrecto);
-          
-         //var query2 = "SELECT * FROM 'resuelve-test' WHERE nickUsuario = ? AND idTest = ?"
          var query = "INSERT INTO 'resuelve-test'(nickUsuario, idTest, esAcierto) VALUES(?, ?, ?)";
          $cordovaSQLite.execute(db, query, [$rootScope.user, estado.idTest, estado.esCorrecto]);
 
@@ -412,23 +406,19 @@ angular.module('starter.services',[])
      },
      
      loadIndex: function(idTema){
-
-               
+         var i;
          var query = "SELECT max(numero) as maxi FROM test, 'resuelve-test' WHERE idTest = id AND test.idTema = ?"
          $cordovaSQLite.execute(db, query, [idTema]).then(function(res){ //cambiar lo del usuario pepito
-           
-           var i; 
-           i= res.rows.item(0).maxi;
+           i = res.rows.item(0).maxi;
+        if(i != null){
+        
+         $rootScope.index = i;
+       }else{
 
-           if(i == null)
-           {
-
-              i = 0;
-           }
-
-         console.log(i);
-         return i;
-        })         
+          $rootScope.index = 0;
+         }
+        })
+            return true;        
     },
 
       getAciertos: function(idTema) {
