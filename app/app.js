@@ -134,7 +134,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
               var lista = Test.getPreguntasTest($rootScope.temaId);
 
               $timeout(function(){
-                deferred.resolve(lista)}, 10);
+                deferred.resolve(lista)}, 15);
               }
               proceso();
               return deferred.promise;
