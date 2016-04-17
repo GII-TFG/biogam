@@ -112,7 +112,7 @@ angular.module('starter.controllers', [])
 
 /***************************************EXERCISES************************************************/
 
-.controller('ExerCtrl', function($scope, $rootScope){
+.controller('ExerCtrl', function($scope, $rootScope, NivelEjercicio){
     
      $scope.title = "Exercises";
 
@@ -122,6 +122,7 @@ angular.module('starter.controllers', [])
     //obtenemos el id del nivel
     $scope.getNivelId = function(obj){
         $rootScope.nivelId = obj;
+        $rootScope.nivelEjer = NivelEjercicio.byTema($rootScope.temaId, obj);
         
     }
 })
@@ -133,30 +134,28 @@ angular.module('starter.controllers', [])
     $rootScope.getEjer = [];
     $scope.getEjer = function(obj){
         $rootScope.getEjer = obj;
-        
+               
     }
 })
 
-.controller('LevelCtrl', function($scope, $rootScope, NivelEjercicio, $window, $ionicPopup){
+.controller('LevelCtrl', function($scope, $rootScope, $ionicSlideBoxDelegate, $window, $ionicPopup){
     
     
-    $scope.index = 0;
-    $scope.listaEjerPerTemaNivel = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);    
+    var index = $rootScope.getEjer.ejerId;
+    $scope.listaEjerPerTemaNivel =  $rootScope.nivelEjer;    
     $scope.title = "Level " + $rootScope.nivelId;
-    $scope.estadoDeJuego = {idEjer: $rootScope.getEjer.ejerId, numIntentos: 0 ,numFallos: 0};
+    $scope.estadoDeJuego = {idEjer: index, numIntentos: 0 ,numFallos: 0};
 
-    $scope.prev = function(){
-        
-        $scope.index = $scope.index -1;
-
+     $scope.initSlide = function () 
+    {
+        $ionicSlideBoxDelegate.slide(index)
     }
 
-    $scope.next = function(){
-    
-        NivelEjercicio.storeEjercicio($scope.estadoDeJuego);    
-        $scope.index = $scope.index +1;
-        $scope.estadoDeJuego = {idEjer: $scope.listaEjerPerTemaNivel[$scope.index].id, numIntentos: 0 ,numFallos: 0};
-    
+    $scope.index = function(){
+
+        index = $ionicSlideBoxDelegate.currentIndex()+1;
+
+        return index;
     }
 
     $scope.boxShowAaxaa = false;
@@ -551,9 +550,7 @@ angular.module('starter.controllers', [])
 {   
 
     $scope.index = $rootScope.index; 
-    console.log($scope.index);
-    
-
+ 
     $scope.lockSlide = function () 
     {
         $ionicSlideBoxDelegate.enableSlide( false );

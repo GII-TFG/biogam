@@ -296,7 +296,7 @@ angular.module('starter.services',[])
 
       var lista=[];
 
-      var query ="SELECT id, enunciado FROM ejercicio WHERE idTema = ? and nivel = ?";
+      var query ="SELECT id, enunciado FROM ejercicio WHERE idTema = ? and nivel = ? ORDER BY id";
 
         $cordovaSQLite.execute(db, query, [temaId, nivelId]).then(function(res){
         console.log(res.rows.length );
@@ -305,8 +305,6 @@ angular.module('starter.services',[])
           for(var i = 0; i<res.rows.length ; i++){
             lista.push({ejerId: res.rows.item(i).id, enunciado: res.rows.item(i).enunciado });
           }
-
-          
 
         }else{
 
