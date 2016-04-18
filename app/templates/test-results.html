@@ -5,23 +5,26 @@
             <!--ul class="list-custom">
                 <li class="animated bounceInLeft list-item" item-icon-right ng-repeat="score in scores" ui-sref='home.categories.3.test-results'-->
                     <label class="item item-input" id="questions">
-                        Questions: {{aciertos[index].ac + fallos[index].fa}}
+                        Questions: {{aciertos + fallos}}
                     </label>
 
                     <label class="item item-input" id="correctAnswers">
-                        Correct Answers: {{aciertos[index].ac}}
+                        Correct Answers: {{aciertos}}
                     </label>
 
                     <label class="item item-input" id="incorrectAnswers">
-                        Wrong Answers: {{fallos[index].fa}}
+                        Wrong Answers: {{fallos}}
                     </label>
 
                     <label class="item item-input" id="total">
-                        Mark: {{(aciertos[index].ac * 10)/(aciertos[index].ac + fallos[index].fa)}}
+                        Mark: {{((aciertos*10)/(aciertos + fallos))}}
                     </label>    
                 <!--/li>
             </ul-->
         </div>
+          <button class="item" ng-click='showTest()'>
+                View Test
+        </button>
         <button class="item" ui-sref='home'>
                 Ok
         </button>

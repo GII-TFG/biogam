@@ -410,10 +410,10 @@ angular.module('starter.services',[])
            i = res.rows.item(0).maxi;
         if(i != null){
         
-         $rootScope.index = i;
+         $rootScope.index.test = i;
        }else{
 
-          $rootScope.index = 0;
+          $rootScope.index.test = 0;
          }
         })
             return true;        
@@ -422,56 +422,26 @@ angular.module('starter.services',[])
       getAciertos: function(idTema) {
 
 
-        var score = [];
-
         var queryAciertos ="SELECT count (idTest) As aciertos FROM test, 'resuelve-test'  WHERE idTest = id AND esAcierto = 1 AND idTema = ?";
 
         $cordovaSQLite.execute(db, queryAciertos, [idTema]).then(function(res){
 
-       
-            if(res.rows.length > 0){
-
-                for(var i = 0; i<res.rows.length ; i++){
-                    score.push({ac: res.rows.item(i).aciertos});
-                }
-
-            }else{
-                score.push({ac:0});
-
-                  //  console.log(res.rows.item(i).aciertos);
-                    score.push({aciertos: res.rows.item(i).aciertos});
-                }
-
+              $rootScope.results.test.aciertos = res.rows.item(0).aciertos;
+              console.log("aciertos: " + $rootScope.results.test.aciertos);
+             
         })
-
-        console.log("aciertos: " + score);
-        return score;
-
-    },
+         return true; 
+       },
       
     getFallos: function(idTema) {
 
-        var score = [];
         var queryFallos ="SELECT count (idTest) As fallos FROM test, 'resuelve-test'  WHERE idTest = id AND esAcierto = 0 AND idTema = ?";
      
         $cordovaSQLite.execute(db, queryFallos, [idTema]).then(function(res){
-       
-            if(res.rows.length > 0){
-
-                for(var i = 0; i<res.rows.length ; i++){
-                    score.push({fa: res.rows.item(i).fallos});
-                    
-                }
-
-            }else{
-                score = 0;
-                //console.log("Not found results");
-            }
-
-        })        
-        console.log("fallos: " + score);
-        return score;
-
+          $rootScope.results.test.fallos = res.rows.item(0).fallos;
+          console.log("fallos: " + $rootScope.results.test.fallos);
+        }) 
+        return true;      
     }
       
   };

@@ -3,6 +3,9 @@ angular.module('starter.controllers', [])
  
 .controller("ConfigCtrl", function($scope, $q, $state, DB,$timeout, User, $rootScope) {
 
+    $rootScope.index = {test:0 , excercises:0, theory:0};
+    $rootScope.results = {test:{aciertos:0, fallos:0} , excercises:{aciertos:0, fallos:0}, theory:0};
+
     var createBD = function(){
          var deferred = $q.defer();
          DB.create();
@@ -22,11 +25,9 @@ angular.module('starter.controllers', [])
         
         var deferred = $q.defer();
 
-        $timeout(function(){ if(angular.isUndefined($rootScope.user)){
-            console.log("indefinido");
+        $timeout(function(){ if(angular.isUndefined($rootScope.user)){  
             $timeout(function(){ $state.go('register'); }, 1000);
         }else{
-            console.log("definido");
             $timeout(function(){ $state.go('home'); }, 1000);
         }; }, 1000);
        
@@ -56,7 +57,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('CategoriesCtrl', function($rootScope, $scope,$state,  Categorias, Temas, Test, TeoriaPorTema){
+.controller('CategoriesCtrl', function($rootScope, $timeout, $scope,$state,  Categorias, Temas, Test, TeoriaPorTema){
     /*
       1.-Theory
       2.-Exercises
@@ -67,22 +68,26 @@ angular.module('starter.controllers', [])
     $scope.categorias = Categorias.getCategoriasTema($rootScope.temaId); 
     $scope.getCategoriaId = function(obj){
         
+        $rootScope.categoriaId = obj;
         if(obj == 3){
+         $rootScope.showTest = false; //muestra los test resueltos
+            if($rootScope.index.test == $rootScope.test.length){
+                Test.getAciertos($rootScope.temaId);
+                Test.getFallos($rootScope.temaId);
+                $timeout(function(){ $state.go('home.categories.3.test-results');}, 15);
                 
-            if($rootScope.index == $rootScope.test.length){
-                 $state.go('home.categories.3.test-results');
             }else{            
-                $state.go('home.categories.3');
+                 $timeout(function(){ $state.go('home.categories.3');}, 15);
             }
         }else if(obj == 2){
              $state.go('home.categories.2');
+              $timeout(function(){$state.go('home.categories.2');}, 15);
 
         }else if(obj == 1){
-             $state.go('home.categories.1');
+
+              $timeout(function(){$state.go('home.categories.1');}, 15);
 
         }
-
-        $rootScope.categoriaId = obj;
     }
 
   
@@ -148,7 +153,7 @@ angular.module('starter.controllers', [])
 
      $scope.initSlide = function () 
     {
-        $ionicSlideBoxDelegate.slide(index)
+        $ionicSlideBoxDelegate.slide(index-1);
     }
 
     $scope.index = function(){
@@ -549,7 +554,11 @@ angular.module('starter.controllers', [])
 .controller('TestCtrl', function($scope, $state, $q,$rootScope,$state, Test, $ionicSlideBoxDelegate)
 {   
 
-    $scope.index = $rootScope.index; 
+    if($rootScope.showTest){
+         $scope.index = 0;
+    }else{
+        $scope.index = $rootScope.index.test;
+    } 
  
     $scope.lockSlide = function () 
     {
@@ -629,11 +638,16 @@ angular.module('starter.controllers', [])
     } 
     });
 })
-.controller("ScoreTestCtrl", function($rootScope, $scope, $state, Test) {
-    $scope.index = $rootScope.index;
+.controller("ScoreTestCtrl", function($rootScope, $scope, $state) {
     $scope.title = "Score";
-    $scope.aciertos = Test.getAciertos($rootScope.temaId);
-    $scope.fallos = Test.getFallos($rootScope.temaId);
+    $scope.aciertos = $rootScope.results.test.aciertos ;
+              console.log("aciertos: " + $scope.aciertos);
+    $scope.fallos = $rootScope.results.test.fallos;
+              console.log("fallos: " + $scope.fallos);
+
+     $scope.showTest = function(){        
+        $rootScope.showTest = true;
+    }
     
 })
 
