@@ -21,7 +21,7 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`img-teoria` (`idImg` INTEGER NOT NULL,`idTeoria`  INTEGER NOT NULL,PRIMARY KEY(idImg,idTeoria),FOREIGN KEY(`idImg`) REFERENCES imagen(id),FOREIGN KEY(`idTeoria`) REFERENCES teoria(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`img-ejer` (`idImg` INTEGER NOT NULL,`idEj`  INTEGER NOT NULL,PRIMARY KEY(idImg,idEj),FOREIGN KEY(`idImg`) REFERENCES imagen(id),FOREIGN KEY(`idEj`) REFERENCES ejercicio(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`imagen` (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`imagen`  BLOB);");
-      $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'hace-ejer' (`nickUsuario` TEXT NOT NULL,`idEjer` INTEGER NOT NULL,`numIntentos` INTEGER,`numFallos` INTEGER, PRIMARY KEY(nickUsuario,idEjer),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick),FOREIGN KEY(`idEjer`) REFERENCES ejercicio(id));");
+      $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'resuelve-ejer' (`nickUsuario` TEXT NOT NULL,`idEjer` INTEGER NOT NULL,`esAcierto` INTEGER, PRIMARY KEY(nickUsuario,idEjer),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick),FOREIGN KEY(`idEjer`) REFERENCES ejercicio(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'ejercicio' (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`enunciado` TEXT NOT NULL,`nivel` INTEGER NOT NULL,`idTema`  INTEGER,FOREIGN KEY(`nivel`) REFERENCES nivel(id),FOREIGN KEY(`idTema`) REFERENCES `tema`(`id`));");
       
   };
@@ -123,6 +123,15 @@ angular.module('starter.services',[])
       $rootScope.user=res.rows.item(0).nick  
       console.log($rootScope.user); 
     }});
+   }
+   };
+})
+
+.factory('Score_exercises', function() {
+
+   return {
+    define_tam: function(tam){
+      return new Array(tam);   
    }
    };
 })
@@ -270,14 +279,14 @@ angular.module('starter.services',[])
   return {
     getTodosLosNiveles: function(temaId) {
     var niveles = [];
-    var query ="SELECT DISTINCT nivel FROM ejercicio WHERE idTema = ?";
+    var query ="SELECT DISTINCT nivel, count(nivel) as size FROM ejercicio WHERE idTema = ? Group by nivel";
  
     $cordovaSQLite.execute(db, query, [temaId]).then(function(res){
 
         if(res.rows.length > 0){
 
           for(var i = 0; i<res.rows.length ; i++){
-            niveles.push({nivel: res.rows.item(i).nivel});
+            niveles.push({nivel: res.rows.item(i).nivel, size: res.rows.item(i).size });
           }
 
         }else{
@@ -321,7 +330,7 @@ angular.module('starter.services',[])
 
       
 
-    var query ="INSERT INTO 'hace-ejer' VALUES(?, ?, ?, ?)";
+    var query ="INSERT INTO 'resuelve-ejer' VALUES(?, ?, ?, ?)";
     $cordovaSQLite.execute(db, query, [$rootScope.user, estado.idEjer, estado.numIntentos, estado.numFallos]);
     return true;
 
@@ -430,7 +439,7 @@ angular.module('starter.services',[])
               console.log("aciertos: " + $rootScope.results.test.aciertos);
              
         })
-         return true; 
+        return true; 
        },
       
     getFallos: function(idTema) {
