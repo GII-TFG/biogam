@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("HomeCtrl", function($rootScope,$scope, Temas, Test, TeoriaPorTema, NivelEjercicio ) {
+.controller("HomeCtrl", function($rootScope,$scope, Temas, Test, Theory, Exercises) {
 
      $scope.title = "Home";
      $scope.temas = Temas.all();
@@ -49,15 +49,15 @@ angular.module('starter.controllers', [])
       if($rootScope.temaId != obj){
         $rootScope.temaId = obj;
         $rootScope.test = Test.getPreguntasTest(obj);
-        $rootScope.theory = TeoriaPorTema.getTeoriaDeTema(obj);
-        $rootScope.excercises = NivelEjercicio.getTodosLosNiveles($rootScope.temaId)
+        $rootScope.theory = Theory.getTeoriaDeTema(obj);
+        $rootScope.excercises = Exercises.getTodosLosNiveles($rootScope.temaId)
      }
         Test.loadIndex(obj);
     }
 })
 
 
-.controller('CategoriesCtrl', function($rootScope, $timeout, $scope,$state,  Categorias, Temas, Test, TeoriaPorTema){
+.controller('CategoriesCtrl', function($rootScope, $timeout, $scope,$state,  Categorias, Temas, Test, Theory){
     /*
       1.-Theory
       2.-Exercises
@@ -76,7 +76,9 @@ angular.module('starter.controllers', [])
                 Test.getFallos($rootScope.temaId);
                 $timeout(function(){ $state.go('home.categories.3.test-results');}, 15);
                 
-            }else{            
+            }else{ 
+
+                 $scope.listaEjer = Exercises.by_tema_nivel($rootScope.temaId, $rootScope.nivelId);           
                  $timeout(function(){ $state.go('home.categories.3');}, 15);
             }
         }else if(obj == 2){
@@ -117,26 +119,26 @@ angular.module('starter.controllers', [])
 
 /***************************************EXERCISES************************************************/
 
-.controller('ExerCtrl', function($scope, $rootScope, NivelEjercicio, Score_exercises){
+.controller('ExerCtrl', function($scope, $rootScope, Exercises, Score_exercises){
     
      $scope.title = "Exercises";
 
-    //me da todos los ejercicios de un tema sin tener en cuenta el nivel,
     $scope.listaNiveles = $rootScope.excercises;
-    $scope.range= function(tam){
+    /*definimos el score que tendra cada nivel */
+    $scope.score= function(tam){
        return Score_exercises.define_tam(tam);
     }
-    //obtenemos el id del nivel
+
     $scope.getNivelId = function(obj){
         $rootScope.nivelId = obj;
-        $rootScope.nivelEjer = NivelEjercicio.byTema($rootScope.temaId, obj);      
+        $rootScope.nivelEjer = Exercises.byTema($rootScope.temaId, obj);      
     }
 })
 
-.controller('ExerListCtrl', function($scope, $rootScope, NivelEjercicio, Score_exercises){
+.controller('ExerListCtrl', function($scope, $rootScope, Exercises, Score_exercises){
    
     $scope.title = "Level " + $rootScope.nivelId;
-    $scope.listaEjer = NivelEjercicio.byTema($rootScope.temaId, $rootScope.nivelId);
+    $scope.listaEjer = Exercises.byTema($rootScope.temaId, $rootScope.nivelId);
     $rootScope.getEjer = [];
     $scope.getEjer = function(obj){
         $rootScope.getEjer = obj;
@@ -554,6 +556,10 @@ angular.module('starter.controllers', [])
 
 .controller('TestCtrl', function($scope, $state, $q,$rootScope,$state, Test, $ionicSlideBoxDelegate)
 {   
+    var aciertos=0;
+    var fallos=0;
+    var opEsCorrecto;
+    var estadoDeTest;
 
     if($rootScope.showTest){
          $scope.index = 0;
@@ -576,16 +582,14 @@ angular.module('starter.controllers', [])
     }
 
     carga().then(function(){
-          if($scope.index==$scope.listaPreguntas.length){
-          $state.go('home.categories.3.test-results');
-    }
+        
          $scope.title = "Test";
          $scope.used=false; 
          $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
   
     $scope.nextSlide = function()
     {
-        var estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: $rootScope.opEsCorrecto}; 
+        estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: opEsCorrecto}; 
         Test.storePregTest(estadoDeTest);  
         $scope.used=false;
         
@@ -595,8 +599,9 @@ angular.module('starter.controllers', [])
             $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
         }else{
 
-            $state.go('home.categories.3.test-results');
-             
+            $rootScope.results.test.aciertos=aciertos;
+            $rootScope.results.test.fallos=fallos;
+            $state.go('home.categories.3.test-results');         
         }
     $ionicSlideBoxDelegate.next();
 
@@ -632,8 +637,14 @@ angular.module('starter.controllers', [])
     }
    
     $scope.resolve = function(optionEsCorrecto){
-        $rootScope.opEsCorrecto = optionEsCorrecto;
         
+        if(optionEsCorrecto==1) {
+
+            aciertos=aciertos+1;
+        }else{
+            fallos=fallos+1;
+        }
+        opEsCorrecto = optionEsCorrecto; 
         $scope.used = !$scope.used;   
 
     } 
@@ -642,10 +653,8 @@ angular.module('starter.controllers', [])
 .controller("ScoreTestCtrl", function($rootScope, $scope, $state) {
     $scope.title = "Score";
     $scope.aciertos = $rootScope.results.test.aciertos ;
-              console.log("aciertos: " + $scope.aciertos);
     $scope.fallos = $rootScope.results.test.fallos;
-              console.log("fallos: " + $scope.fallos);
-
+ 
      $scope.showTest = function(){        
         $rootScope.showTest = true;
     }

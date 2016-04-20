@@ -6,7 +6,7 @@
             <!--class="button button-block button-levels button-borders"-->
             <button ng-repeat="nivel in listaNiveles" class="button button-block buttonSubject button-borders" id="showLevel_{{nivel.nivel}}" ng-click="getNivelId(nivel.nivel)" ui-sref='home.categories.2.Exerlist'>
                 <p class="buttonNameLevel"> Nivel {{nivel.nivel}}</p>                 
-                <div class="row smallCircles" ng-init="size = range(nivel.size)" ng-include="'app/templates/_score_exercises.html'"></div>
+                <div class="row smallCircles" ng-init="size = score(nivel.size)" ng-include="'app/templates/_score_exercises.html'"></div>
             </button>
         </ion-list>   
     </ion-content>
