@@ -279,14 +279,14 @@ angular.module('starter.services',[])
   return {
     getTodosLosNiveles: function(temaId) {
     var niveles = [];
-    var query ="SELECT nivel, count(nivel) as size FROM ejercicio WHERE idTema = ? Group by nivel";
+    var query ="select nivel, id, esAcierto from ejercicio left join 'info-ejer' on ejercicio.id = 'info-ejer'.idEjer where idTema=?  UNION ALL select nivel, id, esAcierto from 'info-ejer' left join ejercicio on ejercicio.id = 'info-ejer'.idEjer where 'info-ejer'.idEjer is NULL";
  
     $cordovaSQLite.execute(db, query, [temaId]).then(function(res){
 
         if(res.rows.length > 0){
 
           for(var i = 0; i<res.rows.length ; i++){
-            niveles.push({nivel: res.rows.item(i).nivel, size: res.rows.item(i).size });
+            niveles.push({level: res.rows.item(i).nivel, id: res.rows.item(i).id,  isCorrect: res.rows.item(i).esAcierto });
           }
 
         }else{
@@ -299,6 +299,44 @@ angular.module('starter.services',[])
 
       return niveles;
     
+    },
+
+
+    get_info_levels: function(levels) {
+      var info=[];
+      var level;
+      var j=0;
+      var k=0;
+      var aux;
+      for(var i=0; i<levels.length; i++){
+
+        if(level != levels[i].level){ 
+          aux = level;      
+          level = levels[i].level
+         if(k>0){
+          j++;
+          console.log(j);
+          info.push({level: aux, size:j});
+          j = 0;
+
+         } 
+          k++;
+
+
+        }else{
+          j++;
+          
+        }
+
+        if(i == levels.length-1){
+
+           j++
+            info.push({level: levels[levels.length-1].level, size:j});
+        }       
+          
+     }   
+      return info
+
     },
 
     by_tema_nivel: function(temaId, nivelId){

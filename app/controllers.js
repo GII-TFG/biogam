@@ -121,9 +121,9 @@ angular.module('starter.controllers', [])
 
 .controller('ExerCtrl', function($scope, $rootScope, Exercises, Score_exercises){
     
-     $scope.title = "Exercises";
-
-    $scope.listaNiveles = $rootScope.excercises;
+    $scope.title = "Exercises";
+    var exercises = $rootScope.excercises;
+    $scope.listaNiveles = Exercises.get_info_levels(exercises);
     /*definimos el score que tendra cada nivel */
     $scope.score= function(tam){
        return Score_exercises.define_tam(tam);
@@ -131,14 +131,14 @@ angular.module('starter.controllers', [])
 
     $scope.getNivelId = function(obj){
         $rootScope.nivelId = obj;
-        $rootScope.nivelEjer = Exercises.byTema($rootScope.temaId, obj);      
+        $rootScope.nivelEjer = Exercises.by_tema_nivel($rootScope.temaId, obj);      
     }
 })
 
 .controller('ExerListCtrl', function($scope, $rootScope, Exercises, Score_exercises){
    
     $scope.title = "Level " + $rootScope.nivelId;
-    $scope.listaEjer = Exercises.byTema($rootScope.temaId, $rootScope.nivelId);
+    $scope.listaEjer = Exercises.by_tema_nivel($rootScope.temaId, $rootScope.nivelId);
     $rootScope.getEjer = [];
     $scope.getEjer = function(obj){
         $rootScope.getEjer = obj;
