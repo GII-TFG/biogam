@@ -78,7 +78,7 @@ angular.module('starter.controllers', [])
                 
             }else{ 
 
-                 $scope.listaEjer = Exercises.by_tema_nivel($rootScope.temaId, $rootScope.nivelId);           
+                 $scope.listaEjer = Test.by_tema_nivel($rootScope.temaId, $rootScope.nivelId);           
                  $timeout(function(){ $state.go('home.categories.3');}, 15);
             }
         }else if(obj == 2){
@@ -587,7 +587,7 @@ angular.module('starter.controllers', [])
          $scope.title = "Test";
          $scope.used=false; 
          $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
-  
+                                                                                         
     $scope.nextSlide = function()
     {
         estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: opEsCorrecto}; 
