@@ -77,12 +77,11 @@ angular.module('starter.controllers', [])
                 $timeout(function(){ $state.go('home.categories.3.test-results');}, 15);
                 
             }else{ 
-
-                 $scope.listaEjer = Test.by_tema_nivel($rootScope.temaId, $rootScope.nivelId);           
+           
                  $timeout(function(){ $state.go('home.categories.3');}, 15);
             }
         }else if(obj == 2){
-             $state.go('home.categories.2');
+              
               $timeout(function(){$state.go('home.categories.2');}, 15);
 
         }else if(obj == 1){
@@ -139,7 +138,7 @@ angular.module('starter.controllers', [])
 .controller('ExerListCtrl', function($scope, $rootScope, Exercises, Score_exercises){
    
     $scope.title = "Level " + $rootScope.nivelId;
-    $scope.listaEjer = Exercises.by_tema_nivel($rootScope.temaId, $rootScope.nivelId);
+    $scope.listaEjer = $rootScope.nivelEjer;
     $rootScope.getEjer = [];
     $scope.getEjer = function(obj){
         $rootScope.getEjer = obj;
