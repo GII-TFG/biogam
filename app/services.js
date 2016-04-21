@@ -315,7 +315,6 @@ angular.module('starter.services',[])
           level = levels[i].level
          if(k>0){
           j++;
-          console.log(j);
           info.push({level: aux, size:j});
           j = 0;
 
@@ -346,7 +345,6 @@ angular.module('starter.services',[])
       var query ="SELECT id, enunciado FROM ejercicio WHERE idTema = ? and nivel = ? ORDER BY id";
 
         $cordovaSQLite.execute(db, query, [temaId, nivelId]).then(function(res){
-        console.log(res.rows.length );
         if(res.rows.length > 0){
 
           for(var i = 0; i<res.rows.length ; i++){

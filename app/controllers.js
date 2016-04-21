@@ -123,6 +123,7 @@ angular.module('starter.controllers', [])
     
     $scope.title = "Exercises";
     var exercises = $rootScope.excercises;
+    /*tenemos los ejercicios y a partir de ellos obtenemos la info necesaria para representar los niveles*/
     $scope.listaNiveles = Exercises.get_info_levels(exercises);
     /*definimos el score que tendra cada nivel */
     $scope.score= function(tam){
