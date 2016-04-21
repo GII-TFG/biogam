@@ -1,19 +1,28 @@
 <ion-view title="{{title}}">
 
     <ion-content class="campos">
-        <div>
-        <label class="item item-input" id="name">
-            <input type="text" placeholder="Name & Surname" ng-model="name.value">
-        </label>
-        <label class="item item-input" id="nick">
-            <input type="text" placeholder="User Name" ng-model="nick.value">
-        </label>
-        <label class="item item-input" id="pass">
-            <input type="password" placeholder="Password" ng-model="pass.value">
-        </label>
-        </div>
-        <button class="item" ui-sref='home' ng-click="getUserFields(name.value, nick.value, pass.value)">
-                Sign me up!
-        </button>
+        <form name="myForm" >
+            <div>
+            <label class="item item-input" id="name" ng-class="{ 'has-errors' : authorizationForm.username.$invalid, 'no-errors' : authorizationForm.username.$valid}">
+                <input required type="text" name="name" placeholder="Name & Surname" ng-model="authorization.username">
+            </label>
+            <label class="item item-input" id="nick">
+                <input required type="text" name="nick" placeholder="E-mail" ng-model="nick.value">
+            </label>
+            <label class="item item-input" id="pass">
+                <input required type="password" name="password" placeholder="Password" ng-model="pass.value">
+            </label>
+            </div>
+
+            <div class="padding">
+                <p ng-show="myform.name.$error.required">* name is required</p>
+                <p ng-show="myform.nick.$error.required">* nick is required</p>
+
+                <p ng-show="myform.password.$error.required">* Password is required</p>
+            </div>
+            <button class="item" ui-sref='home'  ng-click="getUserFields(name.value, nick.value, pass.value)">
+                    Sign me up!
+            </button>
+        </form>
     </ion-content>
 </ion-view>

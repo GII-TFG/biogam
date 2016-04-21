@@ -670,7 +670,9 @@ angular.module('starter.controllers', [])
     
     $scope.getUserFields = function(nameU, nickU, passU){        
         $rootScope.user = nickU;
+        
         Register.signUpUser(nameU, nickU, passU);
+            
     }
 
 })
