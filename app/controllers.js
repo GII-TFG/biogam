@@ -57,7 +57,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('CategoriesCtrl', function($rootScope, $timeout, $scope,$state,  Categorias, Temas, Test, Theory){
+.controller('CategoriesCtrl', function($rootScope, $timeout, $scope,$state,  Categorias, Temas, Test, Theory, Exercises){
     /*
       1.-Theory
       2.-Exercises
@@ -77,11 +77,12 @@ angular.module('starter.controllers', [])
                 $timeout(function(){ $state.go('home.categories.3.test-results');}, 15);
                 
             }else{ 
-           
+                 $rootScope.last_exer = Exercises.last_exer();   
                  $timeout(function(){ $state.go('home.categories.3');}, 15);
             }
         }else if(obj == 2){
               
+
               $timeout(function(){$state.go('home.categories.2');}, 15);
 
         }else if(obj == 1){
@@ -121,23 +122,43 @@ angular.module('starter.controllers', [])
 .controller('ExerCtrl', function($scope, $rootScope, Exercises, Score_exercises){
     
     $scope.title = "Exercises";
+    $rootScope.list_balls = [];
     var exercises = $rootScope.excercises;
+    var last_exer = $rootScope.last_exer;
+    var count_balls =0;
+    var aux =0;
     /*tenemos los ejercicios y a partir de ellos obtenemos la info necesaria para representar los niveles*/
     $scope.listaNiveles = Exercises.get_info_levels(exercises);
     /*definimos el score que tendra cada nivel */
-    $scope.score= function(tam){
-       return Score_exercises.define_tam(tam);
+    $scope.score= function(nivel){
+
+       var balls = Score_exercises.define_tam(nivel);
+       $rootScope.list_balls.push({level: nivel, balls: balls});
+       return  balls;
+    }
+
+    $scope.active_button = function(nivel){
+       
+
+        if(nivel.level == 1){
+         
+         return false;
+        }else{
+
+         return true;
+        }
+
     }
 
     $scope.getNivelId = function(obj){
-        $rootScope.nivelId = obj;
-        $rootScope.nivelEjer = Exercises.by_tema_nivel($rootScope.temaId, obj);      
-    }
+        $rootScope.nivel = obj;
+        $rootScope.nivelEjer = Exercises.by_tema_nivel($rootScope.temaId, obj.level);      
+    }   
 })
 
 .controller('ExerListCtrl', function($scope, $rootScope, Exercises, Score_exercises){
    
-    $scope.title = "Level " + $rootScope.nivelId;
+    $scope.title = "Level " + $rootScope.nivel.level;
     $scope.listaEjer = $rootScope.nivelEjer;
     $rootScope.getEjer = [];
     $scope.getEjer = function(obj){
@@ -146,10 +167,15 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('LevelCtrl', function($scope, $rootScope, $ionicSlideBoxDelegate, $window, $ionicPopup){
-    
+.controller('LevelCtrl', function($scope, $rootScope, $ionicSlideBoxDelegate, $window, $ionicPopup,  $templateCache){
     
     var index = $rootScope.getEjer.ejerId;
+
+    $scope.score = function(){
+
+        return  $rootScope.list_balls[$rootScope.nivel.level-1].balls;
+    }
+
     $scope.listaEjerPerTemaNivel =  $rootScope.nivelEjer;    
     $scope.title = "Level " + $rootScope.nivelId;
     $scope.estadoDeJuego = {idEjer: index, numIntentos: 0 ,numFallos: 0};

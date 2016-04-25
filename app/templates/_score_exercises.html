@@ -1,6 +1,6 @@
-                <div ng-repeat= "i in size track by $index"  class="col">
-                    <div><img src="app/assests/img/plain16.png"></></div>
-                     <div ng-show="false"><img src="app/assests/img/filled13.png"></></div>
-                      <div ng-show="false"><img src="app/assests/img/filledRed.png"></></div>
+                <div ng-repeat= "i in balls track by $index"  class="col">
+                    <div ng-show="i == -1? true : false"><img src="app/assests/img/plain16.png"></></div>
+                    <div ng-show="i == 1 ? true : false"><img src="app/assests/img/filled13.png"></></div>
+                    <div ng-show="i == 2 ? true : false"><img src="app/assests/img/filledRed.png"></></div>
                 </div>
      
