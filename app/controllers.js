@@ -663,10 +663,31 @@ angular.module('starter.controllers', [])
 
 /***************************************REGISTER************************************************/
 
-.controller("RegisterCtrl", function($rootScope,$scope, Register) {
+.controller("RegisterCtrl", function($rootScope, $state, $scope, Register) {
 
     $scope.title = "Sign up";
     var user = [];
+    
+     //nuevo
+    
+    
+    $scope.authorization = {
+        name: '',
+        nick: '',
+        pass: ''   
+    };  
+   
+    $scope.signIn = function(form) {
+        if(form.$valid) {
+            $rootScope.user = form.nick;
+            console.log("Entra aqui");
+            Register.signUpUser(form.name, form.nick, form.pass);
+            $state.go('home');
+        }
+    };  
+    //
+    
+    
     
     $scope.getUserFields = function(nameU, nickU, passU){        
         $rootScope.user = nickU;
@@ -674,5 +695,9 @@ angular.module('starter.controllers', [])
         Register.signUpUser(nameU, nickU, passU);
             
     }
+    
+    
+    
+   
 
 })

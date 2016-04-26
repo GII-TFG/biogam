@@ -1,28 +1,40 @@
+
 <ion-view title="{{title}}">
 
     <ion-content class="campos">
-        <form name="myForm" >
+        <form name="myForm" novalidate="" ng-submit="signIn(myForm)">
             <div>
-            <label class="item item-input" id="name" ng-class="{ 'has-errors' : authorizationForm.username.$invalid, 'no-errors' : authorizationForm.username.$valid}">
-                <input required type="text" name="name" placeholder="Name & Surname" ng-model="authorization.username">
+            <label class="item item-input" id="name" ng-class="{ 'has-errors' : myForm.name.$invalid, 'no-errors' : myForm.name.$valid}">
+                <input type="text" name="name" placeholder="Name & Surname" ng-model="authorization.name" required>
             </label>
-            <label class="item item-input" id="nick">
-                <input required type="text" name="nick" placeholder="E-mail" ng-model="nick.value">
+            <label class="item item-input" id="nick" ng-class="{ 'has-errors' : myForm.nick.$invalid, 'no-errors' : myForm.nick.$valid}">
+                <input type="text" name="nick" placeholder="E-mail" ng-model="authorization.nick" required>
             </label>
-            <label class="item item-input" id="pass">
-                <input required type="password" name="password" placeholder="Password" ng-model="pass.value">
+            <label class="item item-input" id="pass" ng-class="{ 'has-errors' : myForm.pass.$invalid, 'no-errors' : myForm.pass.$valid}">
+                <input type="password" name="pass" placeholder="Password" ng-model="authorization.pass" required>
             </label>
             </div>
 
-            <div class="padding">
-                <p ng-show="myform.name.$error.required">* name is required</p>
-                <p ng-show="myform.nick.$error.required">* nick is required</p>
-
-                <p ng-show="myform.password.$error.required">* Password is required</p>
-            </div>
-            <button class="item" ui-sref='home'  ng-click="getUserFields(name.value, nick.value, pass.value)">
+            
+            <button class="item" type="submit">
                     Sign me up!
             </button>
         </form>
     </ion-content>
 </ion-view>
+
+
+<script id="error-list.html" type="text/ng-template">  
+    <div class="error" ng-message="required">
+      <i class="ion-information-circled"></i> 
+      This field is required!
+    </div>
+</script>
+
+<!--
+
+<button class="item" ui-sref='home'  ng-click="getUserFields(authorization.name, authorization.nick, authorization.pass)">
+                    Sign me up!
+            </button>
+
+-->
