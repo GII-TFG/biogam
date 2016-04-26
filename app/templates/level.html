@@ -1,7 +1,7 @@
 
     <ion-view>
         <ion-content class="main_container80">
-            <div class="row" id="fila" ng-include="'app/templates/_score_exercises.html'">
+            <div class="row" id="fila" ng-init="balls = score(nivel)" ng-include="'app/templates/_score_exercises.html'">
 
             </div>
 
@@ -65,8 +65,8 @@
                 </div>
             </div>
 
-
-
+            <div><button ng-click="prevSlide()" ng-disabled="!used">Prev</button></div>
+            <div><button ng-click="nextSlide()" ng-disabled="!used">Next</button></div>
             </ion-slide>
         </ion-slide-box>
      

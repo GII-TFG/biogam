@@ -121,7 +121,6 @@ angular.module('starter.services',[])
     if(res.rows.length > 0)
     {
       $rootScope.user=res.rows.item(0).nick  
-      console.log($rootScope.user); 
     }});
    }
    };
@@ -130,8 +129,21 @@ angular.module('starter.services',[])
 .factory('Score_exercises', function() {
 
    return {
-    define_tam: function(tam){
-      return new Array(tam);   
+    define_tam: function(nivel){
+
+      var lista = [];
+
+      for(var i =0; i < nivel.size; i++){
+
+        if(nivel.esAcierto == null){
+
+          lista.push(-1);
+        }else{
+             lista.push(nivel.esAcierto);
+        }
+      }
+
+      return lista;   
    }
    };
 })
@@ -315,7 +327,6 @@ angular.module('starter.services',[])
           level = levels[i].level
          if(k>0){
           j++;
-          console.log(j);
           info.push({level: aux, size:j});
           j = 0;
 
@@ -346,7 +357,6 @@ angular.module('starter.services',[])
       var query ="SELECT id, enunciado FROM ejercicio WHERE idTema = ? and nivel = ? ORDER BY id";
 
         $cordovaSQLite.execute(db, query, [temaId, nivelId]).then(function(res){
-        console.log(res.rows.length );
         if(res.rows.length > 0){
 
           for(var i = 0; i<res.rows.length ; i++){
@@ -364,16 +374,37 @@ angular.module('starter.services',[])
 
     },
 
-    storeEjercicio: function(estado){
+    store: function(estado){
 
       
 
-    var query ="INSERT INTO 'info-ejer' VALUES(?, ?, ?, ?)";
-    $cordovaSQLite.execute(db, query, [$rootScope.user, estado.idEjer, estado.numIntentos, estado.numFallos]);
+    var query ="INSERT INTO 'info-ejer' VALUES(?, ?, ?)";
+    $cordovaSQLite.execute(db, query, [$rootScope.user, estado.idEjer, estado.esAcierto]);
     return true;
 
-    }
+    },
 
+    last_exer: function(estado){
+
+    var lista;
+
+    var query ="SELECT max(idEjer) as id, esAcierto FROM 'info-ejer'ORDER BY idEjer";
+    $cordovaSQLite.execute(db, query).then(function(res){
+        if(res.rows.length > 0){
+
+          for(var i = 0; i<res.rows.length ; i++){
+            lista = {id: res.rows.item(i).id, id: res.rows.item(i).esAcierto };
+          }
+
+        }else{
+
+           console.log("Not found results");
+        }
+
+    })
+
+      return lista;
+    }
   };
 })
 .factory('Test', function($cordovaSQLite, $rootScope ) {
