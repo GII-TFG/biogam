@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic','starter.controllers','starter.services' , 'ngCordova' ])
+angular.module('starter', ['ionic','starter.controllers','starter.services' , 'ngCordova', 'ngMessages'])
 
 .constant('INFO_DB',{ //nombre y version de la bd que estamos usando
   NAME: "biogamdb",
@@ -223,10 +223,10 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
       url: '/register',
       parent: "tabs",
       views: {
-        'home-tab':{
-        templateUrl: 'app/templates/register.html',
-        controller: 'RegisterCtrl'
-       }
+        'home-tab@tabs': {
+            templateUrl: 'app/templates/register.html',
+            controller: 'RegisterCtrl'
+        }
       }
    });  
   $urlRouterProvider.otherwise('home');
