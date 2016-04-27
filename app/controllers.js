@@ -25,11 +25,13 @@ angular.module('starter.controllers', [])
         
         var deferred = $q.defer();
 
-        $timeout(function(){ if(angular.isUndefined($rootScope.user)){  
-            $timeout(function(){ $state.go('register'); }, 1000);
-        }else{
-            $timeout(function(){ $state.go('home'); }, 1000);
-        }; }, 1000);
+        $timeout(function(){ 
+            if(angular.isUndefined($rootScope.user)){  
+                $timeout(function(){ $state.go('register'); }, 1000);
+            }else{
+                $timeout(function(){ $state.go('home'); }, 1000);
+            }; 
+        }, 1000);
        
         deferred.resolve();
 
