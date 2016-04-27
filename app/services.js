@@ -1,4 +1,3 @@
-
 var db = null;
 
 angular.module('starter.services',[])
@@ -21,7 +20,7 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`img-teoria` (`idImg` INTEGER NOT NULL,`idTeoria`  INTEGER NOT NULL,PRIMARY KEY(idImg,idTeoria),FOREIGN KEY(`idImg`) REFERENCES imagen(id),FOREIGN KEY(`idTeoria`) REFERENCES teoria(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`img-ejer` (`idImg` INTEGER NOT NULL,`idEj`  INTEGER NOT NULL,PRIMARY KEY(idImg,idEj),FOREIGN KEY(`idImg`) REFERENCES imagen(id),FOREIGN KEY(`idEj`) REFERENCES ejercicio(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`imagen` (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`imagen`  BLOB);");
-      $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'info-ejer' (`nickUsuario` TEXT NOT NULL,`idEjer` INTEGER NOT NULL,`esAcierto` INTEGER, PRIMARY KEY(nickUsuario,idEjer),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick),FOREIGN KEY(`idEjer`) REFERENCES ejercicio(id));");
+      $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'info-ejer' (`nickUsuario` TEXT NOT NULL,`idEjer` INTEGER NOT NULL,`numIntentos` INTEGER,`numFallos` INTEGER, PRIMARY KEY(nickUsuario,idEjer),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick),FOREIGN KEY(`idEjer`) REFERENCES ejercicio(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'ejercicio' (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`enunciado` TEXT NOT NULL,`nivel` INTEGER NOT NULL,`idTema`  INTEGER,FOREIGN KEY(`nivel`) REFERENCES nivel(id),FOREIGN KEY(`idTema`) REFERENCES `tema`(`id`));");
       
   };
@@ -135,12 +134,8 @@ angular.module('starter.services',[])
 
       for(var i =0; i < nivel.size; i++){
 
-        if(nivel.esAcierto == null){
-
-          lista.push(-1);
-        }else{
-             lista.push(nivel.esAcierto);
-        }
+        console.log(nivel.list_exer[i].attempts);
+        lista.push(nivel.list_exer[i].attempts);
       }
 
       return lista;   
@@ -291,14 +286,21 @@ angular.module('starter.services',[])
   return {
     getTodosLosNiveles: function(temaId) {
     var niveles = [];
-    var query ="select nivel, id, esAcierto from ejercicio left join 'info-ejer' on ejercicio.id = 'info-ejer'.idEjer where idTema=?  UNION ALL select nivel, id, esAcierto from 'info-ejer' left join ejercicio on ejercicio.id = 'info-ejer'.idEjer where 'info-ejer'.idEjer is NULL";
+    var query ="select nivel, id,numIntentos, numFallos from ejercicio left join 'info-ejer' on ejercicio.id = 'info-ejer'.idEjer where idTema=?  UNION ALL select nivel, id, numIntentos, numFallos from 'info-ejer' left join ejercicio on ejercicio.id = 'info-ejer'.idEjer where 'info-ejer'.idEjer is NULL";
  
     $cordovaSQLite.execute(db, query, [temaId]).then(function(res){
 
         if(res.rows.length > 0){
 
           for(var i = 0; i<res.rows.length ; i++){
-            niveles.push({level: res.rows.item(i).nivel, id: res.rows.item(i).id,  isCorrect: res.rows.item(i).esAcierto });
+            niveles.push({level: res.rows.item(i).nivel, id: res.rows.item(i).id,  attempts: res.rows.item(i).numIntentos, fails: res.rows.item(i).numFallos });
+            if(niveles[i].attempts==null){
+              niveles[i].attempts=0;
+            }
+
+            if(niveles[i].fails==null){
+              niveles[i].fails=0;
+            }
           }
 
         }else{
@@ -314,20 +316,24 @@ angular.module('starter.services',[])
     },
 
 
-    get_info_levels: function(levels) {
+    get_info_levels: function(exercises) {
       var info=[];
+      var list=[];
       var level;
       var j=0;
       var k=0;
       var aux;
-      for(var i=0; i<levels.length; i++){
+      for(var i=0; i<exercises.length; i++){
 
-        if(level != levels[i].level){ 
-          aux = level;      
-          level = levels[i].level
+        if(level != exercises[i].level){ 
+          aux =level;      
+          level = exercises[i].level
+          list.push(exercises[i]);
+          
          if(k>0){
           j++;
-          info.push({level: aux, size:j});
+          info.push({level: aux, size:j, list_exer: list });
+          list = [];
           j = 0;
 
          } 
@@ -336,16 +342,19 @@ angular.module('starter.services',[])
 
         }else{
           j++;
+          list.push(exercises[i]);
           
         }
 
-        if(i == levels.length-1){
+        if(i == exercises.length-1){
 
            j++
-            info.push({level: levels[levels.length-1].level, size:j});
+            list.push(exercises[i]);
+            info.push({level: exercises[exercises.length-1].level, size:j, list_exer: list });
         }       
           
      }   
+
       return info
 
     },
@@ -374,36 +383,37 @@ angular.module('starter.services',[])
 
     },
 
-    store: function(estado){
+    store: function(estados){
 
-      
+      if(estados!=null){
 
-    var query ="INSERT INTO 'info-ejer' VALUES(?, ?, ?)";
-    $cordovaSQLite.execute(db, query, [$rootScope.user, estado.idEjer, estado.esAcierto]);
+        for(var i=0; i<estados.length; i++){
+        var lista = []
+        console.log("guardamos e inseramos");
+        var query ="INSERT OR REPLACE INTO 'info-ejer' VALUES(?, ?, ?, ?)";
+        $cordovaSQLite.execute(db, query, [$rootScope.user, estados[i].id, estados[i].attempts, estados[i].fails]);
+
+      }}
     return true;
 
     },
 
-    last_exer: function(estado){
+    get_exercises_level: function(level, lista_exercises_nivel){
+    
+    var find = false;
+    var i=0;
 
-    var lista;
+    while((i< lista_exercises_nivel.length) && (find==false)){
 
-    var query ="SELECT max(idEjer) as id, esAcierto FROM 'info-ejer'ORDER BY idEjer";
-    $cordovaSQLite.execute(db, query).then(function(res){
-        if(res.rows.length > 0){
+      if(lista_exercises_nivel[i].level == level){
+        find = true;
+      }else{
+        i++;
+      }
+    }
 
-          for(var i = 0; i<res.rows.length ; i++){
-            lista = {id: res.rows.item(i).id, id: res.rows.item(i).esAcierto };
-          }
+    return lista_exercises_nivel[i].list_exer;
 
-        }else{
-
-           console.log("Not found results");
-        }
-
-    })
-
-      return lista;
     }
   };
 })

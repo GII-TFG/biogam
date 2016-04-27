@@ -74,15 +74,15 @@ angular.module('starter.controllers', [])
             if($rootScope.index.test == $rootScope.test.length){
                 Test.getAciertos($rootScope.temaId);
                 Test.getFallos($rootScope.temaId);
+                $rootScope.show_test = true;
                 $timeout(function(){ $state.go('home.categories.3.test-results');}, 15);
                 
             }else{ 
-                 $rootScope.last_exer = Exercises.last_exer();   
+                 $rootScope.show_test = false;
                  $timeout(function(){ $state.go('home.categories.3');}, 15);
             }
         }else if(obj == 2){
-              
-
+             
               $timeout(function(){$state.go('home.categories.2');}, 15);
 
         }else if(obj == 1){
@@ -101,7 +101,7 @@ angular.module('starter.controllers', [])
     $scope.listaTeoria = $rootScope.theory;
 
     $scope.getTheory = function(index){      
-        $rootScope.chosenTheory = index;
+        $rootScope.index.theory = index;
         $rootScope.listaTeoria = $scope.listaTeoria
     }    
 })
@@ -109,7 +109,7 @@ angular.module('starter.controllers', [])
 .controller('CompleteTheoryCtrl', function($scope, $rootScope,  $ionicSlideBoxDelegate){
 
     $scope.title = "Detail";
-    var index = $rootScope.chosenTheory;
+    var index = $rootScope.index.theory;
     $scope.indexSlide = function(){
          $ionicSlideBoxDelegate.slide(index)
     }
@@ -124,11 +124,10 @@ angular.module('starter.controllers', [])
     $scope.title = "Exercises";
     $rootScope.list_balls = [];
     var exercises = $rootScope.excercises;
-    var last_exer = $rootScope.last_exer;
-    var count_balls =0;
-    var aux =0;
+   
     /*tenemos los ejercicios y a partir de ellos obtenemos la info necesaria para representar los niveles*/
-    $scope.listaNiveles = Exercises.get_info_levels(exercises);
+    $rootScope.listaNiveles = Exercises.get_info_levels(exercises);
+    $scope.listaNiveles = $rootScope.listaNiveles;
     /*definimos el score que tendra cada nivel */
     $scope.score= function(nivel){
 
@@ -137,7 +136,7 @@ angular.module('starter.controllers', [])
        return  balls;
     }
 
-    $scope.active_button = function(nivel){
+    $scope.active_button = function(nivel, index){
        
 
         if(nivel.level == 1){
@@ -145,7 +144,16 @@ angular.module('starter.controllers', [])
          return false;
         }else{
 
-         return true;
+         var ok =false;;
+         for(var i=0; i <  $scope.listaNiveles[index-1].size; i++){
+
+            if($scope.listaNiveles[index-1].list_exer[i].attempts<=0){
+                ok = true;
+            }
+
+         }
+
+         return ok;
         }
 
     }
@@ -160,17 +168,19 @@ angular.module('starter.controllers', [])
    
     $scope.title = "Level " + $rootScope.nivel.level;
     $scope.listaEjer = $rootScope.nivelEjer;
+    $rootScope.info_exercises_level=Exercises.get_exercises_level($rootScope.nivel.level, $rootScope.listaNiveles);
     $rootScope.getEjer = [];
-    $scope.getEjer = function(obj){
+
+    $scope.getEjer = function(obj, index){
         $rootScope.getEjer = obj;
-               
+        $rootScope.index.exercises = index;               
     }
 })
 
-.controller('LevelCtrl', function($scope, $rootScope, $ionicSlideBoxDelegate, $window, $ionicPopup,  $templateCache){
+.controller('LevelCtrl', function($scope, $rootScope, $ionicSlideBoxDelegate, $window, $ionicPopup,  $templateCache, Exercises){
     
-    var index = $rootScope.getEjer.ejerId;
-
+    index =  $rootScope.index.exercises;
+    var state_exercise = $rootScope.info_exercises_level[index];
     $scope.score = function(){
 
         return  $rootScope.list_balls[$rootScope.nivel.level-1].balls;
@@ -178,19 +188,28 @@ angular.module('starter.controllers', [])
 
     $scope.listaEjerPerTemaNivel =  $rootScope.nivelEjer;    
     $scope.title = "Level " + $rootScope.nivelId;
-    $scope.estadoDeJuego = {idEjer: index, numIntentos: 0 ,numFallos: 0};
+    
+    
 
      $scope.initSlide = function () 
     {
-        $ionicSlideBoxDelegate.slide(index-1);
+        $ionicSlideBoxDelegate.slide(index);
     }
 
-    $scope.index = function(){
-
-        index = $ionicSlideBoxDelegate.currentIndex()+1;
-
-        return index;
+    $scope.slideHasChanged = function(i) 
+    {   
+        console.log(i);
+        state_exercise = $rootScope.info_exercises_level[i];
     }
+
+    $scope.calculate = function(balls, exer, i){
+
+       state_exercise.attempts++;
+       $rootScope.info_exercises_level[i]=state_exercise;
+       Exercises.store($rootScope.info_exercises_level);
+       balls[i]=1;
+      }
+
 
     $scope.boxShowAaxaa = false;
     $scope.boxShowAaxAa = false;
@@ -277,7 +296,6 @@ angular.module('starter.controllers', [])
         /* Aa x aa */
     $scope.calculateTestCross = function($window){
 
-       $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
        $scope.Math = Math;
 
         if($scope.AaValue.value > 5000 || $scope.aaValue.value > 5000){
@@ -308,7 +326,7 @@ angular.module('starter.controllers', [])
                 $scope.chiA = $scope.opExpA + $scope.opExpa;
             }
             if($scope.chiA >= 3.841){
-                $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
+                state_exercise.fails = state_exercise.fails + 1;
                 $scope.agree = "NO";
                 $scope.result = "This locus is not segregating correctly";                  
             }else{
@@ -320,7 +338,7 @@ angular.module('starter.controllers', [])
 
     /* Aa x Aa */
     $scope.calculateF2Dominance = function(){
-        $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
+       
         $scope.Math = Math;
         
         if(AaValue.value > 5000 || aaValue.value > 5000){
@@ -350,7 +368,7 @@ angular.module('starter.controllers', [])
                 $scope.chiA = $scope.opExpA + $scope.opExpa;
             }
             if($scope.chiA >= 3.841){
-                $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
+                state_exercise.fails = state_exercise.fails + 1;
                 $scope.agree = "NO";
                 $scope.result = "This locus is not segregating correctly";                  
             }else{
@@ -362,7 +380,7 @@ angular.module('starter.controllers', [])
 
         /* A1A2 x A1A2 */
     $scope.calculateF2Codominance = function(){
-        $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
+      
         $scope.Math = Math;
 
         if(AAValue.value > 5000 || AaValue.value > 5000 || aaValue.value > 5000){
@@ -399,7 +417,7 @@ angular.module('starter.controllers', [])
                 $scope.chiA = $scope.opExpAA + $scope.opExpAa + $scope.opExpaa;
             }
             if($scope.chiA >= 5.991){
-                $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
+               state_exercise.fails = state_exercise.fails + 1;
                 $scope.agree = "NO";
                 $scope.result = "This locus is not segregating correctly";                  
             }else{
@@ -411,7 +429,7 @@ angular.module('starter.controllers', [])
 
         /* A1A2 x A1A3 */
     $scope.calculateCodominance3Alleles = function(){
-        $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
+       
 
         if(A1A1Value.value > 5000 || A1A3Value.value > 5000 || A1A2Value.value > 5000 || A2A3Value.value > 5000){
               $scope.alertPopup = $ionicPopup.alert({
@@ -453,7 +471,7 @@ angular.module('starter.controllers', [])
                 $scope.chiA = $scope.opExpA1A1 + $scope.opExpA1A3 + $scope.opExpA1A2 + $scope.opExpA2A3;
             }
             if($scope.chiA >= 7.815){
-                $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
+                state_exercise.fails = state_exercise.fails + 1;
                 $scope.agree = "NO";
                 $scope.result = "This locus is not segregating correctly";                  
             }else{
@@ -465,7 +483,7 @@ angular.module('starter.controllers', [])
 
         /* A1A2 x A3A4 */
         $scope.calculateCodominance4Alleles = function(){
-            $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
+    
             $scope.Math = Math;
 
             if(A1A3Value.value > 5000 || A1A4Value.value > 5000 || A2A3Value.value > 5000 || A2A4Value.value > 5000){
@@ -505,7 +523,7 @@ angular.module('starter.controllers', [])
 
                 }
                 if($scope.chiA >= 7.815){
-                    $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
+                    state_exercise.fails = state_exercise.fails + 1;
                     $scope.agree = "NO";
                     $scope.result = "This locus is not segregating correctly";                  
                 }else{
@@ -519,7 +537,7 @@ angular.module('starter.controllers', [])
 
         /* Lethal Genes */
         $scope.calculateLethalGenes = function(){
-            $scope.estadoDeJuego.numIntentos = $scope.estadoDeJuego.numIntentos + 1;
+      
             $scope.Math = Math;
 
             if(AAValue.value > 5000 || AaValue.value > 5000){
@@ -550,7 +568,7 @@ angular.module('starter.controllers', [])
                     $scope.chiA = $scope.opExpAA + $scope.opExpAa;
                 }
                 if($scope.chiA >= 3.841){
-                    $scope.estadoDeJuego.numFallos = $scope.estadoDeJuego.numFallos + 1;
+                    state_exercise.fails = state_exercise.fails + 1;
                     $scope.agree = "NO";
                     $scope.result = "This locus is not segregating correctly";                  
                 }else{
@@ -586,8 +604,9 @@ angular.module('starter.controllers', [])
     var fallos=0;
     var opEsCorrecto;
     var estadoDeTest;
+    $scope.show = $rootScope.show_test;
 
-    if($rootScope.showTest){
+    if($scope.show){
          $scope.index = 0;
     }else{
         $scope.index = $rootScope.index.test;
@@ -595,9 +614,19 @@ angular.module('starter.controllers', [])
  
     $scope.lockSlide = function () 
     {
+      if($scope.show){
+         $ionicSlideBoxDelegate.enableSlide( true );
+      }else{
         $ionicSlideBoxDelegate.enableSlide( false );
+      } 
+        
     }
 
+  $scope.slideHasChanged = function (index) 
+    {
+      $scope.index = index;
+      $scope.listaOpcionesPregunta = Test.getOpcionesTest($scope.listaPreguntas[$scope.index].id);
+    }
      var carga = function()
      {
          var deferred = $q.defer();
@@ -635,6 +664,11 @@ angular.module('starter.controllers', [])
 
     $scope.plot = function(state)
     {
+        if($scope.show){
+
+            return !$scope.show;
+
+        }else{
     
         if(!$scope.used){
 
@@ -644,7 +678,7 @@ angular.module('starter.controllers', [])
         }else{
 
             return !state;
-        }
+        }}
 
     }
 
@@ -676,13 +710,13 @@ angular.module('starter.controllers', [])
     } 
     });
 })
-.controller("ScoreTestCtrl", function($rootScope, $scope, $state) {
+.controller("ScoreTestCtrl", function($rootScope, $scope, $state,  $timeout) {
     $scope.title = "Score";
     $scope.aciertos = $rootScope.results.test.aciertos ;
     $scope.fallos = $rootScope.results.test.fallos;
  
      $scope.showTest = function(){        
-        $rootScope.showTest = true;
+         $timeout(function(){ $state.go('home.categories.3');}, 15)
     }
     
 })

@@ -5,11 +5,11 @@
 
             </div>
 
-           <ion-slide-box ng-init="initSlide()">
+           <ion-slide-box ng-init="initSlide()" on-slide-changed="slideHasChanged($index)">
             <ion-slide ng-repeat="lista in listaEjerPerTemaNivel">
         
             <div class="exercise-question">
-                <h3 id="tituloEjercicio"> Question {{index()}}</h3> <!--Pregunta {{index + 1}}-->
+                <h3 id="tituloEjercicio"> Question {{$index + 1 }}</h3> <!--Pregunta {{index + 1}}-->
                 <p id="textoEjercicio">{{lista.enunciado}}</p>
             </div>
             <div class="exercise-calculate">
@@ -41,7 +41,7 @@
                     </div>
                     <!-- Buttons Row -->
                     <div class = "button-bar cleanCalculate">
-                        <button id="buttonCalculate" class = "button button-small button-royal" ng-click="calculateTestCross()" >Calculate</button>
+                        <button id="buttonCalculate" class = "button button-small button-royal" ng-click="calculateTestCross(); calculate(balls, lista, $index)" >Calculate</button>
                         <button class = "button button-small button-royal" ng-click="clean()">Clean</button>
                     </div>
                      <div class="row DataRow">
@@ -65,8 +65,7 @@
                 </div>
             </div>
 
-            <div><button ng-click="prevSlide()" ng-disabled="!used">Prev</button></div>
-            <div><button ng-click="nextSlide()" ng-disabled="!used">Next</button></div>
+           
             </ion-slide>
         </ion-slide-box>
      
