@@ -729,7 +729,7 @@ angular.module('starter.controllers', [])
 
     $scope.title = "Sign up";
     var user = [];
-    
+   
      //nuevo
     
     
@@ -741,15 +741,12 @@ angular.module('starter.controllers', [])
    
     $scope.signIn = function(form) {
         if(form.$valid) {
-            $rootScope.user = form.nick;
-            console.log("Entra aqui");
-            Register.signUpUser(form.name, form.nick, form.pass);
+            $rootScope.user = $scope.authorization.nick;
+            Register.signUpUser($scope.authorization.name, $scope.authorization.nick, $scope.authorization.pass);
+            console.log($rootScope.user);
             $state.go('home');
         }
-    };  
-    //
-    
-    
+    };      
     
     $scope.getUserFields = function(nameU, nickU, passU){        
         $rootScope.user = nickU;

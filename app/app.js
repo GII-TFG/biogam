@@ -223,7 +223,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
       url: '/register',
       parent: "tabs",
       views: {
-        'home-tab@tabs': {
+        'home-tab': {
             templateUrl: 'app/templates/register.html',
             controller: 'RegisterCtrl'
         }
