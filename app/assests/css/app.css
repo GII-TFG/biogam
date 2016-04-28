@@ -30,19 +30,26 @@ div {
     margin-right: auto;
 }
 
+.main_container90{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
 /*
  *******************************
  *         HEADER BAR          *
  *******************************
  */
 .bar.bar-custom {
-    border-color: #8e44ad;
+    border-color: #9b59b6;
     background-color: #9b59b6;
     background-image: linear-gradient(0deg, #0c60ee, #0c60ee 50%, transparent 50%);
     color: #fff; 
+	font-size: 12px;
 }
 .bar.bar-custom .title {
     color: #fff;
+	font-size: 12px;
 }
 .bar.bar-custom.bar-footer {
     background-image: linear-gradient(180deg, #0c60ee, #0c60ee 50%, transparent 50%); 
@@ -55,8 +62,8 @@ div {
   .bar-custom .button:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-custom .button.active, .bar-positive .button.activated {
-    background-color: #0c60ee; }
+  .bar-custom .button.active, .button.activated {
+    background-color: #fff; }
   .bar-custom .button.button-clear {
     border-color: transparent;
     background: none;
@@ -66,7 +73,6 @@ div {
   .bar-custom .button.button-icon {
     border-color: transparent;
     background: none; }
-
 /*
  ********************************
  *            TABS              *
@@ -96,8 +102,8 @@ div {
     margin-top: -2px;
     color: #fff;
     border-style: solid;
-    border-width: 2px 0 0 0;
-    border-color: #9b59b6; }
+    border-width: 3px 0 0 0;
+    border-color: #fff; }
 
 
 
@@ -184,15 +190,108 @@ div {
 
     /*********   TEST   *********/
     .button.button-block.button-stable.testButton{
+		padding-top: .3em;
+        padding-bottom:.7em;
+        margin-bottom: 1em;
         background-color: #E8D5EF;
         box-shadow: 0 3px 5px 0 #A4A4A4, 0 2.5px 6px 0 #A4A4A4;
         border-radius: 4px 4px 4px 4px !important;
     }
     h3.questionNum{
         text-align:center;
-        margin-top:10px;
+		margin-top:1em;
+    }
+    p#exerciseHeading{
+        width: 100%;
+        text-align: justify;
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+
+    }
+    .button.button-stable.icon-right.nextButton{
+        background-color: #9b59b6;
+        color:white;
+        width: 30%;
+        margin-left: 70%;
+        margin-top:.1em;
+        padding-top: .2em !important;
     }
 
+    /*---- SCORES ---- */
+    table {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10%;
+        margin-bottom: 10%;
+        border-collapse: collapse;
+        width: 80%;
+        box-shadow: -1px 5px 10px 3px rgba(0,0,0,0.28);
+    }
+    th, td {
+        text-align: left;
+        padding: 5px;
+        width: 30%;
+        background-color: #e8d5ef;
+    }
+    .button.button-stable.button-score{
+        background-color: #9b59b6;
+        width: 40%;
+        margin-left: 1em;
+        color:#fff;
+    }
+    div#inlineButton{     
+        margin-right: auto !important;
+        margin-left: auto !important;
+        width: 80%;
+    }
+    #score_questions, #score_correctAnsw, #score_incorrectAnsw, #score_finalScore {
+        background-color: #9b59b6;
+        color: white;
+    }
+
+     #score_questions_num, #score_correctAnsw_num, #score_incorrectAnsw_num, #score_finalScore_num {
+        text-align: center;
+     }
+    /* ----- REGISTRO ----- */
+    .campos{
+        background-color: #9b59b6;
+        /*background-image:url("/app/assests/img/LogoIntro.svg");*/
+    }
+    .containerCampos{
+        width:70%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .item.button.button-outline.button-energized, .button{
+        height:50px;
+        width:100%;
+        margin-top:40px;
+    }
+    #register.button{
+        margin-top:30px;
+    }
+    #name.item.item-input{
+        margin-top:100px;
+        margin-left:auto;
+        margin-right: auto;
+        width:100%;
+    }
+    #nick.item.item-input{
+        margin-top:10px;
+        margin-left:auto;
+        margin-right: auto;
+        width:100%;
+    }
+    #pass.item.item-input{
+        margin-top:10px;
+        margin-left:auto;
+        margin-right: auto;
+        width:100%;
+    }
+    img .image{
+        width:70%;
+        height:auto;
+    }
 }
 
 @media screen and (min-width: 481px){
@@ -228,6 +327,83 @@ div {
         color:#671189 !important;
         box-shadow: 0 1.5px 2.5px 0 #671189, 0 1.25px 3px 0 #671189;
     }
+
+    /*---- REGRISTRO ----*/
+
+    .campos{
+        background:#9b59b6;
+    }
+    .containerCampos{
+        width:70%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .item.button.button-outline.button-energized, .button{
+        height:50px;
+        width:100%;
+        margin-top:40px;
+    }
+    #register.button{
+        margin-top:30px;
+    }
+    #name.item.item-input{
+        margin-top:100px;
+        margin-left:auto;
+        margin-right: auto;
+        width:100%;
+    }
+    #nick.item.item-input{
+        margin-top:10px;
+        margin-left:auto;
+        margin-right: auto;
+        width:100%;
+    }
+    #pass.item.item-input{
+        margin-top:10px;
+        margin-left:auto;
+        margin-right: auto;
+        width:100%;
+    }
+    .image{
+        width:70%;
+        height:auto;
+    }
+
+/* ----------SCORE-----------*/
+    table {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10%;
+        margin-bottom: 10%;
+        border-collapse: collapse;
+        width: 80%;
+        box-shadow: -1px 5px 10px 3px rgba(0,0,0,0.28);
+    }
+    th, td {
+        text-align: left;
+        padding: 5px;
+        width: 30%;
+        background-color: #e8d5ef;
+    }
+    .button.button-stable.button-score{
+        background-color: #9b59b6;
+        width: 40%;
+        margin-left: 1em;
+        color:#fff;
+    }
+    div#inlineButton{     
+        margin-right: auto !important;
+        margin-left: auto !important;
+        width: 80%;
+    }
+    #score_questions, #score_correctAnsw, #score_incorrectAnsw, #score_finalScore {
+        background-color: #9b59b6;
+        color: white;
+    }
+
+     #score_questions_num, #score_correctAnsw_num, #score_incorrectAnsw_num, #score_finalScore_num {
+        text-align: center;
+     }
 }
 
 /*
@@ -307,22 +483,48 @@ li.list-item:before{
  **********************************
  */
  .tituloTeoria{
+	padding-top: 1.8em;
     text-align: center; 
+    width: 90%;
+    margin-top: 4em;
+    margin-right: auto;
+    margin-left: auto;
  }
  .textoTeoria{
     padding-top: 1.5em;
+    padding-bottom: 1em;
     text-align: justify;
- }
-
- div.detalleTeoria{
-    width:80%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 5%;
+    width: 90%;
  }
+ .slider-pager-page {
+  color: #C6A1D5 !important;
+}
+ .slider-pager-page.active {
+  color: #9b59b6 !important;
+}
+.slider{
+    height: 90% !important;
+}
+.slider-pager {
+top: .8em;
+height:20px;
+margin-bottom: 4em;
+}
+
+ /*div.detalleTeoria{
+    width:90%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3em;
+    /*box-shadow: -1px 5px 10px 3px rgba(0,0,0,0.28);
+ }*/
  hr{
-    background-color: #9b59b6;
-    width: 100%;
+    width: 90%;
+    border: 0; 
+    height: 12px; 
+    box-shadow: inset 0 12px 12px -12px #9b59b6;
  }
 /*body{
     width: 100%;
