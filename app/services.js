@@ -116,10 +116,12 @@ angular.module('starter.services',[])
     /*Precondicion: en cada dispostivo hay un solo usuario*/
     load: function(){
 
-    $cordovaSQLite.execute(db, "SELECT nick FROM 'usuario'", []).then(function(res){
+    $cordovaSQLite.execute(db, "SELECT nick, nombre, pass FROM 'usuario'", []).then(function(res){
     if(res.rows.length > 0)
     {
-      $rootScope.user=res.rows.item(0).nick  
+      $rootScope.user=res.rows.item(0).nick;
+       $rootScope.nombre=res.rows.item(0).nombre;  
+        $rootScope.pass=res.rows.item(0).pass;  
     }});
    }
    };

@@ -1,18 +1,16 @@
 <ion-view title="{{title}}">
-
     <ion-content class="main_container">
         <!--Cambiado-->
-
-       <ion-slide-box ng-init="indexSlide()">
-       	<ion-slide ng-repeat="teoria in listaTeoria">
-        <div class="detalleTeoria">
-        	<h1 class="tituloTeoria"> {{teoria.titulo}} </h1>
-        	<hr>
-        	<p class = "textoTeoria"> {{teoria.texto}} </p>
-        </div>
-        </ion-slide> 
-       </ion-slide-box>     
-    </ion-content>
+		<ion-scroll>
+		   <ion-slide-box ng-init="indexSlide()">
+				<ion-slide ng-repeat="teoria in listaTeoria">
+					<h1 class="tituloTeoria"> {{teoria.titulo}} </h1>
+					<hr>
+					<p class = "textoTeoria"> {{teoria.texto}} </p>				
+				</ion-slide> 
+		   </ion-slide-box>     
+		</ion-scroll> 
+   </ion-content>
 </ion-view>  
 
 

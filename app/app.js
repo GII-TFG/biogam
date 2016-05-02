@@ -35,7 +35,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
  
     
     function onDeviceReady(){
-        $state.go('config'); 
+        $state.go('welcome'); 
       }
 
   });
@@ -44,17 +44,19 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 }
 )
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+ $ionicConfigProvider.tabs.position('bottom');
+ 
+  $ionicConfigProvider.backButton.text('')
+  $ionicConfigProvider.backButton.icon('ion-chevron-left');
+  $ionicConfigProvider.backButton.previousTitleText(false);
 
    $stateProvider
 
 /////////////////////////////////////// ESTADO INICIAL /////////////////////////////////////////////////
 
-   .state('config', {
-    templateUrl: 'app/templates/loading.html',
-    controller: 'ConfigCtrl'
-   
-      })
+  
    .state('scaffold', {
     abstract: true,
     templateUrl: "app/templates/scaffold.html"
@@ -80,32 +82,19 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
 ///////////////////////////////////////// ESTADO ELECCION DE CATEGORIA ////////////////////////////////////////////
     
+     .state('welcome', {
+      templateUrl: 'app/templates/loading.html',
+      controller: 'welcomeCtrl'
+   
+      })
+
     .state('home.categories', {
     url: '/categories',
     views: {
         'home-tab@tabs': { //remember @ choose the state to go
           templateUrl: 'app/templates/page2TET.html',
-          controller: 'CategoriesCtrl'/*,
-          resolve:{
-           
-            LoadIndex: function(Test, $rootScope, $q, $timeout)
-            {
-
-              var deferred = $q.defer();
-              var proceso = function(){
-
-                console.log("ejecutamos load index");
-              Test.loadIndex($rootScope.temaId);
-
-              $timeout(function(){
-                deferred.resolve()}, 25);
-              }
-              proceso();
-              return deferred.promise;
-
-            }
-
-          } */
+          controller: 'CategoriesCtrl'
+       
         }
       }
     })
@@ -144,24 +133,6 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
           templateUrl: 'app/templates/test.html',
           controller: 'TestCtrl',
           cache: false
-          /*resolve:{
-           
-            PreguntasTest: function(Test, $rootScope, $q, $timeout)
-            {
-
-              var deferred = $q.defer();
-              var proceso = function(){
-              var lista = Test.getPreguntasTest($rootScope.temaId);
-
-              $timeout(function(){
-                deferred.resolve(lista)}, 15);
-              }
-              proceso();
-              return deferred.promise;
-
-            }
-
-          }*/
         }
       }
     })
@@ -221,14 +192,18 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
    
  .state('register', {
       url: '/register',
-      parent: "tabs",
-      views: {
-        'home-tab': {
-            templateUrl: 'app/templates/register.html',
-            controller: 'RegisterCtrl'
-        }
-      }
-   });  
+      parent: 'scaffold',
+      templateUrl: 'app/templates/register.html',
+      controller: 'RegisterCtrl'
+     
+   })  
+
+  .state('login', {
+      url: '/login',
+      parent: 'scaffold',
+      templateUrl: 'app/templates/login.html',
+      controller: 'LoginCtrl'     
+   });
   $urlRouterProvider.otherwise('home');
 });
 
