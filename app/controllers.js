@@ -1,7 +1,7 @@
 
 angular.module('starter.controllers', [])
  
-.controller("welcomeCtrl", function($scope, $q, $state, DB,$timeout, User, $rootScope) {
+.controller("welcomeCtrl", function($scope, $q, $state, DB,$timeout, User, $rootScope, $ionicHistory) {
     $scope.title = "Welcome";
     $rootScope.index = {test:0 , excercises:0, theory:0};
     $rootScope.results = {test:{aciertos:0, fallos:0} , excercises:{aciertos:0, fallos:0}, theory:0};
@@ -26,7 +26,11 @@ angular.module('starter.controllers', [])
         var deferred = $q.defer();
 
         $timeout(function(){ 
-             $timeout(function(){ $state.go('register'); }, 100);
+
+           $ionicHistory.nextViewOptions({
+               disableBack: true
+            });
+             $timeout(function(){ $state.go('login'); }, 100);
             
         }, 1000);
        
@@ -774,40 +778,24 @@ angular.module('starter.controllers', [])
 .controller("LoginCtrl", function($rootScope, $state, $http, $scope, Register) {
 
     $scope.title = "Log In";
+    
     $scope.show_form = angular.isUndefined($rootScope.user);  
         
     var user = [];
 
     $scope.myform;
+      
 
-    
-    $scope.authorization = {
-        name: '',
-        nick: '',
-        pass: ''   
-    };  
-   
-    $scope.signIn = function(form) {
-        if(form.$valid) {
-            $rootScope.user = $scope.authorization.nick;
-            Register.signUpUser($scope.authorization.name, $scope.authorization.nick, $scope.authorization.pass);
-          }
-          $state.go('home');
-    };      
+    var check_credentials = function (email, pass) {
 
-    $scope.check_credentials = function () {
-
-    console.log($scope.authorization.name);
-
-    document.getElementById("message").textContent = "";
+    console.log(email); 
 
     var request = $http({
         method: "post",
         url:  "http://192.168.1.41/dashboard/index.php/Login/check",
         data: {
-            name: $scope.authorization.name,
-            email: $scope.authorization.nick,
-            pass: $scope.authorization.pass
+            email: email,
+            pass:  pass
         },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
@@ -819,6 +807,34 @@ angular.module('starter.controllers', [])
         //$state.go('home');
     });
     }
+   
+    if(!$scope.show_form){
+
+        check_credentials($rootScope.user, $rootScope.pass);
+
+    }else{
+
+        $scope.authorization = {
+            name: '',
+            nick: '',
+            pass: ''   
+        };
+    
+    $scope.logIn = function(form) {
+
+        console.log("entro")
+
+        if(form.$valid) {
+                
+                check_credentials($scope.authorization.nick,$scope.authorization.pass)
+                
+              }
+             
+        };
+
+    }      
+
+  
 
 })
 

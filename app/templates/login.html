@@ -2,17 +2,19 @@
 
     <ion-content class="campos">
    
-        <div ng-show="!show_form">
+        <div ng-show="!show_form" align="center">
 
-            Aqui estamos
+           <h4>Welcome to Biogam</h4>
+           <h4>Please, wait for loading</h4>
+         
 
         </div>
 
         <div ng-show="show_form">
-        <form name="myForm" novalidate="" ng-submit="check_credentials(); signIn(myForm)">
+        <form name="myForm" novalidate="" ng-submit="logIn(myForm)">
             <div>
                 
-                <div id="reg-fields">
+                  <div id="reg-fields">
                     <label class="item item-input" id="nick" ng-class="{ 'has-errors' : myForm.nick.$invalid, 'no-errors' : myForm.nick.$valid}">
                         <input type="email" name="nick" placeholder="E-mail" ng-model="authorization.nick" required>
                     </label>
@@ -32,11 +34,13 @@
                 </div>
             </div>
             
-            <div ng-show="myForm.$valid"><input class="item" type="submit" value="Log In"></div>
-             <span id="message"></span>
-                
-            </input>
+            <input class="item" type="submit" value="Log In"> </input>
+            <button class="button button-light" ui-sref='register'>
+              Register
+            </button>
+                           
         </form>
+          <span id="message"></span>
 
         </div>
     </ion-content>

@@ -45,11 +45,11 @@ div {
     background-color: #9b59b6;
     background-image: linear-gradient(0deg, #0c60ee, #0c60ee 50%, transparent 50%);
     color: #fff; 
-  font-size: 12px;
+    font-size: 12px;
 }
 .bar.bar-custom .title {
     color: #fff;
-  font-size: 12px;
+    font-size: 18px;
 }
 .bar.bar-custom.bar-footer {
     background-image: linear-gradient(180deg, #0c60ee, #0c60ee 50%, transparent 50%); 
@@ -190,7 +190,7 @@ div {
 
     /*********   TEST   *********/
     .button.button-block.button-stable.testButton{
-    padding-top: .3em;
+        padding-top: .3em;
         padding-bottom:.7em;
         margin-bottom: 1em;
         background-color: #E8D5EF;
@@ -199,7 +199,7 @@ div {
     }
     h3.questionNum{
         text-align:center;
-    margin-top:1em;
+        margin-top:1em;
     }
     p#exerciseHeading{
         width: 100%;
@@ -254,7 +254,7 @@ div {
      }
     /* ----- REGISTRO ----- */
     .campos{
-        background-color: #9b59b6;
+        /*background-color: #9b59b6;*/
         /*background-image:url("/app/assests/img/LogoIntro.svg");*/
     }
     .containerCampos{
@@ -331,14 +331,14 @@ div {
     /*---- REGRISTRO ----*/
 
     .campos{
-        background:#9b59b6;
+        /*background:#9b59b6;*/
     }
     .containerCampos{
         width:70%;
         margin-right: auto;
         margin-left: auto;
     }
-    .item.button.button-outline.button-energized, .button{
+    .item.button.button-outline.button-energized{
         height:50px;
         width:100%;
         margin-top:40px;
@@ -405,6 +405,7 @@ div {
         text-align: center;
      }
 }
+
 
 /*
  ********************************
@@ -483,7 +484,7 @@ li.list-item:before{
  **********************************
  */
  .tituloTeoria{
-  padding-top: 1.8em;
+    padding-top: 1.8em;
     text-align: center; 
     width: 90%;
     margin-top: 4em;
@@ -617,7 +618,7 @@ margin-bottom: 4em;
     .col-m-9 {width: 75%;}
     .col-m-10 {width: 83.33%;}
     .col-m-11 {width: 91.66%;}
-.col-m-12 {width: 100%;}
+    .col-m-12 {width: 100%;}
 }
 @media only screen and (min-width: 800px) {
     .col-med-1 {width: 8.33%;}

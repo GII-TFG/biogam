@@ -120,7 +120,7 @@ angular.module('starter.services',[])
     if(res.rows.length > 0)
     {
       $rootScope.user=res.rows.item(0).nick;
-       $rootScope.nombre=res.rows.item(0).nombre;  
+       $rootScope.name=res.rows.item(0).nombre;  
         $rootScope.pass=res.rows.item(0).pass;  
     }});
    }
