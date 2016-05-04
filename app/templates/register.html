@@ -18,7 +18,8 @@
         </button>
         </div>-->
         <form name="myForm" novalidate="" ng-submit="signIn(myForm)">
-            <div>
+            <div class="containerCampos">
+                <img class="image" src="app/assests/img/LogoIntro.svg" height="100">
                 <div id="reg-fields">
                     <label class="item item-input" id="name" ng-class="{ 'has-errors' : myForm.name.$invalid, 'no-errors' : myForm.name.$valid}">
                         <input type="text" name="name" placeholder="Name & Surname" ng-model="authorization.name" required>
@@ -46,11 +47,11 @@
                         <div ng-messages-include="error-list.html"></div> 
                     </div>
                 </div>
-            </div>
             
-            <input class="item" type="submit" value="Sign me up!">
-                
-            </input>
+            
+                <input class="item button button-outline button-energized" id="register" type="submit" value="Sign me up!">               
+                </input>
+            </div>
         </form>
     </ion-content>
 </ion-view>

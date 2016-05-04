@@ -220,14 +220,9 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 //////////////////////////////////////// REGISTRO ///////////////////////////////////////////////////////// 
    
  .state('register', {
-      url: '/register',
-      parent: "tabs",
-      views: {
-        'home-tab': {
-            templateUrl: 'app/templates/register.html',
-            controller: 'RegisterCtrl'
-        }
-      }
+      url: '/register',      
+      templateUrl: 'app/templates/register.html',
+      controller: 'RegisterCtrl'
    });  
   $urlRouterProvider.otherwise('home');
 });

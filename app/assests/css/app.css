@@ -290,7 +290,7 @@ div {
     }
     img .image{
         width:70%;
-        height:auto;
+        height:20%;
     }
 }
 
@@ -893,5 +893,5 @@ background:#fff
 }
 
 #reg-fields{
-    padding-bottom:20px;
+    padding-bottom: 1em;
 }
