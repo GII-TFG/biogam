@@ -1,8 +1,8 @@
 
 angular.module('starter.controllers', [])
  
-.controller("ConfigCtrl", function($scope, $q, $state, DB,$timeout, User, $rootScope) {
-
+.controller("welcomeCtrl", function($scope, $q, $state, DB,$timeout, User, $rootScope, $ionicHistory) {
+    $scope.title = "Welcome";
     $rootScope.index = {test:0 , excercises:0, theory:0};
     $rootScope.results = {test:{aciertos:0, fallos:0} , excercises:{aciertos:0, fallos:0}, theory:0};
 
@@ -26,17 +26,18 @@ angular.module('starter.controllers', [])
         var deferred = $q.defer();
 
         $timeout(function(){ 
-            if(angular.isUndefined($rootScope.user)){  
-                $timeout(function(){ $state.go('register'); }, 1000);
-            }else{
-                $timeout(function(){ $state.go('home'); }, 1000);
-            }; 
+
+           $ionicHistory.nextViewOptions({
+               disableBack: true
+            });
+             $timeout(function(){ $state.go('login'); }, 100);
+            
         }, 1000);
        
         deferred.resolve();
 
          return deferred.promise;
-    })
+    });
 
 })
 
@@ -725,13 +726,13 @@ angular.module('starter.controllers', [])
 
 /***************************************REGISTER************************************************/
 
-.controller("RegisterCtrl", function($rootScope, $state, $scope, Register) {
+.controller("RegisterCtrl", function($rootScope, $state, $http, $scope, Register) {
 
     $scope.title = "Sign up";
     var user = [];
-   
-     //nuevo
-    
+
+    $scope.myform;
+
     
     $scope.authorization = {
         name: '',
@@ -743,20 +744,105 @@ angular.module('starter.controllers', [])
         if(form.$valid) {
             $rootScope.user = $scope.authorization.nick;
             Register.signUpUser($scope.authorization.name, $scope.authorization.nick, $scope.authorization.pass);
-            console.log($rootScope.user);
-            $state.go('home');
-        }
+          $state.go('home');
+          }
     };      
-    
-    $scope.getUserFields = function(nameU, nickU, passU){        
-        $rootScope.user = nickU;
-        
-        Register.signUpUser(nameU, nickU, passU);
-            
-    }
-    
-    
-    
-   
 
+    $scope.check_credentials = function () {
+
+    console.log($scope.authorization.name);
+
+    document.getElementById("message").textContent = "";
+
+    var request = $http({
+        method: "post",
+        url:  "http://192.168.1.41/dashboard/index.php/register/check",
+        data: {
+            name: $scope.authorization.name,
+            email: $scope.authorization.nick,
+            pass: $scope.authorization.pass
+        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
+
+    /* Check whether the HTTP Request is successful or not. */
+    request.success(function (data) {
+        document.getElementById("message").textContent = "You have login successfully with email ";
+        console.log(data);
+        //$state.go('home');
+    });
+    }
+
+})
+
+.controller("LoginCtrl", function($rootScope, $state, $http, $scope, Register) {
+
+    $scope.title = "Log In";
+    
+    $scope.show_form = angular.isUndefined($rootScope.user);  
+        
+    var user = [];
+
+    $scope.myform;
+      
+
+    var check_credentials = function (email, pass) {
+
+    console.log(email); 
+
+    var request = $http({
+        method: "post",
+        url:  "http://192.168.1.41/dashboard/index.php/Login/check",
+        data: {
+            email: email,
+            pass:  pass
+        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
+
+    /* Check whether the HTTP Request is successful or not. */
+    request.success(function (data) {
+        document.getElementById("message").textContent = "You have login successfully with email ";
+        console.log(data);
+        //$state.go('home');
+    });
+    }
+   
+    if(!$scope.show_form){
+
+        check_credentials($rootScope.user, $rootScope.pass);
+
+    }else{
+
+        $scope.authorization = {
+            name: '',
+            nick: '',
+            pass: ''   
+        };
+    
+    $scope.logIn = function(form) {
+
+        console.log("entro")
+
+        if(form.$valid) {
+                
+                check_credentials($scope.authorization.nick,$scope.authorization.pass)
+                
+              }
+             
+        };
+
+    }      
+
+  
+
+})
+
+.controller("BackCtrl", function($scope, $ionicHistory) {
+    $scope.myGoBack = function() {
+        
+         console.log($ionicHistory.backTitle());
+        $ionicHistory.goBack();
+    
+}
 })

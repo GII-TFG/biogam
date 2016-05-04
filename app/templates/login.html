@@ -1,17 +1,55 @@
-<!-- Mirar otros html -->
-<body ng-controller="loginController"> <!-- no se si es este controller -->
-    <div class="list" >
-        <label class="item item-input" id="user">
-            <input type="text" placeholder="User">
-        </label>
-        <label class="item item-input" id="pass">
-            <input type="text" placeholder="Password">
-        </label>
-        <button class="button button-energized">
-           Login
-        </button>
-        <button class="button button-clear button-energized" id="register" >
-            Register
-        </button>
+<ion-view title="{{title}}">
+
+    <ion-content class="campos">
+   
+        <div ng-show="!show_form" align="center">
+
+           <h4>Welcome to Biogam</h4>
+           <h4>Please, wait for loading</h4>
+         
+
+        </div>
+
+        <div ng-show="show_form">
+        <form name="myForm" novalidate="" ng-submit="logIn(myForm)">
+            <div>
+                
+                  <div id="reg-fields">
+                    <label class="item item-input" id="nick" ng-class="{ 'has-errors' : myForm.nick.$invalid, 'no-errors' : myForm.nick.$valid}">
+                        <input type="email" name="nick" placeholder="E-mail" ng-model="authorization.nick" required>
+                    </label>
+                    <div class="error-container last-error-container" ng-show="myForm.nick.$error && myForm.$submitted" ng-messages="myForm.nick.$error">
+                        <div ng-messages-include="error-list.html"></div> 
+                    </div> 
+                </div>
+                
+                
+                 <div id="reg-fields">
+                    <label class="item item-input" id="pass" ng-class="{ 'has-errors' : myForm.pass.$invalid, 'no-errors' : myForm.pass.$valid}">
+                        <input type="password" name="pass" placeholder="Password" ng-model="authorization.pass" required>
+                    </label>
+                    <div class="error-container last-error-container" ng-show="myForm.pass.$error && myForm.$submitted" ng-messages="myForm.pass.$error">
+                        <div ng-messages-include="error-list.html"></div> 
+                    </div>
+                </div>
+            </div>
+            
+            <input class="item" type="submit" value="Log In"> </input>
+            <button class="button button-light" ui-sref='register'>
+              Register
+            </button>
+                           
+        </form>
+          <span id="message"></span>
+
+        </div>
+    </ion-content>
+</ion-view>
+
+
+<script id="error-list.html" type="text/ng-template">  
+    <div class="error" ng-message="required">
+      <i class="ion-information-circled"></i> 
+      This field is required!
     </div>
-</body>
+</script>
