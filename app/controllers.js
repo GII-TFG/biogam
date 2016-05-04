@@ -726,89 +726,117 @@ angular.module('starter.controllers', [])
 
 /***************************************REGISTER************************************************/
 
-.controller("RegisterCtrl", function($rootScope, $state, $http, $scope, Register) {
+.controller("RegisterCtrl", function($rootScope, $state, $http, $scope, Register, Post_Dates,$ionicHistory) {
 
-    $scope.title = "Sign up";
-    var user = [];
+    $scope.title = "Sign up";     
+    $scope.message;
+    $scope.show_spin=false;
+    var message;
+    var ok = false;
+    var name;
+    var check_credentials = function (name, email, pass) {
 
-    $scope.myform;
+        request = Post_Dates.register(name, email, pass);
+        request.success(function (data) {
+        console.log(data.answer)
+        if(data.answer=="failed"){
+             message = "Your dates are incorrect ";
+        }else{
+              ok = true;
+              message = "You have register successfully with email ";  
+        }  
+        
+    })
 
-    
-    $scope.authorization = {
+     .finally(function () {
+                 
+             $scope.show_spin=false;
+             $scope.message = message;
+              if(ok){
+               $rootScope.user=email;
+               $rootScope.name=name;  
+               $rootScope.pass=pass;
+           
+              if(ok){
+                 
+                Register.signUpUser($scope.authorization.name,$scope.authorization.nick,$scope.authorization.pass);
+                } 
+              
+              $ionicHistory.nextViewOptions({disableBack: true});
+              $ionicHistory.clearCache().then(function(){ $state.go('home') })
+        }
+    });
+   
+    }
+   
+
+
+     $scope.authorization = {
         name: '',
         nick: '',
         pass: ''   
-    };  
-   
+     };
+    
     $scope.signIn = function(form) {
+      
         if(form.$valid) {
-            $rootScope.user = $scope.authorization.nick;
-            Register.signUpUser($scope.authorization.name, $scope.authorization.nick, $scope.authorization.pass);
-          $state.go('home');
-          }
-    };      
+             check_credentials($scope.authorization.name,$scope.authorization.nick,$scope.authorization.pass);
+             $scope.show_spin=true;
+        }
+             
+        };
 
-    $scope.check_credentials = function () {
-
-    console.log($scope.authorization.name);
-
-    document.getElementById("message").textContent = "";
-
-    var request = $http({
-        method: "post",
-        url:  "http://192.168.1.41/dashboard/index.php/register/check",
-        data: {
-            name: $scope.authorization.name,
-            email: $scope.authorization.nick,
-            pass: $scope.authorization.pass
-        },
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    });
-
-    /* Check whether the HTTP Request is successful or not. */
-    request.success(function (data) {
-        document.getElementById("message").textContent = "You have login successfully with email ";
-        console.log(data);
-        //$state.go('home');
-    });
-    }
+         
+   
 
 })
 
-.controller("LoginCtrl", function($rootScope, $state, $http, $scope, Register) {
+.controller("LoginCtrl", function($rootScope, $state, Post_Dates, $scope, Register, $ionicHistory) {
 
     $scope.title = "Log In";
-    
-    $scope.show_form = angular.isUndefined($rootScope.user);  
-        
-    var user = [];
-
+    $scope.show_form = angular.isUndefined($rootScope.user);        
     $scope.myform;
-      
-
+    $scope.message;
+    $scope.show_spin=false;
+    var message;
+    var ok = false;
+    var name;
     var check_credentials = function (email, pass) {
 
-    console.log(email); 
+        request = Post_Dates.login(email, pass);
+        request.success(function (data) {
+        console.log(data)
+        if(data.answer=="failed"){
+             message = "Your login is incorrect ";
+        }else{
+              ok = true;
+              name = data.answer;
+              message = "You have login successfully with email ";  
+        }  
+        
+    })
 
-    var request = $http({
-        method: "post",
-        url:  "http://192.168.1.41/dashboard/index.php/Login/check",
-        data: {
-            email: email,
-            pass:  pass
-        },
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+     .finally(function () {
+                 
+             $scope.show_spin=false;
+             $scope.message = message;
+              if(ok){
+               $rootScope.user=email;
+               $rootScope.name=name;  
+               $rootScope.pass=pass;
+                    if($scope.show_form){
+                    Register.signUpUser($rootScope.name, $rootScope.user, $rootScope.pass);
+                  }
+              $ionicHistory.nextViewOptions({disableBack: true});
+              $ionicHistory.clearCache().then(function(){ $state.go('home') })
+        }
     });
-
-    /* Check whether the HTTP Request is successful or not. */
-    request.success(function (data) {
-        document.getElementById("message").textContent = "You have login successfully with email ";
-        console.log(data);
-        //$state.go('home');
-    });
+   
     }
    
     if(!$scope.show_form){
+
+        console.log($rootScope.pass);
 
         check_credentials($rootScope.user, $rootScope.pass);
 
@@ -821,27 +849,20 @@ angular.module('starter.controllers', [])
         };
     
     $scope.logIn = function(form) {
-
-        console.log("entro")
-
+      
         if(form.$valid) {
                 
-                check_credentials($scope.authorization.nick,$scope.authorization.pass)
-                
-              }
+             check_credentials($scope.authorization.nick,$scope.authorization.pass);
+             $scope.show_spin=true;
+        }
              
         };
 
     }      
-
-  
-
 })
 
 .controller("BackCtrl", function($scope, $ionicHistory) {
     $scope.myGoBack = function() {
-        
-         console.log($ionicHistory.backTitle());
         $ionicHistory.goBack();
     
 }

@@ -544,27 +544,49 @@ angular.module('starter.services',[])
   return {
     signUpUser: function(name, nick, pass) { 
        
-        var lists = [];
-        var checking = [];
+  
+        var query = "INSERT OR REPLACE INTO usuario(nick, nombre, pass) VALUES(?, ?, ?)";
+        $cordovaSQLite.execute(db, query, [nick, name, pass]);
+        return true;
+        }
+    };})
 
-        var query2 = "SELECT * FROM usuario WHERE nick = ?"
-        var query = "INSERT INTO usuario(nick, nombre, pass) VALUES(?, ?, ?)";
-        $cordovaSQLite.execute(db, query2, [nick]).then(function(res){ 
-            if(res.rows.length > 0){
+.factory('Post_Dates', function($http,$rootScope){
 
-                console.log("El usuario ya existe");
 
-            }else{
-                console.log("Registrado!");
+  return {
+    login: function(email, pass) { 
 
-                $cordovaSQLite.execute(db, query, [nick, name, pass]).then(function(res){
-                    lists.push({nick: nick, nombre: name, pass: pass});
-                })
+        var request = $http({
+        method: "post",
+        url:  "http://192.168.1.41/dashboard/index.php/Login/check",
+        data: {
+            email: email,
+            pass:  pass
+        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
 
-                return true;
-            }
+    /* Check whether the HTTP Request is successful or not. */
+    return request;
 
-        })
+    },
+
+     register: function(name, email, pass) { 
+
+        var request = $http({
+        method: "post",
+        url:  "http://192.168.1.41/dashboard/index.php/Register",
+        data: {
+            name: name,
+            email: email,
+            pass:  pass
+        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
+
+    /* Check whether the HTTP Request is successful or not. */
+    return request;
 
     }
   };
