@@ -3,7 +3,7 @@
     <ion-content class="main_container80">
         <ion-scroll>    
             <div class="row" id="fila" ng-init="balls = score(nivel)" ng-include="'app/templates/_score_exercises.html'"> </div>
-                <ion-slide-box ng-init="initSlide()" on-slide-changed="slideHasChanged($index)">
+                <ion-slide-box show-pager="false" ng-init="initSlide()" on-slide-changed="slideHasChanged($index)">
                 <ion-slide ng-repeat="lista in listaEjerPerTemaNivel">
             
                     <div class="exercise-question">
@@ -11,15 +11,15 @@
                         <p id="textoEjercicio">{{lista.enunciado}}</p>
                     </div>
                     <div class="exercise-calculate">
-                        <div class="button-bar">
+                        <div class="row"> <!--/*button-bar*/-->
                             <button id="ejercicio-button13" class="button button-royal  button-block {{buttonStyle}}" ng-click="showBoxAaxaa()">Aa x aa</button>
                             <button id="ejercicio-button14" class="button button-royal  button-block button-outline" ng-click="showBoxAaxAa()"v>Aa x Aa</button>
                         </div>
-                        <div class="button-bar">
+                        <div class="row">
                             <button id="ejercicio-button19" class="button button-royal  button-block button-outline" ng-click="showBoxA1A2xA1A2()">A1A2 x A1A2</button>
                             <button id="ejercicio-button20" class="button button-royal  button-block button-outline" ng-click="showBoxA1A2xA1A3()">A1A2 x A1A3</button>
                         </div>
-                        <div class="button-bar">
+                        <div class="row">
                             <button id="ejercicio-button22" class="button button-royal  button-block button-outline" ng-click="showBoxA1A2xA3A4()">A1A2 x A3A4</button>
                             <button id="ejercicio-button23" class="button button-royal  button-block button-outline" ng-click="showBoxLethalGenes()">Lethal genes</button>
                         </div>

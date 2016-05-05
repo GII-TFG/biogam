@@ -190,6 +190,7 @@ div {
 
     #tituloEjercicio{
         text-align: center;
+        font-size: 14px;
     }
     #ejercicio-button13{
         margin-right: .5em;
@@ -198,11 +199,7 @@ div {
 
     /*********   TEST   *********/
     .button.button-block.button-stable.testButton{
-<<<<<<< HEAD
 		padding-top: .3em;
-=======
-        padding-top: .3em;
->>>>>>> refs/remotes/origin/master
         padding-bottom:.7em;
         margin-bottom: 1em;
         background-color: #E8D5EF;
