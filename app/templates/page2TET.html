@@ -1,0 +1,12 @@
+<ion-view title="{{title}}">
+  <ion-content class="main_container">
+   <h1>{{nombreTema.name}}</h1>
+   <ion-list>
+   
+    <button class="button button-block buttonSubject button-borders" ng-repeat="categoria in categorias"  ng-click="getCategoriaId(categoria.id)">
+        {{categoria.titulo}}
+    </button>    
+           
+     </ion-list> 
+  </ion-content>
+</ion-view>

@@ -1,0 +1,13 @@
+<ion-view title="{{title}}">
+
+    <ion-content class="main_container">
+        <ol class="list-custom">
+             <li class="animated bounceInLeft list-item" item-icon-right ng-repeat="teoria in listaTeoria" ui-sref='home.categories.1.detail' ng-click="getTheory($index)">
+
+               {{teoria.titulo}}
+
+            </li>
+            
+        </ol>
+    </ion-content>
+</ion-view>  

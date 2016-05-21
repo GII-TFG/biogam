@@ -1,0 +1,70 @@
+
+<ion-view>
+    <ion-content class="main_container80">
+        <ion-scroll>    
+            <div class="row" id="fila" ng-init="balls = score(nivel)" ng-include="'app/templates/_score_exercises.html'"> </div>
+                <ion-slide-box show-pager="false" ng-init="initSlide()" on-slide-changed="slideHasChanged($index)">
+                <ion-slide ng-repeat="lista in listaEjerPerTemaNivel">
+            
+                    <div class="exercise-question">
+                        <h3 id="tituloEjercicio"> Question {{$index + 1 }}</h3> <!--Pregunta {{index + 1}}-->
+                        <p id="textoEjercicio">{{lista.enunciado}}</p>
+                    </div>
+                    <div class="exercise-calculate">
+                        <div class="row"> <!--/*button-bar*/-->
+                            <button id="ejercicio-button13" class="button button-royal  button-block {{buttonStyle}}" ng-click="showBoxAaxaa()">Aa x aa</button>
+                            <button id="ejercicio-button14" class="button button-royal  button-block button-outline" ng-click="showBoxAaxAa()"v>Aa x Aa</button>
+                        </div>
+                        <div class="row">
+                            <button id="ejercicio-button19" class="button button-royal  button-block button-outline" ng-click="showBoxA1A2xA1A2()">A1A2 x A1A2</button>
+                            <button id="ejercicio-button20" class="button button-royal  button-block button-outline" ng-click="showBoxA1A2xA1A3()">A1A2 x A1A3</button>
+                        </div>
+                        <div class="row">
+                            <button id="ejercicio-button22" class="button button-royal  button-block button-outline" ng-click="showBoxA1A2xA3A4()">A1A2 x A3A4</button>
+                            <button id="ejercicio-button23" class="button button-royal  button-block button-outline" ng-click="showBoxLethalGenes()">Lethal genes</button>
+                        </div>
+                    <!-- BOX Aaxaa -->
+                        <div class="item item-body boxOperations" ng-show="boxShowAaxaa">
+                            <!-- textbox Row -->
+                            <div class="row rowTextbox2">
+                                <div>
+                                    <p id="types">A</p>
+                                    <input class="col col-m-3 col-med-3 item item-input AaClass" type="number" ng-model="AaValue.value">
+                                </div>
+
+                                <div>
+                                    <p id="types">a</p>
+                                    <input class="col col-m-3 col-med-3 item item-input AaClass" type="number"  ng-model="aaValue.value">
+                                </div>
+                            </div>
+                            <!-- Buttons Row -->
+                            <div class = "button-bar cleanCalculate">
+                                <button id="buttonCalculate" class = "button button-small button-royal" ng-click="calculateTestCross(); calculate(balls, lista, $index)" >Calculate</button>
+                                <button class = "button button-small button-royal" ng-click="clean()">Clean</button>
+                            </div>
+                            <div class="row DataRow">
+                                <div class="col col-m-3 col-med-3 total">
+                                    <p id="typesTotal">Total</p>
+                                    <p id="valueTotal"> {{total}} </p>
+                                </div>
+                                <div class="col col-m-3 col-med-3 Function">                         
+                                    <p class="Chii"><i>X</i><sup><i>2</i></sup><i>(df = 2) = </i></p>
+                                </div>
+                               <div class="col col-m-3 col-med-3 Result">
+                                    <p id="result">{{chiA}}</p>
+                                </div>
+                                 <div class="col col-m-3 col-med-3 agree">
+                                        <p class="agreeText">Agree?</p>
+                                        <img ng-show="agree=='YES'" src="app/assests/img/check.png"/>
+                                        <img ng-show="agree=='NO'" src="app/assests/img/cross.png"/>
+                                        <img ng-show="agree==' '" src=""/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                        
+                </ion-slide>
+                </ion-slide-box>          
+        </ion-scroll>
+    </ion-content>
+</ion-view>
+

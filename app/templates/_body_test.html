@@ -1,0 +1,34 @@
+
+            
+             <h3 class="questionNum">
+
+                
+                Question {{pregunta.numero}}
+            </h3>
+
+            <p id="textoEjercicio">
+                {{listaPreguntas[index].enunciado}}
+
+            </p>
+           
+            <ion-list >
+                    
+        
+               <div ng-repeat="option in listaOpcionesPregunta" ng-init="state = option.esCorrecto == 1? true: false">
+
+                 <button class="button button-block button-stable testButton"  ng-show="plot(state)" ng-click = "resolve(option.esCorrecto); state = false? true: true"  ng-disabled="checked(state)">
+                      
+                  {{option.nombreOp}}
+                     
+                </button>
+
+                <button class="button button-block button-stable"  ng-class="{1: 'pinto_verde', 0: 'pinto_rojo'}[option.esCorrecto]" ng-show="!plot(state)">
+                      
+                  {{option.nombreOp}}
+                     
+                </button>
+
+                </div>
+                
+                         
+            </ion-list>

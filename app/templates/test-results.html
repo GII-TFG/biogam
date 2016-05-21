@@ -1,0 +1,34 @@
+<ion-view title="{{title}}">
+
+    <ion-content class="score">
+        <table>
+            <tr>
+                <td id="score_questions"> Questions </td>
+                <td id="score_questions_num"> {{aciertos + fallos}} </td>
+            </tr>
+            <tr>
+                <td id="score_correctAnsw"> Correct Answers </td>
+                <td id="score_correctAnsw_num"> {{aciertos}} </td>
+            </tr>
+            <tr>
+                <td id="score_incorrectAnsw"> Wrong Answers </td>
+                <td id="score_incorrectAnsw_num"> {{fallos}} </td>
+            </tr>
+            <tr>
+                <td id="score_finalScore"> Score </td>
+                <td id="score_finalScore_num"> {{((aciertos*10)/(aciertos + fallos))}} </td>
+            </tr>
+        </table>
+
+        <div id="inlineButton">
+            <button class="button button-stable button-score" ng-click='showTest()'>
+                    View Test
+            </button>
+
+            <button class="button button-stable button-score" ui-sref='home'>
+                    Ok
+            </button>
+        </div>
+
+    </ion-content>
+</ion-view>

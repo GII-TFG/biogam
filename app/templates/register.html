@@ -1,0 +1,68 @@
+<ion-view title="{{title}}">
+
+    <ion-content class="campos">
+	 <!--<div class="containerCampos">
+        <img class="image" src="app/assests/img/LogoIntro.svg" height="200">
+        <label class="item item-input" id="name">
+            <input type="text" placeholder="Name & Surname" ng-model="name.value">
+        </label>
+        <label class="item item-input" id="nick">
+            <input type="text" placeholder="User Name" ng-model="nick.value">
+        </label>
+        <label class="item item-input" id="pass">
+            <input type="password" placeholder="Password" ng-model="pass.value">
+        </label>
+        
+        <button class="item button button-outline button-energized" id="register" ui-sref='home' ng-click="getUserFields(name.value, nick.value, pass.value)">
+                Sign me up!
+        </button>
+        </div>-->
+        <form name="myForm" novalidate="" ng-submit="signIn(myForm)">
+            <div class="containerCampos">
+                <img class="image" src="app/assests/img/LogoIntro.svg" height="100">
+                <div id="reg-fields">
+                    <label class="item item-input" id="name" ng-class="{ 'has-errors' : myForm.name.$invalid, 'no-errors' : myForm.name.$valid}">
+                        <input type="text" name="name" placeholder="Name & Surname" ng-model="authorization.name" required>
+                    </label>
+                    <div class="error-container last-error-container" ng-show="myForm.name.$error && myForm.$submitted" ng-messages="myForm.name.$error">
+                        <div ng-messages-include="error-list.html"></div> 
+                    </div> 
+                </div>    
+            
+                <div id="reg-fields">
+                    <label class="item item-input" id="nick" ng-class="{ 'has-errors' : myForm.nick.$invalid, 'no-errors' : myForm.nick.$valid}">
+                        <input type="email" name="nick" placeholder="E-mail" ng-model="authorization.nick" required>
+                    </label>
+                    <div class="error-container last-error-container" ng-show="myForm.nick.$error && myForm.$submitted" ng-messages="myForm.nick.$error">
+                        <div ng-messages-include="error-list.html"></div> 
+                    </div> 
+                </div>
+                
+                
+                 <div id="reg-fields">
+                    <label class="item item-input" id="pass" ng-class="{ 'has-errors' : myForm.pass.$invalid, 'no-errors' : myForm.pass.$valid}">
+                        <input type="password" name="pass" placeholder="Password" ng-model="authorization.pass" required>
+                    </label>
+                    <div class="error-container last-error-container" ng-show="myForm.pass.$error && myForm.$submitted" ng-messages="myForm.pass.$error">
+                        <div ng-messages-include="error-list.html"></div> 
+                    </div>
+                </div>
+                  
+            </div>
+            <input class="item button button-outline button-energized" id="register" type="submit" value="Sign me up!"></input>
+
+            <div  align="center">
+                <ion-spinner ng-show="show_spin" icon="android"></ion-spinner>
+                    {{ message }}
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
+
+
+<script id="error-list.html" type="text/ng-template">  
+    <div class="error" ng-message="required">
+      <i class="ion-information-circled"></i> 
+      This field is required!
+    </div>
+</script>

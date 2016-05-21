@@ -1,0 +1,11 @@
+<ion-view cache-view="false" title="{{title}} ">
+
+    <ion-content class="main_container">
+        <ol class="list-custom">
+            <li class="list-item" ng-repeat="exer in listaEjer" item="item" ui-sref='home.categories.2.Exerlist.level' ng-click="getEjer(exer, $index)">
+                Question {{exer.ejerId}}
+            </li>
+            
+        </ol>
+    </ion-content>
+</ion-view>  

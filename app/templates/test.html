@@ -1,0 +1,20 @@
+
+<ion-view cache-view="false" title="{{title}}">
+
+    <ion-content class="main_container80">
+	     
+       <ion-slide-box ng-init="lockSlide()" on-slide-changed="slideHasChanged($index)">
+          
+       	<ion-slide ng-repeat="pregunta in listaPreguntas">
+                    
+			<div class="slide-animate" ng-include="'app/templates/_body_test.html'"></div>
+
+			<div>
+				<button  class="button button-stable icon-right nextButton" ng-click="nextSlide()" ng-disabled="!used" ng-show="!show">Next</button>
+			</div>
+        </ion-slide>
+		</ion-slide-box>
+     
+    </ion-content>
+	
+</ion-view>
