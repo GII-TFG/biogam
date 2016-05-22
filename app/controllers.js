@@ -30,7 +30,8 @@ angular.module('starter.controllers', [])
            $ionicHistory.nextViewOptions({
                disableBack: true
             });
-             $timeout(function(){ $state.go('login'); }, 100);
+
+             $timeout(function(){ $state.go('home'); }, 100);
             
         }, 1000);
        
@@ -50,6 +51,7 @@ angular.module('starter.controllers', [])
      $scope.getTemaId = function(obj){
       
       if($rootScope.temaId != obj){
+        $rootScope.imagePath=obj;
         $rootScope.temaId = obj;
         $rootScope.test = Test.getPreguntasTest(obj);
         $rootScope.theory = Theory.getTeoriaDeTema(obj);
@@ -98,26 +100,39 @@ angular.module('starter.controllers', [])
   
 })
 /***************************************TEORIA************************************************/
-.controller('TheoryCtrl', function($scope, $rootScope){
+.controller('TheoryCtrl', function($scope, $rootScope, Theory){
 
     $scope.title = "Theory";
     $scope.listaTeoria = $rootScope.theory;
 
+    for(var i=0; i<$rootScope.theory.length; i++){
+
+        Theory.getImg($rootScope.theory[i].idImg,i);
+    }
+
     $scope.getTheory = function(index){      
         $rootScope.index.theory = index;
-        $rootScope.listaTeoria = $scope.listaTeoria
     }    
 })
 
-.controller('CompleteTheoryCtrl', function($scope, $rootScope,  $ionicSlideBoxDelegate){
+.controller('CompleteTheoryCtrl', function($scope, $rootScope, Theory, $ionicSlideBoxDelegate){
 
+       console.log($rootScope.theory[0].imagenes.length);
+
+     $scope.path=$rootScope.imagePath;
+    var cargaImg = function(id){
+         var deferred = $q.defer();
+         Theory.getImg(id);
+         deferred.resolve();
+         return deferred.promise;
+    };
     $scope.title = "Detail";
     var index = $rootScope.index.theory;
     $scope.indexSlide = function(){
          $ionicSlideBoxDelegate.slide(index)
     }
-    $scope.listaTeoria = $rootScope.listaTeoria;
-    
+    $scope.listaTeoria = $rootScope.theory;
+  
     })
 
 /***************************************EXERCISES************************************************/

@@ -6,7 +6,12 @@
 				<ion-slide ng-repeat="teoria in listaTeoria">
 					<h1 class="tituloTeoria"> {{teoria.titulo}} </h1>
 					<hr>
-					<p class = "textoTeoria"> {{teoria.texto}} </p>				
+					<p class = "textoTeoria"> {{teoria.texto}} </p>
+
+					<div ng-repeat="imagen in teoria.imagenes">
+							<img ng-src = "app/assests/img/{{path}}/{{imagen.nombre}}">
+					</div>
+						
 				</ion-slide> 
 		   </ion-slide-box>     
 		</ion-scroll> 

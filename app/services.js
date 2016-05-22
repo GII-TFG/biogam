@@ -19,7 +19,7 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`img-test` (`idImg` INTEGER NOT NULL,`idTest`  INTEGER,PRIMARY KEY(idImg),FOREIGN KEY(`idImg`) REFERENCES imagen(id),FOREIGN KEY(`idTest`) REFERENCES test(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`img-teoria` (`idImg` INTEGER NOT NULL,`idTeoria`  INTEGER NOT NULL,PRIMARY KEY(idImg,idTeoria),FOREIGN KEY(`idImg`) REFERENCES imagen(id),FOREIGN KEY(`idTeoria`) REFERENCES teoria(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`img-ejer` (`idImg` INTEGER NOT NULL,`idEj`  INTEGER NOT NULL,PRIMARY KEY(idImg,idEj),FOREIGN KEY(`idImg`) REFERENCES imagen(id),FOREIGN KEY(`idEj`) REFERENCES ejercicio(id));");
-      $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`imagen` (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`imagen`  BLOB);");
+      $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS`imagen` (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`imagen`  TEXT NOT NULL);");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'info-ejer' (`nickUsuario` TEXT NOT NULL,`idEjer` INTEGER NOT NULL,`numIntentos` INTEGER,`numFallos` INTEGER, PRIMARY KEY(nickUsuario,idEjer),FOREIGN KEY(`nickUsuario`) REFERENCES usuario(nick),FOREIGN KEY(`idEjer`) REFERENCES ejercicio(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'ejercicio' (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`enunciado` TEXT NOT NULL,`nivel` INTEGER NOT NULL,`idTema`  INTEGER,FOREIGN KEY(`nivel`) REFERENCES nivel(id),FOREIGN KEY(`idTema`) REFERENCES `tema`(`id`));");
       
@@ -43,6 +43,7 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (2,'Prueba 2',2,1);");
       $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (3,'Prueba 3',1,2);");
 
+      /*One Locus*/
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (1,'Pure line','A pure line is populations that show no variation in the character or trait studied. All offspring produced slfing a individual or crossing individuals of the same pure line show the same form of the character or trait studied',1);");
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (2,'Variability','Different pure lines can show different forms of the same character or trait. If we studied the colour of the flower, one pure line can has purple flowers and other pure line can has white. The different character forms or different character variants are also called Phenotypes.',1);");
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (3,'Locus/Loci','A locus is a specific place of a chromosome. Each gene is located in a specific locus. Different genes are situated in different loci or different places of the chromosomes. In a diploid specie with two genomen, one genome from the paternal parental and other from the maternal parental, all the genes are in two copies, one copy came from the father and the other copy from the mother.',1);");
@@ -60,6 +61,20 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (15,'F1 generation','The first filial generation, obtained by crossing two parental pure lines.',1);");
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (16,'F2 generation','The second filial generation, obtained by selfing the F1 or hybrid between two pure lines or intercrossing the F1.',1);");
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (17,'Testcross','A cross of an individual of unknown genotype or a heterozygote (or a multiple heterozygote) to an individual homozygote recessive or a tester individual. Also is the offspring of a cross of the F1 between two pure lines and the recessive parental pure line.',1);");
+
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (1,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (2,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (3,3);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (4,8);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (5,10);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (6,11);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (7,12);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (8,13);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (9,14);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (10,14);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (11,16);");
+      //$cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (9,17);");
+
 
       $cordovaSQLite.execute(db, "INSERT INTO `tema` VALUES (1,'One Locus');");
       $cordovaSQLite.execute(db, "INSERT INTO `tema` VALUES (2,'Two Loci');");
@@ -87,6 +102,27 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "INSERT INTO `ejercicio` VALUES (10,'A plant heterozygote for the alleles C1 and C2 was crossed with another plant heterozygote for the alleles C2 and C3. In this cross 36 C1C2, 11C1C3, 44 C2C2 and 15 C2C3 plants were obtained. Is the segregation observed in this croos in agreement with the expected segregation?',3,1);");
       $cordovaSQLite.execute(db, "INSERT INTO `ejercicio` VALUES (11,'On a ranch in Cazorla, a mutation that gave a platinum coat color was observed in a rabbit. Every time two platinums were crossed, some normal rabbits appeared in the progeny. The repeat matings of the same pair of platinums produced 104 platinum and 48 normal progeny. Sate a hypothesis that accounts from these results',3,1);");
       
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (1,'lineapura.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (2,'tulipanes1.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (3,'Locus.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (4,'Uniform.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (5,'Dominant.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (6,'RojoRosaBlanco.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (7,'F2codominance.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (8,'CaracterNuevo.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (9,'Segregation.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (10,'Segregation2.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (11,'Fdos.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (12,'CHINormal.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (13,'CHIYates.png');");
+      /* $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (14,);");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (15,);");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (16,);");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (17,);");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (18,);");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (19,);");*/
+
+
   };
 
 
@@ -136,7 +172,6 @@ angular.module('starter.services',[])
 
       for(var i =0; i < nivel.size; i++){
 
-        console.log(nivel.list_exer[i].attempts);
         lista.push(nivel.list_exer[i].attempts);
       }
 
@@ -193,21 +228,22 @@ angular.module('starter.services',[])
   };
 })
 
-.factory('Theory', function($cordovaSQLite ) {
+.factory('Theory', function($cordovaSQLite, $rootScope ) {
   
       var capsTeoria = [];
 
   return {
     getTeoriaDeTema: function(idTema) {
-    
-    var query ="SELECT titulo, texto, id FROM teoria WHERE idTema=?";
+  
+
+    var query ="select titulo, texto , id, idImg from teoria left join 'img-teoria' on teoria.id = 'img-teoria'.idTeoria where idTema=?  UNION ALL select titulo, texto , id, idImg from 'img-teoria' left join teoria on teoria.id = 'img-teoria'.idTeoria where 'img-teoria'.idTeoria is NULL";
 
     $cordovaSQLite.execute(db, query, [idTema]).then(function(res){
 
         if(res.rows.length > 0){
 
           for(var i = 0; i<res.rows.length ; i++){
-            capsTeoria.push({titulo: res.rows.item(i).titulo, texto:res.rows.item(i).texto, id:res.rows.item(i).id});
+            capsTeoria.push({titulo: res.rows.item(i).titulo, texto:res.rows.item(i).texto, id:res.rows.item(i).id, idImg:res.rows.item(i).idImg, imagenes: []});
           }
 
         }else{
@@ -216,11 +252,35 @@ angular.module('starter.services',[])
         }
 
     })
-
-
       return capsTeoria;
     
+    },
+
+    getImg: function(idImg,j) {
+    
+
+
+    var query ="select imagen from imagen where id =?";
+
+    $cordovaSQLite.execute(db, query, [idImg]).then(function(res){
+
+        if(res.rows.length > 0){
+
+          for(var i = 0; i<res.rows.length ; i++){
+
+            $rootScope.theory[j].imagenes.push({nombre: res.rows.item(i).imagen});
+          }
+
+        }else{
+
+           console.log("Not found results");
+        }
+
+    })
+      return true;
+    
     }
+
   };
 })
 
