@@ -35,6 +35,20 @@ div {
     margin-left: auto;
     margin-right: auto;
 }
+.main_container95{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.col-35{
+    width:35%;
+}
+.col-45{
+    width: 45%;
+}
+.col-40{
+    width: 40%;
+}
 /*
  *******************************
  *         HEADER BAR          *
@@ -118,6 +132,7 @@ div {
 
 .button-pressed{
     background-color: #9b59b6 !important;
+    color:#fff;
 }
 
 @media screen and (max-width: 480px){
@@ -160,12 +175,15 @@ div {
 
     /*********   EXERCISE   *********/
    
-    .exerciseButton.button.button-royal{
+    /*.exerciseButton.button.button-royal{
         width: 50% !important;
-    }
+    }*/
 
     div#fila.row{
         margin-top: 1.5em !important;
+    }
+    .myButtonRow{
+        width: 80%;
     }
 
     .circleImg{
@@ -176,8 +194,8 @@ div {
     }
 
     #textoEjercicio{
-        margin-top: 2em;
-        padding-top: 1.5em;
+        margin-top: 1em;
+        padding-top: .5em;
         text-align: justify;
     }
     .exercise-question{
@@ -191,11 +209,142 @@ div {
     #tituloEjercicio{
         text-align: center;
         font-size: 14px;
+        padding-top: 0.1em;
+        margin-bottom: .1em;
     }
-    #ejercicio-button13{
-        margin-right: .5em;
+    #primeraFila, #segundaFila, #terceraFila{
+        margin-bottom: 0px !important;
+        margin-top: 0em !important;
+    }
+    
+    #buttonClean{
+        margin-right: .2em;
+        background-color: #9b59b6;
+        color: #fff;
+        padding-top:0.1em;
+        padding-bottom: 0.1em;
+        margin-top: 0.1em;
+        margin-bottom: 0.1em;
+    }
+    #buttonCalculate{
+        background-color: #9b59b6;
+        color: #fff;
+        padding-top: 0.1em;
+        padding-bottom: 0.1em;
+        margin-right: .3em;
+        margin-top: 0.1em;
+        margin-bottom: 0.1em;
+    }
 
+    #ejercicio-button13, #ejercicio-button19, #ejercicio-button22{
+        padding-top: 0.1em;
+        padding-bottom: 0.1em;
+        margin-right: .3em;
+        margin-top: 0.1em;
+        margin-bottom: 0.1em;
     }
+    #ejercicio-button14, #ejercicio-button20, #ejercicio-button23{
+        padding-top:0.1em;
+        padding-bottom: 0.1em;
+        margin-top: 0.1em;
+        margin-bottom: 0.1em;
+    }
+
+    div.item.item-body.boxOperations{
+        border-color:darkgray;
+        padding: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0.5em;
+        height:50%;
+        width: 95%;
+        /*background-color: #90C3D4;*/
+        box-shadow: -1px 5px 8px 3px rgba(0,0,0,0.10);
+    }
+    /*.exercise-calculate{
+        background-color: #FAF214;
+    }*/
+    /*#filaCamposTexto{
+        
+        background-color: blue;
+    }*/
+    #campoTotal{
+        display: block;
+    }
+    #typesTotal{
+        margin:0em;
+        text-align:center;
+    }
+    #valueTotal{
+        margin-top: .3em;
+        text-align: center;
+    }
+    #result{
+        margin:0em;
+        display:inline;
+    }
+    #Chii{
+        margin:0em;
+        display: inline;
+    }
+    #agree{
+        margin:0em;
+        display: block;
+        text-align: center;
+    }
+    #agreeText{
+        margin:0em;
+        text-align: center;
+        margin-bottom: .3em;
+    }
+    #rowTextbox2{
+        padding-top:5px;
+        width:100% !important;
+        /*background-color: #35FF0D;*/
+    } 
+    /*  
+    #textoYcaja{
+        background-color: #996600;
+    }*/
+    #filaBotonesCalcular{
+        padding-top: 1em;
+    }
+    #types{
+        padding-top: .1em;
+        padding-bottom: .1em;
+        margin-top: 0em;
+        text-align: center;
+        display: block;
+        width:90%;
+        /*background-color: #ff00ff;*/
+    }
+    .col.col-90.item.item-input.AaClass{
+        display: block;
+        margin-top:0em;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom: auto;
+        text-align: center;
+        padding-top: .1em;
+        border-top: .1em solid #e6e6e6;
+        border-left: .1em solid #e6e6e6;
+        border-right: .1em solid #e6e6e6;
+        border-bottom: 2.3px solid #9b59b6;
+    }
+    #primerTextbox{
+        display: inline;
+        width: 50%;
+        padding-top: .2em;
+        /*background-color: #458000;*/
+    } 
+    #segundoTextbox{
+        display: inline;
+        width: 50%;
+        padding-top: .2em;
+        /*background-color: #458000;*/
+    }
+
+
 
     /*********   TEST   *********/
     .button.button-block.button-stable.testButton{
@@ -208,11 +357,8 @@ div {
     }
     h3.questionNum{
         text-align:center;
-<<<<<<< HEAD
-		margin-top:1em;
-=======
         margin-top:1em;
->>>>>>> refs/remotes/origin/master
+
     }
     p#exerciseHeading{
         width: 100%;
@@ -696,14 +842,7 @@ div.calcularEjercicio{
     padding-top: 45%;
     margin:auto;
 }
-div.item.item-body.boxOperations{
-    border-color:darkgray;
-    padding: 0px;
-    margin: auto;
-    margin-top: 10px;
-    height:65%;
-    width: 100%;
-}
+
 div.row.rowTextbox2{
     padding-top:5px;
     margin: auto;

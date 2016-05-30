@@ -30,7 +30,7 @@ angular.module('starter.controllers', [])
            $ionicHistory.nextViewOptions({
                disableBack: true
             });
-             $timeout(function(){ $state.go('login'); }, 100);
+             $timeout(function(){ $state.go('home'); }, 100);
             
         }, 1000);
        
@@ -221,10 +221,22 @@ angular.module('starter.controllers', [])
     $scope.boxShowA1A2xA1A3 = false;
     $scope.boxShowA1A2xA3A4 = false;
 
-    $scope.buttonStyle = "button-outline";
+    
+    $scope.buttonStyleAaxaa = "button-pressed";
+    $scope.buttonStyleAaxAa = "button-pressed";
+    $scope.buttonStyleLGenes = "button-pressed";
+    $scope.buttonStyleA1A2xA1A2 = "button-pressed";
+    $scope.buttonStyleA1A2xA1A3 = "button-pressed";
+    $scope.buttonStyleA1A2xA3A4 = "button-pressed";
+   
 
     $scope.showBoxAaxaa = function () {
-        $scope.buttonStyle = "button-pressed";
+        $scope.buttonStyleAaxaa = "button-outline";
+        $scope.buttonStyleAaxAa = "button-pressed";
+        $scope.buttonStyleLGenes = "button-pressed";
+        $scope.buttonStyleA1A2xA1A2 = "button-pressed";
+        $scope.buttonStyleA1A2xA1A3 = "button-pressed";
+        $scope.buttonStyleA1A2xA3A4 = "button-pressed";
         $scope.agree = " ";
         $scope.boxShowAaxaa = !$scope.boxShowAaxaa;
         $scope.boxShowAaxAa = false;
@@ -235,6 +247,12 @@ angular.module('starter.controllers', [])
 
     }
     $scope.showBoxAaxAa = function () {
+        $scope.buttonStyleAaxaa = "button-pressed";
+        $scope.buttonStyleAaxAa = "button-outline";
+        $scope.buttonStyleLGenes = "button-pressed";
+        $scope.buttonStyleA1A2xA1A2 = "button-pressed";
+        $scope.buttonStyleA1A2xA1A3 = "button-pressed";
+        $scope.buttonStyleA1A2xA3A4 = "button-pressed";
         $scope.agree = " ";
         $scope.boxShowAaxAa = !$scope.boxShowAaxAa;
         $scope.boxShowAaxaa = false;
@@ -244,6 +262,12 @@ angular.module('starter.controllers', [])
         $scope.boxShowA1A2xA3A4 = false;
     }
     $scope.showBoxLethalgenes = function () {
+        $scope.buttonStyleAaxaa = "button-pressed";
+        $scope.buttonStyleAaxAa = "button-pressed";
+        $scope.buttonStyleLGenes = "button-outline";
+        $scope.buttonStyleA1A2xA1A2 = "button-pressed";
+        $scope.buttonStyleA1A2xA1A3 = "button-pressed";
+        $scope.buttonStyleA1A2xA3A4 = "button-pressed";
         $scope.agree = " ";
         $scope.boxShowLethalgenes = !$scope.boxShowLethalgenes;
         $scope.boxShowAaxaa = false;
@@ -253,6 +277,13 @@ angular.module('starter.controllers', [])
         $scope.boxShowA1A2xA3A4 = false;
     }
     $scope.showBoxA1A2xA1A2 = function () {
+        $scope.buttonStyleAaxaa = "button-pressed";
+        $scope.buttonStyleAaxAa = "button-pressed";
+        $scope.buttonStyleLGenes = "button-pressed";
+        $scope.buttonStyleA1A2xA1A2 = "button-outline";
+        $scope.buttonStyleA1A2xA1A3 = "button-pressed";
+        $scope.buttonStyleA1A2xA3A4 = "button-pressed";
+
         $scope.agree = " ";
         $scope.boxShowA1A2xA1A2 = !$scope.boxShowA1A2xA1A2;
         $scope.boxShowAaxaa = false;
@@ -262,7 +293,12 @@ angular.module('starter.controllers', [])
         $scope.boxShowA1A2xA3A4 = false;
     }
     $scope.showBoxA1A2xA1A3 = function () {
-        $scope.agree = " ";
+        $scope.buttonStyleAaxaa = "button-pressed";
+        $scope.buttonStyleAaxAa = "button-pressed";
+        $scope.buttonStyleLGenes = "button-pressed";
+        $scope.buttonStyleA1A2xA1A2 = "button-pressed";
+        $scope.buttonStyleA1A2xA1A3 = "button-outline";
+        $scope.buttonStyleA1A2xA3A4 = "button-pressed";        $scope.agree = " ";
         $scope.boxShowA1A2xA1A3 = !$scope.boxShowA1A2xA1A3;
         $scope.boxShowAaxaa = false;
         $scope.boxShowAaxAa = false;
@@ -271,6 +307,12 @@ angular.module('starter.controllers', [])
         $scope.boxShowA1A2xA3A4 = false;
     }
     $scope.showBoxA1A2xA3A4 = function () {
+        $scope.buttonStyleAaxaa = "button-pressed";
+        $scope.buttonStyleAaxAa = "button-pressed";
+        $scope.buttonStyleLGenes = "button-pressed";
+        $scope.buttonStyleA1A2xA1A2 = "button-pressed";
+        $scope.buttonStyleA1A2xA1A3 = "button-pressed";
+        $scope.buttonStyleA1A2xA3A4 = "button-outline"; 
         $scope.agree = " ";
         $scope.boxShowA1A2xA3A4 = !$scope.boxShowA1A2xA3A4;
         $scope.boxShowAaxaa = false;
@@ -740,10 +782,10 @@ angular.module('starter.controllers', [])
         request.success(function (data) {
         console.log(data.answer)
         if(data.answer=="failed"){
-             message = "Your dates are incorrect ";
+             message = "Your data is incorrect ";
         }else{
               ok = true;
-              message = "You have register successfully with email ";  
+              message = "You have registered successfully with your email ";  
         }  
         
     })
@@ -861,9 +903,18 @@ angular.module('starter.controllers', [])
     }      
 })
 
-.controller("BackCtrl", function($scope, $ionicHistory) {
+.controller("BackCtrl", function($scope, $ionicHistory, $state) {
+    $scope.showHomeButton = true;
+    /*if($state.includes('home.categories')) {
+        $scope.showHomeButton = true;
+    }*/
+
     $scope.myGoBack = function() {
         $ionicHistory.goBack();
     
-}
+    }
+    $scope.goHome = function(){
+
+        $state.go('home');
+    }
 })

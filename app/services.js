@@ -559,7 +559,7 @@ angular.module('starter.services',[])
 
         var request = $http({
         method: "post",
-        url:  "http://192.168.1.41/dashboard/index.php/Login/check",
+        url:  "http://localhost/codigoServidorMaster/index.php/Login/check",
         data: {
             email: email,
             pass:  pass
@@ -576,7 +576,7 @@ angular.module('starter.services',[])
 
         var request = $http({
         method: "post",
-        url:  "http://192.168.1.41/dashboard/index.php/Register",
+        url:  "http://localhost/codigoServidorMaster/index.php/Register",
         data: {
             name: name,
             email: email,

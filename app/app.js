@@ -74,9 +74,9 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
       parent: "tabs",
       views: {
         'home-tab':{
-        templateUrl: 'app/templates/home.html',
-        controller: 'HomeCtrl'
-       }
+      templateUrl: 'app/templates/home.html',
+      controller: 'HomeCtrl'
+      }
       }
     })
 
@@ -91,11 +91,11 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
     .state('home.categories', {
     url: '/categories',
     views: {
-        'home-tab@tabs': { //remember @ choose the state to go
+        'home-tab@tabs': { //remember @ choose the state to go*/
           templateUrl: 'app/templates/page2TET.html',
           controller: 'CategoriesCtrl'
        
-        }
+       }
       }
     })
 
@@ -128,13 +128,13 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
       .state('home.categories.3', {
       url: '/theory',
-      views: {
-        'home-tab@tabs': {
+     /* views: {
+        'home-tab@tabs': {*/
           templateUrl: 'app/templates/test.html',
           controller: 'TestCtrl',
           cache: false
-        }
-      }
+        /*}
+      }*/
     })
 
 ///////////////////////////////////////// ESTADOS DE UN EJERCICIO ///////////////////////////////////////////////////
@@ -142,23 +142,23 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
    .state('home.categories.2.Exerlist', {
       url: '/exercises-list',
-      views: {
-        'home-tab@tabs': {
+      /*views: {
+        'home-tab@tabs': {*/
           templateUrl: 'app/templates/exercises-list.html',
           controller: 'ExerListCtrl'
-        }
-      }
+        /*}
+      }*/
     })
 
    
    .state('home.categories.2.Exerlist.level', {
       url: '/level',
-      views: {
-        'home-tab@tabs': {
+      /*views: {
+        'home-tab@tabs': {*/
           templateUrl: 'app/templates/level.html',
           controller: 'LevelCtrl'
-        }
-      }
+        /*}
+      }*/
     })
        
 
@@ -166,12 +166,12 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
 .state('home.categories.1.detail', {
       url: '/detail',
-      views: {
-        'home-tab@tabs': {
+      /*views: {
+        'home-tab@tabs': {*/
           templateUrl: 'app/templates/completeTheory.html',
           controller: 'CompleteTheoryCtrl'
-        }
-      }
+        /*}
+      }*/
     })
    
    
@@ -179,12 +179,12 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
    
    .state('home.categories.3.test-results', {
       url: '/test-results',
-      views: {
-        'home-tab@tabs': {
+      /*views: {
+        'home-tab@tabs': {*/
           templateUrl: 'app/templates/test-results.html',
           controller: 'ScoreTestCtrl'
-        }
-      }
+        /*}
+      }*/
     })
    
 
