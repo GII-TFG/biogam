@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #exerciseHeading{
     width: 350px;
     height:150px;
@@ -40,3 +41,47 @@ input[type="checkbox"]:checked + label span {
     padding-top:30px;
     padding-left:100px;
 }
+=======
+#exerciseHeading{
+    width: 350px;
+    height:150px;
+    padding:15px;
+    padding-bottom:0px;
+    margin-bottom:0px;
+}
+#questionNum{
+    text-align:center;
+}
+.row#buttonRow{
+    padding-top:5px;
+}
+.col{
+    display:inline;
+}
+.row{
+    padding-top:30px;
+
+}
+
+input[type="checkbox"] {
+    display:none;
+}
+
+ input[type="checkbox"] + label span{
+    display:inline-block;
+    width:15px;
+    height:15px;
+    margin:-1px 10px 0px 20px;
+    vertical-align:auto;
+    cursor:pointer;
+    border-radius:50px;
+    box-shadow: inset 0px 1px 1px #6E6E6E, 0px 1px 1px #6E6E6E;
+}
+input[type="checkbox"]:checked + label span {
+    background:#886aea;
+}
+.roundedOne1, .roundedOne2, .roundedOne{
+    padding-top:30px;
+    padding-left:100px;
+}
+>>>>>>> refs/remotes/origin/master
