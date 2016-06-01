@@ -194,7 +194,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
    
  .state('register', {
       url: '/register',
-      parent: 'scaffold',
+      //parent: 'scaffold',
       templateUrl: 'app/templates/register.html',
       controller: 'RegisterCtrl'
      
@@ -202,7 +202,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
   .state('login', {
       url: '/login',
-      parent: 'scaffold',
+      //parent: 'scaffold',
       templateUrl: 'app/templates/login.html',
       controller: 'LoginCtrl'     
    });

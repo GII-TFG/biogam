@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <ion-view title="{{title}}">
 
     <ion-content class="campos">
@@ -10,11 +9,11 @@
          
 
         </div>
-
         <form ng-show="show_form" name="myForm" novalidate="" ng-submit="logIn(myForm)">
-            <div>
-                
-                  <div id="reg-fields">
+           
+            <div class="containerCampos">
+                <img class="image" src="app/assests/img/LogoIntro.svg" height="100">
+                <div id="reg-fields">
                     <label class="item item-input" id="nick" ng-class="{ 'has-errors' : myForm.nick.$invalid, 'no-errors' : myForm.nick.$valid}">
                         <input type="email" name="nick" placeholder="E-mail" ng-model="authorization.nick" required>
                     </label>
@@ -32,13 +31,12 @@
                         <div ng-messages-include="error-list.html"></div> 
                     </div>
                 </div>
-            </div>
-            
-            <input class="button button-royal" type="submit" value="Log In"> </input>
-            <button class="button button-light" ui-sref='register'>
-              Register
-            </button>
-                           
+
+                <input class="button button-energized" id="login" type="submit" value="Log In"> </input>
+                <button class="item button button-outline button-energized" id="register" ui-sref='register'>
+                  Register
+                </button>
+            </div>                   
         </form>
           <div  align="center">
           <ion-spinner ng-show="show_spin" icon="android"></ion-spinner>
