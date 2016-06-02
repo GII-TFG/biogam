@@ -48,12 +48,13 @@ angular.module('starter.controllers', [])
 
 
      $scope.getTemaId = function(obj){
-      
       if($rootScope.temaId != obj){
+        delete $rootScope.theory;
 		$rootScope.imagePath=obj;
         $rootScope.temaId = obj;
         $rootScope.test = Test.getPreguntasTest(obj);
         $rootScope.theory = Theory.getTeoriaDeTema(obj);
+        console.log($rootScope.theory.length);
         $rootScope.excercises = Exercises.getTodosLosNiveles($rootScope.temaId)
      }
         Test.loadIndex(obj);
