@@ -29,19 +29,37 @@ angular.module('starter.services',[])
       
        $cordovaSQLite.execute(db, "INSERT INTO 'info-db' VALUES(?, ?)", [INFO_DB.NAME, INFO_DB.VERSION]);
 
-      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (1,3,0);");
-      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (1,2,1);");
       $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (1,1,0);");
-      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (2,4,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (2,5,0);");
-      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (2,6,0);");
-      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (3,1,0);");
-      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (3,4,0);");
-      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (3,5,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (1,2,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (2,1,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (2,2,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (3,1,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (3,2,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (4,1,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (4,2,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (5,1,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (5,2,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (6,1,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (6,2,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (7,1,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (7,2,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (8,1,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (8,2,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (9,1,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (9,2,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (10,1,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (10,2,1);");
 
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (1,'Prueba 1',1,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (2,'Prueba 2',2,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (3,'Prueba 3',1,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (1,'The expected phenotypic  segregation in the cross Aa x aa is 3/4 A :1/4 a.',1,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (2,'The expected genotypic segrgation in the cross Aa x Aa is 1/4 AA : 1/2 Aa : 1/4 aa.',2,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (3,'The alleles A1 and A2 are codominant. The expected phenotypic segregation in a cross A1A2 x A1A2 is 1/4 A1A1 : 1/2 A1A2 : 1/4 A2A2.',3,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (4,'The allele A is dominant and the allele a is recessive (A>a). The expected phenotypic segregation in a cross Aa x Aa is 3/4 A : 1/4 a. ',4,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (5,'In the cross A1A2 x A1A3 the observed segregation was 1/4 A1A1 : 1/4 A1A3 : 1/4 A1A2 : 1/4 A2A3. Therefore the alleles A1 and A2 are codominant and the A3 is recessive.',5,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (6,'In the cross A1A2 x A3A4 the observed segregation was 1/4 A1A3 : 1/4 A2A3 : 1/4 A1A4 : 1/4 A2A4. Therefore, the four different alleles involved in this cross are codominant.',6,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (7,'If A1>A2 , A1>A3 and A2 and A3 are codominant. The expected phenotypic segregation in the cross A1A2 x A1A3 is 3/4 A1 : 1/4 A2A3. ',7,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (8,'The segregation observed in the cross A1A2 x A3A4 was 45 A1A3, 50 A1A4, 47 A2A3 and 51 A2A4. The expected values are 45 A1A3, 50 A1A4, 45 A2A3 and 50 A2A4.',8,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (9,'A pure line with purple flowers is crossed by a pure line with white flowers. The hybrid of F1 had purple flowers, and in the F2 93 purple and 28 white plants were observed. Therefore, white flower is dominant and purple flower is recessive.',9,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (10,'If the genotype of the F1 between two pure lines is identical to the genotype of one parental, there exist dominance of one allele.',10,1);");
 
       /*One Locus*/
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (1,'Pure line','A pure line is populations that show no variation in the character or trait studied. All offspring produced slfing a individual or crossing individuals of the same pure line show the same form of the character or trait studied',1);");
@@ -63,8 +81,12 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (17,'Testcross','A cross of an individual of unknown genotype or a heterozygote (or a multiple heterozygote) to an individual homozygote recessive or a tester individual. Also is the offspring of a cross of the F1 between two pure lines and the recessive parental pure line.',1);");
 
 /*Mitosis"*/
-      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (18,'cCiclo celula','A pure line is populations that show no variation in the character or trait studied. All offspring produced slfing a individual or crossing individuals of the same pure line show the same form of the character or trait studied',2);");
-      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (19,'Variability','Different pure lines can show different forms of the same character or trait. If we studied the colour of the flower, one pure line can has purple flowers and other pure line can has white. The different character forms or different character variants are also called Phenotypes.',2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (18,'Ciclo celular','La característica más destacada de las células es su habilidad para reproducirse y dar lugar a otras células. Los sucesos que tienen lugar desde el inicio de una división celular hasta el inicio de la siguiente dividsión se conocen con el nombre de Ciclo de división celular o Ciclo celular.',2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (19,'Fases del ciclo celular','En el Ciclo celular se distinguen habitualmente dos fases, Interfase y Mitosis. A su vez la Interfase se divide en tres períodos: G1, S y G2. Durante el Período S de síntesis se replica el DNA. Cuando una célula se divide da lugar a dos células hijas idénticas que poseen la misma información genética. Para ello la célula madre tiene que repartir de forma equitativa su información genética (sus cromosomas) entre las dos células hijas. Este reparto de cromosomas se lleva a cabo durante la mitosis o cariocinesis. Una vez terminada la mitosis se inicia el reparto del citoplasma, la citocinesis.',2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (20,'Citocinesis','CITOCINESIS: reparto del citoplasma con sus orgánulos. En vegetales se forma el Fragmoplasto, de dentro hacia afuera. En animales se realiza por estrangulamiento, de fuera hacia dentro.',2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (21,'Variación en el contenido del ADN','Valor C: es la cantidad de DNA de un gameto. Un gameto tiene un contenido 1C. En un especie como la humana, con dos juegos de cromosomas (diploide), una célula somática posee un juego de cromosomas aportado por el óvulo materno y otro juego aportado por el espermatozoide paterno. Por tanto, las células somáticas, en fase G1, antes de pasar por el período S de síntesis de DNA, tienen 2n cromosomas, un contenido 2C, pero después de S tienen un contenido 4C. \n Antes de pasar por el período S, los cromosomas están en estado de un sólo cromatidio (o cromátida). Después de pasar por S, los cromosomas se replican y están constituidos por dos cromatidios. Estos dos cromatidios son idénticos y se denominan cromatidios hermanos. Cada cromatidio es una doble hélice de DNA. 
+            Antes de pasar por el período S, los cromosomas están en estado de un sólo cromatidio (o cromátida). Después de pasar por S, los cromosomas se replican y están constituidos por dos cromatidios. Estos dos cromatidios son idénticos y se denominan cromatidios hermanos. Cada cromatidio es una doble hélice de DNA. \n Una vez replicados los cromosomas (en el período S), la célula tiene un contenido 4C y entra en Mitosis. Durante Profase (P) y Metafase (M) se mantiene el contenido 4C, pero en Anafase (A) los cromatidios hermanos se separan a polos opuestos, yendo a cada polo 2n cromatidios. Cada polo afanáis tiene un contenido 2C de DNA. Por tanto, en Telofase (T), cada núcleo telofásico tiene un contenido 2C y así permanece la célula hasta el final de la Mitosis y durante la fase G1.',2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (22,'Fases de la Mitosis','PROFASE: los cromosomas van compactándose, pasan de estar desespirilizados a condensados. Al final desaparecen la membrana nuclear y el nucleólo.\n PROMETAFASE: comienza la formación del huso acromático, los cromosomas se compactan más, sus centrómeros interaccionan con las fibras del huso y acuden (congresion) a la placa ecuatorial.\n METAFASE: los cromosomas alcanzan la máxima contracción, se sitúan en la placa ecuatorial con los centrómeros orientados y unidos a las fibras del huso.\n ANAFASE TEMPRANA: los cromatidios hermanos inician su separación a polos opuestos.  El aparato mitótico consta del aster que rodea al centriolo (cuando está presente) y del huso.\n ANAFASE: los cromatidos hermanos continúan su separación a polos opuestos gracias a su interacción con las fibras del huso acromático.\n TELOFASE: los cromatidios hermanos alcanzan los polos opuestos, comienzan a descontraerse y se reconstruyen la membrana nuclear y el nucleólo.',2);");
       
 
       $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (1,1);");
@@ -84,12 +106,8 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "INSERT INTO `tema` VALUES (1,'One Locus');");
       $cordovaSQLite.execute(db, "INSERT INTO `tema` VALUES (2,'Mitosis');");
 
-      $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (1,'1Op1');");
-      $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (2,'1Op2 - Correcta');");
-      $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (3,'1Op3');");
-      $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (4,'2Op1 - Correcta');");
-      $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (5,'2Op2');");
-      $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (6,'2Op3');");
+      $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (1,'Yes');");
+      $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (2,'No');");
 
       $cordovaSQLite.execute(db, "INSERT INTO `nivel` VALUES (1,1);");
       $cordovaSQLite.execute(db, "INSERT INTO `nivel` VALUES (2,2)");
