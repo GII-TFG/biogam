@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 <ion-view>
     <ion-content class="main_container90">
         <ion-scroll>    
@@ -22,7 +20,7 @@
                         </div>
                         <div class="row" id= "terceraFila">
                             <button id="ejercicio-button22" class="col col-45 button button-small button-block {{buttonStyleA1A2xA3A4}}" ng-click="showBoxA1A2xA3A4()">A1A2 x A3A4</button>
-                            <button id="ejercicio-button23" class="col col-45 button button-small button-block {{buttonStyleLGenes}}" ng-click="showBoxLethalGenes()">Lethal genes</button>
+                            <button id="ejercicio-button23" class="col col-45 button button-small button-block {{buttonStyleLGenes}}" ng-click="showBoxLethalgenes()">Lethal genes</button>
                         </div>
                     </div>    
                     <!-- BOX Aaxaa -->
@@ -99,7 +97,7 @@
                             </div>
                         </div>
                          <!-- BOX Lethal Genes -->
-                        <div class="item item-body boxOperations" ng-show="boxShowLethalGenes">
+                        <div class="item item-body boxOperations" ng-show="boxShowLethalgenes">
                              <!-- Textbox Row -->
                             <div class="row" id="rowTextbox2">
                                 <div class="col col-50">
@@ -113,7 +111,7 @@
                                 </div>
                             </div>
                              <!-- Buttons Row -->
-                            <div id="filaBotonesCalcular">
+                            <div class="row" id="filaBotonesCalcular">
                                 <button id="buttonCalculate" class = "col col-45 button button-small" ng-click="calculateTestCross(); calculate(balls, lista, $index)" >Calculate</button>
                                 <button id="buttonClean"class = "col col-45 button button-small" ng-click="clean()">Clean</button>
                             </div>
@@ -140,20 +138,20 @@
                             <div class="row" id="rowTextbox2">
                                 <div class="col col-33">
                                     <p id="types">A1A1</p>
-                                    <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="AAValue.value" min="0" max="5000">
+                                    <input class="col col-90 item item-input AaClass" type="number" ng-model="AAValue.value" min="0" max="5000">
                                 </div>
 
                                 <div class="col col-33">
                                     <p id="types">A1A2</p>
-                                    <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="AaValue.value" min="0" max="5000">
+                                    <input class="col col-90 item item-input AaClass" type="number" ng-model="AaValue.value" min="0" max="5000">
                                 </div>
                                 <div class="col col-33">
                                     <p id="types">A2A2</p>
-                                    <input class="col col-90 item item-input ThreeinputClass" type="number" ng-model="aaValue.value" min="0" max="5000">
+                                    <input class="col col-90 item item-input AaClass" type="number" ng-model="aaValue.value" min="0" max="5000">
                                 </div>
                             </div>
                              <!-- Buttons Row -->
-                            <div id="filaBotonesCalcular">
+                            <div class="row" id="filaBotonesCalcular">
                                 <button id="buttonCalculate" class = "col col-45 button button-small" ng-click="calculateTestCross(); calculate(balls, lista, $index)" >Calculate</button>
                                 <button id="buttonClean"class = "col col-45 button button-small" ng-click="clean()">Clean</button>
                             </div>
@@ -177,27 +175,27 @@
                         <!-- BOX A1A2xA1A3 -->
                         <div class="item item-body boxOperations" ng-show="boxShowA1A2xA1A3">
                             <!-- textbox Row -->
-                            <div class="row rowTextbox4">
-                                <div>
+                            <div class="row" id="rowTextbox2">
+                                <div class="col col-25">
                                     <p id="types">A1 A1</p>
-                                    <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A1Value.value" min="0" max="5000">
+                                    <input class="col col-90 item item-input AaClass" type="number" ng-model="A1A1Value.value" min="0" max="5000">
                                 </div>
 
-                                <div>
+                                <div class="col col-25">
                                     <p id="types">A1 A3</p>
-                                    <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A3Value.value" min="0" max="5000">
+                                    <input class="col col-90 item item-input AaClass" type="number" ng-model="A1A3Value.value" min="0" max="5000">
                                 </div>
-                                <div>
+                                <div class="col col-25">
                                     <p id="types">A1 A2</p>
-                                    <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A2Value.value" min="0" max="5000">
+                                    <input class="col col-90 item item-input AaClass" type="number" ng-model="A1A2Value.value" min="0" max="5000">
                                 </div>
-                                <div>
+                                <div class="col col-25">
                                     <p id="types">A2 A3</p>
-                                    <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A2A3Value.value" min="0" max="5000">
+                                    <input class="col col-90 item item-input AaClass" type="number" ng-model="A2A3Value.value" min="0" max="5000">
                                 </div>
                             </div>
                             <!-- Buttons Row -->
-                            <div id="filaBotonesCalcular">
+                            <div class="row" id="filaBotonesCalcular">
                                 <button id="buttonCalculate" class = "col col-45 button button-small" ng-click="calculateTestCross(); calculate(balls, lista, $index)" >Calculate</button>
                                 <button id="buttonClean"class = "col col-45 button button-small" ng-click="clean()">Clean</button>
                             </div>
@@ -221,27 +219,27 @@
                         <!-- BOX A1A2xA3A4 -->
                         <div class="item item-body boxOperations" ng-show="boxShowA1A2xA3A4">
                             <!-- textbox Row -->
-                            <div class="row" id="rowTextbox">
-                                <div>
+                            <div class="row" id="rowTextbox2">
+                                <div class="col col-25">
                                     <p id="types">A1 A1</p>
-                                    <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A1Value.value" min="0" max="5000">
+                                    <input class="col col-90 item item-input AaClass" type="number" ng-model="A1A1Value.value" min="0" max="5000">
                                 </div>
 
-                                <div>
+                                <div class="col col-25">
                                     <p id="types">A1 A3</p>
-                                    <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A3Value.value" min="0" max="5000">
+                                    <input class="col col-90 item item-input AaClass" type="number" ng-model="A1A3Value.value" min="0" max="5000">
                                 </div>
-                                <div>
+                                <div class="col col-25">
                                     <p id="types">A1 A2</p>
-                                    <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A1A2Value.value" min="0" max="5000">
+                                    <input class="col col-90 item item-input AaClass" type="number" ng-model="A1A2Value.value" min="0" max="5000">
                                 </div>
-                                <div>
+                                <div class="col col-25">
                                     <p id="types">A2 A4</p>
-                                    <input class="col col-90 item item-input FourinputClass" type="number" ng-model="A2A4Value.value" min="0" max="5000">
+                                    <input class="col col-90 item item-input AaClass" type="number" ng-model="A2A4Value.value" min="0" max="5000">
                                 </div>
                             </div>
                              <!-- Buttons Row -->
-                            <div id="filaBotonesCalcular">
+                            <div class="row" id="filaBotonesCalcular">
                                 <button id="buttonCalculate" class = "col col-45 button button-small" ng-click="calculateTestCross(); calculate(balls, lista, $index)" >Calculate</button>
                                 <button id="buttonClean"class = "col col-45 button button-small" ng-click="clean()">Clean</button>
                             </div>

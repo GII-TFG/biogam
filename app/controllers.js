@@ -918,10 +918,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller("BackCtrl", function($scope, $ionicHistory, $state) {
-    $scope.showHomeButton = true;
-    /*if($state.includes('home.categories')) {
+    $scope.showHomeButton = false;
+    if(!$state.is('home-tab')) {
         $scope.showHomeButton = true;
-    }*/
+    }
 
     $scope.myGoBack = function() {
         $ionicHistory.goBack();
