@@ -75,7 +75,8 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
       views: {
         'home-tab':{
           templateUrl: 'app/templates/home.html',
-          controller: 'HomeCtrl'
+          controller: 'HomeCtrl',
+           cache: false
         }
       }
     })
@@ -110,7 +111,8 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
       views: {
         'home-tab@tabs': {
           templateUrl: 'app/templates/theory.html',
-          controller: 'TheoryCtrl'
+          controller: 'TheoryCtrl',
+           cache: false
         }
       }
     })
