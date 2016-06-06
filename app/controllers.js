@@ -49,12 +49,10 @@ angular.module('starter.controllers', [])
 
      $scope.getTemaId = function(obj){
       if($rootScope.temaId != obj){
-        $rootScope.theory = [];
 		$rootScope.imagePath=obj;
         $rootScope.temaId = obj;
         $rootScope.test = Test.getPreguntasTest(obj);
         $rootScope.theory = Theory.getTeoriaDeTema(obj);
-        console.log($rootScope.theory.length);
         $rootScope.excercises = Exercises.getTodosLosNiveles($rootScope.temaId)
      }
         Test.loadIndex(obj);
@@ -105,14 +103,13 @@ angular.module('starter.controllers', [])
     $scope.title = "Theory";
     $scope.listaTeoria = $rootScope.theory;
 
-	for(var i=0; i<$rootScope.theory.length; i++){
+	for(var i=0; i<$scope.listaTeoria.length; i++){
 
-        Theory.getImg($rootScope.theory[i].idImg,i);
+        Theory.getImg($scope.listaTeoria[i].idImg,i);
     }
 	
     $scope.getTheory = function(index){      
         $rootScope.index.theory = index;
-        $rootScope.listaTeoria = $scope.listaTeoria
     }    
 })
 

@@ -252,11 +252,11 @@ angular.module('starter.services',[])
 
 .factory('Theory', function($cordovaSQLite, $rootScope ) {
   
-      var capsTeoria = [];
+    
 
   return {
     getTeoriaDeTema: function(idTema) {
-  
+    var capsTeoria = [];
 
     var query ="select titulo, texto , id, idImg from teoria left join 'img-teoria' on teoria.id = 'img-teoria'.idTeoria where idTema=?  UNION ALL select titulo, texto , id, idImg from 'img-teoria' left join teoria on teoria.id = 'img-teoria'.idTeoria where 'img-teoria'.idTeoria is NULL";
 
@@ -280,7 +280,7 @@ angular.module('starter.services',[])
 
     getImg: function(idImg,j) {
     
-
+    $rootScope.theory[j].imagenes=[];
 
     var query ="select imagen from imagen where id =?";
 
@@ -295,7 +295,7 @@ angular.module('starter.services',[])
 
         }else{
 
-           console.log("Not found results");
+          // console.log("Not found results");
         }
 
     })
