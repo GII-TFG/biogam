@@ -7,7 +7,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
 
 .constant('INFO_DB',{ //nombre y version de la bd que estamos usando
   NAME: "biogamdb",
-  VERSION: "1",
+  VERSION: "2",
 })
 
 .run(function($ionicPlatform, $state) {

@@ -30,7 +30,7 @@ angular.module('starter.controllers', [])
            $ionicHistory.nextViewOptions({
                disableBack: true
             });
-             $timeout(function(){ $state.go('login'); }, 100);
+             $timeout(function(){ $state.go('home'); }, 100);
             
         }, 1000);
        

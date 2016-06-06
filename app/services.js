@@ -8,7 +8,7 @@ angular.module('starter.services',[])
  
   var create = function(){
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS `info-db` ('id' TEXT NOT NULL, 'version'INTEGER NOT NULL,PRIMARY KEY(id));)");
-      $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS `usuario` (`nick`  TEXT NOT NULL,`nombre`  TEXT NOT NULL,`pass`  TEXT NOT NULL, `foto`  BLOB, PRIMARY KEY(nick));");
+      $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS `usuario` (`nick`  TEXT NOT NULL,`nombre`  TEXT NOT NULL,`pass`  TEXT NOT NULL, `foto`  TEXT, PRIMARY KEY(nick));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS `tieneopciones` (`idTest`  INTEGER NOT NULL, `idOpcionesTest`  INTEGER NOT NULL, `esCorrecto`  INTEGER NOT NULL, PRIMARY KEY(idTest,idOpcionesTest), FOREIGN KEY(`idTest`) REFERENCES test(id), FOREIGN KEY(`idOpcionesTest`) REFERENCES opcionesest(id));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS 'test' (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`enunciado` TEXT NOT NULL,`numero`  INTEGER NOT NULL,`idTema`  INTEGER NOT NULL, FOREIGN KEY(`idTema`) REFERENCES `tema`(`id`));");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS'teoria' (`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`titulo`  TEXT NOT NULL,`texto` TEXT NOT NULL,`idTema`  INTEGER NOT NULL, FOREIGN KEY(`idTema`) REFERENCES tema(id));");
@@ -28,7 +28,11 @@ angular.module('starter.services',[])
   var insert = function(){
       
        $cordovaSQLite.execute(db, "INSERT INTO 'info-db' VALUES(?, ?)", [INFO_DB.NAME, INFO_DB.VERSION]);
-
+      
+      /**Quitar cuando funcione el server**/
+      $cordovaSQLite.execute(db, "INSERT INTO `usuario` VALUES ('biogam1@ucm.es', 'biogam1', 'biogam1', '0');");
+      /************************************/      
+      
       $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (1,1,0);");
       $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (1,2,1);");
       $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (2,1,1);");
@@ -154,7 +158,7 @@ angular.module('starter.services',[])
     create: function(){
 
     var ok=false;
-    $cordovaSQLite.execute(db, "SELECT * FROM 'info-db' where version =?", [INFO_DB.VERSION]).then(function(res){
+    $cordovaSQLite.execute(db, "SELECT * FROM info-db where version =?", [INFO_DB.VERSION]).then(function(res){
     if(res.rows.length > 0){ console.log("solo insertamos");insert();}},
     function (err) {
       //si no exite creamos
@@ -174,7 +178,7 @@ angular.module('starter.services',[])
     /*Precondicion: en cada dispostivo hay un solo usuario*/
     load: function(){
 
-    $cordovaSQLite.execute(db, "SELECT nick, nombre, pass FROM 'usuario'", []).then(function(res){
+    $cordovaSQLite.execute(db, "SELECT nick, nombre, pass FROM usuario", []).then(function(res){
     if(res.rows.length > 0)
     {
       $rootScope.user=res.rows.item(0).nick;
