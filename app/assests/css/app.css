@@ -340,17 +340,28 @@ div {
 
     /*********   TEST   *********/
     .button.button-block.button-stable.testButton{
-		padding-top: .3em;
-        padding-bottom:.7em;
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+		/*padding-top: .2em;
+        padding-bottom:.3em;*/
         margin-bottom: 1em;
         background-color: #E8D5EF;
         box-shadow: 0 3px 5px 0 #A4A4A4, 0 2.5px 6px 0 #A4A4A4;
         border-radius: 4px 4px 4px 4px !important;
     }
-    h3.questionNum{
-        text-align:center;
-        margin-top:1em;
-
+    #tituloTest{
+        text-align: center;
+        font-size: 15px;
+        padding-top: 0.2em;
+        margin-bottom: .1em;
+    }
+    .test-question{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 4em;
+        text-align: center;
     }
     p#exerciseHeading{
         width: 100%;
@@ -362,10 +373,17 @@ div {
     .button.button-stable.icon-right.nextButton{
         background-color: #9b59b6;
         color:white;
-        width: 30%;
-        margin-left: 70%;
-        margin-top:.1em;
+        width: 100%;
+        margin-top:2.5em;
         padding-top: .2em !important;
+    }
+    .div-opciones{
+        margin-top: 2em;
+    }
+    .botonNext{
+        width:50%;
+        margin-right: auto;
+        margin-left: auto;
     }
 
     /*---- SCORES ---- */
@@ -427,29 +445,31 @@ div {
         margin-top:40px;
     }
     #register.button{
-        margin-top:30px;
+        margin-top:.5em;
     }
     #name.item.item-input{
-        margin-top:100px;
+        margin-top:0em;
         margin-left:auto;
         margin-right: auto;
         width:100%;
     }
     #nick.item.item-input{
-        margin-top:10px;
+        margin-top:.1em;
         margin-left:auto;
         margin-right: auto;
         width:100%;
     }
     #pass.item.item-input{
-        margin-top:10px;
+        margin-top:.1em;
         margin-left:auto;
         margin-right: auto;
         width:100%;
     }
-    img .image{
-        width:70%;
-        height:auto;
+    .image{
+        width:100%;
+        margin-top: .2em;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 0px;
     }
 }
@@ -509,27 +529,27 @@ div {
         margin-top:30px;
     }
     #name.item.item-input{
-        margin-top:100px;
+        margin-top:2em;
         margin-left:auto;
         margin-right: auto;
         width:100%;
     }
     #nick.item.item-input{
-        margin-top:10px;
+        margin-top:0.1em;
         margin-left:auto;
         margin-right: auto;
         width:100%;
     }
     #pass.item.item-input{
-        margin-top:10px;
+        margin-top:0.1em;
         margin-left:auto;
         margin-right: auto;
         width:100%;
     }
-    .image{
+    /*.image{
         width:70%;
         height:auto;
-    }
+    }*/
 
 /* ----------SCORE-----------*/
     table {

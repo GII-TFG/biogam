@@ -30,7 +30,7 @@ angular.module('starter.controllers', [])
            $ionicHistory.nextViewOptions({
                disableBack: true
             });
-             $timeout(function(){ $state.go('home'); }, 100);
+             $timeout(function(){ $state.go('login'); }, 100);
             
         }, 1000);
        
@@ -49,7 +49,7 @@ angular.module('starter.controllers', [])
 
      $scope.getTemaId = function(obj){
       if($rootScope.temaId != obj){
-        delete $rootScope.theory;
+        $rootScope.theory = [];
 		$rootScope.imagePath=obj;
         $rootScope.temaId = obj;
         $rootScope.test = Test.getPreguntasTest(obj);
@@ -660,11 +660,13 @@ angular.module('starter.controllers', [])
 
 .controller('TestCtrl', function($scope, $state, $q,$rootScope,$state, Test, $ionicSlideBoxDelegate)
 {   
+
     var aciertos=0;
     var fallos=0;
     var opEsCorrecto;
     var estadoDeTest;
     $scope.show = $rootScope.show_test;
+    $scope.title = "Test";
 
     if($scope.show){
          $scope.index = 0;
@@ -926,6 +928,7 @@ angular.module('starter.controllers', [])
 
     $scope.myGoBack = function() {
         $ionicHistory.goBack();
+        $ionicHistory.clearCache();
     
     }
     $scope.goHome = function(){
