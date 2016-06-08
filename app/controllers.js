@@ -657,11 +657,13 @@ angular.module('starter.controllers', [])
 
 .controller('TestCtrl', function($scope, $state, $q,$rootScope,$state, Test, $ionicSlideBoxDelegate)
 {   
+
     var aciertos=0;
     var fallos=0;
     var opEsCorrecto;
     var estadoDeTest;
     $scope.show = $rootScope.show_test;
+    $scope.title = "Test";
 
     if($scope.show){
          $scope.index = 0;
