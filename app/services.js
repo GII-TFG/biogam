@@ -633,7 +633,7 @@ angular.module('starter.services',[])
         }
     };})
 
-.factory('Post_Dates', function($http,$rootScope){
+.factory('Post_Dates', function($http,$rootScope, CONFIG){
 
 
   return {
@@ -641,7 +641,7 @@ angular.module('starter.services',[])
 
         var request = $http({
         method: "post",
-        url:  "http://192.168.56.1/dashboard/index.php/Login/check",
+        url:   CONFIG.URL+"/dash/index.php/Login/check",
         data: {
             email: email,
             pass:  pass
@@ -658,7 +658,7 @@ angular.module('starter.services',[])
 
         var request = $http({
         method: "post",
-        url:  "http://192.168.56.1/dashboard/index.php/Register",
+        url:  CONFIG.URL+"/dash/index.php/Register",
         data: {
             name: name,
             email: email,
@@ -666,6 +666,8 @@ angular.module('starter.services',[])
         },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
+
+        console.log(CONFIG.URL+"/dash/index.php/Register");
 
     /* Check whether the HTTP Request is successful or not. */
     return request;

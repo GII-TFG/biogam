@@ -9,6 +9,9 @@ angular.module('starter', ['ionic','starter.controllers','starter.services' , 'n
   NAME: "biogamdb",
   VERSION: "1",
 })
+  .constant('CONFIG',{ 
+  URL:  "http://192.168.1.45",
+})
 
 .run(function($ionicPlatform, $state) {
 

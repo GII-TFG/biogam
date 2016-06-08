@@ -30,7 +30,7 @@ angular.module('starter.controllers', [])
            $ionicHistory.nextViewOptions({
                disableBack: true
             });
-             $timeout(function(){ $state.go('home'); }, 100);
+             $timeout(function(){ $state.go('login'); }, 100);
             
         }, 1000);
        
@@ -790,6 +790,7 @@ angular.module('starter.controllers', [])
     var name;
     var check_credentials = function (name, email, pass) {
 
+        console.log(name);
         request = Post_Dates.register(name, email, pass);
         request.success(function (data) {
         console.log(data.answer)
