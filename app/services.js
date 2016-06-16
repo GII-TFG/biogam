@@ -54,6 +54,7 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (10,1,0);");
       $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (10,2,1);");
 
+       /*One Locus*/
       $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (1,'The expected phenotypic  segregation in the cross Aa x aa is 3/4 A :1/4 a.',1,1);");
       $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (2,'The expected genotypic segrgation in the cross Aa x Aa is 1/4 AA : 1/2 Aa : 1/4 aa.',2,1);");
       $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (3,'The alleles A1 and A2 are codominant. The expected phenotypic segregation in a cross A1A2 x A1A2 is 1/4 A1A1 : 1/2 A1A2 : 1/4 A2A2.',3,1);");
@@ -64,6 +65,21 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (8,'The segregation observed in the cross A1A2 x A3A4 was 45 A1A3, 50 A1A4, 47 A2A3 and 51 A2A4. The expected values are 45 A1A3, 50 A1A4, 45 A2A3 and 50 A2A4.',8,1);");
       $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (9,'A pure line with purple flowers is crossed by a pure line with white flowers. The hybrid of F1 had purple flowers, and in the F2 93 purple and 28 white plants were observed. Therefore, white flower is dominant and purple flower is recessive.',9,1);");
       $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (10,'If the genotype of the F1 between two pure lines is identical to the genotype of one parental, there exist dominance of one allele.',10,1);");
+
+
+      /*Mitosis*/
+
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (1,'The expected phenotypic  segregation in the cross Aa x aa is 3/4 A :1/4 a.',1,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (2,'The expected genotypic segrgation in the cross Aa x Aa is 1/4 AA : 1/2 Aa : 1/4 aa.',2,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (3,'The alleles A1 and A2 are codominant. The expected phenotypic segregation in a cross A1A2 x A1A2 is 1/4 A1A1 : 1/2 A1A2 : 1/4 A2A2.',3,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (4,'The allele A is dominant and the allele a is recessive (A>a). The expected phenotypic segregation in a cross Aa x Aa is 3/4 A : 1/4 a. ',4,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (5,'In the cross A1A2 x A1A3 the observed segregation was 1/4 A1A1 : 1/4 A1A3 : 1/4 A1A2 : 1/4 A2A3. Therefore the alleles A1 and A2 are codominant and the A3 is recessive.',5,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (6,'In the cross A1A2 x A3A4 the observed segregation was 1/4 A1A3 : 1/4 A2A3 : 1/4 A1A4 : 1/4 A2A4. Therefore, the four different alleles involved in this cross are codominant.',6,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (7,'If A1>A2 , A1>A3 and A2 and A3 are codominant. The expected phenotypic segregation in the cross A1A2 x A1A3 is 3/4 A1 : 1/4 A2A3. ',7,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (8,'The segregation observed in the cross A1A2 x A3A4 was 45 A1A3, 50 A1A4, 47 A2A3 and 51 A2A4. The expected values are 45 A1A3, 50 A1A4, 45 A2A3 and 50 A2A4.',8,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (9,'A pure line with purple flowers is crossed by a pure line with white flowers. The hybrid of F1 had purple flowers, and in the F2 93 purple and 28 white plants were observed. Therefore, white flower is dominant and purple flower is recessive.',9,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (10,'If the genotype of the F1 between two pure lines is identical to the genotype of one parental, there exist dominance of one allele.',10,1);");
+
 
       /*One Locus*/
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (1,'Pure line','A pure line is populations that show no variation in the character or trait studied. All offspring produced slfing a individual or crossing individuals of the same pure line show the same form of the character or trait studied',1);");
@@ -584,6 +600,7 @@ angular.module('starter.services',[])
          var query = "SELECT max(numero) as maxi FROM test, 'info-test' WHERE idTest = id AND test.idTema = ?"
          $cordovaSQLite.execute(db, query, [idTema]).then(function(res){ //cambiar lo del usuario pepito
            i = res.rows.item(0).maxi;
+           console.log(i);
         if(i != null){
         
          $rootScope.index.test = i;
@@ -591,8 +608,7 @@ angular.module('starter.services',[])
 
           $rootScope.index.test = 0;
          }
-        })
-            return true;        
+        })  
     },
 
       getAciertos: function(idTema) {
@@ -653,6 +669,8 @@ angular.module('starter.services',[])
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
 
+            console.log(request);
+
     /* Check whether the HTTP Request is successful or not. */
     return request;
 
@@ -670,8 +688,6 @@ angular.module('starter.services',[])
         },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
-
-        console.log(CONFIG.URL+"/dash/index.php/Register");
 
     /* Check whether the HTTP Request is successful or not. */
     return request;
