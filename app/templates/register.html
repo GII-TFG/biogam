@@ -1,22 +1,7 @@
 <ion-view title="{{title}}">
 
     <ion-content class="campos">
-	 <!--<div class="containerCampos">
-        <img class="image" src="app/assests/img/LogoIntro.svg" height="200">
-        <label class="item item-input" id="name">
-            <input type="text" placeholder="Name & Surname" ng-model="name.value">
-        </label>
-        <label class="item item-input" id="nick">
-            <input type="text" placeholder="User Name" ng-model="nick.value">
-        </label>
-        <label class="item item-input" id="pass">
-            <input type="password" placeholder="Password" ng-model="pass.value">
-        </label>
-        
-        <button class="item button button-outline button-energized" id="register" ui-sref='home' ng-click="getUserFields(name.value, nick.value, pass.value)">
-                Sign me up!
-        </button>
-        </div>-->
+
         <form name="myForm" novalidate="" ng-submit="signIn(myForm)">
             <div class="containerCampos">
                 <img class="image" src="app/assests/img/AnitasIntro.png">
@@ -47,7 +32,7 @@
                         <div ng-messages-include="error-list.html"></div> 
                     </div>
                 </div>
-                <input class="item button button-outline button-energized" id="register" type="submit" value="Sign me up!"></input>
+                <input class="item button button-outline button-energized" id="register" type="submit" value="Sign me up!"><!--/input-->
 
             </div>
             

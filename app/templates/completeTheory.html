@@ -1,4 +1,4 @@
-<ion-view title="{{title}}">
+<ion-view cache-view="false" title="{{title}}">
     <ion-content class="main_container">
         <!--Cambiado-->
 		<ion-scroll>
@@ -9,7 +9,7 @@
 					<p class = "textoTeoria"> {{teoria.texto}} </p>
 
 					<div ng-repeat="imagen in teoria.imagenes" align ="center">
-							<img ng-src = "app/assests/img/{{path}}/{{imagen.nombre}}" height="160px"" width="320px">
+							<img ng-src = "app/assests/img/{{path}}/{{imagen.nombre}}" height="160px" width="320px">
 					</div>
 						
 				</ion-slide> 

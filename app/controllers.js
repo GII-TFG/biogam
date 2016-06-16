@@ -842,10 +842,6 @@ angular.module('starter.controllers', [])
         }
              
         };
-
-         
-   
-
 })
 
 .controller("LoginCtrl", function($rootScope, $state, Post_Dates, $scope, Register, $ionicHistory) {

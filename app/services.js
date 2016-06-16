@@ -85,11 +85,11 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (17,'Testcross','A cross of an individual of unknown genotype or a heterozygote (or a multiple heterozygote) to an individual homozygote recessive or a tester individual. Also is the offspring of a cross of the F1 between two pure lines and the recessive parental pure line.',1);");
 
 /*Mitosis"*/
-      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (18,'Ciclo celular','La característica más destacada de las células es su habilidad para reproducirse y dar lugar a otras células. `<br />` Los sucesos que tienen lugar desde el inicio de una división celular hasta el inicio de la siguiente dividsión se conocen con el nombre de Ciclo de división celular o Ciclo celular.',2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (18,'Ciclo celular','La característica más destacada de las células es su habilidad para reproducirse y dar lugar a otras células.\n Los sucesos que tienen lugar desde el inicio de una división celular hasta el inicio de la siguiente dividsión se conocen con el nombre de Ciclo de división celular o Ciclo celular.',2);");
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (19,'Fases del ciclo celular','En el Ciclo celular se distinguen habitualmente dos fases, Interfase y Mitosis. A su vez la Interfase se divide en tres períodos: G1, S y G2. Durante el Período S de síntesis se replica el DNA. Cuando una célula se divide da lugar a dos células hijas idénticas que poseen la misma información genética. Para ello la célula madre tiene que repartir de forma equitativa su información genética (sus cromosomas) entre las dos células hijas. Este reparto de cromosomas se lleva a cabo durante la mitosis o cariocinesis. Una vez terminada la mitosis se inicia el reparto del citoplasma, la citocinesis.',2);");
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (20,'Citocinesis','CITOCINESIS: reparto del citoplasma con sus orgánulos. En vegetales se forma el Fragmoplasto, de dentro hacia afuera. En animales se realiza por estrangulamiento, de fuera hacia dentro.',2);");
-      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (21,'Variación en el contenido del ADN','Valor C: es la cantidad de DNA de un gameto. Un gameto tiene un contenido 1C. En un especie como la humana, con dos juegos de cromosomas (diploide), una célula somática posee un juego de cromosomas aportado por el óvulo materno y otro juego aportado por el espermatozoide paterno. Por tanto, las células somáticas, en fase G1, antes de pasar por el período S de síntesis de DNA, tienen 2n cromosomas, un contenido 2C, pero después de S tienen un contenido 4C. <br> Antes de pasar por el período S, los cromosomas están en estado de un sólo cromatidio (o cromátida). Después de pasar por S, los cromosomas se replican y están constituidos por dos cromatidios. Estos dos cromatidios son idénticos y se denominan cromatidios hermanos. Cada cromatidio es una doble hélice de DNA. Antes de pasar por el período S, los cromosomas están en estado de un sólo cromatidio (o cromátida). Después de pasar por S, los cromosomas se replican y están constituidos por dos cromatidios. Estos dos cromatidios son idénticos y se denominan cromatidios hermanos. Cada cromatidio es una doble hélice de DNA. <br> Una vez replicados los cromosomas (en el período S), la célula tiene un contenido 4C y entra en Mitosis. Durante Profase (P) y Metafase (M) se mantiene el contenido 4C, pero en Anafase (A) los cromatidios hermanos se separan a polos opuestos, yendo a cada polo 2n cromatidios. Cada polo afanáis tiene un contenido 2C de DNA. Por tanto, en Telofase (T), cada núcleo telofásico tiene un contenido 2C y así permanece la célula hasta el final de la Mitosis y durante la fase G1.',2);");
-      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (22,'Fases de la Mitosis','PROFASE: los cromosomas van compactándose, pasan de estar desespirilizados a condensados. Al final desaparecen la membrana nuclear y el nucleólo.<br> PROMETAFASE: comienza la formación del huso acromático, los cromosomas se compactan más, sus centrómeros interaccionan con las fibras del huso y acuden (congresion) a la placa ecuatorial.<br> METAFASE: los cromosomas alcanzan la máxima contracción, se sitúan en la placa ecuatorial con los centrómeros orientados y unidos a las fibras del huso.<br> ANAFASE TEMPRANA: los cromatidios hermanos inician su separación a polos opuestos.  El aparato mitótico consta del aster que rodea al centriolo (cuando está presente) y del huso.<br> ANAFASE: los cromatidos hermanos continúan su separación a polos opuestos gracias a su interacción con las fibras del huso acromático.<br> TELOFASE: los cromatidios hermanos alcanzan los polos opuestos, comienzan a descontraerse y se reconstruyen la membrana nuclear y el nucleólo.',2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (21,'Variación en el contenido del ADN','Valor C: es la cantidad de DNA de un gameto. Un gameto tiene un contenido 1C. En un especie como la humana, con dos juegos de cromosomas (diploide), una célula somática posee un juego de cromosomas aportado por el óvulo materno y otro juego aportado por el espermatozoide paterno. Por tanto, las células somáticas, en fase G1, antes de pasar por el período S de síntesis de DNA, tienen 2n cromosomas, un contenido 2C, pero después de S tienen un contenido 4C. Antes de pasar por el período S, los cromosomas están en estado de un sólo cromatidio (o cromátida). Después de pasar por S, los cromosomas se replican y están constituidos por dos cromatidios. Estos dos cromatidios son idénticos y se denominan cromatidios hermanos. Cada cromatidio es una doble hélice de DNA. Antes de pasar por el período S, los cromosomas están en estado de un sólo cromatidio (o cromátida). Después de pasar por S, los cromosomas se replican y están constituidos por dos cromatidios. Estos dos cromatidios son idénticos y se denominan cromatidios hermanos. Cada cromatidio es una doble hélice de DNA. \n Una vez replicados los cromosomas (en el período S), la célula tiene un contenido 4C y entra en Mitosis. Durante Profase (P) y Metafase (M) se mantiene el contenido 4C, pero en Anafase (A) los cromatidios hermanos se separan a polos opuestos, yendo a cada polo 2n cromatidios. Cada polo afanáis tiene un contenido 2C de DNA. Por tanto, en Telofase (T), cada núcleo telofásico tiene un contenido 2C y así permanece la célula hasta el final de la Mitosis y durante la fase G1.',2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (22,'Fases de la Mitosis','PROFASE: los cromosomas van compactándose, pasan de estar desespirilizados a condensados. Al final desaparecen la membrana nuclear y el nucleólo.\n PROMETAFASE: comienza la formación del huso acromático, los cromosomas se compactan más, sus centrómeros interaccionan con las fibras del huso y acuden (congresion) a la placa ecuatorial.\n METAFASE: los cromosomas alcanzan la máxima contracción, se sitúan en la placa ecuatorial con los centrómeros orientados y unidos a las fibras del huso.\n ANAFASE TEMPRANA: los cromatidios hermanos inician su separación a polos opuestos.  El aparato mitótico consta del aster que rodea al centriolo (cuando está presente) y del huso.\n ANAFASE: los cromatidos hermanos continúan su separación a polos opuestos gracias a su interacción con las fibras del huso acromático.\n TELOFASE: los cromatidios hermanos alcanzan los polos opuestos, comienzan a descontraerse y se reconstruyen la membrana nuclear y el nucleólo.',2);");
       
 
       $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (1,1);");
@@ -103,7 +103,17 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (9,14);");
       $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (10,14);");
       $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (11,16);");
-      //$cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (9,17);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (14,19);");
+     // $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (15,19);");
+     // $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (16,19);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (17,21);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (18,21);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (19,22);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (20,22);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (21,22);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (22,22);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (23,22);");
+      $cordovaSQLite.execute(db, "INSERT INTO `img-teoria` VALUES (24,22);");
 
 
       $cordovaSQLite.execute(db, "INSERT INTO `tema` VALUES (1,'One Locus');");
@@ -116,7 +126,7 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (5,'Prometaphase');");
       $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (6,'Metaphase');");
       $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (7,'Anaphase');");
-      $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (8,'ITelophase');");
+      $cordovaSQLite.execute(db, "INSERT INTO `opcionestest` VALUES (8,'Telophase');");
 
       $cordovaSQLite.execute(db, "INSERT INTO `nivel` VALUES (1,1);");
       $cordovaSQLite.execute(db, "INSERT INTO `nivel` VALUES (2,2)");
@@ -147,13 +157,17 @@ angular.module('starter.services',[])
        $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (11,'Fdos.png');");
        $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (12,'CHINormal.png');");
        $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (13,'CHIYates.png');");
-      /* $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (14,);");
-       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (15,);");
-       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (16,);");
-       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (17,);");
-       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (18,);");
-       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (19,);");*/
-
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (14,'Ciclo.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (15,'Citocinesis1.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (16,'Doscelulas.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (17,'ValorCMitosis.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (18,'CromatidioS2.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (19,'Profase.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (20,'Prometafase.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (21,'Metafase.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (22,'AnafaseTemprana.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (23,'Anafase.png');");
+       $cordovaSQLite.execute(db, "INSERT INTO `imagen` VALUES (24,'Telofase.png');");
 
   };
 
