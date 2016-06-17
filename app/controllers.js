@@ -30,7 +30,7 @@ angular.module('starter.controllers', [])
            $ionicHistory.nextViewOptions({
                disableBack: true
             });
-             $timeout(function(){ $state.go('home'); }, 100);
+             $timeout(function(){ $state.go('login'); }, 100);
             
         }, 1000);
        
@@ -79,9 +79,11 @@ angular.module('starter.controllers', [])
                 Test.getFallos($rootScope.temaId);
                 $rootScope.show_test = true;
                 $timeout(function(){ $state.go('home.categories.3.test-results');}, 15);
+                 $rootScope.show_view_test_button = true;
                 
             }else{ 
                  $rootScope.show_test = false;
+                 $rootScope.show_view_test_button = false;
                  $timeout(function(){ $state.go('home.categories.3');}, 15);
             }
         }else if(obj == 2){
@@ -205,7 +207,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('LevelCtrl', function($scope, $rootScope, $ionicSlideBoxDelegate, $window, $ionicPopup,  $templateCache, Exercises){
+.controller('LevelCtrl', function($scope,Post_Dates, $rootScope, $ionicSlideBoxDelegate, $window, $ionicPopup,  $templateCache, Exercises){
     
     index =  $rootScope.index.exercises;
     var state_exercise = $rootScope.info_exercises_level[index];
@@ -234,6 +236,9 @@ angular.module('starter.controllers', [])
        state_exercise.attempts++;
        $rootScope.info_exercises_level[i]=state_exercise;
        Exercises.store($rootScope.info_exercises_level);
+       if($rootScope.user != 'bigam1@ucm.es'){
+        Post_Dates.infoEjer($rootScope.info_exercises_level);
+       }
        balls[i]=1;
       }
 
@@ -654,9 +659,10 @@ angular.module('starter.controllers', [])
 
 /***************************************TEST************************************************/
 
-.controller('TestCtrl', function($scope, $state, $q,$rootScope,$state, Test, $ionicSlideBoxDelegate)
+.controller('TestCtrl', function($scope, $state,Post_Dates, $q,$rootScope,$state, Test, $ionicSlideBoxDelegate)
 {   
 
+    $scope.temaId = $rootScope.temaId;
     var aciertos=0;
     var fallos=0;
     var opEsCorrecto;
@@ -703,7 +709,10 @@ angular.module('starter.controllers', [])
     $scope.nextSlide = function()
     {
         estadoDeTest = {idTest: $scope.listaPreguntas[$scope.index].id, esCorrecto: opEsCorrecto}; 
-        Test.storePregTest(estadoDeTest);  
+        Test.storePregTest(estadoDeTest);
+        if($rootScope.user != 'bigam1@ucm.es'){
+        Post_Dates.infoTest( estadoDeTest);
+       } 
         $scope.used=false;
         
         if($scope.index<$scope.listaPreguntas.length-1)
@@ -768,20 +777,23 @@ angular.module('starter.controllers', [])
     } 
     });
 })
-.controller("ScoreTestCtrl", function($rootScope, $scope, $state,  $timeout) {
+.controller("ScoreTestCtrl", function($rootScope, $scope, $state,  $timeout, Test) {
     $scope.title = "Score";
     $scope.aciertos = $rootScope.results.test.aciertos ;
     $scope.fallos = $rootScope.results.test.fallos;
+    $scope.show_view_test_button = $rootScope.show_view_test_button;
  
      $scope.showTest = function(){        
-         $timeout(function(){ $state.go('home.categories.3');}, 15)
+         $timeout(function(){
+             $rootScope.show_view_test_button=false;
+                 $state.go('home.categories.3');}, 15)
     }
     
 })
 
 /***************************************REGISTER************************************************/
 
-.controller("RegisterCtrl", function($rootScope, $state, $http, $scope, Register, Post_Dates,$ionicHistory) {
+.controller("RegisterCtrl", function($rootScope, $state,$timeout, $http, $scope, Register, Post_Dates,$ionicHistory) {
 
     $scope.title = "Sign up";     
     $scope.message;
@@ -791,10 +803,10 @@ angular.module('starter.controllers', [])
     var name;
     var check_credentials = function (name, email, pass) {
 
-        
+
         request = Post_Dates.register(name, email, pass);
         request.success(function (data) {
-      
+     
         if(data.answer=="failed"){
              message = "Your data is incorrect ";
         }else{
@@ -803,15 +815,28 @@ angular.module('starter.controllers', [])
         }  
         
     })
+        .error(function(data){
+                $rootScope.user='user';
+               $rootScope.name='user';  
+               $rootScope.pass='user';
+
+                 $timeout(function(){               
+                    $ionicHistory.nextViewOptions({disableBack: true});
+                    $ionicHistory.clearCache().then(function(){ $state.go('home') });}, 1000);
+
+        })
+
+
 
      .finally(function () {
                  
              $scope.show_spin=false;
              $scope.message = message;
               if(ok){
-               $rootScope.user=email;
-               $rootScope.name=name;  
-               $rootScope.pass=pass;
+
+               $rootScope.user='biogam1@ucm.es';
+               $rootScope.name='biogam1';  
+               $rootScope.pass='biogam1';
            
               if(ok){
                  
@@ -847,7 +872,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("LoginCtrl", function($rootScope, $state, Post_Dates, $scope, Register, $ionicHistory) {
+.controller("LoginCtrl", function($rootScope, $state, $timeout, Post_Dates, $scope, Register, $ionicHistory) {
 
     $scope.title = "Log In";
     $scope.show_form = angular.isUndefined($rootScope.user);        
@@ -870,7 +895,16 @@ angular.module('starter.controllers', [])
               message = "You have login successfully with email ";  
         }  
         
-    }).error(function(){
+    });
+        request.error(function(data){
+
+               $rootScope.user='biogam1@ucm.es';
+               $rootScope.name='biogam1';  
+               $rootScope.pass='biogam1';
+            
+                 $timeout(function(){               
+                    $ionicHistory.nextViewOptions({disableBack: true});
+                    $ionicHistory.clearCache().then(function(){ $state.go('home') });}, 3000);
 
     })
 

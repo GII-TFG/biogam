@@ -20,10 +20,17 @@
             </tr>
         </table>
 
-        <div id="inlineButton">
-            <button class="button button-stable button-score" ng-click='showTest()'>
+        <div id="inlineButton" ng-if ="show_view_test_button">
+            <button class="button button-stable button-score"  ng-click='showTest()'>
                     View Test
             </button>
+
+            <button class="button button-stable button-score" ui-sref='home'>
+                    Ok
+            </button>
+        </div>
+
+        <div id="inlineButton" ng-if ="!show_view_test_button" align="center">
 
             <button class="button button-stable button-score" ui-sref='home'>
                     Ok

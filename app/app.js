@@ -15,7 +15,7 @@ angular.module('starter', [
   VERSION: "2",
 })
   .constant('CONFIG',{ 
-  URL:  "localhost",
+  URL:  'http://192.168.175.2',
 })
 
 .run(function($ionicPlatform, $state) {

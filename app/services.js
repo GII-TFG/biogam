@@ -29,8 +29,7 @@ angular.module('starter.services',[])
       
        $cordovaSQLite.execute(db, "INSERT INTO `info-db` VALUES(?, ?)", [INFO_DB.NAME, INFO_DB.VERSION]);
       
-      /**Quitar cuando funcione el server**/
-      $cordovaSQLite.execute(db, "INSERT INTO `usuario` VALUES ('biogam1@ucm.es', 'biogam1', 'biogam1', '0');");
+     // $cordovaSQLite.execute(db, "INSERT INTO `usuario` VALUES ('biogam1@ucm.es', 'biogam1', 'biogam1', '0');");
       /************************************/      
       
       $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (1,1,0);");
@@ -54,6 +53,90 @@ angular.module('starter.services',[])
       $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (10,1,0);");
       $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (10,2,1);");
 
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (11,3,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (11,4,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (11,5,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (11,6,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (11,7,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (11,8,0);");
+	  
+	$cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (12,3,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (12,4,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (12,5,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (12,6,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (12,7,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (12,8,0);");
+	  
+	$cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (13,3,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (13,4,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (13,5,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (13,6,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (13,7,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (13,8,0);");
+	  
+	$cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (14,3,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (14,4,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (14,5,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (14,6,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (14,7,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (14,8,0);");
+	  
+	$cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (15,3,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (15,4,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (15,5,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (15,6,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (15,7,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (15,8,0);");
+	  
+	$cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (16,3,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (16,4,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (16,5,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (16,6,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (16,7,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (16,8,0);");
+	  
+	$cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (17,3,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (17,4,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (17,5,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (17,6,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (17,7,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (17,8,0);");
+	  
+	$cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (18,3,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (18,4,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (18,5,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (18,6,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (18,7,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (18,8,1);");
+	  
+	$cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (19,3,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (19,4,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (19,5,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (19,6,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (19,7,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (19,8,1);");
+	  
+	$cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (20,3,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (20,4,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (20,5,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (20,6,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (20,7,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (20,8,1);");
+	  
+	$cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (21,3,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (21,4,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (21,5,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (21,6,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (21,7,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (21,8,0);");
+	  
+	$cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (22,3,1);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (22,4,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (22,5,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (22,6,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (22,7,0);");
+      $cordovaSQLite.execute(db, "INSERT INTO `tieneopciones` VALUES (22,8,0);");
+
        /*One Locus*/
       $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (1,'The expected phenotypic  segregation in the cross Aa x aa is 3/4 A :1/4 a.',1,1);");
       $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (2,'The expected genotypic segrgation in the cross Aa x Aa is 1/4 AA : 1/2 Aa : 1/4 aa.',2,1);");
@@ -69,17 +152,18 @@ angular.module('starter.services',[])
 
       /*Mitosis*/
 
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (1,'The expected phenotypic  segregation in the cross Aa x aa is 3/4 A :1/4 a.',1,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (2,'The expected genotypic segrgation in the cross Aa x Aa is 1/4 AA : 1/2 Aa : 1/4 aa.',2,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (3,'The alleles A1 and A2 are codominant. The expected phenotypic segregation in a cross A1A2 x A1A2 is 1/4 A1A1 : 1/2 A1A2 : 1/4 A2A2.',3,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (4,'The allele A is dominant and the allele a is recessive (A>a). The expected phenotypic segregation in a cross Aa x Aa is 3/4 A : 1/4 a. ',4,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (5,'In the cross A1A2 x A1A3 the observed segregation was 1/4 A1A1 : 1/4 A1A3 : 1/4 A1A2 : 1/4 A2A3. Therefore the alleles A1 and A2 are codominant and the A3 is recessive.',5,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (6,'In the cross A1A2 x A3A4 the observed segregation was 1/4 A1A3 : 1/4 A2A3 : 1/4 A1A4 : 1/4 A2A4. Therefore, the four different alleles involved in this cross are codominant.',6,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (7,'If A1>A2 , A1>A3 and A2 and A3 are codominant. The expected phenotypic segregation in the cross A1A2 x A1A3 is 3/4 A1 : 1/4 A2A3. ',7,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (8,'The segregation observed in the cross A1A2 x A3A4 was 45 A1A3, 50 A1A4, 47 A2A3 and 51 A2A4. The expected values are 45 A1A3, 50 A1A4, 45 A2A3 and 50 A2A4.',8,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (9,'A pure line with purple flowers is crossed by a pure line with white flowers. The hybrid of F1 had purple flowers, and in the F2 93 purple and 28 white plants were observed. Therefore, white flower is dominant and purple flower is recessive.',9,1);");
-      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (10,'If the genotype of the F1 between two pure lines is identical to the genotype of one parental, there exist dominance of one allele.',10,1);");
-
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (11,'1.jpg',1,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (12,'2.jpg',2,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (13,'3.JPG',3,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (14,'4.jpg',4,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (15,'5.jpg',5,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (16,'6.jpg',6,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (17,'7.JPG',7,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (18,'8.jpg',8,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (19,'9.jpg',9,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (20,'10.JPG',10,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (21,'11.JPG',11,2);");
+      $cordovaSQLite.execute(db, "INSERT INTO `test` VALUES (22,'12.jpg',12,2);");
 
       /*One Locus*/
       $cordovaSQLite.execute(db, "INSERT INTO `teoria` VALUES (1,'Pure line','A pure line is populations that show no variation in the character or trait studied. All offspring produced slfing a individual or crossing individuals of the same pure line show the same form of the character or trait studied',1);");
@@ -195,10 +279,11 @@ angular.module('starter.services',[])
 
     var ok=false;
     $cordovaSQLite.execute(db, "SELECT * FROM `info-db` where version =?", [INFO_DB.VERSION]).then(function(res){
-    if(res.rows.length > 0){ console.log("solo insertamos");insert();}},
+    if(res.rows.length > 0){ 
+      insert();}},
     function (err) {
       //si no exite creamos
-      console.log("creamos e insertamos");
+ 
       create();
       insert();
     });
@@ -255,7 +340,7 @@ angular.module('starter.services',[])
       for(var i = 0; i<res.rows.length ; i++){
             temas.push({name: res.rows.item(i).name, id:res.rows.item(i).id });
         }
-      }else{ console.log("Not found results"); }
+      }
     })
       return temas;  
     },
@@ -275,9 +360,6 @@ angular.module('starter.services',[])
             nombreTema.push({name: res.rows.item.name});
      
 
-        }else{
-
-           console.log("Not found results");
         }
 
     })
@@ -292,9 +374,43 @@ angular.module('starter.services',[])
 
 .factory('Theory', function($cordovaSQLite, $rootScope ) {
   
-    
 
-  return {
+
+  /*return {
+   getTeoriaDeTema: function(idTema) {
+    var capsTeoria = [];
+    var idImg=[];
+
+    var query ="select titulo, texto , id, idImg from teoria left join 'img-teoria' on teoria.id = 'img-teoria'.idTeoria where idTema=?  UNION ALL select titulo, texto , id, idImg from 'img-teoria' left join teoria on teoria.id = 'img-teoria'.idTeoria where 'img-teoria'.idTeoria is NULL";
+
+    $cordovaSQLite.execute(db, query, [idTema]).then(function(res){
+
+        if(res.rows.length > 0){
+            for(var i = 0; i<res.rows.length ; i++){
+                  
+                  if(i>0){
+                        if(capsTeoria[i-1].id !=  res.rows.item(i).id){
+                              idImg=[];
+                              if(res.rows.item(i).idImg!=null){idImg.push(res.rows.item(i).idImg)}
+                              capsTeoria.push({titulo: res.rows.item(i).titulo, texto:res.rows.item(i).texto, id:res.rows.item(i).id, idImg:idImg, imagenes: []});                 
+                              
+                        }else{
+                               if(res.rows.item(i).idImg!=null){idImg.push(res.rows.item(i).idImg)}
+                              capsTeoria.push({titulo: res.rows.item(i).titulo, texto:res.rows.item(i).texto, id:res.rows.item(i).id, idImg:idImg, imagenes: []});
+                              }
+                  }else{
+                        idImg=[];
+                        if(res.rows.item(i).idImg!=null){idImg.push(res.rows.item(i).idImg)}
+                         capsTeoria.push({titulo: res.rows.item(i).titulo, texto:res.rows.item(i).texto, id:res.rows.item(i).id, idImg:idImg, imagenes: []});
+                  }
+            }
+
+    }})
+      return capsTeoria;
+    
+    },*/
+
+      return {
     getTeoriaDeTema: function(idTema) {
     var capsTeoria = [];
 
@@ -308,11 +424,7 @@ angular.module('starter.services',[])
             capsTeoria.push({titulo: res.rows.item(i).titulo, texto:res.rows.item(i).texto, id:res.rows.item(i).id, idImg:res.rows.item(i).idImg, imagenes: []});
           }
 
-        }else{
-
-           console.log("Not found results");
         }
-
     })
       return capsTeoria;
     
@@ -332,7 +444,7 @@ angular.module('starter.services',[])
 
             $rootScope.theory[j].imagenes.push({nombre: res.rows.item(i).imagen});
           }
-        }else{
+
         }
 
     })
@@ -363,9 +475,6 @@ angular.module('starter.services',[])
                 categorias.push({id: 1, titulo: "Teoria"});
               
 
-            }else{
-
-               console.log("Not found results");
             }
 
         })
@@ -377,11 +486,7 @@ angular.module('starter.services',[])
                 categorias.push({id: 2, titulo: "Ejercicio"});
               
 
-            }else{
-
-               console.log("Not found results");
             }
-
         })
         
         $cordovaSQLite.execute(db, queryTeoria, [idTema]).then(function(res){
@@ -391,9 +496,6 @@ angular.module('starter.services',[])
                 categorias.push({id: 3, titulo: "Test"});
               
 
-            }else{
-
-               console.log("Not found results");
             }
 
         })
@@ -424,9 +526,6 @@ angular.module('starter.services',[])
             }
           }
 
-        }else{
-
-           console.log("Not found results");
         }
 
     })
@@ -493,11 +592,7 @@ angular.module('starter.services',[])
             lista.push({ejerId: res.rows.item(i).id, enunciado: res.rows.item(i).enunciado });
           }
 
-        }else{
-
-           console.log("Not found results");
         }
-
     })
 
           return lista;
@@ -510,6 +605,10 @@ angular.module('starter.services',[])
 
         for(var i=0; i<estados.length; i++){
         var lista = []
+<<<<<<< HEAD
+=======
+   
+>>>>>>> aac72dcc7f4e458af20067571178ce23549b9869
         var query ="INSERT OR REPLACE INTO 'info-ejer' VALUES(?, ?, ?, ?)";
         $cordovaSQLite.execute(db, query, [$rootScope.user, estados[i].id, estados[i].attempts, estados[i].fails]);
 
@@ -565,11 +664,7 @@ angular.module('starter.services',[])
 
           
 
-        }else{
-
-           console.log("Not found results");
         }
-
     })
  
       return pregTest;
@@ -592,9 +687,6 @@ angular.module('starter.services',[])
                     getOpsTest.push({esCorrecto: res.rows.item(i).esCorrecto, nombreOp: res.rows.item(i).nombreOp, id: res.rows.item(i).id});
                 }
 
-            }else{
-
-                console.log("Not found results");
             }
 
         })
@@ -616,7 +708,6 @@ angular.module('starter.services',[])
          var query = "SELECT max(numero) as maxi FROM test, 'info-test' WHERE idTest = id AND test.idTema = ?"
          $cordovaSQLite.execute(db, query, [idTema]).then(function(res){ //cambiar lo del usuario pepito
            i = res.rows.item(0).maxi;
-           console.log(i);
         if(i != null){
         
          $rootScope.index.test = i;
@@ -635,7 +726,7 @@ angular.module('starter.services',[])
         $cordovaSQLite.execute(db, queryAciertos, [idTema]).then(function(res){
 
               $rootScope.results.test.aciertos = res.rows.item(0).aciertos;
-              console.log("aciertos: " + $rootScope.results.test.aciertos);
+  
              
         })
         return true; 
@@ -647,7 +738,7 @@ angular.module('starter.services',[])
      
         $cordovaSQLite.execute(db, queryFallos, [idTema]).then(function(res){
           $rootScope.results.test.fallos = res.rows.item(0).fallos;
-          console.log("fallos: " + $rootScope.results.test.fallos);
+       
         }) 
         return true;      
     }
@@ -677,15 +768,13 @@ angular.module('starter.services',[])
 
         var request = $http({
         method: "post",
-        url:   CONFIG.URL+"/dash/index.php/Login/check",
+        url:  CONFIG.URL+'/dash/index.php/Login/check',
         data: {
             email: email,
             pass:  pass
         },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
-
-            console.log(request);
 
     /* Check whether the HTTP Request is successful or not. */
     return request;
@@ -696,11 +785,51 @@ angular.module('starter.services',[])
 
         var request = $http({
         method: "post",
-        url:  CONFIG.URL+"/dash/index.php/Register",
+        url:  CONFIG.URL+'/dash/index.php/Register',
         data: {
             name: name,
             email: email,
             pass:  pass
+        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
+
+    /* Check whether the HTTP Request is successful or not. */
+    return request;
+
+    },
+      infoEjer: function(estados) { 
+
+    //  $cordovaSQLite.execute(db, query, [$rootScope.user, estados[estados.length-1].id, estados[estados.length-1].attempts, estados[estados.length-1].fails]);
+
+        var request = $http({
+        method: "post",
+        url:  CONFIG.URL+'/dash/index.php/Ejercicio',
+        data: {
+            user: $rootScope.user,
+            idEjer: estados[estados.length-1].id,
+            attempts: estados[estados.length-1].attempts,
+            fails:estados[estados.length-1].fails
+        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
+
+    /* Check whether the HTTP Request is successful or not. */
+    return request;
+
+    },
+
+      infoTest: function(estado) { 
+
+    //  $cordovaSQLite.execute(db, query, [$rootScope.user, estados[estados.length-1].id, estados[estados.length-1].attempts, estados[estados.length-1].fails]);
+            // $cordovaSQLite.execute(db, query, [$rootScope.user, estado.idTest, estado.esCorrecto]);
+        var request = $http({
+        method: "post",
+        url:  CONFIG.URL+'/dash/index.php/Test',
+        data: {
+            user: $rootScope.user,
+            idTest: estado.idTest,
+            esCorrecto: estado.esCorrecto
         },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });

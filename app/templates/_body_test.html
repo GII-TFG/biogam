@@ -1,11 +1,25 @@
 
           <div class="test-question">
-            <h3 id="tituloTest">
+
+          <div ng-if="temaId==2">
+              <h3 id="tituloTest">
+                Question {{pregunta.numero}}
+            </h3>
+            <p>In which stage of mitosis is this cell?</p>
+            <img ng-src = "app/assests/img/2/{{listaPreguntas[index].enunciado}}" height="160px" width="320px">
+            
+          </div>
+           
+           <div ng-if="temaId!=2">
+              <h3 id="tituloTest">
                 Question {{pregunta.numero}}
             </h3>
             <p id="textoEjercicio">
                 {{listaPreguntas[index].enunciado}}
             </p>
+
+           </div>
+     
           </div>
             
           <ion-list >
