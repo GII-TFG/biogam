@@ -871,7 +871,7 @@ angular.module('starter.controllers', [])
         }  
         
     }).error(function(){
-        
+
     })
 
      .finally(function () {
