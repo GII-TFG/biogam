@@ -605,10 +605,6 @@ angular.module('starter.services',[])
 
         for(var i=0; i<estados.length; i++){
         var lista = []
-<<<<<<< HEAD
-=======
-   
->>>>>>> aac72dcc7f4e458af20067571178ce23549b9869
         var query ="INSERT OR REPLACE INTO 'info-ejer' VALUES(?, ?, ?, ?)";
         $cordovaSQLite.execute(db, query, [$rootScope.user, estados[i].id, estados[i].attempts, estados[i].fails]);
 
