@@ -90,7 +90,11 @@ angular.module('starter.controllers', [])
 
         }else if(obj == 1){
 
-              $timeout(function(){$state.go('home.categories.1');}, 15);
+            for(var i=0; i<$rootScope.theory.length; i++){
+
+                Theory.getImg($rootScope.theory[i].idImg,i);
+            }
+            $timeout(function(){$state.go('home.categories.1');}, 300);
 
         }
     }
@@ -101,28 +105,37 @@ angular.module('starter.controllers', [])
 .controller('TheoryCtrl', function($scope, $rootScope, Theory){
 
     $scope.title = "Theory";
-    $scope.listaTeoria = $rootScope.theory;
+    var aux = [];
+    
+    
 
-	for(var i=0; i<$scope.listaTeoria.length; i++){
+	/*for(var i=0; i<$rootScope.theory.length; i++){
 
-        Theory.getImg($scope.listaTeoria[i].idImg,i);
+        Theory.getImg($rootScope.theory[i].idImg,i);
+    }*/
+    aux.push($rootScope.theory[0]);
+    for(var i=1; i < $rootScope.theory.length; i++){
+        if($rootScope.theory[i].id == aux[aux.length-1].id){
+            aux[aux.length-1].imagenes.push($rootScope.theory[i].imagenes[0]);
+        }else{
+            aux.push($rootScope.theory[i]);
+        }
     }
-	
+
+	$rootScope.theory = aux;
+    $scope.listaTeoria = aux;
+
+    
+
     $scope.getTheory = function(index){      
         $rootScope.index.theory = index;
     }    
 })
 
 .controller('CompleteTheoryCtrl', function($scope, $rootScope, Theory,  $ionicSlideBoxDelegate){
-       console.log($rootScope.theory[0].imagenes.length);
-
+    
      $scope.path=$rootScope.imagePath;
-    var cargaImg = function(id){
-         var deferred = $q.defer();
-         Theory.getImg(id);
-         deferred.resolve();
-         return deferred.promise;
-    };
+    
     $scope.title = "Detail";
     var index = $rootScope.index.theory;
     $scope.indexSlide = function(){
@@ -213,7 +226,6 @@ angular.module('starter.controllers', [])
 
     $scope.slideHasChanged = function(i) 
     {   
-        console.log(i);
         state_exercise = $rootScope.info_exercises_level[i];
     }
 
@@ -360,9 +372,6 @@ angular.module('starter.controllers', [])
                 title: '¡Cuidado!',
                 template: 'Los valores tienen que ser menores de 5000.'
             });
-            alertPopup.then(function(res) {
-                console.log('Thank you for not eating my delicious ice cream cone');
-             });
             //mensaje de error, el valor tiene que ser menor de 5000
         }else{
             $scope.total = $scope.AaValue.value + $scope.aaValue.value;
@@ -403,9 +412,7 @@ angular.module('starter.controllers', [])
                 title: '¡Cuidado!',
                 template: 'Los valores tienen que ser menores de 5000.'
             });
-            alertPopup.then(function(res) {
-                console.log('Thank you for not eating my delicious ice cream cone');
-             });
+        
         }else{
             $scope.total = $scope.AaValue.value + $scope.aaValue.value;
             $scope.exp_A = ($scope.total * 3) / 4;
@@ -445,9 +452,7 @@ angular.module('starter.controllers', [])
                 title: '¡Cuidado!',
                 template: 'Los valores tienen que ser menores de 5000.'
             });
-            alertPopup.then(function(res) {
-                console.log('Thank you for not eating my delicious ice cream cone');
-             });
+          
         }else{
             $scope.total = AAValue.value + AaValue.value + aaValue.value;
             $scope.exp_AA = $scope.total / 4;
@@ -493,9 +498,7 @@ angular.module('starter.controllers', [])
                 title: '¡Cuidado!',
                 template: 'Los valores tienen que ser menores de 5000.'
             });
-            alertPopup.then(function(res) {
-                console.log('Thank you for not eating my delicious ice cream cone');
-             });
+            
         }else{
             $scope.total = A1A1Value.value + A1A3Value.value3 + A1A2Value.value + A2A3Value.value;
             $scope.exp_A1A1 = $scope.total / 4;
@@ -548,9 +551,7 @@ angular.module('starter.controllers', [])
                 title: '¡Cuidado!',
                 template: 'Los valores tienen que ser menores de 5000.'
             });
-            alertPopup.then(function(res) {
-                console.log('Thank you for not eating my delicious ice cream cone');
-             });
+          
             }else{
                 $scope.total = A1A3Value.value + A1A4Value.value + A2A3Value.value + A2A4Value.value;
                 $scope.exp_A1A3 = $scope.total / 4;
@@ -602,9 +603,7 @@ angular.module('starter.controllers', [])
                 title: '¡Cuidado!',
                 template: 'Los valores tienen que ser menores de 5000.'
             });
-            alertPopup.then(function(res) {
-                console.log('Thank you for not eating my delicious ice cream cone');
-             });
+           
             }else{
                 $scope.total = AAValue.value + AaValue.value;
                 $scope.exp_AA = $scope.total / 3;
@@ -792,10 +791,10 @@ angular.module('starter.controllers', [])
     var name;
     var check_credentials = function (name, email, pass) {
 
-        console.log(name);
+        
         request = Post_Dates.register(name, email, pass);
         request.success(function (data) {
-        console.log(data.answer)
+      
         if(data.answer=="failed"){
              message = "Your data is incorrect ";
         }else{
@@ -842,6 +841,10 @@ angular.module('starter.controllers', [])
         }
              
         };
+
+         
+   
+
 })
 
 .controller("LoginCtrl", function($rootScope, $state, Post_Dates, $scope, Register, $ionicHistory) {
@@ -858,7 +861,7 @@ angular.module('starter.controllers', [])
 
         request = Post_Dates.login(email, pass);
         request.success(function (data) {
-        console.log(data)
+        
         if(data.answer=="failed"){
              message = "Your login is incorrect ";
         }else{
@@ -866,6 +869,8 @@ angular.module('starter.controllers', [])
               name = data.answer;
               message = "You have login successfully with email ";  
         }  
+        
+    }).error(function(){
         
     })
 
@@ -889,7 +894,6 @@ angular.module('starter.controllers', [])
    
     if(!$scope.show_form){
 
-        console.log($rootScope.pass);
 
         check_credentials($rootScope.user, $rootScope.pass);
 

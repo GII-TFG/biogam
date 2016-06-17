@@ -316,10 +316,7 @@ angular.module('starter.services',[])
 
             $rootScope.theory[j].imagenes.push({nombre: res.rows.item(i).imagen});
           }
-
         }else{
-
-          // console.log("Not found results");
         }
 
     })
@@ -497,7 +494,6 @@ angular.module('starter.services',[])
 
         for(var i=0; i<estados.length; i++){
         var lista = []
-        console.log("guardamos e inseramos");
         var query ="INSERT OR REPLACE INTO 'info-ejer' VALUES(?, ?, ?, ?)";
         $cordovaSQLite.execute(db, query, [$rootScope.user, estados[i].id, estados[i].attempts, estados[i].fails]);
 
